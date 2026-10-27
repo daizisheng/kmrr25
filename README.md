@@ -36,10 +36,15 @@ as an explicit hypothesis. The table marks these cases.
 |---|---|---|---|
 | `Q320.lean` | colourings with bad multipliers in every residue class | 3.20 | — |
 | `Q323.lean` | a set of positive logarithmic density with no ℓB+mB+t | 3.23 | — |
+| `Q324.lean` | log-equidistributed sets without B+B+t (both examples) | 3.24 | — |
 | `S32a.lean` | both readings of the density condition | §3.2(a) | — |
 | `S33a.lean` | ordered polynomial sums: negative direction | §3.3(a) | — |
 | `S33a.lean` | ordered polynomial sums: positive direction | §3.3(a) | Kousek, Thm 1.2 |
+| `S33e.lean` | generalisations of Question 3.18 (and Question 3.18 itself) | §3.3(e), 3.18 | — |
+| `Q331.lean` | k-fold sums of blocks from a density Ramsey family | 3.31, §3.6(a) | KMRR, density finite sums (dynamical input) |
 | `Q413.lean` | the integer-exponent case | 4.13 | — |
+| `Q413a.lean` | the non-integer case, from the second-moment bound | 4.13 | the second-moment bound of the paper's proof |
+| `S44a.lean` | random sets: monotone criterion, finite configurations, gap example | §4.4(a) | — |
 | `C45.lean` | {b+c : b<c} ⊂ P with C ⊂ P−1 | Conjecture 4.5 | Tao–Ziegler, Thm 1.5 |
 | `Q510.lean` | fibrewise density does not suffice in ℕ² | 5.10 | — |
 | `Q516.lean` | admissible translates when [G:2G] < ∞ | 5.16, §5.3(a) | Charamaras–Mountakis, Cor. 1.13 |
@@ -48,6 +53,8 @@ as an explicit hypothesis. The table marks these cases.
 | `Q54.lean` | sums and shifted products at logarithmic scale | 5.4 | — |
 | `Q56.lean`, `DoubleFolnerQ.lean` | sums and products in ℚ, double Følner sequences | 5.6 | — |
 | `KR52.lean` | lower Banach density thresholds 1/2 and 3/4 | Kousek–Radić, Question 5.2 | — |
+
+The main theorem of the paper (Question 5.14) is not formalized.
 
 The module docstring of each file lists exactly which statements of the paper it covers and
 which it does not.
