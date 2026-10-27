@@ -1,0 +1,1123 @@
+% Section integers_B: density Ramsey families (Q3.31, Q 3.6(a)), Question 4.13,
+% random sets (Q 4.4(a)), Conjecture 4.5.
+
+%======================================================================
+\section{Sums of blocks from a density Ramsey family}
+\label{IB:sec:q331}
+%======================================================================
+
+In this section we answer Question~3.31 of~\cite{kra2023problems} and its
+$k$-fold analogue, Question~\S3.6(a), positively, in the strongest form one can
+hope for. The proof is a short modification of the proof of the Density Finite
+Sums Theorem of Kra, Moreira, Richter and Robertson~\cite{kra2025density}: what
+is needed is the quantitative (positive lower average) form of the recurrence
+property that is actually established in~\cite{kra2025density}, combined with a
+version of Bergelson's intersectivity lemma along \Fol{} sequences.
+
+Throughout, $\N=\{1,2,\dots\}$, and for $A\subset\N$ and $t\in\Z$ we write
+$A-t=\{n\in\N: n+t\in A\}$. The upper Banach density is
+\[
+\ubd(A)=\limsup_{N\to\infty}\ \sup_{M\ge 0}\frac{|A\cap\{M+1,\dots,M+N\}|}{N}.
+\]
+
+\begin{definition}[{\cite[Definition~3.29]{kra2023problems}}]
+A collection $\mathcal D\subset\{F\subset\N: 0<|F|<\infty\}$ has the
+\emph{density Ramsey property} if every $A\subset\N$ with $\ubd(A)>0$ contains
+some $X\in\mathcal D$.
+\end{definition}
+
+By Szemer\'edi's theorem, the family of $\ell$-term arithmetic progressions has
+the density Ramsey property for every $\ell$; trivially so does the family of
+singletons. Theorem~3.30 of~\cite{kra2023problems} states that for such a family
+$\mathcal D$ and $\ubd(A)>0$ there are pairwise disjoint $B_1,B_2,\ldots\in\mathcal D$
+and pairwise disjoint $C_1,C_2,\ldots\in\mathcal D$ with $B_i+C_j\subset A$ for all
+$i,j$. The survey observes that this does not contain the $B+B+t$ theorem
+(\cite[Theorem~1.2]{kra2022proof}, Theorem~2.2 of~\cite{kra2023problems}) and asks:
+
+\begin{question}{3.31}
+\label{IB:q:331}
+If $\mathcal D\subset\{F\subset\N: 0<|F|<\infty\}$ has the density Ramsey property,
+is it true that for any $A\subset\N$ with $\ubd(A)>0$ there exist $t\in\N$ and
+disjoint $B_1,B_2,\ldots\in\mathcal D$ such that $B_i+B_j\subset A-t$ for all
+$i\neq j\in\N$?
+\end{question}
+
+Immediately afterwards the survey adds: ``Similarly, one can formulate the analog
+for the $k$-fold sum of the sets.'' We read this as follows.
+
+\begin{question}{\S3.6(a)}
+\label{IB:q:36a}
+Let $\mathcal D$ have the density Ramsey property, $k\in\N$ and $\ubd(A)>0$. Do there
+exist $t\in\N$ and disjoint $B_1,B_2,\ldots\in\mathcal D$ such that
+$B_{i_1}+\dots+B_{i_k}\subset A-t$ for all pairwise distinct
+$i_1,\dots,i_k\in\N$?
+\end{question}
+
+The indices must be distinct: with $\mathcal D$ the singletons and repeated indices
+allowed, already $k=2$ would require $B+B+t\subset A$, which fails in general by
+Example~2.3 of~\cite{kra2023problems}.
+
+\begin{theorem}
+\label{IB:thm:dR}
+Let $\mathcal D\subset\{F\subset\N: 0<|F|<\infty\}$ have the density Ramsey property,
+let $k\in\N$ and let $A\subset\N$ with $\ubd(A)>0$. Then there exist $t\in\N$ and
+$B_1,B_2,\ldots\in\mathcal D$ with $\max B_i<\min B_{i+1}$ for all $i$, such that
+\[
+B_{i_1}+B_{i_2}+\dots+B_{i_m}\subset A-t
+\qquad\text{for all } 1\le m\le k \text{ and all } i_1<i_2<\dots<i_m .
+\]
+\end{theorem}
+
+\begin{corollary}
+\label{IB:cor:331}
+Question~\ref{IB:q:331} and Question~\ref{IB:q:36a} have positive answers. In
+Question~\ref{IB:q:331} one may moreover require $B_i\subset A-t$ for all $i$ and
+$\max B_i<\min B_{i+1}$.
+\end{corollary}
+
+\begin{proof}
+Take $k=2$, respectively the given $k$, in \cref{IB:thm:dR}; sums over distinct
+indices may be written with increasing indices.
+\end{proof}
+
+\begin{remark}
+\label{IB:rem:dR}
+Taking $\mathcal D$ to be the singletons, \cref{IB:thm:dR} is the Density Finite
+Sums Theorem~\cite[Theorem~1.1]{kra2025density} (with the shift $t\ge 1$); for
+$k=2$ it contains the $B+B+t$ theorem. Taking $\mathcal D$ to be the $\ell$-term
+progressions gives a common extension of these results and Szemer\'edi's theorem,
+which is the unification sought in~\cite[\S3.6]{kra2023problems}. Concerning
+novelty: the proof below combines the construction of nested boxes from support
+points in the proof of~\cite[Proposition~3.2]{kra2025density} with the chain argument
+of~\cite[Lemma~2.2]{kra2025density}, with single return times replaced by blocks
+from $\mathcal D$; all
+dynamical input is taken from~\cite{kra2025density}. Our contribution is the
+observation that the quantitative recurrence established there, together with
+\cref{IB:lem:intersect}, suffices.
+\end{remark}
+
+\subsection{Two lemmas on \Fol{} sequences}
+
+A \emph{\Fol{} sequence} in $\N$ is a sequence $\Phi=(\Phi_N)$ of finite nonempty
+subsets of $\N$ with $|(\Phi_N+1)\cap\Phi_N|/|\Phi_N|\to 1$. For $K\subset\N$ put
+$\udens_\Phi(K)=\limsup_N|K\cap\Phi_N|/|\Phi_N|$.
+
+\begin{lemma}
+\label{IB:lem:folner}
+Let $\Phi$ be a \Fol{} sequence in $\N$. Then $|\Phi_N|\to\infty$, and
+$\ubd(K)\ge\udens_\Phi(K)$ for every $K\subset\N$.
+\end{lemma}
+
+\begin{proof}
+For a finite nonempty $F\subset\N$ we have $\max F+1\notin F$, so
+$|(F+1)\cap F|\le|F|-1$; hence the \Fol{} property forces $|\Phi_N|\to\infty$.
+Decompose $\Phi_N$ into its $r_N$ maximal blocks of consecutive integers. If
+$x,x+1\in\Phi_N$ then $x$ and $x+1$ lie in the same block, so
+$|(\Phi_N+1)\cap\Phi_N|=|\Phi_N|-r_N$ and therefore $r_N=o(|\Phi_N|)$. Fix $L\in\N$ and
+let $\delta_L=\sup\{|K\cap I|/|I|\}$, the supremum over all intervals $I\subset\N$
+of length at least $L$. Blocks of length $<L$ contain at most $Lr_N$ points in
+total, and a block $I$ of length $\ge L$ contains at most $\delta_L|I|$ points of
+$K$. Hence $|K\cap\Phi_N|\le Lr_N+\delta_L|\Phi_N|$ and
+$\udens_\Phi(K)\le\delta_L$. Finally $\delta_L=\sup_{L'\ge L}a_{L'}$ where
+$a_{L'}=\sup_M|K\cap\{M+1,\dots,M+L'\}|/L'$, so $\delta_L\to\limsup_{L'}a_{L'}=\ubd(K)$.
+\end{proof}
+
+The next lemma is a version of Bergelson's intersectivity
+lemma~\cite{bergelson1985sets} in which density is measured along a \Fol{}
+sequence; working directly along $\Phi$ avoids the passage through an
+enumeration of the index set that appears in the proof of Theorem~3.30
+of~\cite{kra2023problems}.
+
+\begin{lemma}
+\label{IB:lem:intersect}
+Let $(\Omega,\nu)$ be a probability space, $\Phi$ a \Fol{} sequence in $\N$, and
+$R\subset\N$ with $\udens_\Phi(R)\ge\delta>0$. For $n\in R$ let $O_n\subset \Omega$ be
+measurable with $\nu(O_n)\ge\kappa>0$. Then there is $K\subset R$ with
+$\ubd(K)\ge\delta\kappa$ such that $\nu\bigl(\bigcap_{n\in F}O_n\bigr)>0$ for every
+finite nonempty $F\subset K$.
+\end{lemma}
+
+\begin{proof}
+Let $\mathcal F_0$ be the (countable) set of finite nonempty $F\subset R$ with
+$\nu(\bigcap_{n\in F}O_n)=0$, and let $Z=\bigcup_{F\in\mathcal F_0}\bigcap_{n\in F}O_n$; then
+$\nu(Z)=0$. Put
+$f_N=|\Phi_N|^{-1}\sum_{n\in R\cap\Phi_N}\one_{O_n\setminus Z}$. Then $0\le f_N\le 1$
+and $\int f_N\,d\nu\ge\kappa\,|R\cap\Phi_N|/|\Phi_N|$. Choose $N_1<N_2<\cdots$ with
+$|R\cap\Phi_{N_i}|/|\Phi_{N_i}|\to\udens_\Phi(R)$. By the reverse Fatou lemma,
+$\int\limsup_i f_{N_i}\,d\nu\ge\limsup_i\int f_{N_i}\,d\nu\ge\delta\kappa$, so there is
+$\omega\in\Omega$ with $\limsup_i f_{N_i}(\omega)\ge\delta\kappa$. Let $K=\{n\in R: \omega\in O_n\setminus Z\}$.
+Then $f_N(\omega)=|K\cap\Phi_N|/|\Phi_N|$, so $\udens_\Phi(K)\ge\delta\kappa$ and
+$\ubd(K)\ge\delta\kappa$ by \cref{IB:lem:folner}. If $F\subset K$ is finite and
+nonempty, then $\omega\in\bigcap_{n\in F}O_n$ and $\omega\notin Z$, so
+$\nu(\bigcap_{n\in F}O_n)>0$.
+\end{proof}
+
+\subsection{The dynamical input}
+
+For a topological system $(Y,T)$ (a compact metric space with a homeomorphism) we
+write $T_\Delta=T\times\dots\times T$ ($k+1$ factors) on $Y^{k+1}$ and $M(Y^{k+1})$ for
+the Borel probability measures on $Y^{k+1}$.
+
+\begin{proposition}[Kra--Moreira--Richter--Robertson]
+\label{IB:prop:dyn}
+Let $A\subset\N$ with $\ubd(A)>0$ and $k\in\N$. There exist a topological system
+$(Y,T)$, a point $a\in Y$, an open set $\tilde E\subset Y$, a \Fol{} sequence $\Phi$
+in $\N$ such that $a$ is generic along $\Phi$ for an ergodic $T$-invariant Borel probability
+measure $\tilde\mu$ on $Y$, a measure $\sigma\in M(Y^{k+1})$ and an integer $t\ge 0$ such that
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item\label{IB:dyn1} $A=\{n\in\N: T^na\in\tilde E\}$;
+\item\label{IB:dyn2} $\sigma(\{a\}\times Y^k)=1$;
+\item\label{IB:dyn3} $\sigma\bigl(Y\times(T^{-t}\tilde E)^k\bigr)>0$;
+\item\label{IB:dyn4} for all open $U_1,\dots,U_k\subset Y$ such that
+$V=U_1\times\dots\times U_k$ satisfies $\sigma(Y\times V)>0$,
+\[
+\liminf_{N\to\infty}\frac1{|\Phi_N|}\sum_{n\in\Phi_N}
+\sigma\bigl((Y\times V)\cap T_\Delta^{-n}(V\times Y)\bigr)>0 .
+\]
+\end{enumerate}
+\end{proposition}
+
+All of this is contained in~\cite{kra2025density}; we indicate where. Property
+\ref{IB:dyn4} is stronger than the statement that $\sigma$ is ``progressive''
+(\cite[Definition~3.1]{kra2025density}, which only asks for infinitely many such
+$n$), but it is exactly what is proved in~\cite{kra2025density}, in the proof that
+Theorems~6.1 and~6.2 imply Theorem~4.9; we repeat that argument.
+
+\begin{proof}
+By the correspondence principle~\cite[Theorem~2.3]{kra2025density} there are a
+measure preserving system $(X,\mu,S)$, a point $x_0\in X$ whose forward orbit
+closure has full measure, and an open $E\subset X$ with $\mu(E)>0$ and
+$A=\{n: S^nx_0\in E\}$. As in the proof that Theorem~2.4 implies Theorem~1.2
+in~\cite{kra2025density}, ergodic decomposition yields an ergodic $S$-invariant
+$\mu'$ with $\mu'(E)\ge\mu(E)$ and a \Fol{} sequence along which $x_0$ is generic
+for $\mu'$. As in the proof that Theorems~4.8 and~4.9 imply Theorem~3.3
+in~\cite{kra2025density}, which relies on~\cite[Proposition~5.7 and
+Lemma~5.8]{kra2022infinite}, there are an ergodic system $(Y,\tilde\mu,T)$ with
+topological pronilfactors, a continuous factor map $\pi\colon Y\to X$, a \Fol{}
+sequence $\Phi$ in $\N$ and a point $a\in Y$ generic for $\tilde\mu$ along $\Phi$ with
+$\pi(a)=x_0$. (Lemma~5.8 of~\cite{kra2022infinite} is stated for a transitive
+point; as in the proof that Theorem~5.9 implies Theorem~4.4 there, one first replaces $X$ by the orbit
+closure of $x_0$, which has full $\mu'$-measure, and $E$ by its intersection with
+it.) A continuous factor map satisfies $\pi\circ T=S\circ\pi$ \emph{everywhere}
+\cite[Definition~2.2]{kra2022infinite}; in~\cite[Lemma~5.8]{kra2022infinite} it is
+the projection to the first coordinate of an orbit closure of a product map.
+Hence with $\tilde E=\pi^{-1}(E)$, which is open, $T^na\in\tilde E$ if and only if
+$S^nx_0\in E$, which is \ref{IB:dyn1}; moreover $\tilde\mu(\tilde E)=\mu'(E)>0$.
+
+Let $\sigma$ be the measure of~\cite[Definition~4.5]{kra2025density} for
+$(Y,\tilde\mu,T)$, $k$, $\Phi$ and $a$. Formula~(4.3) there shows
+$\sigma=\delta_a\otimes\sigma'$ for some $\sigma'$, which gives \ref{IB:dyn2}, and
+\cite[Theorem~4.8]{kra2025density} gives $t\ge0$ with \ref{IB:dyn3}. For
+\ref{IB:dyn4}, let $V$ be as there. Since $V$ is open and $\sigma(Y\times V)>0$,
+regularity and Urysohn's lemma give a continuous $G\colon Y^k\to[0,1]$ with
+$G\le\one_V$ and $\int 1\otimes G\,d\sigma>0$. Pointwise,
+$\one_{(Y\times V)\cap T_\Delta^{-n}(V\times Y)}\ge(1\otimes G)\cdot\bigl((G\otimes1)\circ T_\Delta^n\bigr)$.
+By~\cite[Theorem~6.2]{kra2025density}, the averages over $n\in\Phi_N$ of
+$(G\otimes 1)\circ T_\Delta^n-(1\otimes G)\circ T_\Delta^n$ tend to $0$ in $L^2(\sigma)$; as
+$|1\otimes G|\le 1$, the Cauchy--Schwarz inequality gives
+\[
+\liminf_{N}\frac1{|\Phi_N|}\sum_{n\in\Phi_N}\sigma\bigl((Y\times V)\cap T_\Delta^{-n}(V\times Y)\bigr)
+\ \ge\ \liminf_N\frac1{|\Phi_N|}\sum_{n\in\Phi_N}\int_{Y^k} G\cdot\bigl(G\circ(T\times\dots\times T)^n\bigr)\,d\nu ,
+\]
+where $\nu$ is the projection of $\sigma$ to the last $k$ coordinates. By
+\cite[Lemma~4.7]{kra2025density}, $\sigma$ is invariant under
+$\mathrm{Id}\times T\times T^2\times\dots\times T^k$, so $\nu$ is invariant under
+$T\times T^2\times\dots\times T^k$; since $\int G\,d\nu>0$,
+\cite[Theorem~6.1]{kra2025density} shows that the right-hand side is positive.
+\end{proof}
+
+\subsection{Proof of \cref{IB:thm:dR}}
+
+We first prove the statement with $t\ge0$ instead of $t\in\N$. Let $(Y,T)$, $a$,
+$\tilde E$, $\Phi$, $\sigma$, $t$ be as in \cref{IB:prop:dyn} and put
+$U=T^{-t}\tilde E$, an open set. By \ref{IB:dyn1}, for $n\in\N$,
+\begin{equation}\label{IB:eq:U}
+T^na\in U\iff n\in A-t .
+\end{equation}
+Since $\{a\}\times Y^k$ is a closed set of full measure, $\supp\sigma\subset\{a\}\times Y^k$.
+
+By a \emph{box} we mean a set $V=V^{(1)}\times\dots\times V^{(k)}\subset Y^k$ with all
+$V^{(j)}$ open and nonempty. We construct boxes $V_0,V_1,\ldots$ and sets
+$B_1,B_2,\ldots\in\mathcal D$ such that for all $i\ge1$:
+\begin{enumerate}[label=\textup{(I\arabic*)}]
+\item\label{IB:I1} $\sigma(Y\times V_i)>0$ and $V_i^{(j)}\subset V_{i-1}^{(j)}$ for all $j$;
+\item\label{IB:I2} for every $n\in B_i$ and every $v=(v_1,\dots,v_k)\in V_i$ we have
+$T^na\in V_{i-1}^{(1)}$ and $T^nv_j\in V_{i-1}^{(j+1)}$ for $1\le j\le k-1$;
+\item\label{IB:I3} $\min B_i>\max B_{i-1}$ (with $\max B_0:=0$).
+\end{enumerate}
+Let $V_0=U^k$; by \ref{IB:dyn3}, $\sigma(Y\times V_0)>0$ (in particular $U\neq\emptyset$).
+
+Suppose $V_i$ has been constructed with $\sigma(Y\times V_i)>0$. For $n\in\N$ let
+$O_n=(Y\times V_i)\cap T_\Delta^{-n}(V_i\times Y)$, an open subset of $Y^{k+1}$. By
+\ref{IB:dyn4}, $c:=\liminf_N|\Phi_N|^{-1}\sum_{n\in\Phi_N}\sigma(O_n)>0$. Let
+$R=\{n>\max B_i:\sigma(O_n)\ge c/2\}$. As $\sigma(O_n)\le1$,
+\[
+\frac1{|\Phi_N|}\sum_{n\in\Phi_N}\sigma(O_n)\le\frac c2+\frac{|R\cap\Phi_N|}{|\Phi_N|}
++\frac{\max B_i}{|\Phi_N|},
+\]
+and the last term tends to $0$ by \cref{IB:lem:folner}; hence $\udens_\Phi(R)\ge c/2$.
+\Cref{IB:lem:intersect} (with $\nu=\sigma$, $\delta=\kappa=c/2$) gives $K\subset R$ with
+$\ubd(K)>0$ such that $\sigma(\bigcap_{n\in F}O_n)>0$ for every finite nonempty
+$F\subset K$. By the density Ramsey property there is $B_{i+1}\in\mathcal D$ with
+$B_{i+1}\subset K$; then \ref{IB:I3} holds for $i+1$.
+
+The set $O=\bigcap_{n\in B_{i+1}}O_n$ is open with $\sigma(O)>0$, so it meets
+$\supp\sigma$, say in $(a,w)$. By definition of the product topology there is a
+box $W\ni w$ with $\{a\}\times W\subset O$. Put $V_{i+1}=W$. Since $Y\times W$ is an
+open neighbourhood of a point of $\supp\sigma$, $\sigma(Y\times W)>0$. Since
+$\{a\}\times W\subset O_n\subset Y\times V_i$ and both $W$ and $V_i$ are boxes with nonempty
+factors, $W^{(j)}\subset V_i^{(j)}$ for all $j$; this is \ref{IB:I1}. If $n\in B_{i+1}$
+and $v\in W$, then $(a,v)\in O_n\subset T_\Delta^{-n}(V_i\times Y)$, that is,
+$(T^na,T^nv_1,\dots,T^nv_{k-1})\in V_i$; this is \ref{IB:I2}.
+
+Now fix $1\le m\le k$, indices $i_1<\dots<i_m$ and $b_l\in B_{i_l}$. We claim that for
+$h=0,1,\dots,m-1$,
+\begin{equation}\label{IB:eq:chain}
+y_h:=T^{\,b_{m-h}+\dots+b_m}a\in V^{(h+1)}_{i_{m-h}-1}.
+\end{equation}
+For $h=0$ this is \ref{IB:I2} for the block $B_{i_m}$. Suppose \eqref{IB:eq:chain}
+holds for some $h\le m-2$. Since $i_{m-h}-1\ge i_{m-h-1}$, \ref{IB:I1} gives
+$y_h\in V^{(h+1)}_{i_{m-h-1}}$. As $V_{i_{m-h-1}}$ is a box with nonempty factors, there
+is $v\in V_{i_{m-h-1}}$ with $v_{h+1}=y_h$. Applying \ref{IB:I2} to the block
+$B_{i_{m-h-1}}$, the element $n=b_{m-h-1}$ and $j=h+1\le m-1\le k-1$, we get
+$y_{h+1}=T^{b_{m-h-1}}y_h\in V^{(h+2)}_{i_{m-h-1}-1}$, which is \eqref{IB:eq:chain} for $h+1$.
+For $h=m-1$ we obtain $T^{b_1+\dots+b_m}a\in V^{(m)}_{i_1-1}\subset V^{(m)}_0=U$, so
+$b_1+\dots+b_m\in A-t$ by \eqref{IB:eq:U}. Together with \ref{IB:I3} this proves the
+theorem with $t\ge0$.
+
+Finally, to get $t\in\N$ apply the above to $A'=A-1=\{n\in\N:n+1\in A\}$, which has
+$\ubd(A')=\ubd(A)>0$. If all the required sums lie in $A'-t'$ with $t'\ge0$, then
+they lie in $A-(t'+1)$. \qed
+
+%======================================================================
+\section{Sumsets in the sets \texorpdfstring{$A_x=\{n:\{n^\gamma x\}\le 1/\log n\}$}{A\_x}}
+\label{IB:sec:q413}
+%======================================================================
+
+In this section we answer Question~4.13 of~\cite{kra2023problems} completely: the
+answer is ``exactly the non-integers $\gamma$''. For $t\in\R$ let $\{t\}$ be its
+fractional part and $\|t\|$ its distance to $\Z$.
+
+\begin{question}{4.13}
+\label{IB:q:413}
+Fix $\gamma>0$ and, for each $x\in\R$, let
+$A_x:=\{n\in\N:\{n^\gamma x\}\le1/\log n\}$. For which values of $\gamma$ is it true
+that for almost every $x\in\R$, the set $A_x$ contains a sumset $B+C$ for
+infinite sets $B,C\subset\N$?
+\end{question}
+
+(The condition is void for $n=1$; since every element of $B+C$ is at least $2$,
+whether $1\in A_x$ is irrelevant.) The survey notes that $A_x$ is thick for almost
+every $x$ when $\gamma<1$, and that for integer $\gamma$ and every irrational $x$ the
+set $A_x$ contains no infinite sumset.
+
+\begin{theorem}
+\label{IB:thm:413}
+Let $\gamma>0$.
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item\label{IB:413a} If $\gamma\notin\Z$, then for almost every $x\in\R$ the set $A_x$ is
+thick, and hence contains $B+C$ for some infinite $B,C\subset\N$.
+\item\label{IB:413b} If $\gamma=d\in\N$ and $x\notin\Q$, then $A_x$ contains no set $B+F$
+with $B\subset\N$ infinite and $F\subset\Z$, $|F|=d+1$; in particular $A_x$ contains no
+$B+C$ with $B,C$ infinite.
+\end{enumerate}
+Consequently, $A_x$ contains an infinite sumset $B+C$ for almost every $x$ if and
+only if $\gamma\notin\N$.
+\end{theorem}
+
+For integer $\gamma=d$ and rational $x=p/q$ one has $q\N\subset A_x$, so $A_x\supset B+C$;
+this does not affect the almost-everywhere statement. Part~\ref{IB:413a} is an
+application of the standard second-moment method of metric Diophantine
+approximation; part~\ref{IB:413b} is a short argument with divided differences
+supplying the proof omitted in~\cite{kra2023problems}.
+
+\begin{lemma}
+\label{IB:lem:thick}
+If $A\subset\N$ is thick, then $B+C\subset A$ for some infinite $B,C\subset\N$.
+\end{lemma}
+
+\begin{proof}
+Choose $b_1<c_1<b_2<c_2<\cdots$ inductively (with $c_0=0$): $b_j>c_{j-1}$ is the left
+endpoint of an interval of $A$ of length $>c_{j-1}$, and $c_j>b_j$ is the left
+endpoint of an interval of $A$ of length $>b_j$. For $i<j$, $b_j+c_i\in[b_j,b_j+c_{j-1}]$
+lies in the interval starting at $b_j$; for $i\le j$, $c_j+b_i\in[c_j,c_j+b_j]$ lies in
+the interval starting at $c_j$. Thus $\{b_j\}+\{c_j\}\subset A$.
+\end{proof}
+
+\subsection{Proof of \cref{IB:thm:413}\ref{IB:413b}}
+
+Let $F=\{f_0,\dots,f_d\}$ be distinct integers and suppose $B+F\subset A_x$ with $B$
+infinite. For fixed $b$, the polynomial $P_b(f)=(b+f)^dx$ has degree $d$ and leading
+coefficient $x$, so its $d$-th divided difference at the nodes $f_0,\dots,f_d$ equals
+$x$:
+\[
+\sum_{i=0}^d\lambda_i(b+f_i)^dx=x,\qquad \lambda_i=\prod_{j\ne i}(f_i-f_j)^{-1}\in\Q .
+\]
+Let $M\in\N$ be a common denominator of the $\lambda_i$ and $e_i=M\lambda_i\in\Z$; then
+$\sum_ie_i(b+f_i)^dx=Mx$, so $Mx\equiv\sum_ie_i\{(b+f_i)^dx\}\pmod 1$ and
+\[
+\|Mx\|\le\sum_i|e_i|\,\{(b+f_i)^dx\}\le\frac{\sum_i|e_i|}{\log(b+\min F)} .
+\]
+Letting $b\to\infty$ in $B$ gives $\|Mx\|=0$, i.e.\ $x\in\Q$. If $B+C\subset A_x$ with $B,C$
+infinite, apply this to a subset $F\subset C$ with $|F|=d+1$. \qed
+
+\subsection{Proof of \cref{IB:thm:413}\ref{IB:413a}}
+
+Let $k=\lfloor\gamma\rfloor\ge0$, $\varsigma=\gamma-k\in(0,1)$ and
+$c_j(n)=\binom{\gamma}{j}n^{\gamma-j}$ for $0\le j\le k$. Since $\gamma\notin\Z$, every
+$\binom\gamma j$ ($j\ge0$) and every $\gamma-j$ is nonzero. Constants below may depend on
+$\gamma$, $L$ and the cut-off $\psi$ introduced later, but never on $N$, $n$ or $x$.
+
+\emph{Taylor expansion.} For $n\ge1$ and $0\le h<L$, Taylor's formula with
+Lagrange remainder gives
+\begin{equation}\label{IB:eq:taylor}
+(n+h)^\gamma=\sum_{j=0}^kc_j(n)h^j+r_n(h),\qquad
+|r_n(h)|=\Bigl|\tbinom{\gamma}{k+1}(n+\xi)^{\varsigma-1}h^{k+1}\Bigr|\le C_1n^{\varsigma-1},
+\end{equation}
+for some $\xi\in[0,h]$, because $\varsigma-1<0$.
+
+Fix $L\in\N$ and $X_0>0$. For $N\in\N$ put
+\[
+\eta=\eta_N=\frac1{\log 4N},\qquad \rho=\frac{\eta}{16(k+1)L^k},
+\]
+where $N$ ranges over powers of $2$; for $N\le n<2N$ let $E_n$ be the set of $x\in\R$ with
+$\{c_0(n)x\}\in[\eta/4,\eta/2]$ and $\|c_j(n)x\|\le\rho$ for $1\le j\le k$.
+
+\begin{lemma}
+\label{IB:lem:En}
+There is $N_0$ such that for $N\ge N_0$, $N\le n<2N$ and $x\in E_n$ with $|x|\le X_0$ we
+have $\{n,n+1,\dots,n+L-1\}\subset A_x$.
+\end{lemma}
+
+\begin{proof}
+Write $c_j(n)x=m_j+\theta_j$ with $m_j\in\Z$, $\theta_0\in[\eta/4,\eta/2]$ and $|\theta_j|\le\rho$
+for $j\ge1$. By \eqref{IB:eq:taylor},
+$(n+h)^\gamma x=\sum_jm_jh^j+\theta_0+\sum_{j\ge1}\theta_jh^j+xr_n(h)$. Here
+$|\sum_{j\ge1}\theta_jh^j|\le kL^k\rho\le\eta/16$, and $|xr_n(h)|\le X_0C_1N^{\varsigma-1}\le\eta/16$
+once $N$ is large, since $\eta\asymp1/\log N$. Hence
+$\{(n+h)^\gamma x\}\in[\eta/8,5\eta/8]$, and $\eta\le1/\log(n+h)$ because $2\le n+h<4N$ (for $N\ge L$).
+\end{proof}
+
+\emph{Smooth windows.} Fix $\Phi_0\in C_c^\infty(-\frac12,\frac12)$ with
+$0\le\Phi_0\le1$ and $\Phi_0=1$ on $[-\frac14,\frac14]$, and fix an exponent
+$P\ge 4k+10$. For $\alpha\in\R$ and $0<w<\frac12$ let
+$\varphi_{\alpha,w}(t)=\sum_{m\in\Z}\Phi_0\bigl((t-\alpha-m)/(2w)\bigr)$. Then
+$0\le\varphi_{\alpha,w}\le\one_{[\alpha-w,\alpha+w]+\Z}$, $\int_0^1\varphi_{\alpha,w}\ge w$, and
+$\hat\varphi_{\alpha,w}(\ell)=2w\,\e(-\ell\alpha)\hat\Phi_0(2w\ell)$, where
+$\e(t)=e^{2\pi it}$ and $|\hat\Phi_0(u)|\le C_P(1+|u|)^{-P}$. Comparing sums with
+integrals one gets, uniformly in $\alpha$ and $w$,
+\begin{equation}\label{IB:eq:window}
+\sum_{\ell\in\Z}|\hat\varphi_{\alpha,w}(\ell)|\le C_2,\qquad
+\sum_{|\ell|>Q}|\hat\varphi_{\alpha,w}(\ell)|\le C_2(wQ)^{1-P}\quad(wQ\ge1).
+\end{equation}
+Let $\varphi_0=\varphi_{3\eta/8,\eta/8}$ and $\varphi_j=\varphi_{0,\rho}$ for $1\le j\le k$, and
+\[
+F_n(x)=\prod_{j=0}^k\varphi_j(c_j(n)x),\qquad Z_N=\sum_{N\le n<2N}F_n .
+\]
+Then $0\le F_n\le\one_{E_n}$. Expanding in Fourier series (absolutely convergent by
+\eqref{IB:eq:window}),
+\[
+F_n(x)=\sum_{\ell\in\Z^{k+1}}a(\ell)\,\e\bigl(x\,\Xi_n(\ell)\bigr),\qquad
+a(\ell)=\prod_{j}\hat\varphi_j(\ell_j),\qquad \Xi_n(\ell)=\sum_j\ell_jc_j(n),
+\]
+with $\sum_\ell|a(\ell)|\le C_2^{k+1}$ and
+$\mu:=a(0)=\prod_j\int_0^1\varphi_j\ge(\eta/8)\rho^k\ge c_3(\log N)^{-(k+1)}$.
+Put $Q=T=(\log N)^3$. Since both window widths are $\gg1/\log N$,
+\eqref{IB:eq:window} gives
+\begin{equation}\label{IB:eq:tail}
+\sum_{\|\ell\|_\infty>Q}|a(\ell)|\le C_4(\log N)^{-2(P-1)}=o(\mu^2).
+\end{equation}
+
+Fix $\psi\in C_c^\infty(\R)$ with $0\le\psi\le1$, $\supp\psi\subset[-X_0,X_0]$ and
+$m_\psi=\int\psi>0$, and let $\check\psi(\xi)=\int\psi(x)\e(\xi x)\,dx$, so that
+$|\check\psi(\xi)|\le C_P(1+|\xi|)^{-P}$ and $|\check\psi|\le m_\psi$. Write
+$\mathbf E_\psi[f]=m_\psi^{-1}\int f\psi\,dx$. In what follows $N\to\infty$ and $o(1)$ is
+uniform in $n,n'\in[N,2N)$.
+
+\begin{lemma}
+\label{IB:lem:freq}
+If $N$ is large, $n\in[N,2N)$ and $0\ne\ell\in\Z^{k+1}$ with $\|\ell\|_\infty\le Q$, then
+$|\Xi_n(\ell)|\ge c_5N^{\varsigma}$.
+\end{lemma}
+
+\begin{proof}
+Let $j_0=\min\{j:\ell_j\ne0\}$. Then
+$|\Xi_n(\ell)|\ge|\binom\gamma{j_0}|n^{\gamma-j_0}-Qk\max_j|\binom\gamma j|\,n^{\gamma-j_0-1}
+\ge\frac12|\binom\gamma{j_0}|n^{\gamma-j_0}$ for $N$ large, and $\gamma-j_0\ge\varsigma$.
+\end{proof}
+
+\emph{First moment.} $\mathbf E_\psi F_n=m_\psi^{-1}\sum_\ell a(\ell)\check\psi(\Xi_n(\ell))$. The
+term $\ell=0$ is $\mu$; the terms with $0<\|\ell\|_\infty\le Q$ contribute
+$O(C_2^{k+1}N^{-\varsigma P})$ by \cref{IB:lem:freq}; the others contribute $o(\mu^2)$ by
+\eqref{IB:eq:tail}. Hence $\mathbf E_\psi F_n=\mu(1+o(1))$ and
+$\mathbf E_\psi Z_N=N\mu(1+o(1))$.
+
+\emph{Second moment.} For $n\ne n'$,
+$\mathbf E_\psi F_nF_{n'}=m_\psi^{-1}\sum_{\ell,\ell'}a(\ell)a(\ell')\check\psi\bigl(\Xi_n(\ell)+\Xi_{n'}(\ell')\bigr)$.
+The pair $(0,0)$ gives $\mu^2$. Pairs with $\ell$ or $\ell'$ outside the box
+$\|\cdot\|_\infty\le Q$ contribute $o(\mu^2)$ by \eqref{IB:eq:tail}. Pairs with exactly one
+of $\ell,\ell'$ equal to $0$ and the other in the box contribute
+$O(\mu N^{-\varsigma P})=o(\mu^2)$ by \cref{IB:lem:freq}. Call $(n,n')$ \emph{good} if
+$|\Xi_n(\ell)+\Xi_{n'}(\ell')|\ge T$ for all nonzero $\ell,\ell'$ in the box, and
+\emph{bad} otherwise. For good pairs the remaining terms contribute
+$O(T^{-P})=o(\mu^2)$, so $\mathbf E_\psi F_nF_{n'}\le\mu^2(1+o(1))$.
+
+\begin{lemma}
+\label{IB:lem:bad}
+The number of bad pairs is at most $C_6(\log N)^{6k+9}N^{2-\varsigma}$.
+\end{lemma}
+
+\begin{proof}
+Fix $n$ and nonzero $\ell,\ell'$ in the box, let $j_1=\min\{j:\ell'_j\neq0\}$ and
+$g(s)=\Xi_s(\ell')$ for real $s\in[N,2N]$. Then
+\[
+|g'(s)|\ge\bigl|\tbinom\gamma{j_1}(\gamma-j_1)\bigr|s^{\gamma-j_1-1}-C_7Qs^{\gamma-j_1-2}
+\ge c_8N^{\varsigma-1}
+\]
+for $N$ large, using $\gamma-j_1\ne0$ and $\gamma-j_1-1\ge\varsigma-1$ (if the exponent is
+negative, evaluate at $s=2N$). So $g$ is strictly monotone on $[N,2N]$, and the set
+of $s$ with $|g(s)+\Xi_n(\ell)|<T$ is an interval of length at most $2T/(c_8N^{\varsigma-1})$,
+containing at most $2TN^{1-\varsigma}/c_8+1$ integers $n'$. Summing over the $N$ values of $n$
+and the at most $(2Q+1)^{2k+2}$ pairs $(\ell,\ell')$ gives the claim.
+\end{proof}
+
+For bad pairs we use $F_nF_{n'}\le F_n$, and $F_n^2\le F_n$ on the diagonal. Thus
+\[
+\mathbf E_\psi Z_N^2\le N\mu(1+o(1))+N^2\mu^2(1+o(1))+C_6(\log N)^{6k+9}N^{2-\varsigma}\mu(1+o(1)).
+\]
+Since $N\mu\to\infty$ and $(\log N)^{6k+9}N^{-\varsigma}/\mu\to0$, we get
+$\mathbf E_\psi Z_N^2\le(\mathbf E_\psi Z_N)^2(1+o(1))$, and Chebyshev's inequality yields
+$\mathbf P_\psi(Z_N=0)\le\operatorname{Var}_\psi(Z_N)/(\mathbf E_\psi Z_N)^2\to0$, where $\mathbf P_\psi$ is the
+probability measure $m_\psi^{-1}\psi\,dx$.
+
+Let $G_r=\{x:Z_{2^r}(x)>0\}$. Then $\mathbf P_\psi(\limsup_rG_r)\ge\limsup_r\mathbf P_\psi(G_r)=1$. If
+$x\in G_r$ then $F_n(x)>0$, hence $x\in E_n$, for some $n\in[2^r,2^{r+1})$. By
+\cref{IB:lem:En}, for $\mathbf P_\psi$-almost every $x$ there are infinitely many $n$ with
+$\{n,\dots,n+L-1\}\subset A_x$. Taking $\psi=1$ on $[-X_0+1,X_0-1]$, and then intersecting
+over $X_0\in\N$ and $L\in\N$, we conclude that $A_x$ is thick for almost every $x\in\R$.
+\Cref{IB:lem:thick} completes the proof. \qed
+
+%======================================================================
+\section{Sumsets in random sets}
+\label{IB:sec:u44a}
+%======================================================================
+
+In this section we answer the question raised in \S4.4 of~\cite{kra2023problems},
+which we call Question~\S4.4(a). Let $p=(p_n)_{n\in\N}\in[0,1]^\N$ and let $A\subset\N$ be the
+random set in which the events $\{n\in A\}$ are independent and $\mathbf P(n\in A)=p_n$.
+
+\begin{question}{\S4.4(a)}
+\label{IB:q:44a}
+For which sequences $(p_n)_{n\in\N}$ does the set $A$ contain almost surely sumsets?
+\end{question}
+
+The survey shows: if $p$ is decreasing and $p_nn^\eps\to\infty$ for every $\eps>0$, then
+$A$ is almost surely thick and hence contains $B+C$; if $p_nn^\eps\to0$ for some
+$\eps>0$, then for some $k$ almost surely $A$ contains no $B+F$ with $B$ infinite and
+$|F|=k$. Our answer has two parts.
+\begin{itemize}
+\item For monotone $p$ (indeed for $p$ comparable to a monotone sequence) the
+answer is completely explicit (\cref{IB:thm:monotone}): $A$ almost surely contains
+$B+C$ if and only if $A$ is almost surely thick, if and only if $\sum_np_n^k=\infty$
+for all $k$, if and only if $p_nn^\eps\not\to0$ for every $\eps>0$. In particular the
+gap left between the two conditions above is entirely on the positive side.
+\item For general $p$ there is no explicit answer: the set of $p$ for which $A$
+almost surely contains $B+C$ (or $B\oplus B$, or $B+B$) is $\Sigma^1_1$-complete, hence
+not Borel, even within $(0,1)^\N$; for $B+C$ this persists within
+$\{p\in(0,1)^\N:p_n\to0\}$ (\cref{IB:thm:nonborel}). On the positive side we give the
+exact criterion for finite configurations $B+F$ (\cref{IB:thm:finite}), an exact
+``strategy'' criterion with a $0$--$1$ law for $B+C$, $B\oplus B$ and $B+B$
+(\cref{IB:thm:strategy,IB:thm:strategy2}), which are close to a reformulation of the
+event, and simple sufficient and necessary conditions, with examples showing that
+all implications between them are strict (\cref{IB:thm:hierarchy}).
+\end{itemize}
+
+\Cref{IB:thm:strategy,IB:thm:strategy2} are close to a reformulation of the event in
+question; it is \cref{IB:thm:nonborel} which shows that their existential form cannot
+be avoided, and \cref{IB:thm:monotone} which settles the regime discussed
+in~\cite{kra2023problems}. \Cref{IB:thm:finite} is standard. The non-Borel part of
+\cref{IB:thm:nonborel} for $B\oplus B$ in the deterministic setting is due to
+Mazurkiewicz and \.Zeberski~\cite[Theorem~2.6]{mazurkiewicz2023ideal}, who proved
+that the ideal of sets containing no $B\oplus B$ (their $\mathcal H_2$) is $\Pi^1_1$-complete (their method,
+reducing ill-founded trees to additive families, is the one we use); for $B+C$ and
+$B+B$, and for the random versions, we did not find these statements in the
+literature.
+
+\subsection{Notation and statements}
+
+We set $p_m=0$ for integers $m\le0$. For finite $U\subset\Z$ and $x\in\Z$ put
+$w_U(x)=\prod_{u\in U}p_{x+u}$ (so $w_\emptyset\equiv1$), and for finite nonempty $F\subset\Z$
+put $S_F=\sum_{n\in\Z}w_F(n)\in[0,\infty]$; clearly $S_{F+r}=S_F$ for $r\in\Z$, and
+$S_{F'}\ge S_F$ if $F'\subset F$. Write $B\oplus B=\{b+b':b,b'\in B,\ b\ne b'\}$. Consider the
+events
+\begin{itemize}
+\item $\mathcal E_{BC}$: there are infinite $B,C\subset\N$ with $B+C\subset A$;
+\item $\mathcal E_\oplus$, $\mathcal E_+$: there is an infinite $B\subset\N$ with $B\oplus B\subset A$,
+respectively $B+B\subset A$;
+\item $\mathcal E_F$ ($F\subset\Z$ finite nonempty): there is an infinite $B\subset\N$ with $B+F\subset A$;
+\item $\mathcal E_k$: $\mathcal E_F$ holds for some $F\subset\N$ with $|F|=k$; and
+$\mathcal E_{<\omega}=\bigcap_k\mathcal E_k$.
+\end{itemize}
+We identify subsets of $\N$ with points of $2^\N$. Each of these events is an
+analytic subset of $2^\N$ (a projection of a Borel subset of $2^\N\times2^\N\times2^\N$),
+hence universally measurable (Lusin's theorem, see~\cite[Theorem~21.10]{kechris1995classical}); $\mathbf P=\mathbf P_p$
+denotes the completed product measure.
+The events $\mathcal E_{BC},\mathcal E_\oplus,\mathcal E_+,\mathcal E_F$ are invariant under
+finite modifications of $A$: adding points is harmless, and if $E$ is finite and
+$B+C\subset A$, then $(B\cap(\max E,\infty))+C\subset A\setminus E$ (similarly in the other cases).
+
+\begin{theorem}[Monotone sequences]
+\label{IB:thm:monotone}
+Suppose there are a non-increasing sequence $(q_n)$ and constants $0<\alpha\le\beta$ with
+$\alpha q_n\le p_n\le\beta q_n$ for all $n$. Then the following are equivalent:
+\begin{enumerate}[label=\textup{(\arabic*)}]
+\item\label{IB:m1} $A$ almost surely contains $B+C$ for some infinite $B,C$;
+\item\label{IB:m2} $A$ is almost surely thick;
+\item\label{IB:m3} $\sum_np_n^k=\infty$ for every $k\in\N$;
+\item\label{IB:m4} for every $\eps>0$, $p_nn^\eps$ does not tend to $0$;
+\item\label{IB:m5} almost surely, for every $k$ there are an infinite $B$ and $F\subset\N$ with
+$|F|=k$ and $B+F\subset A$.
+\end{enumerate}
+If they fail, there is $k$ such that almost surely $A$ contains no $B+F$ with $B$
+infinite and $|F|=k$. In each case the probability of the event in \ref{IB:m1},
+\ref{IB:m2}, \ref{IB:m5} is $0$ or $1$.
+\end{theorem}
+
+\begin{example}
+\label{IB:ex:gap}
+Let $N_1=10$, $N_{j+1}=N_j^{\,j+1}$, $p_n=1$ for $n<N_1$ and $p_n=N_j^{-1/2}$ for
+$N_j\le n<N_{j+1}$. Then $p$ is non-increasing. At $n=N_j$, $p_nn^\eps=N_j^{\eps-1/2}\to0$
+for $\eps<\frac12$, so the first condition of the survey fails; at $n=N_{j+1}-1$,
+$p_nn^\eps\ge N_j^{-1/2}(N_j^{j+1}/2)^\eps\to\infty$, so $p_nn^\eps\not\to0$ for every $\eps$
+and the second condition fails as well. By \cref{IB:thm:monotone}, $A$ is almost
+surely thick.
+\end{example}
+
+\begin{theorem}[Finite configurations]
+\label{IB:thm:finite}
+For finite nonempty $F\subset\Z$, $\mathbf P(\mathcal E_F)=1$ if $S_F=\infty$ and $\mathbf P(\mathcal E_F)=0$
+otherwise. Consequently $\mathbf P(\mathcal E_k)=1$ if $S_F=\infty$ for some $F\subset\N$ with
+$|F|=k$, and $\mathbf P(\mathcal E_k)=0$ otherwise; $\mathbf P(\mathcal E_{<\omega})\in\{0,1\}$ with value $1$
+if and only if this holds for every $k$; and $A$ is almost surely thick if
+$S_{\{0,\dots,L-1\}}=\infty$ for all $L$, and almost surely not thick otherwise.
+\end{theorem}
+
+\begin{definition}
+\label{IB:def:strategy}
+A \emph{$BC$-strategy} for $p$ is a set $\mathcal S$ of pairs $(U,V)$ of finite subsets
+of $\N$ such that $(\emptyset,\emptyset)\in\mathcal S$ and for every $(U,V)\in\mathcal S$
+\[
+\text{(a)}\ \sum_{x\in X_{\mathcal S}(U,V)}w_U(x)=\infty,\qquad
+\text{(b)}\ \sum_{y\in Y_{\mathcal S}(U,V)}w_V(y)=\infty,
+\]
+where $X_{\mathcal S}(U,V)=\{x\in\N\setminus V:(U,V\cup\{x\})\in\mathcal S\}$ and
+$Y_{\mathcal S}(U,V)=\{y\in\N\setminus U:(U\cup\{y\},V)\in\mathcal S\}$.
+An \emph{$\oplus$-strategy} (resp.\ \emph{$+$-strategy}) is a set $\mathcal S$ of finite
+subsets of $\N$ with $\emptyset\in\mathcal S$ such that for every $U\in\mathcal S$,
+$\sum_{x\in X_{\mathcal S}(U)}w^\ast_U(x)=\infty$, where
+$X_{\mathcal S}(U)=\{x\in\N\setminus U:U\cup\{x\}\in\mathcal S\}$ and $w^\ast_U=w_U$ (resp.\
+$w^\ast_U(x)=p_{2x}w_U(x)$).
+\end{definition}
+
+\begin{theorem}
+\label{IB:thm:strategy}
+$\mathbf P(\mathcal E_{BC})\in\{0,1\}$, and $\mathbf P(\mathcal E_{BC})=1$ if and only if $p$ has a
+$BC$-strategy.
+\end{theorem}
+
+\begin{theorem}
+\label{IB:thm:strategy2}
+$\mathbf P(\mathcal E_\oplus)\in\{0,1\}$, and $\mathbf P(\mathcal E_\oplus)=1$ if and only if $p$ has an
+$\oplus$-strategy; likewise for $\mathcal E_+$ and $+$-strategies.
+\end{theorem}
+
+For $p\in\{0,1\}^\N$, i.e.\ $A=D$ deterministic, a strategy exists if and only if $D$
+contains the configuration in question (see the end of \cref{IB:ss:proofsAB}); the
+two criteria in \cref{IB:thm:strategy2} differ, as $D=\{2^i+2^j:i<j\}$ shows
+(\cref{IB:ex:oplus}).
+
+To state the non-Borel results, recall that a \emph{tree} is a set
+$\mathcal T\subset\N_0^{<\N_0}$ of finite sequences of elements of $\N_0=\{0,1,2,\dots\}$ closed
+under initial segments; the trees form a closed subset $\mathrm{Tr}$ of
+$2^{\N_0^{<\N_0}}$, and $\mathrm{IF}\subset\mathrm{Tr}$ denotes the set of trees with an infinite
+branch. A subset $Z$ of a Polish space $W$ is \emph{$\Sigma^1_1$-complete} if it is
+analytic and for every analytic subset $Z'$ of a zero-dimensional Polish space $W'$
+there is a continuous $f\colon W'\to W$ with $Z'=f^{-1}(Z)$. The set $\mathrm{IF}$ is
+$\Sigma^1_1$-complete (see~\cite[Theorem~27.1]{kechris1995classical}); hence an analytic set
+$Z$ is $\Sigma^1_1$-complete as soon as $\mathrm{IF}=g^{-1}(Z)$ for some continuous
+$g\colon\mathrm{Tr}\to W$, and $\Sigma^1_1$-complete sets are not Borel.
+
+\begin{theorem}
+\label{IB:thm:nonborel}
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item\label{IB:nb1} The families
+$\mathfrak D_{BC}=\{D\subset\N:\exists\text{ infinite }B,C,\ B+C\subset D\}$,
+$\mathfrak D_\oplus=\{D:\exists\text{ infinite }B,\ B\oplus B\subset D\}$ and
+$\mathfrak D_+=\{D:\exists\text{ infinite }B,\ B+B\subset D\}$ are $\Sigma^1_1$-complete subsets of $2^\N$.
+\item\label{IB:nb2} For $\ast\in\{BC,\oplus,+\}$ let
+$\mathfrak A_\ast=\{p\in[0,1]^\N:\mathbf P_p(\mathcal E_\ast)=1\}$. Then $\mathfrak A_\ast$ is a
+$\Sigma^1_1$-complete subset of $[0,1]^\N$, and $\mathfrak A_\ast\cap(0,1)^\N$ is a
+$\Sigma^1_1$-complete subset of $(0,1)^\N$.
+\item\label{IB:nb3} Let $\mathfrak C=\{p\in(0,1)^\N:p_n\to0\}$. There is a continuous
+$g\colon\mathrm{Tr}\to\mathfrak C$ with $g^{-1}(\mathfrak A_{BC})=\mathrm{IF}$. In particular there is
+no Borel set $W\subset[0,1]^\N$ with $W\cap\mathfrak C=\mathfrak A_{BC}\cap\mathfrak C$.
+\end{enumerate}
+\end{theorem}
+
+We do not know whether the analogue of \ref{IB:nb3} holds for $\mathcal E_\oplus$ and $\mathcal E_+$.
+
+\begin{theorem}
+\label{IB:thm:hierarchy}
+Consider the conditions
+\begin{itemize}
+\item[(F)] there are infinite $B_0,C_0\subset\N$ such that $\sum_{c\in C_0}w_U(c)=\infty$ for every
+finite $U\subset B_0$ and $\sum_{b\in B_0}w_V(b)=\infty$ for every finite $V\subset C_0$;
+\item[(N)] there are infinite $B_0,C_0\subset\N$ such that $S_G=\infty$ for every finite nonempty
+$G\subset B_0$ and for every finite nonempty $G\subset C_0$.
+\end{itemize}
+Then $\mathrm{(F)}\Rightarrow\mathbf P(\mathcal E_{BC})=1\Rightarrow\mathrm{(N)}\Rightarrow\mathbf P(\mathcal E_{<\omega})=1$,
+and none of the three implications can be reversed
+(\cref{IB:ex:tree,IB:ex:half,IB:ex:rigid}).
+\end{theorem}
+
+Condition (F) holds, for instance, with $B_0=C_0=\N$ if $S_G=\infty$ for every finite
+nonempty $G\subset\N$ (as in the situation of \cref{IB:thm:monotone}), or if some level set
+$\{n:p_n\ge\delta\}$, $\delta>0$, contains $B_0+C_0$; in particular, for $p=q\one_D$ with
+$0<q\le1$ we have $\mathbf P(\mathcal E_{BC})=1$ if and only if $D\in\mathfrak D_{BC}$. In (N) the
+two families of finite sets are separate: we do not require $S_G=\infty$ for finite
+$G\subset B_0\cup C_0$.
+
+\subsection{Proofs of \texorpdfstring{\cref{IB:thm:finite,IB:thm:strategy,IB:thm:strategy2}}{the criteria}}
+\label{IB:ss:proofsAB}
+
+\begin{lemma}
+\label{IB:lem:BC}
+Let $(K_x)_{x\in I}$ be a countable family of finite subsets of $\Z$ \textup{(}recall $p_m=0$
+for $m\le0$, so $\mathbf P(K_x\subset A)=0$ unless $K_x\subset\N$\textup{)} such that each
+$K_x$ meets $K_{x'}$ for at most $M$ indices $x'\ne x$. If
+$\sum_x\mathbf P(K_x\subset A)=\infty$, then almost surely $K_x\subset A$ for infinitely many $x$.
+\end{lemma}
+
+\begin{proof}
+Enumerate $I$ and colour each $x$ with the least colour in $\{1,\dots,M+1\}$ not used by
+an earlier $x'$ with $K_{x'}\cap K_x\ne\emptyset$. Some colour class $I_0$ satisfies
+$\sum_{x\in I_0}\mathbf P(K_x\subset A)=\infty$. The sets $K_x$, $x\in I_0$, are pairwise disjoint,
+so the events $\{K_x\subset A\}$, $x\in I_0$, are independent, and the second
+Borel--Cantelli lemma applies.
+\end{proof}
+
+We use this with $K_x=x+U$, where $K_x\cap K_{x'}\ne\emptyset$ forces $x'-x\in U-U$ (so
+$M\le|U|^2$), and with $K_x=\{2x\}\cup(x+U)$, where it forces $x'\in x+(U-U)$,
+$2x'\in x+U$ or $2x\in x'+U$ (so $M\le|U|^2+2|U|$).
+
+\begin{proof}[Proof of \cref{IB:thm:finite}]
+$\mathcal E_F$ holds if and only if $n+F\subset A$ for infinitely many $n\in\Z$: if $B+F\subset A$
+take $n\in B$; conversely such $n$ satisfy $n\ge1-\min F$, so infinitely many of them
+lie in $\N$. Since $\mathbf P(n+F\subset A)=w_F(n)$, the first Borel--Cantelli lemma handles
+$S_F<\infty$ and \cref{IB:lem:BC} (with $K_n=n+F$) handles $S_F=\infty$. Next,
+$\mathcal E_k$ is the countable union of the $\mathcal E_F$ with $F\subset\N$, $|F|=k$, each of
+probability $0$ or $1$, and $\mathcal E_{<\omega}$ is a countable intersection. Finally, $A$ is
+thick if and only if for every $L$ there are infinitely many $n$ with
+$\{n,\dots,n+L-1\}\subset A$ (an interval of length $L'\ge L$ contains $L'-L+1$ such
+blocks), i.e.\ if and only if $\mathcal E_{\{0,\dots,L-1\}}$ holds for all $L$.
+\end{proof}
+
+\begin{proof}[Proof of \cref{IB:thm:strategy}]
+\emph{If $\mathcal S$ is a $BC$-strategy, then $\mathbf P(\mathcal E_{BC})=1$.} As $\mathcal S$ is countable,
+(a), (b) and \cref{IB:lem:BC} give an event $\Omega_0$ of probability $1$ on which, for
+every $(U,V)\in\mathcal S$, there are infinitely many $x\in X_{\mathcal S}(U,V)$ with $x+U\subset A$
+and infinitely many $y\in Y_{\mathcal S}(U,V)$ with $y+V\subset A$. (For $U=\emptyset$, (a) just
+says that $X_{\mathcal S}(\emptyset,V)$ is infinite.) Fix an outcome in $\Omega_0$. Starting
+from $(U_0,V_0)=(\emptyset,\emptyset)$, choose $x\in X_{\mathcal S}(U_r,V_r)$ with
+$x>\max(U_r\cup V_r)$ and $x+U_r\subset A$, put $V_{r+1}=V_r\cup\{x\}$; then choose
+$y\in Y_{\mathcal S}(U_r,V_{r+1})$ with $y>\max(U_r\cup V_{r+1})$ and $y+V_{r+1}\subset A$, and put
+$U_{r+1}=U_r\cup\{y\}$. Inductively $(U_r,V_r)\in\mathcal S$ and $U_r+V_r\subset A$, since the new
+sums are exactly $x+U_r$ and $y+V_{r+1}$. Then $B=\bigcup_rU_r$ and $C=\bigcup_rV_r$ are
+infinite and $B+C\subset A$.
+
+\emph{If $\mathbf P(\mathcal E_{BC})>0$, then $p$ has a $BC$-strategy.} For finite $U,V\subset\N$ let
+$\mathcal E(U,V)$ be the event that there are infinite $B',C'\subset\N$ with $U+C'\subset A$,
+$B'+V\subset A$ and $B'+C'\subset A$. It is analytic, and $\mathcal E(\emptyset,\emptyset)=\mathcal E_{BC}$. Let
+$\mathcal S^\ast=\{(U,V):\mathbf P(\mathcal E(U,V))>0\}$, which contains $(\emptyset,\emptyset)$. We show that
+$\mathcal S^\ast$ satisfies (a); (b) is symmetric. Let $(U,V)\in\mathcal S^\ast$, write
+$X^\ast=X_{\mathcal S^\ast}(U,V)$, and suppose $\sum_{x\in X^\ast}w_U(x)<\infty$. On
+$\mathcal E(U,V)$, with witnesses $B',C'$, every $x\in C'\setminus V$ satisfies $x+U\subset A$, and
+$\mathcal E(U,V\cup\{x\})$ holds with witnesses $B',C'\setminus\{x\}$ (because $B'+x\subset B'+C'\subset A$).
+Hence $\mathcal E(U,V)\subset N_1\cup N_2$, where $N_1$ is the union of the null events
+$\mathcal E(U,V\cup\{x\})$ over $x\in\N\setminus(V\cup X^\ast)$, and $N_2$ is the event that $x+U\subset A$ for
+infinitely many $x\in X^\ast$, which is null by the first Borel--Cantelli lemma. Thus
+$\mathbf P(\mathcal E(U,V))=0$, a contradiction. Combined with the first part this also proves
+the $0$--$1$ law.
+\end{proof}
+
+\begin{proof}[Proof of \cref{IB:thm:strategy2}]
+The proof is the same, with single sets. Given a strategy, choose new elements
+$x\in X_{\mathcal S}(U_r)$, $x>\max U_r$, with $x+U_r\subset A$ (and also $2x\in A$ in the
+$+$ case); for $x\notin U$ we have $2x\notin x+U$, so the probability of this event is
+exactly $w^\ast_U(x)$, and \cref{IB:lem:BC} applies with $K_x=x+U$, resp.\
+$K_x=\{2x\}\cup(x+U)$. Conversely, let $\mathcal E^\ast(U)$ be the event that there is an infinite
+$B'$ with $U+B'\subset A$ and $B'\oplus B'\subset A$ (and $2b\in A$ for $b\in B'$ in the $+$ case).
+On $\mathcal E^\ast(U)$, every $x\in B'\setminus U$ satisfies $x+U\subset A$ (and $2x\in A$), and
+$\mathcal E^\ast(U\cup\{x\})$ holds with witness $B'\setminus\{x\}$, since
+$x+(B'\setminus\{x\})\subset B'\oplus B'$. The rest is as before.
+\end{proof}
+
+\emph{The deterministic case.} If $p=\one_D$, then $\sum_{x\in X}w_U(x)=\infty$ means that
+$x+U\subset D$ for infinitely many $x\in X$. If $D\supset B+C$ with $B,C$ infinite, the
+set of pairs of finite subsets of $B$ and of $C$ is a $BC$-strategy (in (a),
+$X_{\mathcal S}(U,V)\supset C\setminus V$ and all these terms equal $1$); conversely a strategy
+yields $B+C\subset D$ by the greedy construction. The same holds for $\oplus$ and $+$
+with the finite subsets of $B$.
+
+\begin{example}
+\label{IB:ex:oplus}
+Let $D=\{2^i+2^j:0\le i<j\}$. Then $B=\{2^i:i\ge0\}$ satisfies $B\oplus B\subset D$. But no
+infinite $B$ satisfies $B+B\subset D$: from $2b\in D$, every $b\in B$ has exactly two
+binary digits $1$. Fix $b=2^a+2^c\in B$ ($a<c$). If $b'\in B$ has lowest binary digit
+above position $c+1$, then $b+b'$ has four binary digits $1$; so infinitely many
+$b'\in B$ have lowest digit at most $c+1$, and two of them,
+$b_1'=2^\alpha+2^{c_1}$ and $b_2'=2^\alpha+2^{c_2}$, share the lowest digit $\alpha$ and have
+$\alpha+1<c_1<c_2$. Then $b_1'+b_2'=2^{\alpha+1}+2^{c_1}+2^{c_2}\notin D$.
+\end{example}
+
+\subsection{Rigid sets}
+
+Fix $\Lambda=\{\lambda_1<\lambda_2<\cdots\}\subset\N$ with $\lambda_{j+1}>8(\lambda_1+\dots+\lambda_j)$ for all $j$ (for
+instance $\lambda_j=9^j$).
+
+\begin{lemma}
+\label{IB:lem:rigid}
+If $\sum_je_j\lambda_j=0$ with $e_j\in\Z$ and $\sum_j|e_j|\le8$, then all $e_j=0$. Consequently,
+every $n\in\Lambda+\Lambda$ has a unique representation $n=\lambda+\lambda'$ as an unordered pair
+(multiset) $P(n)=\{\lambda,\lambda'\}$, and $\Lambda$ is a Sidon set: if
+$\lambda_1'-\lambda_2'=\lambda_3'-\lambda_4'\neq0$ with $\lambda_i'\in\Lambda$, then $\lambda_1'=\lambda_3'$ and $\lambda_2'=\lambda_4'$.
+\end{lemma}
+
+\begin{proof}
+If $J$ is the largest index with $e_J\ne0$, then
+$|e_J\lambda_J|\ge\lambda_J>8\sum_{j<J}\lambda_j\ge|\sum_{j<J}e_j\lambda_j|$. The other statements are
+relations with $\sum|e_j|\le4$.
+\end{proof}
+
+\begin{lemma}
+\label{IB:lem:R}
+Let $X\subset\Z$ with $|X|\ge2$ and $\Gamma\subset\Z$ infinite with $X+\Gamma\subset\Lambda+\Lambda$. Then there
+is a unique $t=t(X,\Gamma)\in\Z$ such that $x-t\in\Lambda$ for all $x\in X$, $c+t\in\Lambda$ for all $c\in\Gamma$,
+and $P(x+c)=\{x-t,c+t\}$ for all $x\in X$, $c\in\Gamma$. If $X'\subset X$ with $|X'|\ge2$ and
+$\Gamma'\subset\Gamma$ is infinite, then $t(X',\Gamma')=t(X,\Gamma)$.
+\end{lemma}
+
+\begin{proof}
+\emph{Uniqueness.} If $t\neq t'$ both work and $x\in X$, then for $c\in\Gamma$,
+$\{x-t,c+t\}=\{x-t',c+t'\}$ forces $x-t=c+t'$; this determines $c$, contradicting
+$|\Gamma|=\infty$. The last assertion follows, since $t(X,\Gamma)$ works for $(X',\Gamma')$.
+
+\emph{Two rows.} Let $X=\{x_1,x_2\}$ and write $P_{ic}=P(x_i+c)$. For $c\ne c'$ in $\Gamma$, the
+identity $(x_1+c)+(x_2+c')=(x_1+c')+(x_2+c)$ is a relation among at most eight elements
+of $\Lambda$, so by \cref{IB:lem:rigid} the multisets $P_{1c}\uplus P_{2c'}$ and
+$P_{1c'}\uplus P_{2c}$ coincide. Since $P_{1c}\neq P_{1c'}$ and $P_{1c}\neq P_{2c}$, $P_{1c}$ shares an
+element with $P_{1c'}$ and one with $P_{2c}$ (if, say, $P_{1c}$ were disjoint from
+$P_{1c'}$, then $P_{1c}\subset P_{2c}$ as multisets, hence $P_{1c}=P_{2c}$); similarly for
+$P_{2c}$. Thus, for each $i$, $\{P_{ic}:c\in\Gamma\}$ is an infinite family of distinct
+pairwise intersecting $2$-multisets. Regarding them as edges of a graph (loops
+allowed), such a family with at least four members has a common vertex: a loop
+$\{u,u\}$ forces every other member to contain $u$, and a loopless pairwise
+intersecting family of edges is a star or a triangle. The common vertex $u_i$ is
+unique, because two common vertices would force all members to be equal. So
+$P_{ic}=\{u_i,v_{ic}\}$ with $c\mapsto v_{ic}$ injective.
+
+If $u_1=u_2$, the multiset identity gives $\{v_{1c},v_{2c'}\}=\{v_{1c'},v_{2c}\}$, whence
+$v_{1c}=v_{2c}$, $P_{1c}=P_{2c}$ and $x_1=x_2$; so $u_1\ne u_2$. Since $P_{1c}\cap P_{2c}\ne\emptyset$, for
+each $c$ either $v_{1c}=u_2$, or $v_{2c}=u_1$, or $v_{1c}=v_{2c}$, and each of the first two
+alternatives occurs for at most one $c$. For the remaining $c$ we have
+$x_i+c=u_i+v_{1c}$, so $x_1-u_1=x_2-u_2=v_{1c}-c=:t$; thus $x_i-t=u_i\in\Lambda$, and
+$c+t=v_{1c}\in\Lambda$ with $P(x_i+c)=\{x_i-t,c+t\}$. If $v_{1c}=u_2$, then $x_1+c=u_1+u_2$ gives
+$c+t=u_2\in\Lambda$, so $P(x_1+c)=\{u_1,c+t\}$ and $P(x_2+c)=P(2u_2)=\{u_2,c+t\}$. The case
+$v_{2c}=u_1$ is symmetric. Hence the conclusion holds for all $c\in\Gamma$.
+
+\emph{General $X$.} Fix $x_1\ne x_2$ in $X$ and let $t=t(\{x_1,x_2\},\Gamma)$. For $x\in X$,
+$x\neq x_1$, the two-row case gives $t'=t(\{x_1,x\},\Gamma)$; both $t$ and $t'$ work for
+$(\{x_1\},\Gamma)$ in the sense of the uniqueness argument, which only used one row,
+so $t'=t$. Hence $x-t\in\Lambda$, and $P(x+c)=\{x-t,c+t\}$ by unique representation.
+\end{proof}
+
+\begin{corollary}
+\label{IB:cor:R}
+If $B,C\subset\Z$ are infinite and $B+C\subset\Lambda+\Lambda$, there is $t\in\Z$ with $B-t\subset\Lambda$,
+$C+t\subset\Lambda$ and $P(b+c)=\{b-t,c+t\}$ for all $b\in B$, $c\in C$.
+\end{corollary}
+
+\subsection{Proof of \texorpdfstring{\cref{IB:thm:nonborel}}{the non-Borel theorem}}
+
+Fix injective labellings $s\mapsto\beta_s$, $s\mapsto\gamma_s$ of $\N_0^{<\N_0}$ by elements of $\Lambda$
+with disjoint images. Comparability of finite sequences means that one is an
+initial segment of the other.
+
+\emph{Upper bounds.} $\mathfrak D_\ast$ is the projection of a Borel subset of
+$2^\N\times2^\N\times2^\N$, hence analytic. For $\mathfrak A_{BC}$, by \cref{IB:thm:strategy} it is
+the projection to $[0,1]^\N$ of the set of pairs $(\mathcal S,p)\in2^{\mathcal P_{\rm fin}(\N)^2}\times[0,1]^\N$
+such that $\mathcal S$ is a $BC$-strategy for $p$; this set is Borel, since each partial
+sum of the series in (a), (b) is a continuous function of $(\mathcal S,p)$ and
+``$=\infty$'' means ``$\forall M\,\exists N$: partial sum $>M$''. The same applies to $\mathfrak A_\oplus$,
+$\mathfrak A_+$, and to the intersections with the Polish space $(0,1)^\N$.
+
+\emph{\ref{IB:nb1} for $B+C$.} For a tree $\mathcal T$ let
+$D_{\mathcal T}=\{\beta_s+\gamma_{s'}: s,s'\in\mathcal T\text{ comparable}\}$. By \cref{IB:lem:rigid}, whether
+$n\in D_{\mathcal T}$ depends on at most two coordinates of $\mathcal T$, so $\mathcal T\mapsto D_{\mathcal T}$ is
+continuous. If $z$ is an infinite branch of $\mathcal T$, then $B=\{\beta_{z|n}\}$,
+$C=\{\gamma_{z|n}\}$ give $B+C\subset D_{\mathcal T}$. Conversely let $B+C\subset D_{\mathcal T}$ with $B,C$
+infinite. By \cref{IB:cor:R}, $\{b-t,c+t\}=\{\beta_s,\gamma_{s'}\}$ with $s,s'\in\mathcal T$
+comparable. Fixing $c$, if $c+t$ is a $\gamma$-label then every $b-t$ is a $\beta$-label, and
+then every $c+t$ is a $\gamma$-label; so either $B-t$ consists of $\beta$-labels and $C+t$ of
+$\gamma$-labels, or vice versa. In either case we get infinite sets $Q_1,Q_2\subset\mathcal T$ such
+that every element of $Q_1$ is comparable with every element of $Q_2$. A node has
+finitely many initial segments, so for $q\in Q_1$ all but finitely many elements of
+$Q_2$ properly extend $q$, and vice versa. Choosing alternately we obtain
+$q_1\subsetneq q_1'\subsetneq q_2\subsetneq q_2'\subsetneq\cdots$ in $\mathcal T$, which defines an infinite branch.
+So $\mathcal T\mapsto D_{\mathcal T}$ reduces $\mathrm{IF}$ to $\mathfrak D_{BC}$.
+
+\emph{\ref{IB:nb1} for $B\oplus B$ and $B+B$.} Let
+$D^\oplus_{\mathcal T}=\{\gamma_s+\gamma_{s'}:s\ne s'\in\mathcal T\text{ comparable}\}$ and
+$D^+_{\mathcal T}=\{\gamma_s+\gamma_{s'}:s,s'\in\mathcal T\text{ comparable}\}$; both maps are continuous, and a
+branch $z$ gives $B=\{\gamma_{z|n}\}$. Conversely, let $B=\{b_1<b_2<\cdots\}$ be infinite with
+$B\oplus B\subset D^\oplus_{\mathcal T}$ or $B+B\subset D^+_{\mathcal T}$; in both cases $B\oplus B\subset\Lambda+\Lambda$. Applying
+\cref{IB:cor:R} to the odd-indexed and the even-indexed elements gives $t$ with
+$b_i-t\in\Lambda$ for odd $i$ and $b_i+t\in\Lambda$ for even $i$. Applying it to
+$\{b_i:i\equiv1,2\bmod 4\}$ and $\{b_i:i\equiv0,3\bmod4\}$ gives $t'$ with $b_i-t'\in\Lambda$ for
+$i\equiv1,2\bmod4$. The two representations of $b_1-b_5$ as a difference of elements of
+$\Lambda$ and the Sidon property give $t=t'$; those of $b_2-b_6$ give $-t=t'$. Hence $t=0$
+and $B\subset\Lambda$. Now for $b\ne b'$ in $B$, $b+b'=\gamma_s+\gamma_{s'}$ forces $\{b,b'\}=\{\gamma_s,\gamma_{s'}\}$ with
+$s,s'\in\mathcal T$ comparable. So $B$ consists of $\gamma$-labels of pairwise comparable nodes
+of $\mathcal T$, which form an infinite branch.
+
+\emph{\ref{IB:nb2}.} The embedding $D\mapsto\one_D$ of $2^\N$ into $[0,1]^\N$ is continuous, and
+$\mathbf P_{\one_D}(\mathcal E_\ast)=1$ if and only if $D\in\mathfrak D_\ast$; so the first claim follows
+from \ref{IB:nb1}. For $(0,1)^\N$, let $p^D_n=\frac12$ for $n\in D$ and $p^D_n=2^{-n-2}$ for $n\notin D$;
+$D\mapsto p^D$ is continuous. Under $\mathbf P_{p^D}$, $A\setminus D$ is almost surely finite (first
+Borel--Cantelli lemma), so by invariance under finite modifications
+$\mathbf P_{p^D}(\mathcal E_\ast)=\mathbf P(A\cap D\in\mathcal E_\ast)$, where $A\cap D$ is a random subset of $D$
+containing each element independently with probability $\frac12$. If $D\notin\mathfrak D_\ast$
+this probability is $0$. If $D\supset B_0+C_0$, the pairs of finite subsets of $B_0$
+and $C_0$ form a $BC$-strategy for $\frac12\one_D$ (all weights are $2^{-|U|}$ or
+$2^{-|V|}$, with infinitely many candidates), so the probability is $1$ by
+\cref{IB:thm:strategy}. Likewise, if $D\supset B_0\oplus B_0$ (resp.\ $B_0+B_0$), the finite
+subsets of $B_0$ form an $\oplus$- (resp.\ $+$-) strategy with weights $\ge2^{-|U|-1}$.
+Hence $\mathbf P_{p^D}(\mathcal E_\ast)=1$ if and only if $D\in\mathfrak D_\ast$, and composing with the
+reductions in \ref{IB:nb1} proves the second claim.
+
+\emph{\ref{IB:nb3}.} For $s\in\N_0^{<\N_0}$ let $\ell(s)=|s|+\sum_is_i$, and let $\mathcal N$ be the
+set of pairs $x=(s,\eta)$ with $s\in\N_0^{<\N_0}$ and $\eta\in\{0,1\}^{\ell(s)}$, partially ordered
+by $(s,\eta)\preceq(s',\eta')$ if $s\subset s'$ and $\eta$ is an initial segment of $\eta'$. Write
+$\ell(x)=\ell(s)$. Then: if $s\subsetneq s'$ then $\ell(s)<\ell(s')$; every $x\in\mathcal N$ has
+finitely many predecessors; for each $L$ there are finitely many $x$ with $\ell(x)=L$;
+and two distinct elements with the same first coordinate are incomparable. Fix
+injective labellings $x\mapsto\beta_x$, $x\mapsto\gamma_x$ of $\mathcal N$ by elements of $\Lambda$ with
+disjoint images, and let $\theta_L=1/(L+2)$. For a tree $\mathcal T$ define $q^{\mathcal T}\in[0,\frac12]^\N$ by
+$q^{\mathcal T}_n=\theta_{\max(\ell(x),\ell(y))}$ if $n=\beta_x+\gamma_y$ with $x,y$ comparable and with
+first coordinates in $\mathcal T$, and $q^{\mathcal T}_n=0$ otherwise; and let $g(\mathcal T)=p^{\mathcal T}$, where
+$p^{\mathcal T}_n=q^{\mathcal T}_n$ if $q^{\mathcal T}_n>0$ and $p^{\mathcal T}_n=2^{-n-2}$ otherwise. Each coordinate of
+$p^{\mathcal T}$ depends on at most two coordinates of $\mathcal T$ (\cref{IB:lem:rigid}), so $g$ is
+continuous, and $p^{\mathcal T}\in(0,1)^\N$. Moreover $p^{\mathcal T}_n\to0$: $q^{\mathcal T}_n\ge\eps$ forces
+$\max(\ell(x),\ell(y))\le1/\eps$, which happens for finitely many pairs $(x,y)$ only.
+
+Suppose $z$ is an infinite branch of $\mathcal T$ and let $\ell_m=\ell(z|m)$, a strictly
+increasing sequence. Let $\mathcal N_z=\{(z|m,\eta)\in\mathcal N:m\ge0\}$ and let $\mathcal S$ consist of the
+pairs $(\{\beta_x\}_{x\in P},\{\gamma_y\}_{y\in Q})$ with $P,Q\subset\mathcal N_z$ finite and $P\cup Q$ a chain.
+We check (a) for $q^{\mathcal T}$; (b) is symmetric. If $P\cup Q=\emptyset$, (a) holds since
+$U=\emptyset$ and there are infinitely many candidates. Otherwise let $\delta=(z|d,\eta_\delta)$ be the
+largest element of $P\cup Q$. For $m>d$ each of the $2^{\ell_m-\ell_d}$ elements
+$y=(z|m,\eta)\succ\delta$ extends the chain, and $w_U(\gamma_y)=\prod_{x\in P}q^{\mathcal T}_{\beta_x+\gamma_y}=\theta_{\ell_m}^{|P|}$.
+Hence the sum in (a) is at least $\sum_{m>d}2^{\ell_m-\ell_d}(\ell_m+2)^{-|P|}=\infty$. So $\mathcal S$ is a
+$BC$-strategy for $q^{\mathcal T}$, hence for $p^{\mathcal T}\ge q^{\mathcal T}$, and $\mathbf P_{p^{\mathcal T}}(\mathcal E_{BC})=1$.
+
+Conversely suppose $\mathbf P_{p^{\mathcal T}}(\mathcal E_{BC})>0$. Almost surely $A\setminus\supp q^{\mathcal T}$ is finite,
+so with positive probability $A\cap\supp q^{\mathcal T}$ contains some $B+C$; in particular
+$\supp q^{\mathcal T}\supset B+C$ for some infinite $B,C$. As $\supp q^{\mathcal T}\subset\Lambda+\Lambda$, the argument
+in \ref{IB:nb1} (which only used that every element has finitely many predecessors)
+yields an infinite chain $x_1\prec x_2\prec\cdots$ in $\mathcal N$ whose first coordinates lie
+in $\mathcal T$. Distinct comparable elements have distinct first coordinates, so the
+first coordinates form a strictly increasing sequence in $\mathcal T$, i.e.\ an infinite
+branch. Thus $g^{-1}(\mathfrak A_{BC})=\mathrm{IF}$. If $W$ were Borel with
+$W\cap\mathfrak C=\mathfrak A_{BC}\cap\mathfrak C$, then $\mathrm{IF}=g^{-1}(W)$ would be Borel, which it is not.
+\qed
+
+\subsection{Proof of \texorpdfstring{\cref{IB:thm:hierarchy}}{the hierarchy theorem} and the examples}
+
+\emph{(F) implies $\mathbf P(\mathcal E_{BC})=1$:} the pairs of finite subsets of $B_0$ and $C_0$
+form a $BC$-strategy, since removing the finitely many terms $x\in V$ from a divergent
+series of terms in $[0,1]$ keeps it divergent. For the level-set condition,
+$w_U(c)\ge\delta^{|U|}$ for $c\in C_0$; for $p=q\one_D$ necessity is clear since $A\subset D$.
+
+\emph{$\mathbf P(\mathcal E_{BC})=1$ implies (N):} by the first Borel--Cantelli lemma, almost
+surely every finite $G$ with $S_G<\infty$ has only finitely many translates in $A$.
+Fix an outcome in this event and in $\mathcal E_{BC}$, with $B+C\subset A$. Every finite
+$G\subset C$ has the infinitely many translates $b+G\subset A$, $b\in B$, so $S_G=\infty$; similarly
+for $G\subset B$. Take $B_0=B$, $C_0=C$.
+
+\emph{(N) implies $\mathbf P(\mathcal E_{<\omega})=1$:} by \cref{IB:thm:finite} applied to $k$-subsets of
+$C_0$.
+
+\begin{example}[$\mathbf P(\mathcal E_{BC})=1$ but (F) fails]
+\label{IB:ex:tree}
+Label the binary tree $\{0,1\}^{<\N_0}$ injectively by $\beta_\sigma,\gamma_\sigma\in\Lambda$ (disjoint images), let
+$\theta_j=1/(j+1)$, and let $p_{\beta_\sigma+\gamma_\tau}=\theta_{\max(|\sigma|,|\tau|)}$ for comparable $\sigma,\tau$, and $p_n=0$
+otherwise. Exactly as in the proof of \cref{IB:thm:nonborel}\ref{IB:nb3}, the pairs
+$(\{\beta_\sigma\}_{\sigma\in P},\{\gamma_\tau\}_{\tau\in Q})$ with $P\cup Q$ a finite chain form a $BC$-strategy:
+below the deepest node, at depth $d$, there are $2^{j-d}$ candidates at depth $j$, each
+of weight $\theta_j^{|P|}$, and $\sum_j2^{j-d}(j+1)^{-|P|}=\infty$. So $\mathbf P(\mathcal E_{BC})=1$.
+
+Suppose $B_0,C_0$ satisfy (F). Fix $b_1\ne b_2$ in $B_0$ and let
+$\Gamma=\{c\in C_0:w_{\{b_1,b_2\}}(c)>0\}$, which is infinite by (F). As $\supp p\subset\Lambda+\Lambda$, let
+$t=t(\{b_1,b_2\},\Gamma)$ (\cref{IB:lem:R}). For $b\in B_0$, the set
+$\Gamma_b=\{c\in C_0:w_{\{b_1,b_2,b\}}(c)>0\}\subset\Gamma$ is infinite, and
+$t(\{b_1,b_2,b\},\Gamma_b)=t(\{b_1,b_2\},\Gamma_b)=t$; hence $B_0-t\subset\Lambda$. For each $c\in\Gamma$,
+$P(b_i+c)=\{b_i-t,c+t\}$ contains one $\beta$- and one $\gamma$-label, so $b_1-t$ and $b_2-t$
+(and then, by the same argument, all of $B_0-t$) have the same type; as $p$ is
+symmetric under exchanging the roles of $\beta$ and $\gamma$, we may assume
+$B_0-t=\{\beta_\sigma:\sigma\in\Sigma_B\}$. Let $c\in C_0$. By (F) with $V=\{c\}$ there are distinct
+$b=\beta_{\sigma_1}+t$, $b'=\beta_{\sigma_2}+t$ in $B_0$ with $b+c=\beta_{\sigma_1'}+\gamma_{\tau_1}$ and
+$b'+c=\beta_{\sigma_2'}+\gamma_{\tau_2}$. Eliminating $c$ gives a relation of six elements of $\Lambda$,
+so by \cref{IB:lem:rigid} the multisets $\{\beta_{\sigma_1'},\gamma_{\tau_1},\beta_{\sigma_2}\}$ and
+$\{\beta_{\sigma_2'},\gamma_{\tau_2},\beta_{\sigma_1}\}$ coincide; hence $\tau_1=\tau_2$, and since $\sigma_1\ne\sigma_2$ we
+get $\beta_{\sigma_1'}=\beta_{\sigma_1}$, i.e.\ $c+t=\gamma_{\tau_1}$. So $C_0+t=\{\gamma_\tau:\tau\in\Sigma_C\}$, and
+$b+c\in\supp p$ (for $b=\beta_\sigma+t$, $c=\gamma_\tau-t$) if and only if $\sigma,\tau$ are comparable.
+By (F) with $V=\{c,c'\}$, infinitely many $\sigma\in\Sigma_B$ are comparable with both $\tau$ and
+$\tau'$; if $\tau,\tau'$ were incomparable, such $\sigma$ would be common initial segments of
+$\tau$ and $\tau'$, of which there are finitely many. So $\Sigma_C$ is a chain, with at most
+one node at each depth. Then for $U=\{b_1,b_2\}$,
+$\sum_{c\in C_0}w_U(c)\le\sum_{\tau\in\Sigma_C}\theta_{|\tau|}^2\le\sum_j(j+1)^{-2}<\infty$, contradicting (F).
+\end{example}
+
+\begin{example}[(N) holds but $\mathbf P(\mathcal E_{BC})=0$]
+\label{IB:ex:half}
+Label $\{\beta_{k,m}:k,m\in\N\}\cup\{\gamma_i:i\in\N\}$ injectively by elements of $\Lambda$ and let
+$p=\one_D$ with $D=\{\beta_{k,m}+\gamma_i:i\le k,\ m\in\N\}$. Condition (N) holds with
+$B_0=C_0=\{\gamma_i\}$: a finite $G\subset\{\gamma_1,\dots,\gamma_k\}$ has the translates $\beta_{k,m}+G\subset D$,
+$m\in\N$. But $D\notin\mathfrak D_{BC}$: if $B+C\subset D$, then by \cref{IB:cor:R}
+$\{b-t,c+t\}=\{\beta_{k,m},\gamma_i\}$ with $i\le k$. If the $b-t$ are $\beta$-labels, fix $b_1$ with
+$b_1-t=\beta_{k_1,m_1}$; then every $c+t$ lies in $\{\gamma_1,\dots,\gamma_{k_1}\}$, so $C$ is finite.
+Otherwise, symmetrically, $B$ is finite. In particular $\mathcal E_{<\omega}$ holds but
+$\mathcal E_{BC}$ fails, for a deterministic set.
+\end{example}
+
+\begin{example}[$\mathbf P(\mathcal E_{<\omega})=1$ but (N) fails]
+\label{IB:ex:rigid}
+Label $\{\beta_{k,m},\gamma_{k,i}:k,m\in\N,\ 1\le i\le k\}$ injectively by elements of $\Lambda$ and let
+$p=\one_D$ with $D=\{\beta_{k,m}+\gamma_{k,i}:1\le i\le k,\ m\in\N\}$. Then
+$\{\beta_{k,m}:m\in\N\}+\{\gamma_{k,1},\dots,\gamma_{k,k}\}\subset D$, so $\mathcal E_k$ holds for every $k$.
+Suppose $C_0$ is infinite and $S_G=\infty$ (i.e.\ $G$ has infinitely many translates in
+$D$) for all $G\subset C_0$ with $|G|\le3$. Fix $c_1\ne c_2$ in $C_0$, let $\Gamma$ be the
+(infinite) set of $n$ with $n+\{c_1,c_2\}\subset D$, and $t=t(\{c_1,c_2\},\Gamma)$. For each
+$n\in\Gamma$, $n+t$ has one type and $c_1-t$, $c_2-t$ have the other. If $c_1-t=\beta_{k_1,m_1}$ and
+$c_2-t=\beta_{k_2,m_2}$, then $n+t\in\{\gamma_{k_1,i}\}\cap\{\gamma_{k_2,i}\}$, a finite set, for all
+$n\in\Gamma$, which is impossible. Hence $c_j-t=\gamma_{k,i_j}$ and $n+t=\beta_{k,m_n}$ with the same
+$k$. For any $c\in C_0$, applying the same reasoning to $\{c_1,c_2,c\}$ and its
+infinite set $\Gamma_c\subset\Gamma$ of translates, \cref{IB:lem:R} gives the same $t$, and $c-t$ is a
+$\gamma$-label paired with $n+t=\beta_{k,m_n}$, so $c-t\in\{\gamma_{k,1},\dots,\gamma_{k,k}\}$. Thus $C_0$
+is finite, a contradiction; so (N) fails.
+\end{example}
+
+\subsection{Proof of \texorpdfstring{\cref{IB:thm:monotone}}{the monotone theorem}}
+
+\ref{IB:m3}$\Rightarrow$\ref{IB:m2}: Fix $L$. The events $\{[jL,(j+1)L)\subset A\}$, $j\ge1$, are
+independent, with probabilities
+$\prod_{i=jL}^{(j+1)L-1}p_i\ge\alpha^Lq_{(j+1)L}^L$. Since $q_n\le q_{(j+1)L}$ for
+$(j+1)L\le n<(j+2)L$, we have $\sum_{j\ge1}q_{(j+1)L}^L\ge L^{-1}\sum_{n\ge2L}q_n^L=\infty$, as
+$p_n^L\le\beta^Lq_n^L$ and $\sum_np_n^L=\infty$. By the second Borel--Cantelli lemma $A$ almost
+surely contains infinitely many intervals of length $L$; intersecting over $L$, $A$
+is almost surely thick.
+
+\ref{IB:m2}$\Rightarrow$\ref{IB:m1} is \cref{IB:lem:thick}, and
+\ref{IB:m1}$\Rightarrow$\ref{IB:m5} is \cref{IB:thm:hierarchy}.
+
+\ref{IB:m5}$\Rightarrow$\ref{IB:m3}: Suppose $\sum_np_n^k<\infty$ for some $k$, so $\sum_nq_n^k<\infty$. For
+$F\subset\N$ with $|F|=k$ and $\min F=f_0$, monotonicity gives
+$S_F=\sum_nw_F(n)\le\beta^k\sum_{n}q_{n+f_0}^k<\infty$, so $\mathbf P(\mathcal E_F)=0$ by \cref{IB:thm:finite}.
+Taking the union over the countably many $F$, almost surely $A$ contains no $B+F$
+with $B$ infinite and $|F|=k$. This also proves the statement following the list.
+
+\ref{IB:m3}$\Leftrightarrow$\ref{IB:m4}: Both conditions are unchanged when $p$ is replaced
+by $q$. If $\sum_nq_n^k=S<\infty$, then $nq_n^k\le\sum_{m\le n}q_m^k\le S$, so
+$q_n\le(S/n)^{1/k}$ and $q_nn^\eps\to0$ for $\eps<1/k$. Conversely, if $q_nn^\eps\to0$, then
+$q_n\le n^{-\eps}$ for large $n$ and $\sum_nq_n^k<\infty$ for $k>1/\eps$.
+
+The $0$--$1$ statements follow from \cref{IB:thm:finite,IB:thm:strategy}. \qed
+
+%======================================================================
+\section{Ordered sumsets in the primes with summands in \texorpdfstring{$\P-1$}{P-1}}
+\label{IB:sec:c45}
+%======================================================================
+
+In this section we prove Conjecture~4.5 of~\cite{kra2023problems}. It turns out
+to be a short corollary of the theorem of Tao and Ziegler on ascending chains of
+prime-producing tuples~\cite{tao2023infinite}.
+
+\begin{surveyconj}{4.5}
+\label{IB:q:c45}
+There exist infinite sets $B\subset\N$ and $C\subset\P-1$ such that
+$\P\supset\{b+c:b\in B,\ c\in C;\ b<c\}$.
+\end{surveyconj}
+
+The survey remarks that the analogous statement with $B\subset\P-1$ instead of
+$C\subset\P-1$ follows from the results of~\cite{tao2023infinite} together with the
+existence of an infinite admissible subset of $\P-1$. Following~\cite[Definition~1.1]{tao2023infinite},
+a tuple $(h_1,\dots,h_k)$ of natural numbers is \emph{prime-producing} if there are
+infinitely many $n$ such that $n+h_1,\dots,n+h_k$ are simultaneously prime.
+
+\begin{theorem*}[{Tao--Ziegler~\cite[Theorem~1.5]{tao2023infinite}}]
+There exists an infinite sequence $h_1<h_2<\dots$ of natural numbers, such that the
+$k$-tuple $(h_1,\dots,h_k)$ is prime-producing for every $k$.
+\end{theorem*}
+
+\begin{theorem}
+\label{IB:thm:c45}
+For all integers $s,t$ there are infinite sets $B,C\subset\N$ such that $C+t\subset\P$ and
+$b+c+s\in\P$ for all $b\in B$, $c\in C$ with $b<c$. In particular
+\textup{(}$s=0$, $t=1$\textup{)} Conjecture~4.5 of~\cite{kra2023problems} holds, and
+\textup{(}$s=t=1$\textup{)} there are infinite $B,C$ with $C\subset\P-1$ and
+$\{b+c:b\in B,\ c\in C,\ b<c\}\subset\P-1$.
+\end{theorem}
+
+\begin{proof}
+Let $h_1<h_2<\cdots$ be as in the Tao--Ziegler theorem and put
+$\beta_i=h_{i+1}-h_1+t-s$; fix $i_0$ with $\beta_i\ge1$ for $i\ge i_0$. For $k\ge i_0$ let
+\[
+M_k=\{m\in\N:\ m+t\in\P\ \text{and}\ m+s+\beta_i\in\P\ \text{for}\ i_0\le i\le k\}.
+\]
+Each $M_k$ is infinite: there are infinitely many $n$ with $n+h_1,\dots,n+h_{k+1}$ all
+prime; they satisfy $n\ge2-h_1$, so infinitely many of them exceed $t-h_1$, and for
+those $m=n+h_1-t\in\N$ satisfies $m+t=n+h_1\in\P$ and $m+s+\beta_i=n+h_{i+1}\in\P$.
+
+Now choose $i_1=i_0$ and inductively $c_j\in M_{i_j}$ with $c_j>\beta_{i_j}$, and then
+$i_{j+1}>i_j$ with $\beta_{i_{j+1}}>c_j$ (possible since $\beta_i\to\infty$). Then
+$\beta_{i_1}<c_1<\beta_{i_2}<c_2<\cdots$. Let $B=\{\beta_{i_j}:j\in\N\}$ and $C=\{c_j:j\in\N\}$. Then
+$C+t\subset\P$. If $b=\beta_{i_l}$ and $c=c_j$ with $b<c$, the interlacing gives $l\le j$, so
+$i_0\le i_l\le i_j$, and $c_j\in M_{i_j}$ yields $b+c+s=c_j+s+\beta_{i_l}\in\P$.
+\end{proof}
+
+\begin{remark}
+\label{IB:rem:c45}
+\Cref{IB:thm:c45} is a short consequence of~\cite[Theorem~1.5]{tao2023infinite}, and
+all the substance lies in the Tao--Ziegler theorem. The only observation is that
+being prime-producing is invariant under translation, so the chain can be
+translated to contain $1$; then every witness $m$ satisfies $m+1\in\P$. The
+variant mentioned in the survey, with $B\subset\P-1$ in place of $C\subset\P-1$, is
+equally a consequence of the argument of~\cite{tao2023infinite}. There,
+Proposition~3.1 (the Maynard sieve input) is stated for an arbitrary admissible
+tuple, and in the proof of Theorem~1.5 the odd squares serve only to make every
+finite subtuple admissible. Running the same proof with the odd squares replaced
+by an infinite admissible subset of $\P-1$ gives a chain inside $\P-1$, as
+indicated in the introduction of~\cite{tao2023infinite}; Corollary~1.6 there and
+the interlacing above then give the variant. So Conjecture~4.5 and this variant
+are both short corollaries of~\cite{tao2023infinite}. Conjecture~4.5 uses only the
+statement of Theorem~1.5, whereas the variant re-runs its proof.
+
+Neither argument gives the two conditions at once. To get $B,C\subset\P-1$ with
+$b+c\in\P$ for $b<c$ in the same way, one would need a prime-producing chain with
+entries in $\P-1$ whose translate by $1-h_1$ also has its entries in $\P-1$, and
+the argument of~\cite{tao2023infinite} does not obviously provide this. The
+statement that seems intended, the ordered analogue of~\cite[Conjecture~4.3]{kra2023problems}
+with $k=2$, also needs this: it asks for $B\cup C\cup\{b+c:b<c\}\subset\P-1$, which is the
+case $s=t=1$ of \cref{IB:thm:c45} with the additional requirement $B\subset\P-1$. We do not
+know whether these strengthenings hold.
+\end{remark}

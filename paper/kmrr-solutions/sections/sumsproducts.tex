@@ -1,0 +1,509 @@
+\section{Sums and products in \texorpdfstring{$\N$}{N} and \texorpdfstring{$\Q$}{Q}}
+\label{SP:sec}
+
+This section is about three questions from~\cite[\S5.1]{kra2023problems} that ask for sums and
+products of infinite sets at the same time.
+In \cref{SP:sec:u51a} we answer Question~\S5.1(a) positively: the two explicit sets named
+in~\cite[\S5.1]{kra2023problems}, namely Beatty sequences and the set of integers with an even
+number of prime factors, both contain $B+C$ and $BC$ for some infinite $B,C\subset\N$.
+In \cref{SP:sec:q54} we answer Question~5.4 of~\cite{kra2023problems} negatively. The counterexample
+is a set built at logarithmic scale; it has logarithmic density $3/10$ and it is aperiodic.
+The same set answers Question~5.2 of~\cite{kra2023problems} negatively if ``positive density''
+is read as positive upper density (\cref{SP:rem:q52}).
+In \cref{SP:sec:q56} we answer Question~5.6 of~\cite{kra2023problems} negatively, as it is literally
+stated. The counterexample comes from the sign obstruction at the real place, which survives the
+removal of a set of density zero.
+
+\smallskip
+\noindent\emph{Notation.}
+For $x\in\R$ we write $\{x\}\in[0,1)$ for the fractional part of $x$ and $\|x\|$ for the distance
+from $x$ to the nearest integer.
+We identify $\T=\R/\Z$ with $[0,1)$, and we write $\|x-y\|$ for the distance in $\T$.
+For $X,Y\subset\N$ (or $\Q$) we write $X+Y=\{x+y:x\in X,\,y\in Y\}$, $XY=\{xy:x\in X,\,y\in Y\}$,
+$X+t=\{x+t:x\in X\}$ and $dX=\{dx:x\in X\}$.
+Recall from~\cite[eq.~(19)]{kra2023problems} that $A\subset\N$ is \emph{aperiodic} if
+\begin{equation}\label{SP:eq:aperiodic}
+\lim_{N\to\infty}\frac1N\sum_{n=1}^N\one_A(n)\,\e(\alpha n)=0\qquad\text{for all }\alpha\in\Q\setminus\Z,
+\end{equation}
+where $\e(x)=e^{2\pi i x}$.
+
+%-----------------------------------------------------------------------------------------------
+\subsection{The explicit examples}
+\label{SP:sec:u51a}
+
+Question~5.2 of~\cite{kra2023problems} asks whether every aperiodic $A\subset\N$ of positive
+density contains $B+C$ and $BC$ for some infinite sets $B,C\subset\N$. Just before that question
+the survey names two typical aperiodic sets: the set of all numbers with an even number of prime
+factors, and the Beatty sequences $\{\lfloor n\alpha+\gamma\rfloor:n\in\N\}$, where $\alpha>0$ is
+irrational and $\gamma\in\R$. It then remarks: ``Even for the explicit examples we have mentioned,
+we consider the answer to be interesting.''
+
+\begin{question}{\S5.1(a)}\label{SP:q:u51a}
+Let $A$ be either a Beatty sequence $\{\lfloor n\alpha+\gamma\rfloor:n\in\N\}$, with $\alpha>0$
+irrational and $\gamma\in\R$, or the set of all $n\in\N$ with an even number of prime factors. Are there infinite sets
+$B,C\subset\N$ with $B+C\subset A$ and $BC\subset A$?
+\end{question}
+
+The survey does not say whether prime factors are counted with multiplicity. We answer the
+question for both readings. The answer is yes in all cases (\cref{SP:cor:beatty,SP:thm:liouville}).
+
+\subsubsection{Bohr sets and Beatty sequences}
+
+\begin{theorem}\label{SP:thm:bohr}
+Let $\vartheta\in\R\setminus\Q$, $\delta\in\R$, let $J\subset\T$ be a nonempty open set and let
+$M_0\in\N$. Suppose that
+\[
+A\supseteq\{m\in\N:\ m\ge M_0,\ m\vartheta+\delta\bmod 1\in J\}.
+\]
+Then there is an infinite set $Z\subset\N$ such that $z+z'\in A$ and $zz'\in A$ for all distinct
+$z,z'\in Z$. In particular, there are disjoint infinite sets $B,C\subset\N$ with $B+C\subset A$
+and $BC\subset A$.
+\end{theorem}
+
+\begin{proof}
+Since $J$ is open and nonempty, there are $\xi_0\in\T$ and $\ell\in(0,1)$ such that every
+$x\in\T$ with $\|x-\xi_0\|<\ell/2$ lies in $J$. Fix $q\in\N$ with $q\ge 4/\ell$.
+The points $2r/q$ ($r\in\Z$) form a subgroup of $\T$ in which consecutive points are at distance
+at most $2/q$. Hence we can choose $r\in\Z$ with $\|2r/q+\delta-\xi_0\|\le 1/q\le\ell/4$.
+Put $\xi=2r/q+\delta$. Then
+\begin{equation}\label{SP:eq:xiJ}
+\|x-\xi\|<\ell/4\ \Longrightarrow\ \|x-\xi_0\|<\ell/2\ \Longrightarrow\ x\in J .
+\end{equation}
+
+We choose $z_1<z_2<\cdots$ recursively. Put $z_0=1$, and suppose $z_0,\dots,z_{n-1}$ have been
+chosen. Let $\eps_n=\ell/(8z_{n-1})$. We look for $z_n$ of the form $z_n=qk+2$ with $k\in\N$.
+Then $z_n\vartheta-r/q=k(q\vartheta)+(2\vartheta-r/q)$. Since $q\vartheta$ is irrational, the
+sequence $(kq\vartheta\bmod1)_{k>K}$ is dense in $\T$ for every $K$. So we can choose $k$ such that
+$z_n=qk+2>\max(z_{n-1},M_0)$ and $\|z_n\vartheta-r/q\|<\eps_n$.
+Thus every $n\ge1$ satisfies
+\[
+z_n\equiv 2\pmod q,\qquad z_n\vartheta=K_n+\frac rq+e_n,\quad K_n\in\Z,\ |e_n|<\eps_n=\frac{\ell}{8z_{n-1}}\le\frac\ell8 .
+\]
+Let $1\le i<j$. Write $z_i=qk_i+2$ with $k_i\in\Z$. We compute the two phases modulo $1$.
+\begin{itemize}
+\item Sums: $(z_i+z_j)\vartheta\equiv 2r/q+e_i+e_j$, and $|e_i+e_j|<\ell/4$.
+\item Products: $z_iz_j\vartheta=z_iK_j+z_ir/q+z_ie_j$. Here $z_iK_j\in\Z$ and
+$z_ir/q=k_ir+2r/q\equiv 2r/q$. Moreover $|z_ie_j|<z_i\ell/(8z_{j-1})\le\ell/8$, because
+$z_i\le z_{j-1}$. So $z_iz_j\vartheta\equiv 2r/q+z_ie_j$.
+\end{itemize}
+Hence both $(z_i+z_j)\vartheta+\delta$ and $z_iz_j\vartheta+\delta$ lie within distance
+$\ell/4$ of $\xi$ in $\T$, so they lie in $J$ by \eqref{SP:eq:xiJ}. Since
+$z_i+z_j$ and $z_iz_j$ are at least $M_0$, both lie in $A$.
+Take $Z=\{z_n:n\ge1\}$, $B=\{z_1,z_3,z_5,\dots\}$ and $C=\{z_2,z_4,z_6,\dots\}$.
+\end{proof}
+
+\begin{corollary}\label{SP:cor:beatty}
+Let $\alpha>0$ be irrational, let $\gamma\in\R$, and let
+$A=\{\lfloor n\alpha+\gamma\rfloor:n\in\N\}$. Then there are infinite sets $B,C\subset\N$ with
+$B+C\subset A$ and $BC\subset A$.
+\end{corollary}
+
+\begin{proof}
+Suppose first that $\alpha<1$. Then consecutive terms of the nondecreasing sequence
+$\lfloor n\alpha+\gamma\rfloor$ differ by $0$ or $1$, and the sequence tends to infinity. So $A$
+contains every integer $m\ge\lfloor\alpha+\gamma\rfloor$, and any infinite sets $B,C$ of
+sufficiently large integers work.
+
+Now suppose $\alpha>1$ and put $\beta=1/\alpha\in(0,1)$. An integer $m$ lies in $A$ if and only
+if some $n\in\N$ satisfies $m\le n\alpha+\gamma<m+1$, that is, $y_m\le n<y_m+\beta$, where
+$y_m=(m-\gamma)\beta$. The least integer that is at least $y$ is $y+\{-y\}$. So the interval
+$[y_m,y_m+\beta)$ contains an integer if and only if $\{-y_m\}<\beta$. When $m>\gamma$, this
+integer is at least $y_m>0$, so it lies in $\N$. Therefore, for $m>\gamma$,
+\[
+m\in A\iff \{m\vartheta+\delta\}\in[0,\beta),\qquad\text{where }\vartheta=-\beta,\ \delta=\gamma\beta .
+\]
+Here $\vartheta$ is irrational. Apply \cref{SP:thm:bohr} with $J=(0,\beta)$ and any
+$M_0>\gamma$.
+\end{proof}
+
+\begin{remark}\label{SP:rem:bohr}
+\Cref{SP:thm:bohr} does not use any density assumption. It applies to every set that contains an
+inhomogeneous Bohr set with an irrational frequency, up to finitely many elements; this includes
+all Beatty sequences. The argument is elementary, and we expect the statement to be folklore. We
+did not find it in the literature.
+\end{remark}
+
+\subsubsection{The Liouville function}
+
+Let $\Omega(n)$ and $\omega(n)$ be the numbers of prime factors of $n$ counted with and
+without multiplicity, respectively. Let $\lambda(n)=(-1)^{\Omega(n)}$ be the Liouville function.
+It is completely multiplicative: $\lambda(mn)=\lambda(m)\lambda(n)$ for all $m,n\in\N$. Put
+\[
+L_+=\{n\in\N:\Omega(n)\text{ is even}\}=\{n:\lambda(n)=1\},\qquad
+L'_+=\{n\in\N:\omega(n)\text{ is even}\}.
+\]
+
+\begin{theorem}\label{SP:thm:liouville}
+For each $E\in\{L_+,L'_+\}$ there are infinite sets $B,C\subset\N$ with $B+C\subset E$ and
+$BC\subset E$.
+\end{theorem}
+
+\begin{proof}
+Let $S$ be the set of primes $p\equiv5\pmod6$. There are infinitely many such primes: if
+$p_1,\dots,p_r$ were all of them, then $6p_1\cdots p_r-1\equiv5\pmod6$ would be coprime
+to $6p_1\cdots p_r$; so all its prime factors would be $\equiv1\pmod6$, which is impossible. Let $E\in\{L_+,L'_+\}$, and colour each
+two-element subset $\{s,s'\}$ of $S$ according to whether $s+s'\in E$. By the infinite Ramsey
+theorem for pairs~\cite{ramsey1930problem} there is an infinite set $S'\subset S$ such that either
+$s+s'\in E$ for all distinct $s,s'\in S'$, or $s+s'\notin E$ for all distinct $s,s'\in S'$. Split
+$S'$ into two disjoint infinite sets $B_0$ and $C_0$, and let $b_0\in B_0$, $c_0\in C_0$. Then
+$b_0\neq c_0$ are primes different from $2$ and $3$, and $b_0+c_0$ is even and $\equiv1\pmod3$.
+Also $\Omega(b_0c_0)=\omega(b_0c_0)=2$, so $b_0c_0\in L_+\cap L'_+$.
+
+If $s+s'\in E$ for all distinct $s,s'\in S'$, then $B=B_0$ and $C=C_0$ work. Otherwise we put
+$B=dB_0$ and $C=dC_0$, where $d=2$ if $E=L_+$ and $d=6$ if $E=L'_+$.
+\begin{itemize}
+\item $E=L_+$: $\Omega(2(b_0+c_0))=\Omega(b_0+c_0)+1$ is even, and
+$\Omega(4b_0c_0)=4$.
+\item $E=L'_+$: since $2\mid b_0+c_0$ and $3\nmid b_0+c_0$, we get
+$\omega(6(b_0+c_0))=\omega(b_0+c_0)+1$, which is even. Since $b_0,c_0\notin\{2,3\}$,
+$\omega(36b_0c_0)=4$.
+\end{itemize}
+In both cases $b+c\in E$ and $bc\in E$ for all $b=db_0\in B$ and $c=dc_0\in C$.
+\end{proof}
+
+For $L_+$, the same idea with Hindman's theorem in place of Ramsey's theorem gives the following
+generalization.
+
+\begin{proposition}\label{SP:prop:finitegroup}
+Let $G$ be a finite abelian group, and let $f\colon\N\to G$ be completely multiplicative, i.e.\
+$f(mn)=f(m)f(n)$ for all $m,n\in\N$. Then there are infinite sets $B,C\subset\N$ with
+$f(b+c)=f(bc)=1_G$ for all $b\in B$ and $c\in C$.
+\end{proposition}
+
+\begin{proof}
+Hindman's theorem~\cite[Theorem~3.1]{hindman1974finite}, applied to the finite colouring
+$n\mapsto f(n)$, gives $h\in G$ and a sequence $(x_i)_{i\in\N}$ in $\N$ such that $f$ takes the
+value $h$ on $\FS((x_i))=\{x_{i_1}+\dots+x_{i_k}:k\in\N,\ i_1<\dots<i_k\}$. We may assume that
+$x_1<x_2<\cdots$. Indeed, if $(x_i)$ is unbounded we pass to a strictly increasing subsequence,
+whose finite sums form a subset of $\FS((x_i))$. Otherwise some value $x$ occurs infinitely
+often, so $\FS((x_i))$ contains every multiple of $x$, and we replace $(x_i)$ by $(2^ix)$. Let $B_0=\{x_1,x_3,\dots\}$ and $C_0=\{x_2,x_4,\dots\}$. Then $f$ equals $h$
+on $B_0$, on $C_0$ and on $B_0+C_0$. The image $f(\N)$ is a nonempty subset of the finite group
+$G$ that is closed under multiplication, hence a subgroup. So there is $d\in\N$ with
+$f(d)=h^{-1}$. Put $B=dB_0$ and $C=dC_0$. For $b_0\in B_0$ and $c_0\in C_0$ we get
+$f(db_0+dc_0)=f(d)f(b_0+c_0)=h^{-1}h=1_G$ and
+$f(db_0\cdot dc_0)=f(d)^2f(b_0)f(c_0)=h^{-2}h^2=1_G$.
+\end{proof}
+
+For instance, for every $k\ge2$ the set $\{n:\Omega(n)\equiv0\pmod k\}$ contains $B+C$ and $BC$
+for some infinite $B,C\subset\N$.
+
+\begin{remark}\label{SP:rem:liouville}
+\Cref{SP:cor:beatty,SP:thm:liouville} answer Question~\S5.1(a) for both examples named in the
+survey. Question~5.2 of~\cite{kra2023problems} itself remains open when ``positive density'' means
+that the natural density exists and is positive (see also \cref{SP:rem:q52}).
+\end{remark}
+
+%-----------------------------------------------------------------------------------------------
+\subsection{Sums and shifted products at logarithmic scale}
+\label{SP:sec:q54}
+
+Logarithmic density is defined in~\cite[Definition~3.22]{kra2023problems}: for $A\subset\N$,
+\[
+\udlog(A)=\limsup_{N\to\infty}\frac1{\log N}\sum_{n=1}^N\frac{\one_A(n)}{n},
+\]
+with the lower version defined by $\liminf$. When the two agree, their common value is the
+logarithmic density $\dlog(A)$. Question~5.4 of~\cite{kra2023problems} reads as follows.
+
+\begin{question}{5.4}\label{SP:q:54}
+Suppose $A\subset\N$ has positive upper logarithmic density. Are there infinite sets
+$B,C\subset\N$ with $B+C\subset A$ and $BC+1\subset A$?
+\end{question}
+
+The survey introduces the shift $BC+1$ because the unshifted question fails for congruence
+(local) reasons: the odd numbers contain no $B+C$ together with $BC$, since $b+c$ and $bc$ cannot
+both be odd. The survey also notes that Question~5.4 generalizes an earlier question of Moreira
+about singletons $B=\{x\}$, $C=\{y\}$. Taken literally, the singleton version is trivial ($x=1$,
+$y=a-1$ with $a\in A$); with $x,y\ge2$ it is Moreira's conjecture, which Richter proved for every
+set of positive upper logarithmic density~\cite[Theorem~1.5 with $Q(y)=y-1$]{richter2025sums}.
+Indeed, that theorem gives $x,y\ge2$ with $x+y-1\in A-1$ and $xy\in A-1$, i.e.\ $x+y\in A$ and
+$xy+1\in A$, and $A-1$ has the same upper logarithmic density as $A$. Richter also relates his
+results to Questions~5.2 and~5.4 of~\cite{kra2023problems}. We show that the infinite version
+fails, because of an obstruction of a different kind: an archimedean one. Our set is aperiodic in
+the sense of \eqref{SP:eq:aperiodic}, so it has no congruence obstruction.
+
+Throughout this subsection let $I=[\tfrac{7}{20},\tfrac{13}{20})$, let
+$\psi(n)=\log_2 n\bmod 1\in\T$ for $n\in\N$, and let
+\[
+A=\{n\in\N:\{\log_2n\}\in I\}=\bigcup_{k\ge0}\big[2^{k+7/20},\,2^{k+13/20}\big)\cap\N .
+\]
+Membership is decided in exact arithmetic: $n\in A$ if and only if
+$2^{20k+7}\le n^{20}<2^{20k+13}$, where $k=\lfloor\log_2n\rfloor$.
+
+\begin{proposition}\label{SP:prop:Aprops}
+The set $A$ has the following properties.
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item Its logarithmic density exists and $\dlog(A)=3/10$.
+\item It is aperiodic, i.e.\ it satisfies \eqref{SP:eq:aperiodic}.
+\item $\udens(A)=2-2^{7/10}\approx0.3755$ and $\ldens(A)=2^{3/10}-1\approx0.2311$. In particular,
+the natural density of $A$ does not exist.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Write $a=7/20$ and $b=13/20$. For real $1\le u<v$, comparing with $\int_u^v dx/x$ gives
+$\sum_{u\le n<v}1/n=\log(v/u)+O(1/u)$. So the $k$-th block contributes
+$(b-a)\log2+O(2^{-k})$ to $\sum\one_A(n)/n$.
+
+(i) Let $2^K\le N<2^{K+1}$. Summing over the blocks with $k<K$, and bounding the contribution of
+the block $k=K$ by $(b-a)\log 2+O(2^{-K})$, we get $\sum_{n\le N}\one_A(n)/n=\tfrac{3}{10}K\log2+O(1)$.
+Since $\log N=K\log 2+O(1)$, the claim follows.
+
+(ii) Let $\alpha\in\Q\setminus\Z$. For integers $m\le m'$ we have
+$|\sum_{n=m}^{m'}\e(\alpha n)|\le 1/|\sin\pi\alpha|$. The set $A\cap[1,N]$ is a union of at most
+$\log_2N+1$ intervals of consecutive integers. Hence
+$|\frac1N\sum_{n\le N}\one_A(n)\e(\alpha n)|\le(\log_2N+1)/(N|\sin\pi\alpha|)\to0$.
+
+(iii) Let $N=2^{K+s}$ with $K\in\N$ and $s\in[0,1)$. Counting the blocks with $k<K$ and the part
+of block $K$ below $N$ gives
+\[
+|A\cap[1,N]|=2^K\big(2^b-2^a+g(s)\big)+O(K),\qquad g(s)=\max\big(0,\min(2^s,2^b)-2^a\big).
+\]
+So $|A\cap[1,N]|/N=\rho(s)+o(1)$, uniformly in $s$, where $\rho(s)=(2^b-2^a+g(s))/2^s$.
+On $[0,a]$ the function $\rho(s)=(2^b-2^a)2^{-s}$ decreases. On $[a,b]$ it equals
+$1-(2^{a+1}-2^b)2^{-s}$, which increases because $2^{a+1}>2^b$. On $[b,1)$ it equals
+$2(2^b-2^a)2^{-s}$, which decreases. Therefore $\min\rho=\rho(a)=2^{b-a}-1=2^{3/10}-1$ and
+$\sup\rho=\rho(b)=2-2^{a+1-b}=2-2^{7/10}$. Taking $N=2^{K+a}$ and $N=2^{K+b}$ (rounded down) as
+$K\to\infty$ shows that these values are $\ldens(A)$ and $\udens(A)$.
+\end{proof}
+
+Let $\eps=\log_2(1+1/58)$. Since $\log(1+x)\le x$ and $\log2>0.693$, we have
+$\eps\le1/(58\log2)<0.0249$. The constant $58$ is the least $M\in\N$ with
+$2\log_2(1+1/M)<1/20$; this is the margin needed in \cref{SP:thm:q54}(a).
+
+\begin{lemma}\label{SP:lem:shiftphase}
+If $x,y\in\N$ satisfy $y\ge58x$ and $x+y\in A$, then
+$\{\log_2y\}\in[\tfrac7{20}-\eps,\tfrac{13}{20})$.
+\end{lemma}
+
+\begin{proof}
+We have $\log_2(x+y)=\log_2y+\eps'$ with $0<\eps'=\log_2(1+x/y)\le\eps<\tfrac7{20}$. Write
+$\log_2(x+y)=k+\theta$ with $k\in\Z$ and $\theta=\{\log_2(x+y)\}\in I$. Then
+$\log_2y=k+(\theta-\eps')$, and $0\le\theta-\eps'<1$ because $\theta\ge\tfrac7{20}>\eps'$. Hence
+$\{\log_2y\}=\theta-\eps'\in[\tfrac7{20}-\eps,\tfrac{13}{20})$.
+\end{proof}
+
+\begin{theorem}\label{SP:thm:q54}
+\leavevmode
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item There are no $b_0,c_0,b,c\in\N$ and $\tau\in\{0,1\}$ with $b\ge58c_0$ and $c\ge58b_0$
+such that
+\[
+b_0+c\in A,\qquad c_0+b\in A,\qquad bc+\tau\in A .
+\]
+\item Let $t_1,t_2\in\Z$. There are no infinite sets $B,C\subset\N$ with $b+c+t_1\in A$ and
+$bc+t_2\in A$ for all $b\in B$ and $c\in C$.
+\end{enumerate}
+In particular, \cref{SP:q:54} has a negative answer: $\dlog(A)=3/10$, but there are no infinite
+sets $B,C\subset\N$ with $B+C\subset A$ and $BC+1\subset A$.
+\end{theorem}
+
+\begin{proof}
+(a) By \cref{SP:lem:shiftphase}, applied to $(x,y)=(b_0,c)$ and to $(x,y)=(c_0,b)$,
+\[
+\{\log_2c\},\ \{\log_2b\}\in\big[\tfrac7{20}-\eps,\ \tfrac{13}{20}\big).
+\]
+Write $\log_2(bc+\tau)=\log_2b+\log_2c+\eta$, where $\eta=\log_2(1+\tau/(bc))$. Since
+$bc\ge58^2$, we have $0\le\eta\le1/(58^2\log2)<0.001$. Let $u=\{\log_2b\}+\{\log_2c\}+\eta$.
+Then $\log_2(bc+\tau)-u\in\Z$, so $\{\log_2(bc+\tau)\}=\{u\}$, and
+$u\in[\tfrac{7}{10}-2\eps,\ \tfrac{13}{10}+\eta)$.
+If $u<1$, then $\{u\}=u\ge\tfrac7{10}-2\eps>\tfrac{13}{20}$, because $2\eps<0.05$.
+If $u\ge1$, then $\{u\}=u-1<\tfrac3{10}+\eta<\tfrac7{20}$.
+In both cases $\{\log_2(bc+\tau)\}\notin I$, so $bc+\tau\notin A$.
+
+(b) Suppose such $B$ and $C$ exist. Fix $b_0\in B$. For $c\in C$, $c\to\infty$, the distance in
+$\T$ between $\psi(c+b_0+t_1)$ and $\psi(c)$ is at most $|\log_2(1+(b_0+t_1)/c)|$, which tends to $0$.
+Since $\psi(c+b_0+t_1)\in I$, every limit point of $\psi(c)$ as $c\to\infty$ in $C$ lies in the
+closure $\bar I=[\tfrac7{20},\tfrac{13}{20}]$. By symmetry the same holds for $\psi(b)$ as $b\to\infty$ in $B$.
+Choose $b_n\in B$ and $c_n\in C$ with $b_n,c_n\to\infty$. Since $\T$ is compact, after passing
+to a subsequence we may assume that $\psi(b_n)\to\beta$ and $\psi(c_n)\to\gamma$, where
+$\beta,\gamma\in\bar I$. Now
+$\psi(b_nc_n+t_2)=\psi(b_n)+\psi(c_n)+\log_2(1+t_2/(b_nc_n))\to\beta+\gamma$ in $\T$. But
+$\beta+\gamma\in[\tfrac7{10},\tfrac{13}{10}]$, and modulo $1$ this set is
+$[\tfrac7{10},1)\cup[0,\tfrac3{10}]$, which is at distance $\tfrac1{20}$ from $\bar I$. On the other hand
+$\psi(b_nc_n+t_2)\in I$ for all $n$, so $\beta+\gamma\in\bar I$. This is a contradiction.
+
+For the final statement, recall $\dlog(A)=3/10$ from \cref{SP:prop:Aprops}(i). If $B,C\subset\N$
+were infinite with $B+C\subset A$ and $BC+1\subset A$, we could fix $b_0\in B$ and $c_0\in C$ and
+then pick $b\in B$ with $b\ge58c_0$ and $c\in C$ with $c\ge58b_0$, contradicting (a) with
+$\tau=1$. (It also follows from (b) with $t_1=0$, $t_2=1$.)
+\end{proof}
+
+\begin{remark}\label{SP:rem:q54}
+(i) The obstruction is asymptotic, and it needs both $B$ and $C$ to be infinite. If $B=\{1\}$, then
+$B+C=BC+1=C+1$, so $C=(A-1)\cap\N$ works. By Richter's theorem quoted above, every set of positive
+upper logarithmic density, in particular $A$, contains $\{b+c,bc+1\}$ with $b,c\ge2$. Larger finite
+configurations also occur in $A$: for $B=\{1,2,4,8,16\}$ and $C=\{1306,1307,\dots,1310\}$, all
+$25$ sums $b+c$ and all $25$ numbers $bc+1$ lie in $A$. This is a direct check of $50$ memberships
+with the exact test above. Part~(a) of \cref{SP:thm:q54} is a quantitative form of the
+obstruction: it rules out a four-element configuration in which $b,c$ are large compared with
+$c_0,b_0$.
+
+(ii) By \cref{SP:thm:q54}(b), shifting the sums or the products by any fixed integers does not
+remove the obstruction. Unlike the congruence obstruction to the unshifted question exhibited by the odd numbers,
+it is not local: $A$ is aperiodic (\cref{SP:prop:Aprops}(ii)). It is also thick (the blocks have
+unbounded length), so $\ubd(A)=1$. Similar constructions at logarithmic scale appear throughout
+\S\S2--3 of the survey~\cite{kra2023problems}, where they serve as counterexamples for sumsets
+$B+B+t$; Richter's Example~1.6 in~\cite{richter2025sums} is another block-type construction of
+this kind, a set of positive upper density without $\{x+y-1,xy\}$, $x,y\ge2$. Here the same idea is applied
+to infinite sums and shifted products. To our knowledge this counterexample is new.
+
+(iii) The set $A$ is not syndetic. The survey also asks Question~5.4 for syndetic $A$, and
+Question~5.5 of~\cite{kra2023problems} (whether every syndetic set contains $BC$ with $B,C$ infinite);
+both remain open.
+\end{remark}
+
+Recall Question~5.2 of~\cite{kra2023problems}.
+
+\begin{question}{5.2}\label{SP:q:52}
+Fix $A\subset\N$ that has positive density and is aperiodic. Are there infinite sets
+$B,C\subset\N$ with $B+C\subset A$ and $BC\subset A$?
+\end{question}
+
+\begin{remark}\label{SP:rem:q52}
+Taking $\tau=0$ in \cref{SP:thm:q54}(a), or $t_1=t_2=0$ in (b), shows that $A$ contains no $B+C$
+together with $BC$ for infinite $B,C\subset\N$. By \cref{SP:prop:Aprops}, $A$ is aperiodic and has
+positive upper density (and positive logarithmic and upper Banach density), but its natural density
+does not exist. So $A$ gives a negative answer to \cref{SP:q:52} if ``positive density'' there is
+read as positive upper density (or positive upper Banach or logarithmic density). This reading is
+consistent with the survey's text, which says that (19) is equivalent to equidistribution in
+residue classes ``if the density of $A$ exists''. It does not settle \cref{SP:q:52} when the
+natural density is required to exist; that case remains open.
+\end{remark}
+
+%-----------------------------------------------------------------------------------------------
+\subsection{Sums and products in \texorpdfstring{$\Q$}{Q}}
+\label{SP:sec:q56}
+
+Following~\cite[\S5.1]{kra2023problems}, where the notion is attributed
+to~\cite[Definition~1.3]{bergelson2017ergodic}, we use the formulation
+of~\cite[Definition~1.7]{kousek2024revisiting}: a \emph{double \Fol{} sequence} in $\Q$ is a
+sequence $\Phi=(F_N)_{N\in\N}$ of nonempty finite subsets of $\Q$ such that
+\[
+\lim_{N\to\infty}\frac{|F_N\cap(x+F_N)|}{|F_N|}=1\quad(x\in\Q)
+\qquad\text{and}\qquad
+\lim_{N\to\infty}\frac{|F_N\cap xF_N|}{|F_N|}=1\quad(x\in\Q^*).
+\]
+The survey describes $\Phi$ as simultaneously a \Fol{} sequence in $(\Q,+)$ and in
+$(\Q^*,\times)$; strictly speaking the latter requires $F_N\subset\Q^*$. This makes no
+difference below: $0$ is a single point and $|F_N|\to\infty$ (\cref{SP:lem:folner}(i)), so all
+densities are unchanged if $0$ is removed from every $F_N$.
+For $A\subset\Q$ we write $\udens_\Phi(A)=\limsup_N|A\cap F_N|/|F_N|$. When the limit exists we
+denote it by $\dens_\Phi(A)$, as in~\cite[\S1]{kra2023problems}.
+
+\begin{question}{5.6}\label{SP:q:56}
+Let $A\subset\Q$ have $\dens_\Phi(A)>0$ for some double \Fol{} sequence $\Phi$. Are there infinite
+sets $B,C\subset\Q$ such that $B+C\subset A$ and $BC\subset A$?
+\end{question}
+
+We show that the answer is negative, for every double \Fol{} sequence.
+
+\begin{lemma}\label{SP:lem:folner}
+Let $\Phi=(F_N)$ be a double \Fol{} sequence in $\Q$.
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item $|F_N|\to\infty$.
+\item For every bounded set $X\subset\Q$ we have $|F_N\cap X|/|F_N|\to0$.
+\item $|F_N\cap\Q_{<0}|/|F_N|\to1/2$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(i) Suppose $|F_N|\le M$ for infinitely many $N$. For those $N$ that are large enough,
+$|F_N\cap(1+F_N)|>(1-\frac1{M+1})|F_N|\ge|F_N|-1$, hence $F_N\subset1+F_N$. Both sets have the same
+cardinality, so $F_N=1+F_N$. This is impossible for a finite nonempty $F_N\subset\Q$, since
+$\max(1+F_N)=1+\max F_N>\max F_N$.
+
+(ii) Choose $R\in\N$ with $X\subset[-R,R]$, fix $k\in\N$, and let $t_j=j(2R+1)$ for
+$0\le j<k$. The sets $X+t_j$ are pairwise disjoint. For each $t\in\Q$,
+\[
+|F_N\cap(X+t)|=|(F_N-t)\cap X|\ge|F_N\cap X|-|F_N\setminus(F_N-t)|=|F_N\cap X|-o(|F_N|),
+\]
+since $|F_N\setminus(F_N-t)|=|F_N|-|F_N\cap(-t+F_N)|$. Summing over $j$ gives
+$k|F_N\cap X|\le|F_N|+o(|F_N|)$, so $\limsup_N|F_N\cap X|/|F_N|\le1/k$. Now let $k\to\infty$.
+
+(iii) Let $p_N=|F_N\cap\Q_{>0}|$ and $n_N=|F_N\cap\Q_{<0}|$. The map $y\mapsto-y$ gives
+$n_N=|(-F_N)\cap\Q_{>0}|$, and this differs from $p_N$ by at most
+$|(-F_N)\setminus F_N|=|F_N|-|F_N\cap(-1)F_N|=o(|F_N|)$. Moreover $p_N+n_N\ge|F_N|-1$. By (i),
+$n_N/|F_N|\to1/2$.
+\end{proof}
+
+\begin{lemma}\label{SP:lem:noconf}
+Let $A\subset\Q_{<0}$ be such that $A\cap[-R,R]$ is finite for every $R>0$. Then there are no
+infinite sets $B,C\subset\Q$ with $B+C\subset A$ and $BC\subset A$.
+\end{lemma}
+
+\begin{proof}
+Suppose such $B,C$ exist. Every product $bc$ is negative, so $0\notin B\cup C$, and every
+$b\in B$ and $c\in C$ have opposite signs. If $B$ contained a positive and a negative element,
+no $c\in C$ could have the sign opposite to both. So $B$ has constant sign, and $C$ has the
+opposite constant sign. By symmetry of the hypotheses in $B$ and $C$ we may assume that
+$B\subset\Q_{<0}$ and $C\subset\Q_{>0}$. Fix $b^*\in B$. For $c\in C$ we have $b^*+c<0$, so
+$0<c<|b^*|$ and $b^*c\in(-(b^*)^2,0)$. Since $c\mapsto b^*c$ is injective and $C$ is infinite,
+$b^*C$ is an infinite subset of $A\cap[-(b^*)^2,(b^*)^2]$, which is a contradiction.
+\end{proof}
+
+\begin{theorem}\label{SP:thm:q56}
+Let $\Phi=(F_N)$ be any double \Fol{} sequence in $\Q$. There is a set $A\subset\Q_{<0}$ such
+that $\dens_\Phi(A)=\lim_{N}|A\cap F_N|/|F_N|=1/2$, and such that there are no infinite sets
+$B,C\subset\Q$ with $B+C\subset A$ and $BC\subset A$. In particular, \cref{SP:q:56} has a
+negative answer.
+\end{theorem}
+
+\begin{proof}
+For $R\in\N$ write $[-R,R]$ for $\Q\cap[-R,R]$, and let $\eps_R(N)=|F_N\cap[-R,R]|/|F_N|$. By
+\cref{SP:lem:folner}(ii), $\eps_R(N)\to0$ as $N\to\infty$ for each $R$. So we can choose
+$N_1<N_2<\cdots$ such that $\eps_R(N)<1/R$ for all $N\ge N_R$. Put
+\[
+K_R=\bigcup_{N<N_{R+1}}F_N\ \ (\text{a finite set}),\qquad
+Z=\bigcup_{R\in\N}\big([-R,R]\setminus K_R\big),\qquad A=\Q_{<0}\setminus Z .
+\]
+\emph{Bounded parts of $A$ are finite.} Let $R\in\N$. If $x\in A$ and $|x|\le R$, then
+$x\notin[-R,R]\setminus K_R$, so $x\in K_R$. Hence $A\cap[-R,R]\subset K_R$ is finite. By
+\cref{SP:lem:noconf}, $A$ contains no $B+C$ together with $BC$ for infinite $B,C$.
+
+\emph{$Z$ has density zero.} Let $N\ge N_1$, and let $R$ be such that $N_R\le N<N_{R+1}$.
+If $R'\ge R$, then $N<N_{R'+1}$, so $F_N\subset K_{R'}$ and $F_N$ does not meet
+$[-R',R']\setminus K_{R'}$. If $R'<R$, then $[-R',R']\subset[-R,R]$. Hence
+$F_N\cap Z\subset F_N\cap[-R,R]$, and so $|F_N\cap Z|\le\eps_R(N)|F_N|<|F_N|/R$. As
+$N\to\infty$, also $R\to\infty$, so $|F_N\cap Z|/|F_N|\to0$.
+
+\emph{Density of $A$.} By \cref{SP:lem:folner}(iii),
+$|A\cap F_N|/|F_N|=|F_N\cap\Q_{<0}|/|F_N|-O(|F_N\cap Z|/|F_N|)\to1/2$.
+\end{proof}
+
+\begin{remark}\label{SP:rem:q56easy}
+We record some easy facts that put \cref{SP:thm:q56} in context. Let $\Phi$ be a double \Fol{}
+sequence and let $A\subset\Q$ satisfy $\udens_\Phi(A)>0$.
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item Each of the two conditions can be met separately. Moreira, Richter and Robertson proved the
+following~\cite[Theorem~1.3]{moreira2019proof}: if $G$ is a countable group, $\Psi$ is a two-sided
+\Fol{} sequence on $G$, and $E\subset G$ has positive upper density along $\Psi$, then $E\supset BC$
+for some infinite $B,C\subset G$. Applied to $G=(\Q,+)$ and $\Psi=\Phi$, this gives infinite $B,C$
+with $B+C\subset A$. Next apply it to $G=(\Q^*,\cdot)$ and $\Psi=(F_N\setminus\{0\})_{N\ge N_0}$, where $N_0$ is such that these sets are nonempty; this is a
+\Fol{} sequence in $\Q^*$ by \cref{SP:lem:folner}(i), and the upper density of $A\setminus\{0\}$
+along it equals $\udens_\Phi(A)$. This gives infinite $B,C\subset\Q^*$ with $BC\subset A$. (Both
+groups are abelian, so one-sided and two-sided \Fol{} sequences coincide.)
+\item The set $\Q_{<0}$ itself contains the configuration: take $B=\{-n:n\ge2\}$ and
+$C=\{1/m:m\in\N\}$. So the deletion of the null set $Z$ in \cref{SP:thm:q56} is essential.
+\item The question requires two sets $B,C$. The version with $B=C$ fails even for restricted
+products: if $B\subset\Q$ is infinite, then $B\setminus\{0\}$ has two distinct elements of the
+same sign. So $\{b_1b_2:b_1,b_2\in B,\ b_1\neq b_2\}$ always contains a nonnegative number, and it
+is not contained in $\Q_{<0}$. On the other hand, $\dens_\Phi(\Q_{<0})=1/2$ by
+\cref{SP:lem:folner}(iii).
+\end{enumerate}
+\end{remark}
+
+\begin{remark}\label{SP:rem:q56literal}
+\Cref{SP:thm:q56} answers \cref{SP:q:56} as stated. The question assumes only that $A$ has positive
+density along some double \Fol{} sequence, and our set has density $1/2$ along any prescribed
+one. The obstruction is the sign of $x$, i.e.\ the real place of $\Q$. It plays the same role as
+congruence obstructions in $\N$, which is why the survey adds the aperiodicity hypothesis to
+Question~5.2. The point of \cref{SP:thm:q56} is that, once a set of density zero has been removed,
+this obstruction cannot be detected by density along a double \Fol{} sequence. The $\Phi$-dependent deletion of finite pieces is similar to the device used
+in~\cite[Example~5.9]{kra2023problems} (compare also the proof
+of~\cite[Proposition~3.2]{kra2023problems}). The question that is
+presumably intended remains open: does every $A\subset\Q$ that is large and has no such local
+obstruction contain $B+C$ and $BC$? Possible formalizations are to require $\ldens_\Phi(A)>0$
+for \emph{every} double \Fol{} sequence $\Phi$, which our construction (it depends on $\Phi$) does
+not address, or to impose a hypothesis on $A$ analogous to aperiodicity. We do not know the answer
+in either case.
+\end{remark}

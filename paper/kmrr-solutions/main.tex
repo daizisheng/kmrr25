@@ -1,0 +1,79 @@
+\documentclass[11pt]{amsart}
+\usepackage[margin=1.15in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage[T1]{fontenc}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!50!black,citecolor=green!35!black,urlcolor=blue!50!black]{hyperref}
+\usepackage[capitalise,nameinlink]{cleveref}
+
+\input{macros}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem*{theorem*}{Theorem}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+% Questions and conjectures quoted from the survey carry the survey's own numbers.
+\newtheorem{surveyqinner}{Question}
+\newtheorem{surveyconjinner}{Conjecture}
+\newenvironment{question}[1]{\renewcommand{\thesurveyqinner}{#1}%
+  \begin{surveyqinner}[{\cite{kra2023problems}}]}{\end{surveyqinner}}
+\newenvironment{surveyconj}[1]{\renewcommand{\thesurveyconjinner}{#1}%
+  \begin{surveyconjinner}[{\cite{kra2023problems}}]}{\end{surveyconjinner}}
+\newtheorem{example}[theorem]{Example}
+\crefname{surveyqinner}{Question}{Questions}
+\crefname{surveyconjinner}{Conjecture}{Conjectures}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\title[Solutions to problems on infinite sumset configurations]{Solutions to several problems on\\ infinite sumset configurations}
+
+\author{Shisheng Li}
+\author{Yong Su}
+
+\date{\today}
+
+\begin{document}
+
+\begin{abstract}
+We resolve a number of the problems collected by Kra, Moreira, Richter and Robertson in their survey
+\emph{Problems on infinite sumset configurations in the integers and beyond}.
+Our main result is that in every countably infinite abelian group, every set of positive upper Banach
+density contains a sumset $B_1+\dots+B_k$ of $k$ infinite sets, for every $k$; the proof avoids
+Host--Kra structure theory altogether.
+We also answer, positively or negatively, questions on monochromatic sets $B+mB$, on sumsets in
+sets of logarithmic density, on polynomial sumset configurations, on sums of the form
+$B_{i_1}+\dots+B_{i_m}$ with $B_i$ drawn from a density family, on random sets, on ordered sumsets in
+shifted primes, on sums and products in $\N$ and $\Q$, and on sumsets in abelian groups.
+Finally, we determine the lower Banach density thresholds for $B+B+t$ and $B+B$, answering a
+question of Kousek and Radi\'c.
+\end{abstract}
+
+\maketitle
+\tableofcontents
+
+\input{sections/intro}
+
+\part{Sumsets in groups}
+\input{sections/thmK}
+\input{sections/groups}
+
+\part{Sumsets in the integers}
+\input{sections/integers_A}
+\input{sections/integers_B}
+\input{sections/kr}
+
+\part{Sums and products}
+\input{sections/sumsproducts}
+
+\section*{Statement on AI collaboration}
+\input{sections/ai}
+
+\bibliographystyle{amsplain}
+\bibliography{refs}
+
+\end{document}

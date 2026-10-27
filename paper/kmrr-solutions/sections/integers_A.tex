@@ -1,0 +1,1192 @@
+% Section: Sumsets in the integers, first half (survey Section 3).
+% Label tag: IA:
+%
+% Local conventions (in addition to those of the introduction):
+%   N_0 = N \cup {0};  B+B and B+mB are unrestricted sums (b=b' allowed), as in the survey;
+%   B \oplus mB = {b+mb' : b,b' in B, b \neq b'} denotes the restricted version.
+
+\section{Unrestricted sums \texorpdfstring{$B+B$}{B+B} at the lower density threshold}\label{IA:sec:u32a}
+
+In this section we answer Question~\S3.2(a) of~\cite{kra2023problems}, negatively, under each of
+its two possible readings. Throughout this part of the paper $B+B=\{b+b':b,b'\in B\}$ denotes the
+\emph{unrestricted} sumset, which contains the diagonal elements $2b$, and
+$\N_0=\N\cup\{0\}$.
+
+Kousek and Radi\'c~\cite[Theorem~1.2]{kousek2024infinite} proved that a set $A\subset\N$ contains
+$B+B$ for some infinite $B\subset\N$ as soon as $\udens(A)>5/6$ or $\ldens(A)>3/4$, and showed
+that both thresholds are sharp~\cite[Propositions~4.1 and~4.2]{kousek2024infinite}. Right after
+reporting this, the survey asks the following.
+
+\begin{question}{\S3.2(a)}\label{IA:q:u32a}
+What occurs if we only assume, for example, that $|A\cap[N]|>\tfrac34N+\log N$ for infinitely many
+$N$? That is: must such a set $A\subset\N$ contain $B+B$ for some infinite set $B\subset\N$?
+\end{question}
+
+Read literally (``for infinitely many $N$''), the hypothesis is implied by $\udens(A)>3/4$, so it
+lies far below the upper density threshold $5/6$. The question is presumably meant as a boundary case
+of the lower density threshold, that is, with ``for all sufficiently large $N$''. We answer both
+readings.
+
+\begin{theorem}\label{IA:thm:u32a}
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item\label{IA:it:u32a-io} There is a set $A\subset\N$ such that for every $C>0$ we have
+$|A\cap[N]|>\tfrac34N+C\log N$ for infinitely many $N$, and such that $B+B\not\subset A$ for every
+infinite $B\subset\N$.
+\item\label{IA:it:u32a-all} There are a set $A\subset\N$ and a non-decreasing unbounded function
+$\psi\colon\N\to[0,\infty)$ such that
+\[
+|A\cap[N]|\ \ge\ \tfrac34N+\psi(N)\log N\qquad\text{for all sufficiently large }N,
+\]
+and $B+B\not\subset A$ for every infinite $B\subset\N$.
+\end{enumerate}
+\end{theorem}
+
+Since $\psi\to\infty$, part~\ref{IA:it:u32a-all} gives $|A\cap[N]|>\frac34N+C\log N$ for all large
+$N$, for every constant $C$ and every base of the logarithm.
+
+\begin{remark}\label{IA:rem:u32a}
+\begin{enumerate}[label=(\roman*)]
+\item Part~\ref{IA:it:u32a-io} is essentially contained in~\cite{kousek2024infinite}: the set $A'$
+of~\cite[Proposition~4.1]{kousek2024infinite} has upper density $5/6>3/4$ and contains no $B+B$,
+so it satisfies the literal hypothesis of \cref{IA:q:u32a}. We give an explicit variant with an exact
+count, to make the size of the excess visible. The literal reading is therefore answered by the
+known sharpness examples, and the natural question is the one in part~\ref{IA:it:u32a-all}.
+\item The set in part~\ref{IA:it:u32a-all} has lower density exactly $3/4$: at least $3/4$ by
+construction, and at most $3/4$ by~\cite[Theorem~1.2]{kousek2024infinite}, since it contains no
+$B+B$. The proof uses the diagonal elements $2b\in B+B$ in an
+essential way (see Step~(iv) in the proof of \cref{IA:prop:rot}).
+\item We do not know which functions $g(N)=o(N)$ have the property that $|A\cap[N]|\ge \frac34N+g(N)$
+for all large $N$ forces $B+B\subset A$ for some infinite $B$; part~\ref{IA:it:u32a-all} shows that
+$g(N)=\psi(N)\log N$ does not, for a suitable $\psi\to\infty$.
+\end{enumerate}
+\end{remark}
+
+\subsection{The literal reading}
+
+\begin{proof}[Proof of \cref{IA:thm:u32a}\ref{IA:it:u32a-io}]
+Let $S=\bigcup_{n\ge1}\big[4^n,\,2\cdot4^n-2n\big)\cap\Z$ and $A=(2\N-1)\cup(S\cap2\N)$.
+
+\emph{$S$ contains no $D+D$ with $D$ infinite.} Suppose $D+D\subset S$, let $d'=\min D$ and let
+$d\in D$ be large. Since $2d\in S$, there is $m$ with $4^m\le 2d<2\cdot4^m-2m$, and $m\to\infty$ as
+$d\to\infty$; take $d$ so large that $m\ge d'$. Then $2\cdot 4^{m-1}\le d\le d+d'<4^m-m+d'\le 4^m$.
+But $S\cap[2\cdot4^{m-1},4^m)=\varnothing$, because the block of index $m-1$ ends below
+$2\cdot4^{m-1}$ and the block of index $m$ starts at $4^m$. This contradicts $d+d'\in S$.
+
+\emph{$A$ contains no $B+B$ with $B$ infinite.} If $B+B\subset A$, choose an infinite $B'\subset B$
+whose elements all have the same parity. Then $B'+B'$ consists of even numbers, so
+$B'+B'\subset A\cap2\N\subset S$, which is impossible.
+
+\emph{Counting.} Let $N_n=2\cdot4^n-2n-1$. The odd numbers in $[N_n]$ number $(N_n+1)/2=4^n-n$. The
+block $[4^m,2\cdot4^m-2m)$ has even length and starts at an even number, so it contains
+$4^m/2-m$ even numbers; the blocks with $m\le n$ lie in $[N_n]$ and the block with $m=n+1$ does not
+meet it. Hence
+\[
+|A\cap[N_n]|=4^n-n+\sum_{m=1}^n\Big(\frac{4^m}2-m\Big)=4^n-n+\frac{4^{n+1}-4}{6}-\frac{n(n+1)}2,
+\]
+and subtracting $\frac34N_n=\frac32 4^n-\frac32n-\frac34$ gives
+\[
+|A\cap[N_n]|-\tfrac34N_n=\frac{4^n}{6}-\frac{n^2}{2}+\frac1{12}.
+\]
+This exceeds $C\log N_n=O(n)$ for every fixed $C$ once $n$ is large (for $C=1$ and the natural
+logarithm already for $n\ge3$).
+\end{proof}
+
+\subsection{Rotation blocks}
+For the second reading we first reduce to a statement about a set $E$ of density $1/2$. For
+$E\subset\N$ write $2E=\{2e:e\in E\}$.
+
+\begin{lemma}\label{IA:lem:parity}
+Let $E\subset\N$ and $A=(2\N-1)\cup2E$. If $B+B\subset A$ for some infinite $B\subset\N$, then there
+are an infinite $D\subset\N_0$ and $t\in\{0,1\}$ with $D+D+t\subset E$. Moreover
+$|A\cap[N]|=\lceil N/2\rceil+|E\cap[1,\lfloor N/2\rfloor]|$ for every $N\in\N$.
+\end{lemma}
+
+\begin{proof}
+Choose an infinite $B'\subset B$ of constant parity; then $B'+B'\subset A\cap2\N=2E$. If $B'\subset
+2\N$, put $D=\{b/2:b\in B'\}$, so that $2(D+D)=B'+B'$ and $D+D\subset E$. If $B'$ consists of odd
+numbers, put $D=\{(b-1)/2:b\in B'\}\subset\N_0$, so that $B'+B'=2(D+D+1)$ and $D+D+1\subset E$. The
+counting formula is clear.
+\end{proof}
+
+Let $\rho(x)=\one_{[0,1/2)}(\{x\})-\frac12$ for $x\in\R$, so that $\rho$ is $1$-periodic,
+right-continuous, has jumps exactly at $\frac12\Z$, and satisfies $\rho(x+\frac12)=-\rho(x)$. For
+$n\in\N$ let $\lambda(n)=\lfloor\log_2n\rfloor$ and $\varepsilon(n)=(-1)^{\lambda(n)}$. Note that
+\begin{equation}\label{IA:eq:lambda}
+\lambda(2n+t)=\lambda(n)+1\qquad(n\in\N,\ t\in\{0,1\}).
+\end{equation}
+
+\begin{definition}\label{IA:def:rot}
+Let $\alpha,\beta\in\R$ and let $(w_i)_{i\ge1}$ be positive integers. Let
+$J_0=\{x\in\T:\{x-\beta\}\in[0,\tfrac12)\}$ and $J_1=\T\setminus J_0$, and put
+\[
+R=\{n\in\N:\ n\alpha\bmod 1\in J_{\lambda(n)\bmod 2}\},\qquad
+G=\bigcup_{i\ge1}\,[2^i-w_i,\,2^i+w_i),\qquad E=R\setminus G .
+\]
+\end{definition}
+
+So $R$ is a Bohr set on each dyadic block, using the half-circle $J_0$ on blocks
+$[2^j,2^{j+1})$ with $j$ even and the complementary half-circle on blocks with $j$ odd; $E$ is
+obtained by removing slowly growing neighbourhoods of the powers of~$2$. For $\alpha\in\{0,\frac12\}$
+these are block sets of the kind used in~\cite[Section~4]{kousek2024infinite}.
+
+\begin{proposition}\label{IA:prop:rot}
+In \cref{IA:def:rot}, assume $w_i\to\infty$. Then there are no infinite $D\subset\N_0$ and
+$t\in\{0,1\}$ with $D+D+t\subset E$.
+\end{proposition}
+
+\begin{proof}
+Suppose $D$ is infinite, $t\in\{0,1\}$ and $D+D+t\subset E$; removing $0$ from $D$ we may assume
+$D\subset\N$.
+\begin{enumerate}[label=(\roman*),leftmargin=*]
+\item For $d\in D$ put $z_d=d\alpha+t\alpha/2\bmod1$. Then $(d+d'+t)\alpha\equiv z_d+z_{d'}$ and
+$(2d+t)\alpha\equiv2z_d\pmod 1$.
+\item For $k=0,1,2,3$ let $Q_k=\{z\in\T:\{z-\beta/2\}\in[\frac k4,\frac{k+1}4)\}$. If $z,z'\in
+Q_k$, write $z\equiv\beta/2+x$, $z'\equiv\beta/2+x'$ with $x,x'\in[\frac k4,\frac{k+1}4)$; then
+$z+z'\equiv\beta+(x+x')$ with $x+x'\in[\frac k2,\frac{k+1}2)$, so $z+z'\in J_{k\bmod2}$.
+In particular $2z\in J_{k\bmod 2}$ as well.
+\item By the pigeonhole principle there are $\sigma\in\{0,1\}$, $k\in\{0,1,2,3\}$ and an infinite
+$D'\subset D$ with $\lambda(d)\equiv\sigma\pmod 2$ and $z_d\in Q_k$ for all $d\in D'$.
+\item Let $d\in D'$. Since $2d+t\in E\subset R$ and $\lambda(2d+t)=\lambda(d)+1$
+by~\eqref{IA:eq:lambda}, we have $(2d+t)\alpha\in J_{1-\sigma}$. By (i) and (ii),
+$(2d+t)\alpha\equiv2z_d\in J_{k\bmod 2}$. As $J_0\cap J_1=\varnothing$, this forces $k\equiv1-\sigma
+\pmod 2$. (This is the only place where a diagonal element is used.)
+\item Let $d_0=\min D'$ and let $d'\in D'$, $d'>d_0$. Then $n:=d_0+d'+t\in E\subset R$ and, by (i)
+and (ii), $n\alpha\equiv z_{d_0}+z_{d'}\in J_{k\bmod2}=J_{1-\sigma}$. Since $n\in R$, this means
+$\lambda(n)\equiv1-\sigma\not\equiv\lambda(d')\pmod 2$. As $n>d'$, some power $2^i$ lies in
+$(d',n]$. Since $n\notin G$ and $n\ge 2^i$, we get $n\ge2^i+w_i$, so
+$w_i\le n-2^i<n-d'=d_0+t$.
+\item Letting $d'\to\infty$ through $D'$, the index $i$ in (v) tends to infinity (because $2^i>d'$),
+while $w_i<d_0+t$ stays bounded. This contradicts $w_i\to\infty$.\qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{lemma}\label{IA:lem:excess}
+In \cref{IA:def:rot}, for every $M\in\N$,
+\[
+|E\cap[1,M)|\ \ge\ \frac{M-1}{2}+S_{\alpha,\beta}(M)-\sum_{i\ge1:\ 2^i-w_i<M}2w_i,
+\]
+where $S_{\alpha,\beta}(M)=\sum_{1\le n<M}\varepsilon(n)\,\rho(n\alpha-\beta)$.
+\end{lemma}
+
+\begin{proof}
+If $\lambda(n)$ is even, then $\one_R(n)=\one_{[0,1/2)}(\{n\alpha-\beta\})$, so
+$\one_R(n)-\frac12=\rho(n\alpha-\beta)$; if $\lambda(n)$ is odd, then
+$\one_R(n)-\frac12=-\rho(n\alpha-\beta)$. Thus $\one_R(n)-\frac12=\varepsilon(n)\rho(n\alpha-\beta)$
+and $|R\cap[1,M)|=\frac{M-1}2+S_{\alpha,\beta}(M)$. Finally $|G\cap[1,M)|$ is at most the sum of the
+lengths $2w_i$ of the intervals $[2^i-w_i,2^i+w_i)$ that meet $[1,M)$.
+\end{proof}
+
+Thus everything hinges on making the twisted discrepancy $S_{\alpha,\beta}(M)$ grow faster than
+$\log M$ for \emph{all} large $M$: the gaps cost $\sum 2w_i$, which grows faster than $\log M$
+because $w_i\to\infty$.
+
+\begin{proposition}\label{IA:prop:TD}
+There are an irrational $\alpha$ and integers $1\le N_1\le N_2\le\cdots$ such that
+\[
+S_{\alpha,1/6}(M)\ \ge\ i\log M\qquad\text{for all } i\ge1 \text{ and all } M\ge N_i .
+\]
+\end{proposition}
+
+We prove \cref{IA:prop:TD} in \cref{IA:ssec:TD}, and first deduce part~\ref{IA:it:u32a-all} of the
+theorem.
+
+\begin{proof}[Proof of \cref{IA:thm:u32a}\ref{IA:it:u32a-all}]
+Let $\alpha$ and $(N_i)$ be as in \cref{IA:prop:TD}; we may assume $N_1\ge2$. Since
+$|S_\alpha(M)|\le(M-1)/2$, for each $M\ge2$ the inequality $S_\alpha(M)\ge i\log M$ fails for large
+$i$, so $N_i\to\infty$. Let $\psi_0(M)=\max\{i:N_i\le M\}$ for $M\ge N_1$ and $\psi_0(M)=0$ for
+$M<N_1$. Then $\psi_0$ is non-decreasing and unbounded, and
+$S_{\alpha,1/6}(M)\ge\psi_0(M)\log M$ for $M\ge N_1$. Take $\beta=\frac16$ and
+\[
+w_i=\max\Big(1,\ \min\big(\lfloor 2^i/4\rfloor,\ \lfloor\psi_0(2^{i-1})/16\rfloor\big)\Big)\qquad(i\ge1),
+\]
+so that $w_i\to\infty$, and let $E$ be as in \cref{IA:def:rot}.
+
+We bound the gap term of \cref{IA:lem:excess}. We have $w_1=1$. For $i\ge2$ we have $w_i\le2^i/4$, so
+$2^i-w_i<M$ implies $\frac34 2^i<M$, hence $2^{i-1}<M$, hence $\psi_0(2^{i-1})\le\psi_0(M)$ and
+$w_i\le\max(1,\psi_0(M)/16)$. The indices $i\ge 2$ with $\frac342^i<M$ satisfy
+$i<\log_2M+1$, so there are at most $\log_2M+2$ indices in the sum. Hence, once $\psi_0(M)\ge16$,
+\[
+\sum_{2^i-w_i<M}2w_i\le\frac{\psi_0(M)}{8}\,(\log_2M+2)=\psi_0(M)\Big(\frac{\log M}{8\log 2}+\frac14\Big)
+\le\psi_0(M)\big(0.19\log M+0.25\big).
+\]
+By \cref{IA:lem:excess}, for all large $M$,
+\[
+|E\cap[1,M)|-\frac{M-1}2\ \ge\ \psi_0(M)\big(0.81\log M-0.25\big)\ \ge\ \tfrac12\psi_0(M)\log M+1 .
+\]
+Let $A=(2\N-1)\cup2E$. By \cref{IA:lem:parity}, with $M=\lfloor N/2\rfloor+1$,
+\[
+|A\cap[N]|=\lceil N/2\rceil+|E\cap[1,M)|\ \ge\ \frac N2+\frac{N-1}4+\tfrac12\psi_0(M)\log M+1
+\ \ge\ \frac34N+\tfrac12\psi_0(M)\log(N/2)
+\]
+for all large $N$. With $\psi(N)=\frac14\psi_0(\lfloor N/2\rfloor+1)$, which is non-decreasing and
+unbounded, we get $|A\cap[N]|\ge\frac34N+\psi(N)\log N$ for all large $N$. Finally, if $B+B\subset A$
+with $B$ infinite, \cref{IA:lem:parity} produces an infinite $D\subset\N_0$ and $t\in\{0,1\}$ with
+$D+D+t\subset E$, contradicting \cref{IA:prop:rot}.
+\end{proof}
+
+\subsection{A twisted discrepancy estimate}\label{IA:ssec:TD}
+For $\theta\in\R$ and $n\in\Z$ let $r_\theta(n)=\rho(n\theta-\frac16)$ and
+$S_\theta(M)=\sum_{1\le n<M}\varepsilon(n)r_\theta(n)$, so that $S_\theta=S_{\theta,1/6}$. Let
+$\mathcal Q$ be the set of rationals $\theta=a/q$ with
+\[
+q=3\cdot2^p\ (p\ge1),\qquad 0<a<q,\qquad\gcd(a,q)=1 .
+\]
+For $\theta=a/q\in\mathcal Q$ (always written in lowest terms) put
+\[
+\Delta(\theta)=\sum_{2^p\le n<2^{p+1}}r_\theta(n),\qquad G(\theta)=(-1)^p\Delta(\theta),\qquad
+\mathcal D(\theta)=\sup_{u\le v}\Big|\sum_{u\le n<v}r_\theta(n)\Big| .
+\]
+Note that $q$ is even and $a$ is odd, and that $2^p=q/3$.
+
+\begin{lemma}\label{IA:lem:TD0}
+Let $\theta=a/q\in\mathcal Q$.
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item $\sum_{n=u}^{u+q-1}r_\theta(n)=0$ for every $u\in\Z$; in particular $\mathcal D(\theta)\le q/2$.
+\item For every $j\ge p$, $\sum_{2^j\le n<2^{j+1}}\varepsilon(n)r_\theta(n)=G(\theta)$.
+\item $S_\theta(2^j)=S_\theta(2^p)+(j-p)G(\theta)$ for $j\ge p$, and
+$|S_\theta(M)-S_\theta(2^j)|\le\mathcal D(\theta)$ whenever $2^j\le M\le 2^{j+1}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(i) We have $n\theta-\frac16=(na-2^{p-1})/q$ with $2^{p-1}\in\Z$. As $n$ runs through $q$
+consecutive integers, $na-2^{p-1}$ runs through all residues modulo $q$, and $\rho(k/q)=\frac12$ for
+exactly $q/2$ residues $k$ and $-\frac12$ for the others. Hence the sum vanishes, the function
+$D(N)=\sum_{0\le n<N}r_\theta(n)$ is $q$-periodic, every interval sum equals a sum over fewer than $q$
+consecutive integers, and $\mathcal D(\theta)\le q/2$.
+
+(ii) For $j\ge p$ let $u_j\in\{1,2\}$ with $u_j\equiv2^{j-p}\pmod 3$; thus $u_j=1$ if $j-p$ is even
+and $u_j=2$ otherwise. Since $q=3\cdot2^p$ divides $2^p(2^{j-p}-u_j)$, periodicity gives
+$D(2^j)=D(2^pu_j)$. Therefore
+$\sum_{2^j\le n<2^{j+1}}r_\theta(n)=D(2^pu_{j+1})-D(2^pu_j)=(-1)^{j-p}\big(D(2^{p+1})-D(2^p)\big)
+=(-1)^{j-p}\Delta(\theta)$. On $[2^j,2^{j+1})$ we have $\varepsilon=(-1)^j$, which gives (ii).
+
+(iii) The first claim follows from (ii). If $2^j\le M\le2^{j+1}$, then
+\[
+S_\theta(M)-S_\theta(2^j)=(-1)^j\sum_{2^j\le n<M}r_\theta(n).
+\]
+\end{proof}
+
+\begin{lemma}\label{IA:lem:TD1}
+Let $\theta=a/q\in\mathcal Q$, let $d\ge1$, $L=2^d$, let $b$ be an odd integer with $0<b<L$, and
+suppose that $\theta'=\theta+\frac{b}{qL}=\frac{aL+b}{qL}$ belongs to $\mathcal Q$ (with denominator
+$qL$). Then for every set $I$ of at most $qL$ consecutive integers,
+\[
+\Big|\sum_{n\in I}r_{\theta'}(n)\Big|\le\frac{|I|\,b}{L}+q,\qquad\text{and consequently}\qquad
+\mathcal D(\theta')\le q(b+1).
+\]
+\end{lemma}
+
+\begin{proof}
+Let $n_0=\min I$ and $K=\lfloor|I|/q\rfloor$. Split $I$ into the $K$ blocks
+$\{n_0+kq+s:0\le s<q\}$, $0\le k<K$, and a remainder of fewer than $q$ integers, which contributes at
+most $q/2$ in absolute value. Put $c=b/(2L)\in(0,\frac12)$. Since $a$ is odd,
+$\frac q2\theta'=\frac a2+c\equiv\frac12+c\pmod1$, so for every $n$,
+\[
+r_{\theta'}(n)+r_{\theta'}(n+\tfrac q2)=\rho(x)+\rho(x+\tfrac12+c)=\rho(x)-\rho(x+c),\qquad
+x=n\theta'-\tfrac16 .
+\]
+Within each block pair $s$ with $s+\frac q2$, $0\le s<\frac q2$. Fix $s$, and let
+$x_k=(n_0+kq+s)\theta'-\frac16$. Since $q\theta'=a+2c$ with $a\in\Z$, we have
+$\rho(x_k)-\rho(x_k+c)=\rho(y_k)-\rho(y_k+c)$ with $y_k=x_0+2ck$. This difference is $0$ unless the
+interval $(y_k,y_k+c]$ contains a point of $\frac12\Z$, in which case it is $\pm1$. The intervals
+$(y_k,y_k+c]$, $0\le k<K$, are pairwise disjoint and contained in an interval of length $2cK$, which
+contains at most $4cK+1$ points of $\frac12\Z$. Summing over the $q/2$ values of $s$, the blocks
+contribute at most $\frac q2(4cK+1)=\frac{qKb}{L}+\frac q2\le\frac{|I|b}{L}+\frac q2$. This proves
+the first bound. By \cref{IA:lem:TD0}(i) applied to $\theta'$, every interval sum of $r_{\theta'}$
+equals a sum over fewer than $qL$ consecutive integers, so $\mathcal D(\theta')\le qL\cdot b/L+q$.
+\end{proof}
+
+\begin{lemma}\label{IA:lem:TD2}
+Let $\theta=a/q\in\mathcal Q$, $\theta'\ge\theta$ and $n\ge0$ with $n(\theta'-\theta)<1/q$. Then
+$r_{\theta'}(n)=r_\theta(n)$.
+\end{lemma}
+
+\begin{proof}
+$n\theta-\frac16$ lies in $\frac1q\Z$, and $\rho$ is constant on each interval
+$[\frac kq,\frac{k+1}q)$ because its jumps lie in $\frac12\Z\subset\frac1q\Z$. The point
+$n\theta'-\frac16$ lies in the same interval as $n\theta-\frac16$.
+\end{proof}
+
+The next lemma produces, from $\theta\in\mathcal Q$, a nearby $\theta'\in\mathcal Q$ with a much
+larger gain $G(\theta')$ per dyadic block.
+
+\begin{lemma}\label{IA:lem:TD3}
+Let $\theta=a/q\in\mathcal Q$ with $q=3\cdot2^p$, and put $h=q-a\ge1$. Let $m\ge p$ with $m\equiv
+p\pmod 2$, let $b=h2^m+1$ and let $R\ge1$ be the order of $2$ modulo $3b$. For $t\in\N$ put
+$d=m+2Rt$, $L=2^d$ and $\theta'=\frac{aL+b}{qL}$. Then $0<b<L$, $\theta'\in\mathcal Q$ with
+denominator $qL=3\cdot2^{p+d}$, $p+d$ is even, and
+\[
+G(\theta')=\Delta(\theta')\ \ge\ \frac{q2^m}{12}-h-q-2 .
+\]
+\end{lemma}
+
+\begin{proof}
+Since $2^R\equiv1\pmod{3b}$ we have $2^R>3b$, hence $L\ge2^{2R}>b$. Moreover
+$2^d=2^m(2^R)^{2t}\equiv2^m\pmod{3b}$.
+\begin{enumerate}[label=(\arabic*),leftmargin=*]
+\item $hL+1\equiv h2^m+1=b\equiv0\pmod b$, so $U=(hL+1)/b$ is an integer.
+\item $U-1=h(2^d-2^m)/b$. Here $(2^d-2^m)/b$ is an integer divisible by $3$ (as $3b\mid2^d-2^m$)
+and by $2^m$ (as $b$ is odd). Hence $q=3\cdot2^p$ divides $U-1$; in particular $U\equiv1\pmod 6$, say
+$U=6v+1$.
+\item Put $a'=aL+b$ and $q'=qL$. Since $aU+h\equiv a+h=q\equiv0\pmod q$, the number
+$\tau=(aU+h)/q$ is an integer, and
+\[
+a'U=aLU+bU=aLU+hL+1=L(aU+h)+1=\tau q'+1 .
+\]
+Hence $\gcd(a',q')=1$ and $\gcd(\tau,U)=1$. Also $0<a'<aL+hL=q'$, so $\theta'=a'/q'\in\mathcal Q$;
+the exponent of $2$ in $q'$ is $p+d=p+m+2Rt$, which is even. Moreover
+$\theta'=\frac{\tau}{U}+\frac{1}{Uq'}$.
+\item Let $N=q'/3=2^{p+d}$, so that $\Delta(\theta')=\sum_{N\le n<2N}r_{\theta'}(n)$. For $n$ in this
+range put $z=n/q'\in[\frac13,\frac23)$ and let $m'\in\{0,\dots,U-1\}$ be the residue of $n\tau$
+modulo $U$. Then $n\theta'-\frac16\equiv\frac{m'+z}{U}-\frac16\pmod 1$ with $\frac{m'+z}U\in[0,1)$,
+so $r_{\theta'}(n)=\frac12$ if and only if $\frac{m'+z}{U}\in[\frac16,\frac23)$, that is,
+$m'+z\in[v+\frac16,4v+\frac23)$. Since $z\in[\frac13,\frac23)$, this holds if and only if
+$v\le m'\le 4v$. Hence on any $U$ consecutive integers in $[N,2N)$, on which $m'$ takes every value
+once (as $\gcd(\tau,U)=1$), there are $3v+1$ values $+\frac12$ and $3v$ values $-\frac12$, and the
+sum is $\frac12$.
+\item Split $[N,2N)$ into $\lfloor N/U\rfloor$ blocks of $U$ consecutive integers and a remainder of
+fewer than $U\le hL+1\le q'$ integers. By \cref{IA:lem:TD1}, the remainder contributes at most
+$Ub/L+q=h+\frac1L+q$ in absolute value. Hence
+\[
+\Delta(\theta')\ge\frac12\Big(\frac NU-1\Big)-h-1-q .
+\]
+Finally $\frac N{2U}=\frac{qLb}{6(hL+1)}\ge\frac{qb}{6(h+1)}\ge\frac{q2^m}{12}$, using
+$b=h2^m+1\ge(h+1)2^{m-1}$. As $p+d$ is even, $G(\theta')=\Delta(\theta')$.\qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{lemma}\label{IA:lem:TD4}
+Let $\theta=a/q\in\mathcal Q$ with $q=3\cdot2^p$, let $c\ge0$, and let $N_0,X_0\in\N$. Suppose that
+$G(\theta)>c\log2$ and $S_\theta(M)\ge c\log M$ for all $M\ge N_0$. Let $m,b,R$ be as in
+\cref{IA:lem:TD3}, chosen so that $\frac{q2^m}{12}-h-q-2\ge c\log 2$, and let $\theta'_t$ denote
+the number $\theta'$ of \cref{IA:lem:TD3} for the parameter $t$. Then for all sufficiently large $t$:
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item $r_{\theta'_t}(n)=r_\theta(n)$ for $0\le n<X_0$;
+\item $S_{\theta'_t}(M)\ge c\log M$ for all $M\ge N_0$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Write $\theta'=\theta'_t$, $d=m+2Rt$, $P'=p+d$, and let $\ell=\lceil\log_2b\rceil+1$ and
+$J=d-\ell$. For $0\le n<2^J$ we have $n(\theta'-\theta)=\frac{nb}{q2^d}<\frac{b2^{-\ell}}{q}\le
+\frac1{2q}$, so $r_{\theta'}(n)=r_\theta(n)$ by \cref{IA:lem:TD2}. In particular (i) holds once
+$2^J\ge X_0$, and $S_{\theta'}(M)=S_\theta(M)$ for $M\le2^J$.
+
+Let $B_0=q(b+1)$; by \cref{IA:lem:TD1} (with $\theta'\in\mathcal Q$ by \cref{IA:lem:TD3}),
+$\mathcal D(\theta')\le B_0$, and $B_0$ does not depend on $t$. By \cref{IA:lem:TD0}(iii) for
+$\theta$,
+\[
+\Phi(t):=S_\theta(2^p)+(J-p)G(\theta)-(p+\ell)B_0-c(P'+1)\log2-B_0
+= d\,\big(G(\theta)-c\log 2\big)+C_0,
+\]
+where $C_0$ does not depend on $t$. Since $G(\theta)>c\log2$ and $d\to\infty$ as $t\to\infty$, we may
+take $t$ so large that $\Phi(t)\ge0$, $J\ge p$ and $2^J\ge\max(X_0,N_0)$. We check (ii) for this $t$.
+
+If $N_0\le M\le 2^J$, then $S_{\theta'}(M)=S_\theta(M)\ge c\log M$.
+
+If $2^J\le M\le 2^{P'}$, the interval $[2^J,M)$ meets at most $P'-J=p+\ell$ dyadic blocks, on each of
+which $\varepsilon$ is constant; hence
+$S_{\theta'}(M)\ge S_{\theta'}(2^J)-(p+\ell)B_0=S_\theta(2^J)-(p+\ell)B_0
+\ge c(P'+1)\log2+B_0\ge c\log M$, using $S_\theta(2^J)=S_\theta(2^p)+(J-p)G(\theta)$ and
+$\Phi(t)\ge0$. In particular $S_{\theta'}(2^{P'})\ge c(P'+1)\log2+B_0$.
+
+If $M>2^{P'}$, let $2^j\le M<2^{j+1}$ with $j\ge P'$. By \cref{IA:lem:TD0}(iii) for $\theta'$ (whose
+denominator is $3\cdot2^{P'}$) and $G(\theta')\ge c\log2$,
+\[
+S_{\theta'}(M)\ge S_{\theta'}(2^{P'})+(j-P')G(\theta')-B_0\ge c(P'+1)\log2+(j-P')c\log2=c(j+1)\log2
+\ge c\log M .\qedhere
+\]
+\end{proof}
+
+\begin{proof}[Proof of \cref{IA:prop:TD}]
+Let $\theta_1=\frac1{12}$, so $q=12$, $p=2$. For $4\le n<8$ we have
+$\frac n{12}-\frac16=\frac{n-2}{12}\in[0,\frac12)$, so $\Delta(\theta_1)=2$ and
+$G(\theta_1)=2>2\log2$. By \cref{IA:lem:TD0}(iii), $S_{\theta_1}(M)\ge S_{\theta_1}(4)+2(j-2)-6$ for
+$2^j\le M<2^{j+1}$, $j\ge2$, so there is $N_1$ with $S_{\theta_1}(M)\ge\log M$ for $M\ge N_1$.
+
+Suppose that for some $k\ge1$ we have constructed $\theta_1,\dots,\theta_k$ with
+$\theta_i=a_i/q_i\in\mathcal Q$, and $N_1\le\dots\le N_k$, such that
+\begin{enumerate}[label=(H\arabic*),leftmargin=*]
+\item\label{IA:H1} $G(\theta_k)>(k+1)\log2$, and
+\item\label{IA:H2} $S_{\theta_k}(M)\ge i\log M$ for all $1\le i\le k$ and all $M\ge N_i$.
+\end{enumerate}
+(For $k=1$ this was just checked.) Choose $m\ge p_k$ with $m\equiv p_k\pmod2$ and
+$\frac{q_k2^m}{12}-h_k-q_k-2>(k+2)\log2$, where $q_k=3\cdot2^{p_k}$, $h_k=q_k-a_k$. Apply
+\cref{IA:lem:TD4} with $\theta=\theta_k$, $c=k$ and $N_0=X_0=N_k$; its hypotheses hold by \ref{IA:H1}
+and \ref{IA:H2}. Taking $t$ large enough we obtain $\theta_{k+1}=\theta'_t\in\mathcal Q$ such that
+$r_{\theta_{k+1}}=r_{\theta_k}$ on $[0,N_k)$, $S_{\theta_{k+1}}(M)\ge k\log M$ for $M\ge N_k$, and in
+addition
+\begin{equation}\label{IA:eq:eta}
+\eta_k:=\theta_{k+1}-\theta_k<\min\Big(\frac1{8q_k^2},\frac{\eta_{k-1}}4\Big)\qquad(\eta_0:=1),
+\end{equation}
+which is possible because $\theta'_t-\theta_k=b/(q_k2^{m+2Rt})\to0$. By \cref{IA:lem:TD3},
+$G(\theta_{k+1})>(k+2)\log2$. Property \ref{IA:H2} for $\theta_{k+1}$ and $i\le k$ holds: for
+$N_i\le M\le N_k$ we have $S_{\theta_{k+1}}(M)=S_{\theta_k}(M)\ge i\log M$, and for $M\ge N_k$ we have
+$S_{\theta_{k+1}}(M)\ge k\log M\ge i\log M$. For $i=k+1$, \cref{IA:lem:TD0}(iii) and
+$G(\theta_{k+1})>(k+2)\log2$ give some $N_{k+1}\ge N_k$ with $S_{\theta_{k+1}}(M)\ge(k+1)\log M$ for
+all $M\ge N_{k+1}$.
+
+The sequence $(\theta_k)$ is increasing, and by~\eqref{IA:eq:eta} its limit $\alpha$ satisfies
+$0<\alpha-\theta_k<\frac43\eta_k<\frac{1}{6q_k^2}$. Since $q_{k+1}=q_k2^{d}>q_k$, we have
+$q_k\to\infty$. If $\alpha=c'/s$ were rational, then $\frac1{sq_k}\le|\alpha-\frac{a_k}{q_k}|
+<\frac1{6q_k^2}$ for all $k$, which is impossible for large $k$; so $\alpha$ is irrational. For each
+$n\ge1$ the point $n\alpha-\frac16$ is irrational, hence not in $\frac12\Z$, so $\rho$ is continuous
+there and $r_{\theta_k}(n)\to r_\alpha(n)$. Consequently $S_{\theta_k}(M)\to S_\alpha(M)$ for each $M$.
+Given $i$ and $M\ge N_i$, we have $S_{\theta_k}(M)\ge i\log M$ for all $k\ge i$ by \ref{IA:H2}, and
+letting $k\to\infty$ gives $S_\alpha(M)\ge i\log M$.
+\end{proof}
+
+
+\section{Ordered polynomial sumsets}
+
+In this section we answer two unnumbered questions from~\cite[\S3.3]{kra2023problems}. In
+\cref{IA:sec:u33a} we determine exactly which ordered polynomial sums
+$\{f(b_1)+g(b_2):b_1<b_2\}$ appear, up to a shift, in every set of positive density: those with
+$\deg f\le1$ and $\deg g\le1$. In \cref{IA:sec:u33e} we observe that the natural generalisations of
+Question~3.18 of~\cite{kra2023problems} have negative answers. Both answers rely on work of
+Ackelsberg~\cite{ackelsberg2024counterexamples} and Kousek~\cite{kousek2025asymmetric}; our
+contribution is small and we say precisely what it is.
+
+\subsection{Which ordered polynomial sums are unavoidable}\label{IA:sec:u33a}
+For functions $f,g$ and $B\subset\N$ write
+\[
+f(B)\oplus_<g(B)=\{f(b_1)+g(b_2):\ b_1,b_2\in B,\ b_1<b_2\}.
+\]
+The survey considers these ``ordered sums'' for polynomials $f,g$ ``over $\N$''
+\cite[(5)]{kra2023problems}, notes that they are partition regular by Ramsey's theorem, and asks:
+
+\begin{question}{\S3.3(a)}\label{IA:q:u33a}
+Let $f$ and $g$ be polynomials over $\N$. Can instances of $f(B)\oplus_<g(B)$ be found, up to a
+shift, in every set with positive density? That is, does every $A\subset\N$ of positive density
+contain $f(B)\oplus_<g(B)+t$ for some infinite $B\subset\N$ and some $t\ge0$?
+\end{question}
+
+The survey does not specify the density; its default is upper Banach density. Special cases are
+Theorem~2.2 of~\cite{kra2023problems} ($f=g=x$, positive, in the restricted form), Conjecture~3.10
+($f,g$ linear), Question~3.13 ($f=x^2$, $g=x$) and Example~3.14 ($g=x^2$). We interpret ``polynomials
+over $\N$'' in the widest sensible way and let
+\[
+\mathcal P=\{f\in\Q[x]:\ f(\N)\subset\N_0\};
+\]
+this contains all polynomials with coefficients in $\N_0$.
+
+\begin{theorem}\label{IA:thm:u33a}
+Let $f,g\in\mathcal P$.
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item\label{IA:it:u33a-pos} If $\deg f\le1$ and $\deg g\le1$, then for every $A\subset\N$ with
+$\ubd(A)>0$ there are an infinite $B\subset\N$ and $t\ge0$ with $f(B)\oplus_<g(B)+t\subset A$.
+\item\label{IA:it:u33a-neg} If $\max(\deg f,\deg g)\ge2$, then for every $\eps>0$ there is a set
+$A\subset\N$ with $\ldens(A)>1-\eps$ such that $f(B)\oplus_<g(B)+t\not\subset A$ for every
+infinite $B\subset\N$ and every $t\in\Z$. Moreover, one set $A$ works simultaneously for all such
+pairs $(f,g)$.
+\end{enumerate}
+\end{theorem}
+
+Since the hypothesis in~\ref{IA:it:u33a-pos} is the weakest density condition and the conclusion
+in~\ref{IA:it:u33a-neg} concerns the strongest one, the classification does not depend on which
+notion of density is used in \cref{IA:q:u33a}.
+
+\begin{remark}[Attribution]\label{IA:rem:u33a-credit}
+Part~\ref{IA:it:u33a-pos} is a direct consequence of Kousek's theorem~\cite[Theorem~1.2]{kousek2025asymmetric}
+(which proved Conjecture~3.10 of~\cite{kra2023problems}); we only add the bookkeeping for constant
+terms and zero coefficients. Part~\ref{IA:it:u33a-neg} was known for $\deg g\ge2$ in the reversed or
+sparse forms of~\cite[Example~3.14]{kra2023problems}, and for $g(x)=x$ by Ackelsberg's
+theorem~\cite[Theorem~1.5]{ackelsberg2024counterexamples}. Our proof of~\ref{IA:it:u33a-neg} is
+Ackelsberg's argument with $P(x)+x$ replaced by $f(x)+g(x)$; the only cases not covered explicitly
+in the literature that we know of are those with $\deg f\ge2$ and $g(x)=mx+c$, $m\ge2$.
+\end{remark}
+
+\begin{remark}[Scope]\label{IA:rem:u33a-scope}
+\begin{enumerate}[label=(\roman*)]
+\item The argument for~\ref{IA:it:u33a-neg} does not use the order $b_1<b_2$: the same set $A$
+also avoids $\{f(b_1)+g(b_2):b_1>b_2\}+t$ and $\{f(b_1)+g(b_2):b_1\neq b_2\}+t$.
+\item Integer polynomials that are not $\N_0$-valued on $\N$ are outside \cref{IA:q:u33a}, and the
+classification does not extend to them. For instance, for $f(x)=-x$ and $g(x)=x$ the configuration is
+the infinite set $\{b_2-b_1:b_1<b_2\}$ and $f+g=0$; since $|R_k(0)|=1$, the proof
+of~\ref{IA:it:u33a-neg} below shows that it can be avoided by sets of lower density $>1-\eps$, although
+both polynomials are linear.
+\item The survey remarks that it is immaterial whether one uses $f(B)\oplus_<g(B)$ or
+$\{r+s:r\in f(B),s\in g(B),r<s\}$. This is not accurate in general. If $g$ is non-constant and
+$f(b)\ge g(b)$ for all large $b$, the two formulations are equivalent: refining $B$ we may assume
+$f(b_1)<g(b_2)$ for all $b_1<b_2$ in $B$, and also that $f$ is non-decreasing and $f\ge g$ on $B$, so
+that $f(b_1)<g(b_2)$ forces $b_1<b_2$. If instead $f(b)<g(b)$ for all large $b$, the second set
+contains the diagonal elements $f(b)+g(b)$, and the answer can change even for linear $f,g$: for
+$f(x)=x$, $g(x)=2x$ the second set contains $\{b_1+2b_2:b_1\le b_2\}$, and
+Kousek~\cite[Proposition~5.1]{kousek2025asymmetric} (with $m=1$, $\ell=2$) gives a set of positive
+upper density containing no shift $\{b_1+2b_2:b_1\le b_2\}+t$, $t\in\N$, with $B$ infinite (the
+case $t=0$ reduces to $t=3$ by replacing $B$ with $B-1$). If $g\equiv c$ and $\deg f\ge2$, the
+second set is finite, while $f(B)\oplus_<g(B)=f(B\setminus\{\max B\})+c$ is infinite.
+\Cref{IA:thm:u33a} uses the formulation~\cite[(5)]{kra2023problems}.
+\item In $\Q$ the situation is different: Ackelsberg~\cite[Theorem~1.4]{ackelsberg2025infinite}
+proved that if $P\in\Q[x]$ and $P(x)+x$ are non-constant, then every $A\subset\Q$ of positive upper
+Banach density contains $\{b_i,\ P(b_i)+b_j:i<j\}+t$ for some infinite $\{b_n\}\subset\Q$ and some
+$t\in\Q$.
+\end{enumerate}
+\end{remark}
+
+We collect elementary facts about $\mathcal P$.
+
+\begin{lemma}\label{IA:lem:P}
+Let $f,g\in\mathcal P$.
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item $f(\Z)\subset\Z$, and there is $D\in\N$ with $Df\in\Z[x]$. For such $D$ and every $k\in\N$,
+$n\equiv n'\pmod{Dk}$ implies $f(n)\equiv f(n')\pmod k$.
+\item If $f$ is non-constant, its leading coefficient is positive. Consequently
+$\deg(f+g)=\max(\deg f,\deg g)$.
+\item If $\deg f\le1$, then $f(x)=mx+c$ with $m\in\N_0$ and $c\in\Z$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(i) Write $f(x)=\sum_{i}\Delta^if(1)\binom{x-1}{i}$ (Newton's forward difference formula); the
+numbers $\Delta^if(1)$ are integers because $f(\N)\subset\Z$, and $\binom{x-1}i\in\Z$ for $x\in\Z$.
+A common denominator $D$ of the coefficients exists since $f\in\Q[x]$. If $n-n'=Dks$, then
+$D(f(n)-f(n'))=(n-n')Q$ for some $Q\in\Z$ (as $Df\in\Z[x]$), so $f(n)-f(n')=ksQ$.
+(ii) A non-constant polynomial with negative leading coefficient tends to $-\infty$. If
+$\deg f=\deg g$, the leading coefficients are both positive and do not cancel.
+(iii) $m=f(2)-f(1)\in\Z$, $c=f(1)-m\in\Z$, and $m\ge0$ by (ii).
+\end{proof}
+
+For an integer-valued $h\in\Q[x]$ and $k\in\N$ let $R_k(h)=\{h(n)\bmod k:n\in\Z\}\subset\Z/k\Z$.
+
+\begin{lemma}[Ackelsberg]\label{IA:lem:Rk}
+If $h\in\Q[x]$ satisfies $h(\Z)\subset\Z$ and $\deg h\ge2$, then
+$\inf_{k\in\N}|R_k(h)|/k=0$.
+\end{lemma}
+
+\begin{proof}
+Let $\P_h$ be the set of primes $p$ such that $h(\Z)$ meets every residue class modulo $p$. By
+Ackelsberg's Lemma~4.3 in~\cite{ackelsberg2024counterexamples}, $\sum_{p\in\P\setminus\P_h}1/p=\infty$,
+so $\prod_{p\in\P\setminus\P_h}(1-1/p)=0$. If $p_1,\dots,p_s\in\P\setminus\P_h$ are distinct and
+$k=p_1\cdots p_s$, then by the Chinese remainder theorem every element of $R_k(h)$ reduces modulo
+$p_i$ to an element of $R_{p_i}(h)$, so $|R_k(h)|\le\prod_i|R_{p_i}(h)|\le\prod_i(p_i-1)$ and
+$|R_k(h)|/k\le\prod_i(1-1/p_i)$. This is the argument of the proof
+of~\cite[Theorem~1.5]{ackelsberg2024counterexamples}, applied to $h$ instead of $P(x)+x$.
+\end{proof}
+
+\begin{lemma}\label{IA:lem:subadd}
+Let $E_1,E_2,\ldots\subset\N$ have natural densities $\delta_1,\delta_2,\dots$. There is
+$S\subset\N$ such that $E_j\setminus S$ is finite for every $j$ and $\udens(S)\le\sum_j\delta_j$.
+\end{lemma}
+
+\begin{proof}
+This is the natural-density version of~\cite[Lemma~3.1]{ackelsberg2024counterexamples}. Choose
+$M_1<M_2<\cdots$ such that $|E_i\cap[N]|\le(\delta_i+2^{-J})N$ for all $J$, all $i\le J$ and all
+$N\ge M_J$, and let $S=\bigcup_j\big(E_j\cap(M_j,\infty)\big)$. Then $E_j\setminus S\subset[M_j]$.
+If $M_J\le N<M_{J+1}$, then $S\cap[N]\subset\bigcup_{j\le J}(E_j\cap[N])$, so
+$|S\cap[N]|\le(\sum_j\delta_j+J2^{-J})N$.
+\end{proof}
+
+\begin{proof}[Proof of \cref{IA:thm:u33a}\ref{IA:it:u33a-neg}]
+The set of pairs $(f,g)\in\mathcal P^2$ with $\max(\deg f,\deg g)\ge2$ is countable; enumerate the
+triples $(f,g,t)$ with such $(f,g)$ and $t\in\Z$ as $(f_j,g_j,t_j)_{j\ge1}$. Put $h_j=f_j+g_j$. By
+\cref{IA:lem:P}, $h_j$ is integer-valued on $\Z$ and $\deg h_j\ge2$, so by \cref{IA:lem:Rk} there is
+$k_j$ with $|R_{k_j}(h_j)|/k_j<\eps2^{-j}$. Let
+\[
+E_j=\{x\in\N:\ (x-t_j)\bmod k_j\in R_{k_j}(h_j)\},
+\]
+a union of residue classes of natural density $\delta_j=|R_{k_j}(h_j)|/k_j$. Let $S$ be given by
+\cref{IA:lem:subadd} and $A=\N\setminus S$. Then $\ldens(A)=1-\udens(S)\ge1-\sum_j\delta_j>1-\eps$.
+
+Suppose that $f_j(B)\oplus_<g_j(B)+t_j\subset A$ for some $j$ and some infinite $B$. Let $k=k_j$ and
+let $D$ be such that $Df_j,Dg_j\in\Z[x]$. By the pigeonhole principle there is $n$ such that
+$B'=B\cap(n+Dk\Z)$ is infinite. By \cref{IA:lem:P}(i), $f_j(b_1)+g_j(b_2)\equiv f_j(n)+g_j(n)=h_j(n)
+\pmod k$ for all $b_1,b_2\in B'$, so $f_j(B')\oplus_<g_j(B')+t_j\subset A\cap E_j\subset E_j\setminus
+S$, which is finite. But $f_j(B')\oplus_<g_j(B')$ is infinite: if $g_j$ is non-constant, fix
+$b_1=\min B'$ and let $b_2\to\infty$; if $g_j$ is constant, then $\deg f_j\ge2$ and $f_j(b_1)\to\infty$
+as $b_1\to\infty$ in $B'$. This contradiction proves~\ref{IA:it:u33a-neg} for every $(f,g)$ and every
+$t\in\Z$ simultaneously.
+\end{proof}
+
+\begin{proof}[Proof of \cref{IA:thm:u33a}\ref{IA:it:u33a-pos}]
+By \cref{IA:lem:P}(iii), $f(x)=mx+c$ and $g(x)=\ell x+c'$ with $m,\ell\in\N_0$ and $c,c'\in\Z$. Let
+$\ubd(A)>0$; in particular $A$ is infinite.
+
+If $m,\ell\ge1$, Kousek's theorem~\cite[Theorem~1.2]{kousek2025asymmetric} gives an infinite $B$ and
+$t\in\N$ with $\{mb_1+\ell b_2:b_1,b_2\in B,\,b_1<b_2\}+t\subset A$. For $j\in\N$ let
+$B_j=\{b-j:b\in B,\,b>j\}$. Then
+\[
+f(B_j)\oplus_<g(B_j)+t_j'=\{mb_1+\ell b_2:\ b_1,b_2\in B,\ j<b_1<b_2\}+t\subset A,
+\qquad t_j'=t-c-c'+(m+\ell)j,
+\]
+and $t'_j\ge0$ for $j$ large.
+
+If $m=0<\ell$, then $f(B)\oplus_<g(B)=\{\ell b+c+c':b\in B\setminus\{\min B\}\}$. Choose $r$ such
+that $A\cap(r+\ell\Z)$ is infinite, then $r'\equiv r\pmod\ell$ with $r'\ge c+c'$, and put $t=r'-c-c'$
+and $B=\{(x-r')/\ell:\ x\in A,\ x\equiv r\ (\mathrm{mod}\ \ell),\ x>r'\}$. Then $\ell b+c+c'+t\in A$ for
+all $b\in B$. The case $\ell=0<m$ is the same, since then
+$f(B)\oplus_<g(B)=\{mb+c+c':b\in B\}$ (every element of an infinite $B$ has a larger one). If
+$m=\ell=0$, the configuration is the single point $c+c'$; take $t=x-c-c'$ for some $x\in A$ with
+$x\ge c+c'$.
+\end{proof}
+
+\subsection{Generalisations of Question~3.18}\label{IA:sec:u33e}
+The survey asks whether shifts of
+$\{b_i^2+b_j:i<j\}$ appear in every set of positive upper Banach density
+\cite[Question~3.13]{kra2023problems}, and generalises this by adding the base point $b_j$
+\cite[Question~3.15]{kra2023problems} and by replacing $x^2$ with arbitrary polynomials
+$p_1,\dots,p_k\in\Z[x]$ with $p_\ell(0)=0$ \cite[Question~3.16]{kra2023problems}. Its
+Remark~3.17 records that the answers to Questions~3.15 and~3.16 are negative by Ackelsberg's work;
+indeed, both configurations contain that of Question~3.13, which Ackelsberg showed can be
+avoided~\cite[Theorem~1.5]{ackelsberg2024counterexamples}. Then it asks:
+
+\begin{question}{3.18}\label{IA:q:318}
+If $A\subset\N$ has positive upper Banach density, must there exist an infinite set
+$B=\{b_1<b_2<\cdots\}$ and $t\ge0$ such that $\{b_ib_j+b_k:\ i<j<k\}$ is contained in $A-t$?
+\end{question}
+
+\begin{question}{\S3.3(e)}\label{IA:q:u33e}
+Similar to the way Question~3.13 is generalised in Questions~3.15 and~3.16, one can inquire about
+analogous generalisations of Question~3.18.
+\end{question}
+
+The faithful analogues are:
+\begin{itemize}
+\item[(F1)] (base point, as in Question~3.15) must every $A$ with $\ubd(A)>0$ contain
+$\{b_k,\ b_ib_j+b_k:\ i<j<k\}+t$ for some infinite $B$ and $t\ge0$?
+\item[(F2)] (polynomial family, as in Question~3.16) given $p_1,\dots,p_r\in\Z[x,y]$ with
+$p_\ell(0,0)=0$, must every $A$ with $\ubd(A)>0$ contain
+$\{p_\ell(b_i,b_j)+b_k:\ 1\le\ell\le r,\ i<j<k\}+t$ for some infinite $B$ and $t\ge0$?
+\end{itemize}
+As in Remark~3.17 of~\cite{kra2023problems}, (F2) is a question about all such families.
+
+\begin{proposition}\label{IA:prop:u33e}
+Both (F1) and (F2) have negative answers. More precisely, for every $\eps>0$ there is $A\subset\N$
+with $\ubd(A)>1-\eps$ such that for no $t\in\Z$ and no infinite $B=\{b_1<b_2<\cdots\}\subset\N$ does
+$A-t$ contain the configuration in (F1), or the configuration in (F2) for the one-element family
+$p_1(x,y)=xy$.
+\end{proposition}
+
+\begin{proof}
+Ackelsberg~\cite[Theorem~1.7]{ackelsberg2024counterexamples} proved that for every $\eps>0$ there is
+$A\subset\N$ with $\ubd(A)>1-\eps$ such that whenever $t\in\Z$ and
+$\{b_1b_2+b_3+t:\ b_1,b_2,b_3\in B,\ b_1<b_2<b_3\}\subset A$, the set $B$ is finite; this answers
+\cref{IA:q:318} negatively. The configuration in (F1), and the configuration in (F2) for $p_1=xy$,
+both contain $\{b_ib_j+b_k:i<j<k\}$, so this set $A$ has the required property.
+\end{proof}
+
+For (F2) one does not even need Question~3.18: for the one-element family $p_1(x,y)=x^2$, if
+$\{b_i^2+b_k:i<j<k\}+t\subset A$, then $C=\{b_1,b_3,b_5,\dots\}$ satisfies
+$\{c^2+c':c,c'\in C,\ c<c'\}+t\subset A$ (between $b_{2i-1}$ and $b_{2i'-1}$, $i<i'$, lies $b_{2i}$),
+which is the configuration of Question~3.13 of~\cite{kra2023problems}; by Ackelsberg's
+theorem~\cite[Theorem~1.5]{ackelsberg2024counterexamples}, recorded in~\cite{kra2023problems},
+there are sets of upper Banach density arbitrarily close to $1$ in which no translate contains it.
+
+\begin{remark}\label{IA:rem:u33e}
+This answer is easy: the generalisations contain the configuration of Question~3.18 itself, which
+was already answered negatively by Ackelsberg~\cite[Theorem~1.7]{ackelsberg2024counterexamples}
+(the second arXiv version of~\cite{kra2023problems} does not record this), in exactly the way that
+Questions~3.15 and~3.16 are answered by Remark~3.17 of~\cite{kra2023problems}. For (F2) the survey
+itself already suffices, through the family $\{x^2\}$. We include it for completeness. A more
+interesting question is which single polynomials $p\in\Z[x,y]$ have the property that every set of
+positive upper Banach density contains a translate of $\{p(b_i,b_j)+b_k:i<j<k\}$ for some infinite $B$;
+we do not know the answer, for instance, for $p(x,y)=x(y-x)$.
+\end{remark}
+
+
+\section{Sumsets of the form \texorpdfstring{$B+mB$}{B+mB}}
+
+This section concerns Subsection~3.4 of~\cite{kra2023problems}. For $B\subset\N$ and $m\in\N$ the
+survey writes $B+mB=\{b+mb':b,b'\in B\}$; this unrestricted sumset contains the diagonal elements
+$(m+1)b$. We write
+\[
+B\oplus mB=\{b+mb':\ b,b'\in B,\ b\ne b'\}
+\]
+for the restricted version. We answer Question~3.20 negatively, for two and for three or more
+colours, even after excluding $m=1$ (\cref{IA:sec:q320}); Question~3.23 negatively as stated, the
+answer depending on the diagonal (\cref{IA:sec:q323}); and Question~3.24 negatively
+(\cref{IA:sec:q324}), where a counterexample is in fact already implicit in the work of Kousek and
+Radi\'c~\cite{kousek2024infinite}.
+
+\subsection{Colourings and Question~3.20}\label{IA:sec:q320}
+A finite colouring of $\N$ is a map $\chi\colon\N\to\{0,1,\dots,r-1\}$. The survey gives, for each
+$m$, a $3$-colouring with no monochromatic $B+mB$, $B$ infinite~\cite[Example~3.9]{kra2023problems}.
+Two colours already suffice: Hindman~\cite[Theorem~2.11]{hindman1979partitions} proved that for every
+$m\ge2$ the $2$-colouring $n\mapsto\lfloor\log_mn\rfloor\bmod2$ admits no infinite $B$ with
+$\{mx+y:x,y\in B,\,x\ne y\}$ monochromatic (see also~\cite[Remark~1.5]{huang2026affirmative}).
+Observing that such colourings depend heavily on $m$, the survey asks:
+
+\begin{question}{3.20}\label{IA:q:320}
+Is it true that for any finite colouring of $\N$ there exists $q\in\N$ such that for all $m\in\N$
+with $\gcd(m,q)=1$ there is an infinite set $B\subset\N$ such that $B+mB$ is monochromatic?
+\end{question}
+
+The motivation given is that ``the set of problematic $m$'' might be ``small in a multiplicative
+sense''. Since $\gcd(1,q)=1$ for every $q$, a positive answer for a colouring $\chi$ would require an
+infinite $B$ with $B+B$ monochromatic. Hindman~\cite[Theorem~2.4]{hindman1979partitions} constructed
+a $3$-colouring of $\N$ with no such $B$, so \cref{IA:q:320} has a negative answer as stated, for
+three or more colours. This hinges on the literal formulation: for two colours, $m=1$ is harmless by
+the recent solution of Owings' problem~\cite{owings1974problem} by Huang, Lian, Shao, Xiao, Xu and
+Zhang~\cite[Theorem~1.1]{huang2026affirmative}, and the heuristic behind the question concerns
+$m\ge2$. We show that the answer is negative also for $m\ge2$ and for two colours (for two colours,
+with the unrestricted $B+mB$ of the survey). What is new is that a \emph{single} colouring is bad for
+infinitely many $m$ simultaneously, including $m$ in every reduced residue class and infinitely many
+primes; for each individual $m$, Hindman's theorem already provides a $2$-colouring for which $m$ is
+strongly bad.
+
+For a colouring $\chi$ call $m\in\N$ \emph{bad} if no infinite $B\subset\N$ has $B+mB$
+monochromatic, and \emph{strongly bad} if no infinite $B$ has $B\oplus mB$ monochromatic.
+Strongly bad integers are bad.
+
+\begin{theorem}\label{IA:thm:320A}
+Let $r\ge3$ and $\chi_r(n)=\lfloor\log_2n\rfloor\bmod r$. Every integer $m$ with $2^k<m<2^{k+1}$ for
+some $k\ge1$ with $k\not\equiv0,-1\pmod r$ is strongly bad for $\chi_r$. The set of these $m$ has
+logarithmic density $1-2/r$ and contains infinitely many primes.
+\end{theorem}
+
+\begin{theorem}\label{IA:thm:320B}
+For $\rho>1$ let $\chi^{(\rho)}(n)=\lfloor\log_\rho n\rfloor\bmod 2$.
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item\label{IA:it:lucas} Let $\varphi=\frac{1+\sqrt5}2$ and let $L_1=1$, $L_2=3$,
+$L_{n+1}=L_n+L_{n-1}$ be the Lucas numbers. For every odd $n\ge3$, $L_n$ is bad for
+$\chi^{(\varphi)}$. For every $q\in\N$ there are infinitely many odd $n\ge3$ with
+$L_n\equiv1\pmod q$.
+\item\label{IA:it:primes} There are $\rho\in(\frac32,2)$ and infinitely many primes that are bad for
+$\chi^{(\rho)}$.
+\end{enumerate}
+\end{theorem}
+
+\begin{corollary}\label{IA:cor:320}
+For every $r\ge2$ there is an $r$-colouring of $\N$ such that for every $q\in\N$ some prime $m\ge2$
+with $\gcd(m,q)=1$ is bad. In particular \cref{IA:q:320} has a negative answer for every number
+$r\ge2$ of colours, also when the condition is imposed only for $m\ge2$ or only for prime $m$.
+\end{corollary}
+
+\begin{proof}
+For $r\ge3$ use \cref{IA:thm:320A}: infinitely many primes are bad, and $q$ has finitely many prime
+factors. For $r=2$ use \cref{IA:thm:320B}\ref{IA:it:primes} (or, for not necessarily prime $m$,
+\cref{IA:thm:320B}\ref{IA:it:lucas}, where $L_n\equiv1\pmod q$ gives $\gcd(L_n,q)=1$).
+\end{proof}
+
+By \cref{IA:thm:320A}, the set of bad $m$ need not be small in any multiplicative sense: for $r$
+colours it can have logarithmic density $1-2/r$. Question~3.19 of~\cite{kra2023problems}, whether
+for every finite colouring some $m$ is not bad, remains open for $r\ge3$ colours; for $r=2$ it is
+answered positively with $m=1$ by~\cite[Theorem~1.1]{huang2026affirmative}.
+
+\begin{remark}[The diagonal and two colours]\label{IA:rem:320diag}
+For $m\ge2$, $B+mB$ is the union of the diagonal $\{(m+1)b:b\in B\}$ and the two ordered pieces
+$\{mx+y:x,y\in B,\,x<y\}$ and $\{mx+y:x,y\in B,\,x>y\}$. Huang et
+al.~\cite[Theorem~1.6]{huang2026affirmative} proved that for every $2$-colouring of $\N$ and all
+$m,\ell\in\N$ there is an infinite $B$ with $(m+\ell)B\cup\{mx+\ell y:x,y\in B,\,x<y\}$ monochromatic.
+Applied with $(m,1)$ and with $(1,m)$, this shows that for two colours the diagonal together with
+either ordered piece can always be made monochromatic. So a $2$-colouring for which some $m$ is bad
+must use both ordered pieces; the proof of \cref{IA:thm:320B} uses one element from each of the three
+parts. Hindman's theorem~\cite[Theorem~2.11]{hindman1979partitions} shows that each single $m\ge2$
+is strongly bad for some $2$-colouring, namely $\lfloor\log_mn\rfloor\bmod2$ (this is the colouring
+$\chi^{(\rho)}$ of \cref{IA:thm:320B} with $\rho=m$). Whether a single $2$-colouring can make
+infinitely many pairwise coprime $m$ strongly bad, that is, whether Hindman's theorem has a version
+uniform in $m$ (equivalently, the version of \cref{IA:q:320} with $B\oplus mB$ and two colours),
+remains open. For related $2$- and $3$-colour obstructions to weighted ordered sums see
+also~\cite[Propositions~5.1 and~5.2]{huang2026affirmative}.
+\end{remark}
+
+\begin{remark}
+Di Nasso, Luperi Baglini, Mamino, Mennuni and Ragosta~\cite[\S1]{dinasso2025ramsey} answer negatively
+the shift-free versions of several questions of Subsections~3.3 and~3.4 of~\cite{kra2023problems}
+(in the numbering of its published version) in a strengthened ``Ramsey partition regular'' form.
+These are different statements from \cref{IA:q:320}.
+\end{remark}
+
+For $\rho>1$ and $n\in\N$ put $\lambda_\rho(n)=\lfloor\log_\rho n\rfloor$, so that $\lambda_\rho(n)=k$
+if and only if $\rho^k\le n<\rho^{k+1}$.
+
+\begin{lemma}\label{IA:lem:floor}
+If $x,y\in\R$ and $y-x\in(k,k+1)$ for some $k\in\Z$, then $\lfloor y\rfloor-\lfloor x\rfloor\in\{k,k+1\}$.
+\end{lemma}
+
+\begin{proof}
+$\lfloor y\rfloor-\lfloor x\rfloor$ is an integer in $(y-x-1,y-x+1)\subset(k-1,k+2)$.
+\end{proof}
+
+\begin{lemma}\label{IA:lem:asym}
+Let $\rho>1$, $m\ge2$ and $b,b'\in\N$. Put $\delta=\log_\rho(1+mb/b')$ and
+$\delta'=\log_\rho(1+b/(mb'))$. Then $\log_\rho(b'+mb)=\log_\rho b'+\delta$,
+$\log_\rho(mb'+b)=\log_\rho b'+\log_\rho m+\delta'$, and $0<\delta'<\delta$; moreover $\delta\to0$
+as $b'\to\infty$ with $b$ fixed.
+\end{lemma}
+
+\begin{proof}
+The identities are immediate, and $b/(mb')<mb/b'$ because $m\ge2$.
+\end{proof}
+
+\begin{proposition}\label{IA:prop:320A}
+Let $\rho>1$, $r\ge3$ and $\chi(n)=\lambda_\rho(n)\bmod r$. Let $m\ge2$ be such that
+$L=\log_\rho m\notin\Z$ and $k=\lfloor L\rfloor$ satisfies $k\not\equiv0$ and $k+1\not\equiv0
+\pmod r$. Then $m$ is strongly bad for $\chi$.
+\end{proposition}
+
+\begin{proof}
+Let $B$ be infinite and fix $b\in B$. By \cref{IA:lem:asym} there is $b'\in B$, $b'\ne b$, with
+$\delta<L-k$. Put $X=b'+mb$ and $Y=b+mb'$, both in $B\oplus mB$. By \cref{IA:lem:asym},
+$\log_\rho Y-\log_\rho X=L+\delta'-\delta\in(L-\delta,L)\subset(k,k+1)$, so by \cref{IA:lem:floor}
+$\lambda_\rho(Y)-\lambda_\rho(X)\in\{k,k+1\}$. Neither number is divisible by $r$, so
+$\chi(X)\ne\chi(Y)$.
+\end{proof}
+
+\begin{proof}[Proof of \cref{IA:thm:320A}]
+For $2^k<m<2^{k+1}$ we have $\log_2m\notin\Z$ and $\lfloor\log_2m\rfloor=k$, so
+\cref{IA:prop:320A} with $\rho=2$ applies. Let $S$ be the set of these $m$. For each $k$,
+$\sum_{2^k<m<2^{k+1}}1/m=\log2+O(2^{-k})$, and among any $r$ consecutive values of $k$ exactly $r-2$
+are admissible. Hence $\sum_{m\in S,\,m<2^{K+1}}1/m=\frac{r-2}r K\log2+O(1)$, and for $2^K\le
+N<2^{K+1}$ the partial sum up to $N$ differs from this by $O(1)$. So $S$ has logarithmic density
+$1-2/r$. By Bertrand's postulate each interval $(2^k,2^{k+1})$, $k\ge1$, contains a prime.
+\end{proof}
+
+\begin{proposition}\label{IA:prop:320B}
+Let $m\ge2$ and $\rho>1+\frac1m$, and suppose there is an odd integer $j$ with $m<\rho^j<m+1$. Then
+$m$ is bad for $\chi(n)=\lambda_\rho(n)\bmod2$.
+\end{proposition}
+
+\begin{proof}
+Let $L=\log_\rho m$ and $L'=\log_\rho(m+1)$. Then $L<j<L'$ and $L'-L=\log_\rho(1+\frac1m)<1$. Let
+$\eta=\min(j-L,L'-j)>0$. Let $B$ be infinite, fix $b\in B$, and by \cref{IA:lem:asym} choose $b'\in
+B$, $b'\ne b$, with $\delta<\eta$. Consider the elements
+\[
+X=b'+mb,\qquad Y=b+mb',\qquad Z=b'+mb'=(m+1)b'
+\]
+of $B+mB$, and let $u=\log_\rho b'$, $x=\log_\rho X$, $y=\log_\rho Y$, $z=\log_\rho Z$. By
+\cref{IA:lem:asym}, $x=u+\delta$, $y=u+L+\delta'$ and $z=u+L'$ with $0<\delta'<\delta<\eta$. Hence
+$y<u+L+\eta\le u+j<x+j$ and $z=u+L'\ge u+j+\eta>x+j$, so
+\begin{equation}\label{IA:eq:sandwich}
+y<x+j<z,\qquad 0<z-y<L'-L<1 .
+\end{equation}
+Suppose $X,Y,Z$ have the same colour. Since $0<z-y<1$, the integer $\lambda_\rho(Z)-\lambda_\rho(Y)$ is
+$0$ or $1$, and it is even; so $\lambda_\rho(Y)=\lambda_\rho(Z)=:N$. Then $N\le y<z<N+1$, and
+by~\eqref{IA:eq:sandwich} $N<x+j<N+1$, so $N=\lfloor x\rfloor+j=\lambda_\rho(X)+j$. As $j$ is odd,
+$\chi(X)\ne\chi(Y)$, a contradiction.
+\end{proof}
+
+\begin{lemma}\label{IA:lem:nested}
+There are $\rho\in(\frac32,2)$, odd integers $j_1<j_2<\cdots$ and primes $p_1<p_2<\cdots$ with
+$p_k<\rho^{j_k}<p_k+1$ for all $k$.
+\end{lemma}
+
+\begin{proof}
+We construct closed intervals $[\frac32,2]=I_0\supset I_1\supset\cdots$, odd $j_k$ and primes $p_k$
+with $p_k<s^{j_k}<p_k+1$ for all $s\in I_k$; any $\rho\in\bigcap_kI_k$ then works. Let $p_0=1$,
+$j_0=0$, and suppose $I_{k-1}=[\alpha,\beta]$ with $\frac32\le\alpha<\beta$ is constructed. Choose an
+odd $j>j_{k-1}$ so large that $x:=\alpha^j\ge p_{k-1}+2$ and $\beta^j\ge4x$, put $n=\lceil x\rceil$,
+and let $p$ be a prime with $n<p<2n$ (Bertrand's postulate). Then $\alpha^j\le n<p$, $p>p_{k-1}$,
+and $p+1\le2n\le2x+2<4x\le\beta^j$. Let $I_k=[(p+\frac13)^{1/j},(p+\frac23)^{1/j}]\subset(\alpha,\beta)$,
+$j_k=j$ and $p_k=p$.
+\end{proof}
+
+\begin{proof}[Proof of \cref{IA:thm:320B}]
+(i) Let $\psi=\frac{1-\sqrt5}2=-\varphi^{-1}$, so $L_n=\varphi^n+\psi^n$. For odd $n$,
+$\psi^n\in(-1,0)$, so $L_n<\varphi^n<L_n+1$. For $n\ge3$, $L_n\ge4$ and $\varphi>1+\frac1{L_n}$, so
+\cref{IA:prop:320B} applies with $m=L_n$, $\rho=\varphi$, $j=n$. For the second claim, $(L_n\bmod q)$
+satisfies an invertible linear recurrence over $\Z/q\Z$ and is therefore purely periodic, with some
+period $P$; then $L_n\equiv L_1=1\pmod q$ for all $n\equiv1\pmod{2P}$, and these $n$ are odd.
+
+(ii) Take $\rho$, $(j_k)$, $(p_k)$ from \cref{IA:lem:nested}. Then $\rho>\frac32\ge1+\frac1{p_k}$ and
+$p_k<\rho^{j_k}<p_k+1$ with $j_k$ odd, so \cref{IA:prop:320B} applies to $m=p_k$.
+\end{proof}
+
+
+\subsection{Logarithmic density and Question~3.23}\label{IA:sec:q323}
+The survey shows that a density version of Question~3.19 needs care: there is a thick set of positive
+upper density containing no $B\oplus mB+t$ with $m\ge2$ and $B$ infinite
+\cite[Example~3.21]{kra2023problems}. That set has zero upper logarithmic density, which motivates:
+
+\begin{question}{3.23}\label{IA:q:323}
+Does every set $A\subset\N$ with $\udlog(A)>0$ contain a sumset $B+mB+t$ for some $m\ge2$, $t\ge0$
+and some infinite set $B\subset\N$?
+\end{question}
+
+As written, $B+mB$ is the unrestricted sumset: the survey writes $B\oplus B$ or states $b_1\ne b_2$
+explicitly when it means the restricted one, and calls $B+B$ the unrestricted sumset. The answer to
+\cref{IA:q:323} as stated is negative.
+
+For each \emph{fixed} pair $(\ell,m)$, unrestricted sums $mB+\ell B$ have been studied by
+Kousek~\cite{kousek2025asymmetric}. He showed that $\ldens(A)>1/2$ forces
+$\{mb_1+\ell b_2:b_1\le b_2\}+t\subset A$, and that a suitable upper density condition depending on
+$m/\ell$ does too~\cite[Theorems~1.6 and~1.7]{kousek2025asymmetric}; these are sharp, and for distinct
+$\ell,m$ there are sets of positive lower density containing no shift of
+$mB+\ell B=\{mb_1+\ell b_2:b_1,b_2\in B\}$ with $B$ infinite~\cite[Propositions~5.1, 6.5, 7.6
+and~7.7]{kousek2025asymmetric}; see also his Questions~7.8 and~7.9. Those examples depend on
+$(\ell,m)$, whereas \cref{IA:q:323} allows $m$ to depend on $A$. What is new below is a single set of
+positive logarithmic density that avoids $\ell B+mB+t$ for all $\ell,m\ge1$ and $t\in\Z$ at once. As in
+Kousek's results (and as in \cref{IA:rem:320diag} for colourings), the diagonal together with one
+ordered piece cannot be avoided by sets of lower density $>1/2$, and our proof uses the diagonal and
+both ordered pieces.
+
+Fix $\eta\in(0,\frac16)$ and let $U_\eta=(\frac13+\eta,\frac23-\eta)$. Let $T_k=2^{2^k}$,
+$X_k=kT_k$ and $Y_k=T_{k+1}/k=T_k^2/k$ for $k\ge1$; note $T_k\le X_k<Y_k\le T_{k+1}$. Let
+\[
+R_k=\{s\in\{0,\dots,k-1\}:\ s/k\in U_\eta\},\qquad
+A_\eta=\bigcup_{k\ge1}\{n\in\N:\ X_k\le n<Y_k,\ n\bmod k\in R_k\}.
+\]
+Thus on the block $[X_k,Y_k)$ the set $A_\eta$ is the periodic set $\{n:\{n/k\}\in U_\eta\}$, and
+the transition intervals $[Y_{k-1},X_k)$ are empty.
+
+\begin{theorem}\label{IA:thm:323}
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item\label{IA:it:323dens} The logarithmic density of $A_\eta$ exists and equals $\frac13-2\eta$.
+\item\label{IA:it:323avoid} For all integers $\ell,m\ge1$, all $t\in\Z$ and every infinite
+$B\subset\N$, we have $\ell B+mB+t\not\subset A_\eta$. More precisely, for every $c\in B$ only
+finitely many $b\in B$ satisfy
+\[
+\ell b+mc+t,\quad \ell c+mb+t,\quad (\ell+m)b+t\ \in A_\eta .
+\]
+\end{enumerate}
+In particular (with $\ell=1$) $A_\eta$ is a negative answer to \cref{IA:q:323}, simultaneously for
+all $m$.
+\end{theorem}
+
+\begin{remark}\label{IA:rem:323}
+\begin{enumerate}[label=(\roman*)]
+\item The answer hinges on the diagonal: the contradiction comes from the element $(\ell+m)b+t$.
+The example motivating \cref{IA:q:323}, \cite[Example~3.21]{kra2023problems}, concerns the
+restricted sumset, and for it $A_\eta$ is no counterexample: for every odd $m\ge3$ there is an
+infinite $B$ with $B\oplus mB\subset A_\eta$. Indeed, let $\eps=\frac12(\frac16-\eta)$, so that
+$[\frac12,\frac12+\eps)\subset U_\eta$. Choose $b_1<b_2<\cdots$ inductively: given $b_1,\dots,b_{j-1}$,
+choose an even $k$ so large that $(m+1)b_{j-1}<\eps k$ and $Y_k/(m+1)-X_k>k$, and choose
+$b_j\in[X_k,Y_k/(m+1))$ with $b_j\equiv k/2\pmod k$. For $i<j$ the numbers $b_j+mb_i$ and
+$mb_j+b_i$ lie in $[X_k,Y_k)$ and are congruent modulo $k$ to $\frac k2+mb_i$ and to
+$\frac k2+b_i$ respectively (as $m$ is odd, $\frac{mk}2\equiv\frac k2$), both of which lie in
+$[\frac k2,\frac k2+\eps k)$. Hence both belong to $A_\eta$.
+\item The restricted version of \cref{IA:q:323} (does every $A$ with $\udlog(A)>0$ contain
+$B\oplus mB+t$ for some $m\ge2$, $t\ge0$ and infinite $B$?) remains open.
+\end{enumerate}
+\end{remark}
+
+\begin{lemma}\label{IA:lem:sumfree}
+Let $k\ge1$, $s_1,s_2,s_3\in R_k$ and $s\in\Z$ with $|s|<\eta k$. Then $s_1+s_2-s_3\not\equiv s\pmod k$.
+\end{lemma}
+
+\begin{proof}
+From $s_i/k\in U_\eta$ we get $s_1+s_2-s_3-s\in\big(k(\frac23+2\eta)-k(\frac23-\eta)-\eta k,\
+k(\frac43-2\eta)-k(\frac13+\eta)+\eta k\big)=(2\eta k,\,k(1-2\eta))\subset(0,k)$, which contains no
+multiple of $k$.
+\end{proof}
+
+\begin{lemma}\label{IA:lem:blocksep}
+If $n,n'\in A_\eta$ lie in the blocks of indices $k<k'$, then $n'/n>k(k+1)$. If $n\in A_\eta$ and
+$n\ge T_{K+1}$, then the block of $n$ has index at least $K+1$.
+\end{lemma}
+
+\begin{proof}
+$n<Y_k=T_{k+1}/k$ and $n'\ge X_{k+1}=(k+1)T_{k+1}$. The block of index $k$ lies in $[T_k,T_{k+1})$.
+\end{proof}
+
+\begin{lemma}\label{IA:lem:perblock}
+Let $k\in\N$, $R\subset\{0,\dots,k-1\}$, $\rho=|R|/k$, and $1\le P<Q$ real. Let
+$g\colon\Z\cap[P,Q)\to\{0,1\}$ be constant on each of $J$ consecutive subintervals partitioning
+$[P,Q)$. Then
+\[
+\Big|\sum_{\substack{P\le n<Q\\ n\bmod k\in R}}\frac{g(n)}n-\rho\sum_{P\le n<Q}\frac{g(n)}n\Big|\le\frac{2Jk}P .
+\]
+\end{lemma}
+
+\begin{proof}
+It suffices to show that the error on one subinterval $[P_1,Q_1)$, $P_1\ge P$, on which $g\equiv1$,
+is at most $2k/P$. Let $n_0=\lceil P_1\rceil$ and split the integers of $[P_1,Q_1)$ into complete
+periods $\{n_0+ik,\dots,n_0+(i+1)k-1\}$, $0\le i<I$, and a remainder of fewer than $k$ integers. On
+the $i$-th period both sums lie in $[\rho k/(n_0+(i+1)k),\,\rho k/(n_0+ik)]$, so the errors telescope
+to at most $\rho k/n_0\le k/P$. On the remainder both sums lie in $[0,k/n_0]$.
+\end{proof}
+
+\begin{proof}[Proof of \cref{IA:thm:323}\ref{IA:it:323avoid}]
+Fix $\ell,m\ge1$, $t\in\Z$ and $c\in B$, and put $s=(\ell+m)c+t$ and $C=\ell+m+1$. For $b\in B$ let
+\[
+u=\ell b+mc+t,\qquad v=\ell c+mb+t,\qquad w=(\ell+m)b+t,
+\]
+all three elements of $\ell B+mB+t$, and note the identity $u+v-w=s$. If
+$b\ge2(|t|+(\ell+m)c)$, then $u,v,w\in[b/2,Cb]$, so their pairwise ratios are at most $2C$. Choose
+$K$ with $K(K+1)>2C$ and $K\ge|s|/\eta$, and suppose $b\ge\max\big(2(|t|+(\ell+m)c),\,2T_{K+1}\big)$ and
+$u,v,w\in A_\eta$. By \cref{IA:lem:blocksep} the blocks of $u,v,w$ have indices $\ge K+1$, and they
+coincide, since otherwise two of the numbers would have ratio $>(K+1)(K+2)>2C$. Let $k>K$ be the common
+index. The residues of $u,v,w$ modulo $k$ lie in $R_k$ and satisfy $(u\bmod k)+(v\bmod k)-(w\bmod k)
+\equiv s\pmod k$ with $|s|<\eta k$, contradicting \cref{IA:lem:sumfree}. So only finitely many $b\in B$
+have $u,v,w\in A_\eta$, and as $B$ is infinite, $\ell B+mB+t\not\subset A_\eta$.
+\end{proof}
+
+\begin{proof}[Proof of \cref{IA:thm:323}\ref{IA:it:323dens}]
+All logarithms are natural. Let $H(P,Q)=\sum_{P\le n<Q}1/n$, so that
+$H(P,Q)=\log(Q/P)+O(1/P)$ for $1\le P<Q$. Let $\rho_k=|R_k|/k$ and $\mu=|U_\eta|=\frac13-2\eta$. The open interval
+$(k(\frac13+\eta),k(\frac23-\eta))$ has length $k\mu$, so $|\rho_k-\mu|\le1/k$.
+
+Let $T_K\le N<T_{K+1}$ and $S(N)=\sum_{n\le N,\,n\in A_\eta}1/n$. By \cref{IA:lem:perblock} with
+$J=1$,
+\[
+S(N)=\sum_{k<K}\rho_kH(X_k,Y_k)+\rho_K H\big(X_K,\min(N+1,Y_K)\big)+O\Big(\sum_k\frac{2k}{X_k}\Big),
+\]
+where the middle term is read as $0$ if $N<X_K$, and $\sum_k2k/X_k=\sum_k2/T_k<\infty$. We have
+$H(X_k,Y_k)=2^k\log2-2\log k+O(1/T_k)$, and
+$\log N=2\log 2+\sum_{1\le k<K}2^k\log2+\log(N/T_K)$. Moreover the middle term differs from
+$\mu\log(N/T_K)$ by at most $|\rho_K-\mu|2^K\log 2+O(\log K)$: if $N<X_K$ then $\log(N/T_K)<\log K$;
+if $X_K\le N<Y_K$ then $H(X_K,N+1)=\log(N/T_K)-\log K+O(1)$; and if $N\ge Y_K$ then both
+$H(X_K,Y_K)$ and $\log(N/T_K)$ lie within $2\log K+O(1)$ of $2^K\log 2$. Altogether
+\[
+\big|S(N)-\mu\log N\big|\le\sum_{k\le K}\frac{2^k\log2}{k}+O(K\log K)=O(2^K/K),
+\]
+while $\log N\ge2^K\log2$. Hence $S(N)/\log N\to\mu$.
+\end{proof}
+
+
+\subsection{Logarithmic equidistribution and Question~3.24}\label{IA:sec:q324}
+All examples of the survey of sets of positive density avoiding some unrestricted sumset $B+B+t$
+are built at a logarithmic scale; to test whether this is the only obstruction, the survey asks:
+
+\begin{question}{3.24}\label{IA:q:324}
+If $A\subset\N$ has $\dlog(A)>0$ and for every interval $(a,b)\subset[0,1)$ and every $\theta>0$
+\begin{equation}\label{IA:eq:324}
+\dlog\big(\{n\in A:\ \{\theta\log n\}\in(a,b)\}\big)=\dlog(A)\cdot(b-a),
+\end{equation}
+does $A$ contain a sumset $B+B+t$ for some $t\ge0$ and some infinite set $B\subset\N$?
+\end{question}
+
+The answer is negative, and a counterexample is already implicit in the work of Kousek and
+Radi\'c~\cite{kousek2024infinite}: the set from the first part of~\cite[Proposition~4.2]{kousek2024infinite},
+which has natural density $\frac12$ and contains no $B+B+t$, also satisfies~\eqref{IA:eq:324}, as we
+check in \cref{IA:prop:KR} (this observation is not made in~\cite{kousek2024infinite}). By
+\cite[Theorem~1.3]{kousek2024infinite}, every set of lower density $>\frac12$ contains some $B+B+t$,
+so the value $\frac12$ is optimal among sets having a natural density; we do not know whether
+$\dlog(A)>\frac12$ together with~\eqref{IA:eq:324} forces $B+B+t\subset A$. That example couples a
+logarithmic phase with residue classes modulo $2$. In \cref{IA:thm:324} we give an alternative
+example with no residue-class coupling at all, in which a single logarithmic phase drifts slowly;
+it shows that the test~\eqref{IA:eq:324}, which involves only linear phases $\theta\log n$, does
+not detect logarithmic-scale obstructions. Recall that by Kra, Moreira, Richter
+and Robertson~\cite[Theorem~1.2]{kra2022proof} every set of positive upper Banach density contains
+$B\oplus B+t$ for some infinite $B$ and $t\in\N$; so all these examples necessarily exploit the
+diagonal elements $2b$.
+
+\begin{lemma}\label{IA:lem:logsum}
+Let $F\subset[0,\infty)$ be a union of pairwise disjoint intervals with left endpoints $\alpha_i$
+such that $\#\{i:\alpha_i\le L\}\le C(L+1)$ for all $L\ge0$. Let $k\in\N$ and $j\in\Z$. Then, as
+$N\to\infty$,
+\[
+\sum_{\substack{n\le N\\ \log_2n\in F}}\frac1n=\log2\cdot\big|F\cap[0,\log_2N]\big|+O(1)
+\qquad\text{and}\qquad
+\sum_{\substack{n\le N,\ n\equiv j\ (k)\\ \log_2n\in F}}\frac1n
+=\frac1k\sum_{\substack{n\le N\\ \log_2n\in F}}\frac1n+O(1),
+\]
+where $|\cdot|$ is Lebesgue measure.
+\end{lemma}
+
+\begin{proof}
+If $1\le x\le y$ and $I$ is an interval with endpoints $x,y$, then $|\sum_{n\in I}1/n-\log(y/x)|\le
+1/x$, by comparison with $\int dt/t$. Each component of $F\cap[0,\log_2N]$ with left endpoint
+$\alpha_i$ corresponds to such an interval $I$ with $x=2^{\alpha_i}$, and $\log(y/x)=\log2$ times
+the length of the component. The total error is at most $\sum_i2^{-\alpha_i}\le\sum_{L\ge0}
+C(L+1)2^{1-L}<\infty$. The second claim follows in the same way from \cref{IA:lem:perblock} ($J=1$),
+applied to each component, with total error at most $\sum_i 2k\,2^{-\alpha_i}<\infty$.
+\end{proof}
+
+\begin{proposition}[set of Kousek--Radi\'c]\label{IA:prop:KR}
+Let $A^{(1)}=\bigcup_{n\ge1}[4^n,(2-\frac1n)4^n)$, $A^{(2)}=\bigcup_{n\ge1}[(2+\frac1n)4^n,4^{n+1})$
+and $A_{\mathrm{KR}}=(A^{(1)}\cap2\N)\cup(A^{(2)}\cap(2\N+1))$ (intersected with $\N$). Then
+$A_{\mathrm{KR}}$ has natural density $\frac12$, contains no $B+B+t$ with $t\ge0$ and $B$ infinite,
+and satisfies~\eqref{IA:eq:324} with $\dlog(A_{\mathrm{KR}})=\frac12$.
+\end{proposition}
+
+\begin{proof}
+The first two assertions are~\cite[Proposition~4.2]{kousek2024infinite}, stated there for $t\in\N$;
+the case $t=0$ follows, because if $B+B\subset A_{\mathrm{KR}}$ then $B'=\{b-1:b\in B,\ b\ge2\}$
+satisfies $B'+B'+2\subset A_{\mathrm{KR}}$.
+
+For~\eqref{IA:eq:324}, let $V_0=[0,\frac12)$, $V_1=[\frac12,1)$ and
+$A^*=\{n\in2\N:\{\frac12\log_2n\}\in V_0\}\cup\{n\in2\N+1:\{\frac12\log_2n\}\in V_1\}$. Since
+$\{\frac12\log_2n\}\in V_0$ if and only if $n\in[4^j,2\cdot4^j)$ for some $j\ge0$, the symmetric
+difference of $A_{\mathrm{KR}}$ and $A^*$ is contained in $[1,4)\cup W$, where
+$W=\bigcup_{n\ge1}[(2-\frac1n)4^n,(2+\frac1n)4^n]$. For $N<4^{K+1}$ we have
+$\sum_{n\le N,\,n\in W}\frac1n\le\sum_{n\le K}\big(\log\frac{2+1/n}{2-1/n}+4^{-n}\big)=O(\log K)
+=o(\log N)$, so it suffices to verify~\eqref{IA:eq:324} for $A^*$. Fix $\theta>0$ and
+$(a,b)\subset[0,1)$, put $\theta'=\theta\log2$, so that $\{\theta\log n\}=\{\theta'\log_2n\}$, and
+let $F_i=\{x\ge0:\{x/2\}\in V_i,\ \{\theta'x\}\in(a,b)\}$ for $i\in\{0,1\}$. These sets satisfy the
+hypothesis of \cref{IA:lem:logsum}, and $F_0\sqcup F_1=F:=\{x\ge0:\{\theta'x\}\in(a,b)\}$. By
+\cref{IA:lem:logsum},
+\[
+\sum_{\substack{n\le N,\ n\in A^*\\ \{\theta\log n\}\in(a,b)}}\frac1n
+=\sum_{i=0}^1\ \sum_{\substack{n\le N,\ n\equiv i\ (2)\\ \log_2n\in F_i}}\frac1n
+=\frac12\sum_{i=0}^1\ \sum_{\substack{n\le N\\ \log_2n\in F_i}}\frac1n+O(1)
+=\frac12\log 2\,|F\cap[0,\log_2N]|+O(1),
+\]
+and $|F\cap[0,L]|=(b-a)L+O(1)$. Dividing by $\log N=\log2\cdot\log_2N$ gives the limit
+$\frac12(b-a)$. The same computation without the condition on $\{\theta\log n\}$ (that is, with
+$F=[0,\infty)$) gives $\dlog(A^*)=\frac12$.
+\end{proof}
+
+The colour class $(A_0\cap3\N)\cup(A_1\cap(3\N+1))\cup(A_2\cap(3\N+2))$, with
+$A_i=\{n:\{\frac12\log_2n\}\in[\frac i3,\frac{i+1}3)\}$, from the remark after
+Proposition~5.1 of~\cite{kousek2024infinite} is handled in the same way (with residues modulo $3$)
+and gives a counterexample of logarithmic density $\frac13$.
+
+\begin{theorem}\label{IA:thm:324}
+Let $0<\eta<\frac12$, $f(x)=\frac x2+\sqrt x$ for $x\ge0$, and
+\[
+A=\big\{n\in\N:\ \{f(\log_2n)\}\in[0,\tfrac12-\eta)\big\}.
+\]
+Then $\dlog(A)=\frac12-\eta$, $A$ satisfies~\eqref{IA:eq:324}, and $A$ contains no $B+B+t$ with
+$t\in\Z$ and $B\subset\N$ infinite.
+\end{theorem}
+
+\begin{lemma}\label{IA:lem:oscint}
+Let $\theta'>0$ and $(h,k)\in\Z^2\setminus\{(0,0)\}$. Then
+$\frac1L\int_0^L\e\big(hf(x)+k\theta'x\big)\,dx\to0$ as $L\to\infty$, where $\e(y)=e^{2\pi iy}$.
+\end{lemma}
+
+\begin{proof}
+The phase is $\psi(x)=\gamma x+h\sqrt x$ with $\gamma=\frac h2+k\theta'$. If $\gamma\ne0$, let
+$x_0=(h/\gamma)^2$. On $[x_0,L]$ the derivative $\psi'(x)=\gamma+\frac h{2\sqrt x}$ is monotone and
+$|\psi'|\ge|\gamma|/2$. Integrating by parts,
+\[
+\int_{x_0}^L\e(\psi)\,dx=\Big[\frac{\e(\psi)}{2\pi i\psi'}\Big]_{x_0}^L
+-\int_{x_0}^L\e(\psi)\,d\Big(\frac1{2\pi i\psi'}\Big),
+\]
+and since $1/\psi'$ is monotone with $|1/\psi'|\le2/|\gamma|$, each of the two terms is at most
+$\frac{1}{2\pi}\cdot\frac{4}{|\gamma|}$.
+The integral over $[0,x_0]$ is at most $x_0$. If $\gamma=0$, then $h\ne0$ (otherwise $k\theta'=0$, so
+$k=0$), and $\int_0^L\e(h\sqrt x)\,dx=\int_0^{\sqrt L}2y\,\e(hy)\,dy=O(\sqrt L/|h|)$ by one
+integration by parts. In both cases the integral is $o(L)$.
+\end{proof}
+
+\begin{proof}[Proof of \cref{IA:thm:324}]
+Let $c=\frac12-\eta$, fix $\theta>0$, put $\theta'=\theta\log2$, and let
+$\Psi(x)=(f(x)\bmod1,\ \theta'x\bmod1)\in\T^2$. By \cref{IA:lem:oscint} and linearity,
+$\frac1L\int_0^LP(\Psi(x))\,dx\to\int_{\T^2}P$ for every trigonometric polynomial $P$, hence, by
+uniform density of trigonometric polynomials in $C(\T^2)$, for every continuous $P$. If
+$\Omega\subset\T^2$ is a box, then for each $\delta>0$ there are continuous $P_-\le\one_\Omega\le P_+$
+with $\int(P_+-P_-)<\delta$, and therefore $\frac1L|\{x\in[0,L]:\Psi(x)\in\Omega\}|\to|\Omega|$. We
+apply this to $\Omega=[0,c)\times(a,b)$ and to $\Omega=[0,c)\times\T$.
+
+Since $f$ is continuous and strictly increasing with $f(0)=0$, the sets
+$F=\{x\ge0:\{f(x)\}\in[0,c)\}=\bigcup_{j\ge0}[f^{-1}(j),f^{-1}(j+c))$ and
+$F'=F\cap\{x:\{\theta'x\}\in(a,b)\}$ are unions of disjoint intervals; the endpoints of their
+components in $[0,L]$ are among the at most $2(f(L)+1)+2(\theta'L+1)$ points where $f(x)$ or
+$\theta'x$ hits $\Z\cup(\Z+c)$ or $(\Z+a)\cup(\Z+b)$, so \cref{IA:lem:logsum} applies. Since
+$A=\{n:\log_2n\in F\}$ and $\{n\in A:\{\theta\log n\}\in(a,b)\}=\{n:\log_2n\in F'\}$, we obtain
+$\dlog(A)=\lim|F\cap[0,L]|/L=c$ and the logarithmic density of $\{n\in A:\{\theta\log n\}\in(a,b)\}$
+equals $\lim|F'\cap[0,L]|/L=c(b-a)$. This proves~\eqref{IA:eq:324}.
+
+Now suppose $B$ is infinite, $t\in\Z$ and $B+B+t\subset A$. Let $b'=\min B$ and, for $b\in B$ large,
+put $n_1=b+b'+t$, $n_2=2b+t$ (both in $B+B+t$) and $x_i=\log_2n_i$. As $b\to\infty$,
+$x_2-x_1=\log_2\frac{2b+t}{b+b'+t}\to1$ and $|\sqrt{x_2}-\sqrt{x_1}|\le\frac{|x_2-x_1|}{2\sqrt{\min(x_1,x_2)}}
+\to0$, so $\Delta_b:=f(x_2)-f(x_1)-\frac12\to0$. Take $b$ with $|\Delta_b|<\eta/2$. Since $n_1\in A$,
+$\{f(x_1)\}\in[0,c)$, so $f(x_2)\equiv\{f(x_1)\}+\frac12+\Delta_b$ with
+$\{f(x_1)\}+\frac12+\Delta_b\in[\frac12-\frac\eta2,1-\frac\eta2)$. Hence
+$\{f(x_2)\}\notin[0,c)$, that is, $n_2\notin A$, a contradiction.
+\end{proof}
+
+\begin{remark}\label{IA:rem:324}
+\begin{enumerate}[label=(\roman*)]
+\item The obstruction in \cref{IA:thm:324} is still of logarithmic scale: the phase $f(\log_2n)$
+increases by $\frac12+o(1)$ when $n$ is doubled. Equidistribution against all linear phases
+$\theta\log n$ does not rule out such phases, because the term $\sqrt{\log_2n}$ makes $f$
+asymptotically independent of every linear phase, including the resonant frequency
+$\theta=1/(2\log2)$.
+\item The set $A_\eta$ of \cref{IA:sec:q323} is a further counterexample to \cref{IA:q:324}: it
+contains no $B+B+t$ by \cref{IA:thm:323}\ref{IA:it:323avoid} with $\ell=m=1$, and it
+satisfies~\eqref{IA:eq:324}. To see the latter, let $g(n)=\one[\{\theta\log n\}\in(a,b)]$. On the
+block $[X_k,Y_k)$, $g$ is constant on $J_k\le2\theta\log(Y_k/X_k)+3=O(2^k)$ subintervals, so by
+\cref{IA:lem:perblock} the sum of $g(n)/n$ over $A_\eta\cap[X_k,Y_k)$ equals $\rho_k$ times the sum
+over $[X_k,Y_k)$ up to $O(2^k/T_k)$, which is summable. The rest of the proof of
+\cref{IA:thm:323}\ref{IA:it:323dens} applies verbatim with weights $g(n)$ (the transition intervals
+contribute $O(K\log K)$ and the errors $|\rho_k-\mu|$ contribute $O(2^K/K)$), giving
+$\sum_{n\le N,\,n\in A_\eta}g(n)/n=\mu\sum_{n\le N}g(n)/n+o(\log N)$; and
+$\sum_{n\le N}g(n)/n=(b-a)\log N+O(1)$ by \cref{IA:lem:logsum}. Here the obstruction comes from scale-separated blocks with periodic structure inside each block,
+rather than from a phase of $\log n$; the empty transition intervals $[Y_{k-1},X_k)$ have
+logarithmic density zero and are invisible to~\eqref{IA:eq:324}.
+\end{enumerate}
+\end{remark}

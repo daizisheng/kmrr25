@@ -1,0 +1,1250 @@
+% Section: Theorem K -- sums of k infinite sets in countable abelian groups.
+% Label prefix: K:
+\section{Sums of \texorpdfstring{$k$}{k} infinite sets in countable abelian groups}
+\label{K:sec:main}
+
+This section answers Question~5.14 of~\cite{kra2023problems}.
+We show (\cref{K:thm:main}) that in every countably infinite abelian group, every set of
+positive upper Banach density contains a sumset $B_1+\dots+B_k$ of $k$ infinite sets, for
+every $k$.
+For finite groups the question has a trivially negative answer (\cref{K:rem:finite}), so
+``countably infinite'' is the right setting.
+The proof does not use Host--Kra theory, nilsystems or nilspaces, or any equidistribution
+theorem.
+It extends to $k$ summands, and to arbitrary countable abelian groups, the short proof of
+the case $k=2$ for subsets of $\N$ given by Kra, Moreira, Richter and
+Robertson~\cite{kra2026short}.
+The cube is built one level at a time.
+At each level we re-base on the Kronecker factor of the current measure, and from one level
+to the next we keep only a condition on topological supports.
+
+\subsection{The question and the result}\label{K:ssec:result}
+
+Let $\Gamma$ be a countable abelian group, written additively.
+A \emph{\Fol{} sequence} in $\Gamma$ is a sequence $\Phi=(\Phi_N)_{N\in\N}$ of nonempty finite
+subsets of $\Gamma$ such that $|(\Phi_N+\gamma)\triangle\Phi_N|/|\Phi_N|\to0$ for every
+$\gamma\in\Gamma$.
+The \emph{upper Banach density} of $A\subset\Gamma$ is
+\[
+\ubd(A)=\sup_{\Phi}\ \limsup_{N\to\infty}\frac{|A\cap\Phi_N|}{|\Phi_N|},
+\]
+where the supremum is over all \Fol{} sequences $\Phi$ in $\Gamma$.
+
+\begin{question}{5.14}\label{K:q:514}
+Is it true in every countable abelian group $(G,+)$ that every set $A$ of positive upper
+Banach density contains $B_1+\dots+B_k$ for infinite sets $B_1,\dots,B_k\subset G$?
+\end{question}
+
+\begin{theorem}\label{K:thm:main}
+Let $\Gamma$ be a countably infinite abelian group and let $k\ge1$.
+If $A\subset\Gamma$ satisfies $\ubd(A)>0$, then there are infinite sets
+$B_1,\dots,B_k\subset\Gamma$ with
+\[
+B_1+\dots+B_k=\{b_1+\dots+b_k:\ b_i\in B_i\}\subset A .
+\]
+\end{theorem}
+
+\begin{remark}[Finite groups]\label{K:rem:finite}
+Read literally, \cref{K:q:514} includes finite groups, and for them the answer is no.
+A finite group has no infinite subsets, yet every nonempty $A\subset G$ has
+$\ubd(A)\ge|A|/|G|>0$.
+(For finite $G$, the Følner condition forces $\Phi_N=G$ for all large $N$.)
+So the meaningful version of the question concerns countably \emph{infinite} groups, and
+\cref{K:thm:main} answers that version positively for every $k$.
+\end{remark}
+
+\begin{remark}[Previously known cases]\label{K:rem:prior}
+\leavevmode
+\begin{enumerate}[label=(\alph*)]
+\item For $k=2$ the conclusion holds in every countable amenable group, with products in
+place of sums, for sets of positive density along a two-sided \Fol{} sequence. This is due
+to Moreira, Richter and Robertson~\cite[Theorem~1.3]{moreira2019proof}. In an abelian group
+every \Fol{} sequence is two-sided.
+\item For $\Gamma=\Z$, or rather for $A\subset\N$, the case of general $k$ is
+\cite[Theorem~1.1]{kra2022infinite} (Theorem~2.8 of~\cite{kra2023problems}). Here and below,
+theorem numbers in~\cite{kra2022infinite} refer to arXiv:2206.01786v2.
+Its proof relies on pronilfactors: Kra, Moreira, Richter and Robertson construct Erdős
+cubes in an extension of the system with continuous factor maps to its pronilfactors
+\cite[Section~5]{kra2022infinite}.
+\item For $k=3$ and $[\Gamma:6\Gamma]<\infty$, the conclusion follows from a theorem of Ackelsberg
+and Jamneshan~\cite[Theorem~1.9]{ackelsberg2025equidistribution}. They find $t\in\Gamma$ and an
+infinite $B\subset\Gamma$ such that $A-t$ contains every sum of three distinct elements of
+$B$. Splitting $B$ into three disjoint infinite sets $B'_1,B'_2,B'_3$ then gives
+$(B'_1+t)+B'_2+B'_3\subset A$.
+\end{enumerate}
+After stating \cref{K:q:514}, the survey~\cite{kra2023problems} remarks that the techniques
+of~\cite{kra2022infinite}, together with work of Griesmer~\cite{griesmer2009ergodic}, may
+suffice for $\Gamma=\Z^d$. In other groups, it says, ``one cannot
+proceed in the same way, because the analogous ergodic structure theory is not currently
+available.''
+The proof below uses no such structure theory.
+\end{remark}
+
+\begin{remark}[The integers]\label{K:rem:N}
+Our proof specialises to a proof of \cite[Theorem~1.1]{kra2022infinite} that uses no
+pronilfactors.
+To see this, let $A\subset\N$ have positive upper Banach density.
+Intervals form a \Fol{} sequence in $\Z$, so $\ubd(A)>0$ also when $A$ is viewed as a subset
+of $\Z$.
+\cref{K:thm:main} then gives infinite $B_i\subset\Z$ with $B_1+\dots+B_k\subset A\subset\N$.
+Fix $b_j\in B_j$ for $j\neq i$. Then every element of $B_i$ is at least
+$1-\sum_{j\ne i}b_j$, so each $B_i$ is bounded below.
+Hence $B_i\cap\N$ is still infinite, and $(B_1\cap\N)+\dots+(B_k\cap\N)\subset A$.
+\end{remark}
+
+\subsection{Strategy of the proof}\label{K:ssec:strategy}
+
+\subsubsection*{Erdős cubes}
+Following \cite{kra2022infinite}, we look for a dynamical configuration called an Erdős cube.
+The correspondence principle (\cref{K:thm:corr}) gives the following data:
+\begin{itemize}
+\item an ergodic system $(X,\mu,T)$;
+\item an open set $E\subset X$ with $\mu(E)>0$;
+\item a point $a\in X$, generic for $\mu$, such that $A=\{\gamma:T^\gamma a\in E\}$.
+\end{itemize}
+An \emph{Erdős cube} is a tuple $y=(y_\eps)_{\eps\in\{0,1\}^k}$ of points of $X$ with the
+following property. For every direction $i$, the lower $i$-face
+$(y_\eps)_{\eps_i=0}$ is moved arbitrarily close to the upper $i$-face
+$(y_{\eps+e_i})_{\eps_i=0}$ by infinitely many group elements $\beta$, acting diagonally;
+here $\eps+e_i$ is $\eps$ with its $i$-th digit changed to $1$.
+If $y_{0\cdots0}=a$ and $y_{1\cdots1}\in E$, a greedy argument produces
+$B_1+\dots+B_k\subset A$ (\cref{K:lem:cube-sumset}).
+So the task is to construct such a cube.
+
+\subsubsection*{The case $k=2$}
+The argument of~\cite{kra2026short} can be read as constructing a $2$-dimensional cube
+whose bottom face is $(a,y)$ and whose top face $(x,x')$ is random; we use our own
+notation. A point $y\in\supp\mu$ is chosen so that $(a,y)$
+is generic for some joining $\lambda$ of $\mu$ with itself.
+The key claim (Claim~1 in the proof of \cite[Theorem~3.1]{kra2026short}) produces
+infinitely many $\beta$ with two properties:
+\begin{itemize}
+\item $T^\beta a$ is close to $y$;
+\item the top face $(x,x')$, which is distributed according to $\lambda$, still has positive
+measure after the direction-$1$ constraint imposed by $\beta$.
+\end{itemize}
+The proof decomposes $1_E=f_c+f_{wm}$ into its Kronecker and weak mixing parts.
+\begin{itemize}
+\item The weak mixing part averages out along every \Fol{} sequence.
+\item The Kronecker part is handled by approximating $f_c$ by \emph{continuous}
+eigenfunctions. This uses an enhanced correspondence principle in which every measurable
+eigenfunction is topological \cite[Theorem~2.5(4)]{kra2026short}. Continuity gives the
+equicontinuity estimate~(4.2) of~\cite{kra2026short}, which turns ``$T^\beta a$ is close to
+$y$'' into ``$f_c\circ T^\beta$ is close to $f_c$ along the orbit''.
+\item The positive frequency of the $\beta$ with $T^\beta a$ near $y$ comes from
+$y\in\supp\mu$.
+\end{itemize}
+
+\subsubsection*{Where the difficulty lies for $k\ge3$}
+Suppose a $(k-1)$-dimensional bottom face $w=(w_\eps)$ with $w_{0\cdots0}=a$ has been
+built, generic for an ergodic measure $\lambda$ on $X^{\{0,1\}^{k-1}}$. We try to add a
+random top face distributed according to $\lambda$.
+\begin{itemize}
+\item The direction $k$ (bottom face to top face) behaves exactly as in the case $k=2$.
+\item In each of the other directions $i$, the relevant system is the face measure $\nu_i$,
+the distribution under $\lambda$ of the upper $i$-face. Its Kronecker factor carries
+information about $\mu$ beyond the Kronecker factor of $\mu$. For instance, for the skew
+product $(s,u)\mapsto(s+\theta,u+s)$ on $\T^2$, the measures on pairs that arise already
+have eigenfunctions of the form $e(u_1-u_0)$, with eigenvalues that depend on the
+parameter of the pair measure. For a general system there is no reason for such
+eigenfunctions to be continuous in the topological model in which $a$ lives.
+\end{itemize}
+So the equicontinuity step of~\cite{kra2026short} is not available on faces.
+The proof of~\cite{kra2022infinite} for $\Z$ proceeds differently. It disintegrates the
+Host--Kra cubic measure $\mu^{[k]}$ over the first coordinate and needs the conditional
+measure at the prescribed point $a$. To define that conditional measure at every point,
+it passes to an extension in which the factor maps onto the pronilfactors are continuous,
+and it proves that the ergodic decomposition of $\mu^{[k]}$ is then continuous.
+
+\subsubsection*{The three ideas}
+\begin{enumerate}[label=(\roman*)]
+\item \textbf{Phase returns replace continuity} (\cref{K:prop:criterion}).
+Let $\iota_i$ be the Kronecker map of $\nu_i$, with rotation $\alpha_i$.
+\begin{itemize}
+\item By ergodicity, $\iota_i(\text{upper face})-\iota_i(\text{lower face})$ is a
+$\lambda$-a.e.\ constant $r_i$.
+\item By continuity of translation in $L^1$ of the Kronecker group, the Kronecker part
+is controlled for all $\beta$ whose ``phase'' $\alpha_i(\beta)$ is close to $r_i$.
+\item So it suffices to have many $\beta$ for which $T^\beta(\text{lower face of }w)$ is close
+to the upper face of $w$ \emph{and} $\alpha_i(\beta)$ is close to $r_i$. Here ``many'' means
+a set of positive upper Banach density.
+\end{itemize}
+\item \textbf{Phase returns come from supports} (\cref{K:lem:phase}).
+Such phase returns exist as soon as the upper face of $w$ lies in the topological support
+of $\nu_i$. The proof re-bases $w$: we change the \Fol{} sequence so that $w$, decorated
+with a point of the Kronecker group, becomes generic for the graph measure. A stabiliser
+argument for the support of the graph measure then forces the decorated upper face into
+that support (\cref{K:lem:stab}).
+\item \textbf{The support condition survives one more level} (\cref{K:prop:step}).
+We build the cube level by level. At level $m$ we have a point $w\in X^{\{0,1\}^m}$ that
+is generic for an ergodic, face-symmetric measure $\lambda_m$ and whose upper faces lie in
+the supports of the face measures. To pass to level $m+1$:
+\begin{itemize}
+\item re-base $w$ on the Kronecker factor of $\lambda_m$;
+\item choose the new top face at random, so that the new cube is generic for an ergodic
+component of the relative product of $\lambda_m$ with itself over its Kronecker factor;
+\item check that the support condition persists. This is the content of an elementary
+convolution lemma (\cref{K:lem:PS}). The lemma holds at \emph{every} support point, not
+only at typical ones.
+\end{itemize}
+\end{enumerate}
+From one level to the next, the induction carries only genericity, ergodicity, face
+symmetry, the vertex marginals and the support condition; the Kronecker data are rebuilt at
+each level.
+The only prescribed point is $a$. Every vertex added at an induction step is a typical
+point for the current measure, chosen after all the data it must avoid have been fixed, and
+the final top face is constructed by nested boxes. Apart from genericity, no statement
+about typical points is ever applied at a prescribed point, and this is why no
+equidistribution at a prescribed point is needed.
+
+\subsection{Notation and standard facts}\label{K:ssec:prelim}
+
+Throughout, $\Gamma$ is a countably infinite abelian group.
+For a finite set $F$ and a function $u$ on $F$ we write
+$\mathop{\mathbb E}_{\gamma\in F}u(\gamma)=|F|^{-1}\sum_{\gamma\in F}u(\gamma)$.
+
+\begin{lemma}\label{K:lem:folner-grow}
+If $\Phi$ is a \Fol{} sequence in $\Gamma$, then $|\Phi_N|\to\infty$.
+\end{lemma}
+
+\begin{proof}
+Let $F\subset\Gamma$ be finite with $|F|=n$. The number of pairs $(x,g)\in\Phi_N\times F$
+with $x+g\in\Phi_N$ is at most $|\Phi_N|^2$. It also equals
+$\sum_{g\in F}|\Phi_N\cap(\Phi_N-g)|$, which is $n|\Phi_N|(1-o(1))$ by the \Fol{}
+property. Hence $|\Phi_N|\ge n(1-o(1))$. Since $\Gamma$ is infinite, $n$ is arbitrary.
+\end{proof}
+
+\subsubsection*{Topological systems and generic points}
+A \emph{topological $\Gamma$-system} $(Y,T)$ consists of a compact metric space $Y$ and an
+action of $\Gamma$ by homeomorphisms $T^\gamma$, with $T^{\gamma+\delta}=T^\gamma T^\delta$.
+All measures are Borel probability measures.
+A measure $\nu$ is \emph{invariant} if $T^\gamma_*\nu=\nu$ for all $\gamma$, and
+\emph{ergodic} if moreover every invariant Borel set has measure $0$ or $1$.
+Since $\Gamma$ is countable, this is equivalent to asking that every Borel set $S$ with
+$\nu(S\triangle T^{-\gamma}S)=0$ for all $\gamma$ has measure $0$ or $1$ (replace $S$ by
+$\bigcap_{\gamma}T^{-\gamma}S$); in particular a Borel map into a compact metric space
+which is $\nu$-a.e.\ invariant under each $T^\gamma$ is $\nu$-a.e.\ constant.
+A point $y\in Y$ is \emph{generic for $\nu$ along $\Phi$}, written $y\in\mathrm{gen}(\nu,\Phi)$,
+if $\mathop{\mathbb E}_{\gamma\in\Phi_N}f(T^\gamma y)\to\int f\,d\nu$ for every $f\in C(Y)$.
+The (topological) support $\supp\nu$ is the smallest closed set of full measure. It is
+invariant whenever $\nu$ is.
+We use the following facts freely.
+\begin{enumerate}[label=(G\arabic*)]
+\item\label{K:G1} If $y\in\mathrm{gen}(\nu,\Phi)$ and $O\subset Y$ is open, then
+$\liminf_N|\{\gamma\in\Phi_N:T^\gamma y\in O\}|/|\Phi_N|\ge\nu(O)$.
+This follows by approximating $1_O$ from below by continuous functions.
+In particular, if $O$ meets $\supp\nu$, then the set of return times
+$\{\gamma:T^\gamma y\in O\}$ has positive upper Banach density. By \cref{K:lem:folner-grow}
+it is then infinite.
+\item\label{K:G2} If $y\in\mathrm{gen}(\nu,\Phi)$, then $\supp\nu$ is contained in the orbit closure
+$\overline{\{T^\gamma y:\gamma\in\Gamma\}}$. This is immediate from \ref{K:G1}.
+\item\label{K:G3} If $P\colon Y\to Y'$ is continuous and equivariant and
+$y\in\mathrm{gen}(\nu,\Phi)$, then $P(y)\in\mathrm{gen}(P_*\nu,\Phi)$.
+\item\label{K:G4} If $\nu$ is ergodic, then for every \Fol{} sequence $\Phi$ there is a
+subsequence $\Psi$ such that $\nu$-almost every point is generic for $\nu$ along $\Psi$
+\cite[Lemma~2.7]{charamaras2024finding}. This rests on Lindenstrauss' pointwise ergodic
+theorem.
+\end{enumerate}
+
+\subsubsection*{Cubes}
+For $m\ge0$ let $[m]=\{0,1\}^m$, with elements written $\eps=\eps_1\cdots\eps_m$.
+Let $\vec0=0\cdots0$ and $\vec1=1\cdots1$.
+$\Gamma$ acts on $X^{[m]}$ diagonally, $(T^\gamma x)_\eps=T^\gamma x_\eps$; we use the same
+letter $T$ for this action.
+We write $e_i\in[m]$ for the vertex with a single digit $1$, in position $i$, and
+$\eps+e_i$ for the vertex obtained from $\eps$ (with $\eps_i=0$) by changing its $i$-th
+digit to $1$.
+For $1\le i\le m$, $\eta\in[m-1]$ and $j\in\{0,1\}$, let $\eta^{(i,j)}\in[m]$ be the vertex
+obtained by inserting the digit $j$ at position $i$.
+The \emph{lower} and \emph{upper $i$-faces} are the continuous equivariant maps
+$L_i,U_i\colon X^{[m]}\to X^{[m-1]}$ given by
+\[
+(L_ix)_\eta=x_{\eta^{(i,0)}},\qquad (U_ix)_\eta=x_{\eta^{(i,1)}} .
+\]
+We identify $X^{[m+1]}$ with $X^{[m]}\times X^{[m]}$ by $y\mapsto(y',y'')$, where
+$y'_\eps=y_{\eps0}$ and $y''_\eps=y_{\eps1}$ (the last digit is split off).
+Under this identification:
+\begin{itemize}
+\item $L_i(y)=(L_iy',L_iy'')$ and $U_i(y)=(U_iy',U_iy'')$ for $i\le m$;
+\item $L_{m+1}(y)=y'$ and $U_{m+1}(y)=y''$;
+\item $y_{\vec0}=y'_{\vec0}$ and $y_{\vec1}=y''_{\vec1}$.
+\end{itemize}
+For a measure $\lambda$ on $X^{[m]}$ and $\eps\in[m]$, the \emph{vertex marginal} at $\eps$ is
+the image of $\lambda$ under $x\mapsto x_\eps$.
+
+\subsubsection*{Spectral measures and Wiener's lemma}
+Let $\widehat\Gamma$ be the (compact metrizable) dual group of $\Gamma$; its elements are
+homomorphisms $\psi\colon\Gamma\to S^1=\{z\in\mathbb C:|z|=1\}$.
+For an invariant measure $\nu$, write $\mathcal U_\gamma f=f\circ T^\gamma$ for the Koopman
+representation on $L^2(\nu)$.
+For $f\in L^2(\nu)$, the spectral measure $\sigma_f$ is the finite positive measure on
+$\widehat\Gamma$ with $\langle\mathcal U_\gamma f,f\rangle=\int\psi(\gamma)\,d\sigma_f(\psi)$
+(Bochner--Herglotz); note $\sigma_f(\widehat\Gamma)=\|f\|_2^2$.
+An \emph{eigenfunction with eigenvalue $\psi\in\widehat\Gamma$} is a nonzero $f$ with
+$\mathcal U_\gamma f=\psi(\gamma)f$ for all $\gamma$. Write $H_\psi$ for the corresponding
+eigenspace (including $0$).
+
+\begin{lemma}\label{K:lem:wiener}
+Let $\nu$ be invariant and let $\Phi$, $\Theta$ be \Fol{} sequences.
+\begin{enumerate}[label=(\alph*)]
+\item\label{K:wa} For $\psi\in\widehat\Gamma$, $\mathop{\mathbb E}_{\gamma\in\Phi_N}\psi(\gamma)\to1$ if
+$\psi=1$, and $\to0$ otherwise.
+\item\label{K:wb} For every unitary representation $V$ of $\Gamma$ on a Hilbert space and every
+vector $v$, $\mathop{\mathbb E}_{\gamma\in\Phi_N}V_\gamma v$ converges to the orthogonal
+projection of $v$ onto the $V$-invariant vectors.
+\item\label{K:wc} For $f\in L^2(\nu)$ and $\psi\in\widehat\Gamma$, $\sigma_f(\{\psi\})=\|P_\psi f\|^2$,
+where $P_\psi$ is the orthogonal projection onto $H_\psi$. In particular, $\sigma_f$ has no
+atoms if and only if $f$ is orthogonal to every eigenfunction.
+\item\label{K:wd} If $\sigma_f$ has no atoms, then for every $g\in L^2(\nu)$,
+$\mathop{\mathbb E}_{\beta\in\Theta_M}|\langle\mathcal U_\beta f,g\rangle|\to0$ as $M\to\infty$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+\ref{K:wa}: If $\psi(g)\ne1$, then
+$|1-\psi(g)|\cdot|\mathop{\mathbb E}_{\Phi_N}\psi|\le|\Phi_N\triangle(\Phi_N+g)|/|\Phi_N|\to0$.
+
+\ref{K:wb}: The space splits orthogonally into the invariant vectors and the closed span of
+$\{u-V_gu\}$. On a vector $u-V_gu$ the averages are bounded by
+$2\|u\|\,|\Phi_N\triangle(\Phi_N+g)|/|\Phi_N|$.
+
+\ref{K:wc}: Apply \ref{K:wb} to $V_\gamma=\overline{\psi(\gamma)}\mathcal U_\gamma$, whose invariant
+vectors form $H_\psi$. Then
+\[
+\|P_\psi f\|^2=\lim_N\mathop{\mathbb E}_{\gamma\in\Phi_N}\overline{\psi(\gamma)}\langle\mathcal U_\gamma f,f\rangle
+=\lim_N\int\mathop{\mathbb E}_{\gamma\in\Phi_N}(\psi'\overline\psi)(\gamma)\,d\sigma_f(\psi')
+=\sigma_f(\{\psi\})
+\]
+by \ref{K:wa} and dominated convergence.
+
+\ref{K:wd}: Let $Q$ be the orthogonal projection onto the cyclic subspace $Z(f)$, the closed
+span of $\{\mathcal U_\gamma f\}$.
+The map $\mathcal U_\gamma f\mapsto(\psi\mapsto\psi(\gamma))$ extends to a unitary isomorphism
+$Z(f)\to L^2(\sigma_f)$. Let $\phi$ be the image of $Qg$.
+Then $\langle\mathcal U_\beta f,g\rangle=\langle\mathcal U_\beta f,Qg\rangle=\int\psi(\beta)\,d\tau(\psi)$, where
+$\tau=\overline\phi\,\sigma_f$ is a complex measure without atoms.
+By Fubini and \ref{K:wa},
+\[
+\mathop{\mathbb E}_{\beta\in\Theta_M}\Big|\int\psi(\beta)\,d\tau\Big|^2
+=\iint\mathop{\mathbb E}_{\beta\in\Theta_M}(\psi\overline{\psi'})(\beta)\,d\tau(\psi)\,d\overline\tau(\psi')
+\longrightarrow\sum_{\psi}|\tau(\{\psi\})|^2=0 .
+\]
+The Cauchy--Schwarz inequality finishes the proof.
+\end{proof}
+
+\subsubsection*{Kronecker maps}
+Let $(Y,T)$ be a topological $\Gamma$-system and $\lambda$ an ergodic measure on $Y$.
+The \emph{Kronecker subspace} $H_c(\lambda)\subset L^2(\lambda)$ is the closed linear span of
+all eigenfunctions.
+A \emph{rotation} is a pair $(K,\alpha)$, where $K$ is a compact metrizable abelian group
+(written additively, with Haar measure $m_K$) and $\alpha\colon\Gamma\to K$ is a homomorphism
+with dense image; $\Gamma$ acts on $K$ by $z\mapsto z+\alpha(\gamma)$.
+
+\begin{definition}\label{K:def:kron}
+A \emph{Kronecker map} for $(Y,\lambda)$ is a Borel map $\kappa\colon Y\to K$ to a rotation
+$(K,\alpha)$ with the following properties:
+\begin{itemize}
+\item $\kappa_*\lambda=m_K$;
+\item for every $\gamma$, $\kappa(T^\gamma y)=\kappa(y)+\alpha(\gamma)$ for $\lambda$-a.e.\ $y$;
+\item $L^2(Y,\sigma(\kappa),\lambda)=H_c(\lambda)$.
+\end{itemize}
+We write $\mathbb E_\lambda(f\mid\kappa)$ for the orthogonal projection onto $H_c(\lambda)$,
+that is, the conditional expectation onto $\sigma(\kappa)$.
+\end{definition}
+
+\begin{lemma}\label{K:lem:kron}
+Let $\lambda$ be ergodic.
+\begin{enumerate}[label=(\alph*)]
+\item\label{K:ka} A Kronecker map for $(Y,\lambda)$ exists.
+\item\label{K:kb} Let $\kappa\colon Y\to K$ be any Kronecker map, with rotation $\alpha$. Every
+eigenfunction is a.e.\ equal to $c\cdot(\varphi\circ\kappa)$ for a constant $c$ and a
+character $\varphi\in\widehat K$. Here $\varphi$ is the unique character with
+$\varphi\circ\alpha$ equal to the eigenvalue.
+\item\label{K:kc} For $f\in L^2(\lambda)$: $\mathbb E_\lambda(f\mid\kappa)=0$ if and only if
+$\sigma_f$ has no atoms.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+\ref{K:ka}: This is the discrete spectrum theorem (Halmos--von Neumann; for amenable groups
+see \cite[Proposition~2.12]{charamaras2024finding}). For completeness we sketch the
+abelian case.
+\begin{itemize}
+\item The modulus of an eigenfunction is invariant, hence constant. Products of
+eigenfunctions are eigenfunctions. So the set $\mathcal E\subset\widehat\Gamma$ of
+eigenvalues is a subgroup.
+\item Eigenfunctions with distinct eigenvalues are orthogonal and $L^2(\lambda)$ is
+separable, so $\mathcal E$ is countable.
+\item Let $K$ be the dual of the discrete group $\mathcal E$, which is compact and metrizable,
+and let $\alpha(\gamma)=(\psi\mapsto\psi(\gamma))$. The image $\alpha(\Gamma)$ is dense, since
+its annihilator in $\mathcal E$ is trivial.
+\item Choose unimodular eigenfunctions $e_\psi$ for $\psi\in\mathcal E$, and set
+$\Theta(y)=(e_\psi(y))_{\psi}\in(S^1)^{\mathcal E}$. Then
+$\Theta(T^\gamma y)=\alpha(\gamma)\cdot\Theta(y)$ a.e., where $K$ is viewed as a closed subgroup
+of $(S^1)^{\mathcal E}$.
+\item Hence $\Theta_*\lambda$ is invariant under $\alpha(\Gamma)$, and so under $K$.
+\item The image of $\Theta$ in $(S^1)^{\mathcal E}/K$ is invariant, so by ergodicity it is
+a.e.\ a constant coset $Ku_0$.
+\item Put $\kappa=\Theta\cdot u_0^{-1}$, redefined on a null set to take values in $K$.
+Then $\kappa_*\lambda=m_K$ and $\kappa$ is a.e.\ equivariant.
+\item By ergodicity each eigenspace is one-dimensional, spanned by $e_\psi$. The characters
+of $K$ are the evaluations at elements of $\mathcal E$, so the functions $\chi\circ\kappa$,
+$\chi\in\widehat K$, are constant multiples of the $e_\psi$. Hence $L^2(\sigma(\kappa))$, the
+closed span of these functions, equals $H_c(\lambda)$.
+\end{itemize}
+
+\ref{K:kb}: Let $h$ be an eigenfunction with eigenvalue $\psi$. Then $h\in H_c(\lambda)$, so
+$h=\tilde h\circ\kappa$ for some $\tilde h\in L^2(m_K)$, and
+$\tilde h(z+\alpha(\gamma))=\psi(\gamma)\tilde h(z)$ for $m_K$-a.e.\ $z$.
+Expanding $\tilde h=\sum_\varphi a_\varphi\varphi$ in characters gives
+$a_\varphi(\varphi(\alpha(\gamma))-\psi(\gamma))=0$ for all $\varphi$ and $\gamma$.
+Since $\alpha(\Gamma)$ is dense, at most one $\varphi$ satisfies $\varphi\circ\alpha=\psi$.
+
+\ref{K:kc}: $H_c(\lambda)$ is the closed span of the eigenspaces $H_\psi$, so this follows
+from \cref{K:lem:wiener}\ref{K:wc}.
+\end{proof}
+
+\subsubsection*{Disintegrations}
+Let $\kappa\colon Y\to K$ be a Kronecker map for $(Y,\lambda)$.
+There is a Borel family $z\mapsto\lambda_z$ of probability measures on $Y$ with the following
+properties \cite[Theorem~2.2 and (2.1)]{charamaras2024finding}:
+\begin{itemize}
+\item $\lambda=\int_K\lambda_z\,dm_K(z)$;
+\item $\lambda_z(\kappa^{-1}(z))=1$ for $m_K$-a.e.\ $z$;
+\item for bounded Borel $f$ on $Y$,
+$\mathbb E_\lambda(f\mid\kappa)=\tilde f\circ\kappa$ $\lambda$-a.e., where
+\[
+\tilde f(z):=\int f\,d\lambda_z .
+\]
+\end{itemize}
+The family is unique up to $m_K$-null sets. It is a priori defined only for $m_K$-a.e.\
+$z$; we extend it to all $z\in K$ by setting $\lambda_z:=\lambda$ on the exceptional null
+set, which affects none of the statements below.
+If $0\le f\le 1$, then $0\le\tilde f\le1$ a.e.
+Since $\sigma(\kappa)$ is invariant modulo null sets, $\mathbb E_\lambda(\cdot\mid\kappa)$
+commutes with $\mathcal U_\gamma$. Hence $\widetilde{f\circ T^\gamma}(z)=\tilde f(z+\alpha(\gamma))$
+for $m_K$-a.e.\ $z$.
+
+\subsection{The correspondence principle and Erdős cubes}\label{K:ssec:corr}
+
+The following is Furstenberg's correspondence principle~\cite{furstenberg1977ergodic}, in the
+form given by Charamaras and Mountakis.
+
+\begin{theorem}[{\cite[Theorem~2.15]{charamaras2024finding}}]\label{K:thm:corr}
+Let $A\subset\Gamma$, and let $\Phi$ be a \Fol{} sequence such that
+$\dens_\Phi(A)=\lim_N|A\cap\Phi_N|/|\Phi_N|$ exists.
+Then there exist an ergodic system $(X,\mu,T)$ on a compact metric space $X$, a clopen set
+$E\subset X$, a \Fol{} sequence $\Psi$ and a point $a\in\mathrm{gen}(\mu,\Psi)$ such that
+$\mu(E)\ge\dens_\Phi(A)$ and $A=\{\gamma\in\Gamma:T^\gamma a\in E\}$.
+\end{theorem}
+
+In~\cite{charamaras2024finding} this is stated for countable amenable groups. In the proof,
+$X=\{0,1\}^\Gamma$ with the shift action and $a=1_A$.
+We do \emph{not} need the strengthened form in which measurable eigenfunctions are
+topological (property~(4) of \cite[Theorem~2.5]{kra2026short}). The re-basing lemma
+(\cref{K:lem:rebase}) takes its place.
+
+\begin{definition}[Erdős cubes; cf.\ {\cite[Definition~4.1]{kra2022infinite}}]\label{K:def:cube}
+Let $(X,T)$ be a topological $\Gamma$-system and $k\ge1$.
+A point $y\in X^{[k]}$ is a \emph{$k$-dimensional Erdős cube} if, for each $1\le i\le k$,
+there are pairwise distinct $\beta_1,\beta_2,\ldots\in\Gamma$ with
+$T^{\beta_n}L_i(y)\to U_i(y)$ in $X^{[k-1]}$.
+\end{definition}
+
+The next lemma is \cite[Lemma~4.5 and Corollary~4.6]{kra2022infinite}, transferred to
+$\Gamma$. We formulate the acceptability condition so that it is meaningful while some of
+the sets are still empty.
+
+\begin{lemma}\label{K:lem:cube-sumset}
+Let $y\in X^{[k]}$ be an Erdős cube, and let $E\subset X$ be open with $y_{\vec1}\in E$.
+Then there are infinite sets $B_1,\dots,B_k\subset\Gamma$ such that
+$T^{b_1+\dots+b_k}y_{\vec0}\in E$ for all $b_i\in B_i$.
+\end{lemma}
+
+\begin{proof}
+For $\eps\in[k]$ let $Z(\eps)=\{j:\eps_j=0\}$.
+Call a tuple $(B_1,\dots,B_k)$ of finite sets \emph{acceptable} if, for every $\eps\in[k]$
+and every choice of $b_j\in B_j$ for $j\in Z(\eps)$,
+\begin{equation}\label{K:eq:accept}
+T^{\sum_{j\in Z(\eps)}b_j}\,y_\eps\in E .
+\end{equation}
+For $\eps=\vec1$ the sum is empty, and the condition reads $y_{\vec1}\in E$.
+Hence $(\emptyset,\dots,\emptyset)$ is acceptable.
+
+Let $(B_1,\dots,B_k)$ be acceptable, and fix $i$.
+For $\eps$ with $\eps_i=0$, let
+\[
+H_\eps=\bigcap T^{-\sum_{j\in Z(\eps)\setminus\{i\}}b_j}E ,
+\]
+the intersection over all choices $b_j\in B_j$, $j\in Z(\eps)\setminus\{i\}$ (an empty
+intersection is $X$).
+This is a finite intersection of open sets, so $H_\eps$ is open.
+Since $Z(\eps+e_i)=Z(\eps)\setminus\{i\}$, acceptability at $\eps+e_i$ says that
+$y_{\eps+e_i}\in H_\eps$.
+
+Because $y$ is an Erdős cube, there are pairwise distinct $\beta_n$ with
+$T^{\beta_n}y_\eps\to y_{\eps+e_i}$ for all $\eps$ with $\eps_i=0$.
+Hence for all large $n$ we have $T^{\beta_n}y_\eps\in H_\eps$ for every such $\eps$.
+Choose such a $b^*=\beta_n$ with $b^*\notin B_1\cup\dots\cup B_k$, and put $B'_i=B_i\cup\{b^*\}$ and $B'_j=B_j$
+for $j\ne i$.
+
+We check~\eqref{K:eq:accept} for the new tuple. Let $\eps\in[k]$, and choose $b_j\in B'_j$
+for $j\in Z(\eps)$. There are two cases.
+\begin{itemize}
+\item If $i\notin Z(\eps)$, or if $b_i\in B_i$, then~\eqref{K:eq:accept} is an old condition.
+\item If $i\in Z(\eps)$ and $b_i=b^*$, then
+$T^{\sum_{j\in Z(\eps)}b_j}y_\eps=T^{\sum_{j\in Z(\eps)\setminus\{i\}}b_j}(T^{b^*}y_\eps)\in E$,
+because $T^{b^*}y_\eps\in H_\eps$. This step uses commutativity of $\Gamma$.
+\end{itemize}
+
+Now add elements in the order $i=1,2,\dots,k,1,2,\dots$.
+This produces increasing acceptable tuples whose unions $B_1,\dots,B_k$ are infinite.
+Each finite subfamily is contained in an acceptable stage, so~\eqref{K:eq:accept} holds for
+the unions. Taking $\eps=\vec0$ gives the claim. (Since $b^*$ is always chosen outside
+$B_1\cup\dots\cup B_k$, the sets $B_i$ are in addition pairwise disjoint.)
+\end{proof}
+
+\subsection{Relative products over the Kronecker factor}\label{K:ssec:relprod}
+
+Throughout this subsection, $(Y,T)$ is a topological $\Gamma$-system, $\lambda$ is an ergodic
+measure on $Y$, and $\kappa\colon Y\to K$ is a Kronecker map with rotation $\alpha$ and
+disintegration $(\lambda_z)$.
+
+\begin{definition}\label{K:def:J}
+For $t\in K$, the \emph{relative product with parameter $t$} is the measure on $Y\times Y$
+\[
+J^\lambda_t:=\int_K\lambda_z\otimes\lambda_{z+t}\,dm_K(z).
+\]
+The \emph{graph measure} is $\rho_\lambda:=(\mathrm{id},\kappa)_*\lambda$ on $Y\times K$.
+Here $\Gamma$ acts on $Y\times K$ by $T^\gamma\times(\cdot+\alpha(\gamma))$.
+We write $\Sigma_\lambda:=\supp\rho_\lambda$.
+\end{definition}
+
+For $\Gamma=\Z$ these measures appear in \cite[(3.10) and Proposition~3.11]{kra2022infinite},
+and for amenable groups in \cite[Definition~4.7 and Theorem~4.8]{charamaras2024finding}, where
+$(y,y')\mapsto J^\lambda_{\kappa(y')-\kappa(y)}$ is shown to be a continuous ergodic
+decomposition of $\lambda\times\lambda$ when $\kappa$ is continuous. \cref{K:lem:J} below is
+the version we need; we include its short proof.
+
+Translations preserve $m_K$-null sets. Hence $J^\lambda_t$ does not depend on the version
+of the disintegration, and it is defined for \emph{every} $t\in K$.
+The graph measure $\rho_\lambda$ is invariant and concentrated on the graph of $\kappa$.
+The projection onto $Y$ is therefore a measure-theoretic isomorphism
+$(Y\times K,\rho_\lambda)\to(Y,\lambda)$, and $\rho_\lambda$ is ergodic.
+For Borel sets $S\subset Y$ and $O\subset K$ we have
+\begin{equation}\label{K:eq:rho}
+\rho_\lambda(S\times O)=\int_O\lambda_z(S)\,dm_K(z).
+\end{equation}
+
+\begin{lemma}\label{K:lem:J}
+\leavevmode
+\begin{enumerate}[label=(\alph*)]
+\item\label{K:Ja} For bounded Borel $f,g$ on $Y$ and every $t\in K$,
+$\int f\otimes g\,dJ^\lambda_t=\int_K\tilde f(z)\,\tilde g(z+t)\,dm_K(z)$.
+\item\label{K:Jb} Each $J^\lambda_t$ is invariant under the diagonal action, has both marginals
+equal to $\lambda$, and is concentrated on $\{(y,y'):\kappa(y')-\kappa(y)=t\}$.
+The map $t\mapsto J^\lambda_t$ is weak$^*$ continuous.
+\item\label{K:Jc} $J^\lambda_t$ is ergodic for $m_K$-almost every $t$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+\ref{K:Ja} is the definition.
+
+\ref{K:Jb}: The marginals are $\int\lambda_z\,dm_K=\lambda$ and $\int\lambda_{z+t}\,dm_K=\lambda$.
+Concentration follows from $\lambda_z(\kappa^{-1}(z))=1$ for a.e.\ $z$.
+For invariance, use \ref{K:Ja} and $\widetilde{f\circ T^\gamma}=\tilde f(\cdot+\alpha(\gamma))$:
+\[
+J^\lambda_t\big((f\circ T^\gamma)\otimes(g\circ T^\gamma)\big)
+=\int\tilde f(z+\alpha(\gamma))\,\tilde g(z+t+\alpha(\gamma))\,dm_K(z)
+=J^\lambda_t(f\otimes g).
+\]
+For continuity, note that $t\mapsto\int\tilde f(z)\tilde g(z+t)\,dm_K$ is continuous, by
+continuity of translation in $L^2(m_K)$. Linear combinations of functions $f\otimes g$ with
+$f,g\in C(Y)$ are uniformly dense in $C(Y\times Y)$.
+
+\ref{K:Jc}: Let $D(y,y')=\kappa(y')-\kappa(y)$ and $\Lambda=\lambda\times\lambda$.
+
+\emph{Step 1: $J$ disintegrates $\Lambda$ over $D$.}
+By \ref{K:Ja} and Fubini, for bounded Borel $f,g$ on $Y$ and $h$ on $K$,
+\begin{equation}\label{K:eq:disD}
+\int f\otimes g\cdot(h\circ D)\,d\Lambda=\iint\tilde f(z)\,\tilde g(z')\,h(z'-z)\,dm_K\,dm_K
+=\int_K h(t)\,J^\lambda_t(f\otimes g)\,dm_K(t).
+\end{equation}
+By a monotone class argument, \eqref{K:eq:disD} holds with $f\otimes g$ replaced by any bounded
+Borel $F$ on $Y\times Y$, and $t\mapsto J^\lambda_t(F)$ is Borel.
+Together with \ref{K:Jb}, this shows that $t\mapsto J^\lambda_t$ is the disintegration of
+$\Lambda$ over $D$. In particular $\mathbb E_\Lambda(F\mid\sigma(D))(y,y')=J^\lambda_{D(y,y')}(F)$
+for $\Lambda$-a.e.\ $(y,y')$ (recall $D_*\Lambda=m_K$).
+
+\emph{Step 2: invariant functions of $\Lambda$ are $\sigma(D)$-measurable.}
+Write $L^2(\lambda)=H_c\oplus H_w$, where $H_c=L^2(\sigma(\kappa))$ has orthonormal basis
+$\{\varphi\circ\kappa:\varphi\in\widehat K\}$. Let $P_1$ be the projection onto the
+invariant functions in $L^2(\Lambda)$.
+\begin{itemize}
+\item For $f\in H_w$ and $g\in L^2(\lambda)$, we have
+$\langle\mathcal U_\gamma(f\otimes g),f\otimes g\rangle=\widehat{\sigma_f}(\gamma)\widehat{\sigma_g}(\gamma)$,
+so $\sigma_{f\otimes g}=\sigma_f*\sigma_g$. This has no atoms because $\sigma_f$ has none
+(\cref{K:lem:kron}\ref{K:kc}). Hence $P_1(f\otimes g)=0$ by \cref{K:lem:wiener}\ref{K:wc}.
+The same holds for $g\otimes f$.
+\item The function $\varphi\circ\kappa\otimes\varphi'\circ\kappa$ is an eigenfunction with
+eigenvalue $(\varphi\varphi')\circ\alpha$. Since $\alpha(\Gamma)$ is dense, this eigenvalue
+is trivial only if $\varphi'=\overline\varphi$.
+\end{itemize}
+Since $L^2(\Lambda)$ is the orthogonal sum of $H_c\otimes H_c$, $H_w\otimes L^2(\lambda)$ and
+$H_c\otimes H_w$, and $P_1$ maps an eigenfunction with nontrivial eigenvalue to $0$,
+$P_1L^2(\Lambda)$ is the closed span of the functions
+$\varphi(\kappa(y))\overline{\varphi(\kappa(y'))}=\overline{\varphi}(D(y,y'))$, all of
+which are $\sigma(D)$-measurable. Conversely $D$ is invariant.
+So $P_1F=\mathbb E_\Lambda(F\mid\sigma(D))$, which is the function
+$(y,y')\mapsto J^\lambda_{D(y,y')}(F)$ by Step~1.
+
+\emph{Step 3: ergodicity of almost every $J^\lambda_t$.}
+Fix a \Fol{} sequence $\Phi$, write
+$A_NF=\mathop{\mathbb E}_{\gamma\in\Phi_N}F\circ T^\gamma$, and let $F\in C(Y\times Y)$.
+The function $t\mapsto\|A_NF-J^\lambda_t(F)\|^2_{L^2(J^\lambda_t)}$ is continuous by \ref{K:Jb}.
+Since $J^\lambda_t$ is concentrated on $D^{-1}(t)$,
+\[
+\int_K\big\|A_NF-J^\lambda_t(F)\big\|^2_{L^2(J^\lambda_t)}\,dm_K(t)
+=\big\|A_NF-J^\lambda_{D(\cdot)}(F)\big\|^2_{L^2(\Lambda)}\xrightarrow[N\to\infty]{}0
+\]
+by \cref{K:lem:wiener}\ref{K:wb} and Step~2.
+For each $t$, the integrand converges to $\|P^{(t)}_1F-J^\lambda_t(F)\|^2_{L^2(J^\lambda_t)}$,
+where $P^{(t)}_1$ is the invariant projection in $L^2(J^\lambda_t)$.
+By Fatou's lemma this limit vanishes for a.e.\ $t$.
+Applying this to a countable dense subset of $C(Y\times Y)$ shows the following. For a.e.\
+$t$, $P^{(t)}_1$ maps a dense subset of $L^2(J^\lambda_t)$, and hence all of it, to
+constants. That is, $J^\lambda_t$ is ergodic.
+\end{proof}
+
+\begin{lemma}[Kronecker factors of factors]\label{K:lem:factor}
+Let $\lambda$ be ergodic on $Y$ with Kronecker map $\kappa\colon Y\to K$ (rotation $\alpha$).
+Let $P\colon Y\to Z$ be a Borel map into a topological $\Gamma$-system with
+$P_*\lambda=\nu$ and, for each $\gamma$, $P\circ T^\gamma=T^\gamma\circ P$ $\lambda$-a.e., and let $\iota\colon Z\to K'$ be a Kronecker map for $\nu$ (rotation $\alpha'$).
+Then:
+\begin{enumerate}[label=(\alph*)]
+\item\label{K:Fa} $\mathbb E_\lambda(f\circ P\mid\kappa)=\mathbb E_\nu(f\mid\iota)\circ P$ for $f\in L^2(\nu)$;
+\item\label{K:Fb} there is a unique continuous homomorphism $\bar\chi\colon K\to K'$ with
+$\bar\chi\circ\alpha=\alpha'$. It is surjective, and there is $c\in K'$ with
+$\iota\circ P=\bar\chi\circ\kappa+c$ $\lambda$-a.e.;
+\item\label{K:Fc} for \emph{every} $s\in K$, $(P\times P)_*J^\lambda_s=J^\nu_{\bar\chi(s)}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+\ref{K:Fa}: Write $f=f_c+f_w$ with $f_c\in H_c(\nu)$ and $f_w\perp H_c(\nu)$.
+Eigenfunctions of $\nu$ pull back under $P$ to eigenfunctions of $\lambda$, so
+$f_c\circ P\in H_c(\lambda)$.
+Since $P$ is a factor map, $\sigma_{f_w\circ P}=\sigma_{f_w}$, which has no atoms. Hence
+$f_w\circ P\perp H_c(\lambda)$ by \cref{K:lem:kron}\ref{K:kc}.
+
+\ref{K:Fb}: Uniqueness holds because $\alpha(\Gamma)$ is dense.
+For existence, take $\psi\in\widehat{K'}$. Then $\psi\circ\iota\circ P$ is an eigenfunction of
+$\lambda$ with eigenvalue $\psi\circ\alpha'$.
+By \cref{K:lem:kron}\ref{K:kb} there is a unique $\varphi_\psi\in\widehat K$ with
+$\varphi_\psi\circ\alpha=\psi\circ\alpha'$. By uniqueness, $\psi\mapsto\varphi_\psi$ is a
+homomorphism $\widehat{K'}\to\widehat K$.
+By Pontryagin duality there is a continuous homomorphism $\bar\chi\colon K\to K'$ with
+$\psi\circ\bar\chi=\varphi_\psi$ for all $\psi$. Then $\bar\chi\circ\alpha=\alpha'$.
+The image $\bar\chi(K)$ is closed and contains the dense set $\alpha'(\Gamma)$, so $\bar\chi$
+is onto.
+Finally, $\iota\circ P-\bar\chi\circ\kappa$ is $\lambda$-a.e.\ invariant, since both terms
+are shifted by $\alpha'(\gamma)$ under $T^\gamma$. By ergodicity it is a.e.\ equal to a
+constant $c$.
+
+\ref{K:Fc}: Let $f,g$ be bounded Borel on $Z$.
+By \ref{K:Fa} and \ref{K:Fb},
+$\mathbb E_\lambda(f\circ P\mid\kappa)=\tilde f(\iota\circ P)=\tilde f(\bar\chi\circ\kappa+c)$,
+so $\widetilde{f\circ P}(z)=\tilde f(\bar\chi z+c)$ for $m_K$-a.e.\ $z$. Here
+$\tilde f$ is formed with respect to $(\nu,\iota)$.
+The surjective homomorphism $\bar\chi$ maps $m_K$ to $m_{K'}$. Hence, by \cref{K:lem:J}\ref{K:Ja},
+\[
+\int f\otimes g\,d(P\times P)_*J^\lambda_s=\int_K\tilde f(\bar\chi z+c)\,\tilde g(\bar\chi z+\bar\chi s+c)\,dm_K(z)
+=\int_{K'}\tilde f(u)\,\tilde g(u+\bar\chi s)\,dm_{K'}(u),
+\]
+and the right-hand side is $J^\nu_{\bar\chi(s)}(f\otimes g)$.
+Both sides are probability measures, so they agree.
+\end{proof}
+
+The next lemma is \cite[Lemma~3.18]{kra2022infinite} for $\Gamma=\Z$, and the Claim in the
+proof of \cite[Theorem~4.10]{charamaras2024finding} for amenable groups. We include a short
+proof, based on the van der Corput inequality rather than on the continuity of the ergodic
+decomposition. In the argument of~\cite{kra2026short} its role is played by the choice of a
+generic $y$ such that $(x,y)$ is generic for some (not necessarily ergodic) joining.
+
+\begin{lemma}[Generic pairs]\label{K:lem:pairs}
+Suppose in addition that $\pi\colon Y\to K$ is a \emph{continuous} Kronecker map with
+$\pi(T^\gamma y)=\pi(y)+\alpha(\gamma)$ for \emph{all} $y$ and $\gamma$. Let $(J_t)$ be the
+relative products formed with respect to $\pi$.
+Let $y_0\in\mathrm{gen}(\lambda,\Phi)$.
+Then there are a subsequence $\Phi'$ of $\Phi$ and a Borel set $Y_0\subset Y$ with
+$\lambda(Y_0)=1$ such that
+\[
+(y_0,y)\in\mathrm{gen}\big(J_{\pi(y)-\pi(y_0)},\Phi'\big)\qquad\text{for every }y\in Y_0 .
+\]
+\end{lemma}
+
+\begin{proof}
+Let $f,g\in C(Y)$.
+We show that, in $L^2(\lambda)$ (as functions of $y$),
+\begin{equation}\label{K:eq:L2conv}
+\mathop{\mathbb E}_{\gamma\in\Phi_N}f(T^\gamma y_0)\,g(T^\gamma y)\ \longrightarrow\
+\Lambda_{f,g}(y):=J_{\pi(y)-\pi(y_0)}(f\otimes g)=\int\tilde f(z)\,\tilde g(z+\pi(y)-\pi(y_0))\,dm_K(z).
+\end{equation}
+Fix $\tau>0$. Choose a trigonometric polynomial $\tilde f'=\sum_jc_j\varphi_j$ on $K$
+with $\|\tilde f-\tilde f'\|_{L^2(m_K)}<\tau$, and put $f'=\tilde f'\circ\pi$.
+The function $f'$ is continuous because $\pi$ is.
+Let $f''=f-f'=f^\perp+f^\sharp$, with $f^\perp=f-\mathbb E_\lambda(f\mid\pi)$ and
+$f^\sharp=(\tilde f-\tilde f')\circ\pi$. Then $\|f^\sharp\|_2<\tau$, and $\sigma_{f^\perp}$ has no atoms
+(\cref{K:lem:kron}\ref{K:kc}).
+
+\emph{The part $f'$.}
+We have $f'(T^\gamma y_0)=\sum_jc_j\varphi_j(\pi y_0)\,\varphi_j(\alpha(\gamma))$.
+By \cref{K:lem:wiener}\ref{K:wb} applied to $V_\gamma=\varphi_j(\alpha(\gamma))\mathcal U_\gamma$, the
+average $\mathop{\mathbb E}_{\Phi_N}\varphi_j(\alpha(\gamma))\mathcal U_\gamma g$ converges to the
+projection of $g$ onto $H_{\overline{\varphi_j\circ\alpha}}$. That eigenspace is spanned by
+$\overline{\varphi_j}\circ\pi$, so the projection is
+$\big(\int\tilde g\,\varphi_j\,dm_K\big)\,\overline{\varphi_j}\circ\pi$.
+Hence the averages for $f'$ converge in $L^2(\lambda)$ to
+\[
+\Lambda'_{f,g}(y)=\sum_jc_j\,\varphi_j(\pi y_0)\,\overline{\varphi_j(\pi y)}\int\tilde g\,\varphi_j\,dm_K .
+\]
+A change of variables shows that $\Lambda'_{f,g}(y)=\int\tilde f'(z)\tilde g(z+\pi(y)-\pi(y_0))\,dm_K(z)$.
+It follows that $|\Lambda_{f,g}-\Lambda'_{f,g}|\le\tau\|g\|_\infty$ everywhere.
+
+\emph{The part $f''$.}
+Put $u(\gamma)=f''(T^\gamma y_0)$. By the spectral theorem,
+\[
+\Big\|\mathop{\mathbb E}_{\gamma\in\Phi_N}u(\gamma)\mathcal U_\gamma g\Big\|_2^2=\int_{\widehat\Gamma}\Big|\mathop{\mathbb E}_{\gamma\in\Phi_N}u(\gamma)\psi(\gamma)\Big|^2d\sigma_g(\psi).
+\]
+We bound the integrand uniformly in $\psi$ by a van der Corput argument.
+Fix a finite $H\subset\Gamma$. By the \Fol{} property,
+$\mathop{\mathbb E}_{\Phi_N}u\psi=\mathop{\mathbb E}_{\gamma\in\Phi_N}\mathop{\mathbb E}_{h\in H}(u\psi)(\gamma+h)+o(1)$.
+By Cauchy--Schwarz,
+\[
+\Big|\mathop{\mathbb E}_{\Phi_N}u\psi\Big|^2\le\frac1{|H|^2}\sum_{h,h'\in H}\Big|\mathop{\mathbb E}_{\gamma\in\Phi_N}f''(T^{\gamma+h}y_0)\overline{f''(T^{\gamma+h'}y_0)}\Big|+o(1).
+\]
+The function $f''$ is continuous and $y_0$ is generic, so the inner averages converge to
+$\langle\mathcal U_{h-h'}f'',f''\rangle$.
+Moreover,
+$|\langle\mathcal U_\delta f'',f''\rangle-\langle\mathcal U_\delta f^\perp,f^\perp\rangle|\le\tau(\|f^\perp\|_2+\|f''\|_2)\le\tau(2\|f\|_\infty+\tau)$.
+Take $H=\Theta_M$ for a \Fol{} sequence $\Theta$. By Cauchy--Schwarz and the computation
+in \cref{K:lem:wiener}\ref{K:wd},
+\[
+\frac1{|\Theta_M|^2}\sum_{h,h'\in\Theta_M}|\langle\mathcal U_{h-h'}f^\perp,f^\perp\rangle|\le\Big(\iint\Big|\mathop{\mathbb E}_{h\in\Theta_M}(\psi\overline{\psi'})(h)\Big|^2d\sigma_{f^\perp}\,d\sigma_{f^\perp}\Big)^{1/2}\to0 .
+\]
+Hence $\sup_\psi\limsup_N|\mathop{\mathbb E}_{\Phi_N}u\psi|^2\le\tau(2\|f\|_\infty+\tau)$.
+The integrands are bounded and $\sigma_g$ is finite, so by reverse Fatou
+\[
+\limsup_N\Big\|\mathop{\mathbb E}_{\Phi_N}u(\gamma)\mathcal U_\gamma g\Big\|_2^2\le\tau(2\|f\|_\infty+\tau)\|g\|_2^2 .
+\]
+Combining the two parts,
+\[
+\limsup_N\Big\|\mathop{\mathbb E}_{\gamma\in\Phi_N}f(T^\gamma y_0)\,\mathcal U_\gamma g-\Lambda_{f,g}\Big\|_2
+\le\tau\|g\|_\infty+\big(\tau(2\|f\|_\infty+\tau)\big)^{1/2}\|g\|_2 ,
+\]
+and letting $\tau\to0$ proves~\eqref{K:eq:L2conv}.
+
+Now let $\mathcal D$ be a countable dense subset of $C(Y)$.
+Convergence in $L^2$ implies a.e.\ convergence along a subsequence. A diagonal argument
+gives a subsequence $\Phi'$ and a conull Borel set $Y_0$ such that the convergence
+in~\eqref{K:eq:L2conv} holds at every $y\in Y_0$ along $\Phi'$, for all $f,g\in\mathcal D$.
+Both sides of~\eqref{K:eq:L2conv} are bounded bilinear in $(f,g)$ with respect to the
+uniform norm. The span of $\{f\otimes g\}$ is dense in $C(Y\times Y)$.
+Hence $(y_0,y)\in\mathrm{gen}(J_{\pi(y)-\pi(y_0)},\Phi')$ for $y\in Y_0$.
+\end{proof}
+
+\subsection{Re-basing and two support lemmas}\label{K:ssec:support}
+
+The following lemma is the rotation case of \cite[Lemma~3.5]{charamaras2024finding} (see
+the remark following that lemma, which allows any topologically distal factor in place of
+the Kronecker factor). Charamaras and Mountakis prove it for amenable groups, extending a
+result of Host and Kra for $\Z$-actions \cite[Proposition~6.1]{host2009uniformity} (see also
+\cite[Proposition~3.19]{kra2022infinite}); their proof is in
+\cite[Appendix~A]{charamaras2024finding}.
+For rotations the Ellis-semigroup step of that proof reduces to compactness of $K$, so we
+include the short argument.
+
+\begin{lemma}[Re-basing]\label{K:lem:rebase}
+Let $(W,T)$ be a topological $\Gamma$-system and let $w\in W$ have dense orbit.
+Let $\lambda$ be an ergodic measure on $W$.
+Let $\kappa\colon W\to K$ be a Borel map into a compact metrizable abelian group, and
+$\alpha\colon\Gamma\to K$ a homomorphism, such that for each $\gamma$,
+$\kappa(T^\gamma x)=\kappa(x)+\alpha(\gamma)$ for $\lambda$-a.e.\ $x$.
+Let $\hat\lambda=(\mathrm{id},\kappa)_*\lambda$ on $W\times K$, with the action
+$T^\gamma\times(\cdot+\alpha(\gamma))$.
+Then there are $d\in K$ and a \Fol{} sequence $\Psi$ such that $(w,d)\in\mathrm{gen}(\hat\lambda,\Psi)$.
+\end{lemma}
+
+\begin{proof}
+The measure $\hat\lambda$ is invariant and ergodic, since it is isomorphic to $\lambda$ via the
+projection.
+By \ref{K:G4} there are a point $(x_1,z_1)$ and a \Fol{} sequence $\Phi$ with
+$(x_1,z_1)\in\mathrm{gen}(\hat\lambda,\Phi)$.
+
+For each $N$, the finitely many maps $T^\gamma$, $\gamma\in\Phi_N$, are continuous at $x_1$,
+and the orbit of $w$ is dense. So there is $h_N\in\Gamma$ with
+$\sup_{\gamma\in\Phi_N}d_W(T^{\gamma+h_N}w,T^\gamma x_1)<1/N$.
+
+By compactness, $\alpha(h_{N_j})\to u_*$ in $K$ along a subsequence. Put $d=z_1-u_*$ and
+$\Psi_j=\Phi_{N_j}+h_{N_j}$; this is again a \Fol{} sequence.
+For $F\in C(W\times K)$,
+\[
+\mathop{\mathbb E}_{\gamma\in\Psi_j}F(T^\gamma w,d+\alpha(\gamma))
+=\mathop{\mathbb E}_{\gamma\in\Phi_{N_j}}F\big(T^{\gamma+h_{N_j}}w,\ z_1+\alpha(\gamma)+(\alpha(h_{N_j})-u_*)\big).
+\]
+The arguments are uniformly within $o(1)$ of $(T^\gamma x_1,z_1+\alpha(\gamma))$: in the first
+coordinate by the choice of $h_N$, and in the second by uniform continuity of addition on
+$K$. Uniform continuity of $F$ and genericity of $(x_1,z_1)$ give the claim.
+\end{proof}
+
+\begin{lemma}[Support of the graph measure]\label{K:lem:stab}
+Let $(Z,T)$ be a topological $\Gamma$-system, $\nu$ ergodic on $Z$, and $\iota\colon Z\to K$ a
+Kronecker map with rotation $\alpha$. Let $\rho=\rho_\nu$ and $\Sigma=\supp\rho\subset Z\times K$.
+Suppose $(p,\theta)\in Z\times K$ is generic for $\rho$ along some \Fol{} sequence, and
+$p\in\supp\nu$. Then $(p,\theta)\in\Sigma$.
+\end{lemma}
+
+\begin{proof}
+The projection of $\Sigma$ to $Z$ is compact and has full $\nu$-measure, so it contains
+$\supp\nu$. Pick $\theta_0$ with $(p,\theta_0)\in\Sigma$ and put $\zeta=\theta-\theta_0$.
+
+For $u\in K$ let $S_u(x,t)=(x,t+u)$. These maps commute with the action, so $S_\zeta\Sigma$
+is closed and invariant. It contains $S_\zeta(p,\theta_0)=(p,\theta)$, and hence the orbit closure
+of $(p,\theta)$, which contains $\Sigma$ by~\ref{K:G2}.
+So $\Sigma\subset S_\zeta\Sigma$, that is, $S_{-\zeta}\Sigma\subset\Sigma$, and hence
+$S_{-n\zeta}\Sigma\subset\Sigma$ for all $n\ge1$.
+
+By compactness there are $1\le n_1<n_2<\cdots$ with $n_{l+1}-n_l\ge2$ and $n_l\zeta\to\zeta_*$.
+Then $(n_{l+1}-n_l)\zeta\to0$, so with $q_l=n_{l+1}-n_l-1\ge1$ we get $-q_l\zeta\to\zeta$.
+Since $\Sigma$ is closed, $S_\zeta\Sigma\subset\Sigma$, and so
+$(p,\theta)=S_\zeta(p,\theta_0)\in\Sigma$.
+\end{proof}
+
+\begin{lemma}[Phase returns]\label{K:lem:phase}
+Let $(W,T)$ and $(Z,T)$ be topological $\Gamma$-systems, $\lambda$ ergodic on $W$, and
+$w\in\mathrm{gen}(\lambda,\Psi)$ for some \Fol{} sequence $\Psi$.
+Let $L,U\colon W\to Z$ be continuous equivariant maps with $L_*\lambda=U_*\lambda=:\nu$.
+Let $\iota\colon Z\to K$ be a Kronecker map for $\nu$ with rotation $\alpha$.
+\begin{enumerate}[label=(\alph*)]
+\item\label{K:Pa} There is $r\in K$ with $\iota\circ U=\iota\circ L+r$ $\lambda$-a.e.
+\item\label{K:Pb} If $U(w)\in\supp\nu$, then for every open $V\ni U(w)$ and every open $O\ni0$ in $K$,
+there is a \Fol{} sequence $\Omega$ along which the set
+\[
+\{\gamma\in\Gamma:\ T^\gamma L(w)\in V,\ \alpha(\gamma)\in r+O\}
+\]
+has positive lower density; in particular this set has positive upper Banach density.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+\ref{K:Pa}: Both $\iota\circ U$ and $\iota\circ L$ are shifted by $\alpha(\gamma)$ under
+$T^\gamma$ (a.e.), so their difference is $\lambda$-a.e.\ invariant, hence a.e.\ constant.
+
+\ref{K:Pb}: Let $W'$ be the orbit closure of $w$. Then $\lambda(W')=1$ by~\ref{K:G2}, and $w$
+has dense orbit in $W'$.
+The map $\kappa'=\iota\circ L$ satisfies the hypotheses of \cref{K:lem:rebase} on $W'$.
+That lemma gives $z\in K$ and a \Fol{} sequence $\Omega$ with $(w,z)$ generic along $\Omega$
+for $\hat\lambda=(\mathrm{id},\iota\circ L)_*\lambda$.
+Consider the continuous equivariant maps $(x,t)\mapsto(Lx,t)$ and $(x,t)\mapsto(Ux,t+r)$
+from $W'\times K$ to $Z\times K$.
+They push $\hat\lambda$ forward to $(L,\iota\circ L)_*\lambda=\rho_\nu$ and to
+$(U,\iota\circ L+r)_*\lambda=(U,\iota\circ U)_*\lambda=\rho_\nu$, respectively.
+By~\ref{K:G3}, both $(L(w),z)$ and $(U(w),z+r)$ are generic for $\rho_\nu$ along $\Omega$.
+By \cref{K:lem:stab}, $(U(w),z+r)\in\supp\rho_\nu$.
+So $V\times(z+r+O)$ is an open set meeting $\supp\rho_\nu$, and by~\ref{K:G1} the set
+\[
+\{\gamma:(T^\gamma L(w),z+\alpha(\gamma))\in V\times(z+r+O)\}=\{\gamma:T^\gamma L(w)\in V,\ \alpha(\gamma)\in r+O\}
+\]
+has positive lower density along $\Omega$.
+\end{proof}
+
+\begin{lemma}[Pointwise support]\label{K:lem:PS}
+Let $\nu$, $\iota\colon Z\to K$, $\rho=\rho_\nu$, $\Sigma=\supp\rho$ and $J_t=J^\nu_t$ be as above.
+If $(p,\theta)\in\Sigma$, then for $\rho$-almost every $(q,\varphi)\in Z\times K$,
+\[
+(p,q)\in\supp J_{\varphi-\theta}.
+\]
+More precisely, the set of $(q,\varphi)$ with $(p,q)\notin\supp J_{\varphi-\theta}$ is
+contained in a $\rho$-null Borel set.
+\end{lemma}
+
+\begin{proof}
+Fix open sets $O_1\ni p$ and $O_2\subset Z$.
+Define Borel functions $f(\xi)=\nu_\xi(O_1)$ and $g(\xi)=\nu_\xi(O_2)$ on $K$, with values in
+$[0,1]$, and let $F(t)=J_t(O_1\times O_2)=\int f(\xi)g(\xi+t)\,dm_K(\xi)$.
+The function $F$ is continuous.
+
+By~\eqref{K:eq:rho}, $\int_Nf\,dm_K=\rho(O_1\times N)>0$ for every open $N\ni\theta$, because
+$O_1\times N$ is a neighbourhood of $(p,\theta)\in\Sigma$.
+
+Let $C=\{\varphi\in K:F(\varphi-\theta)=0\}$, a closed set. We claim $\int_Cg\,dm_K=0$.
+Suppose not.
+Put $R(k)=\int_Cg(\varphi)\,g(k+\varphi-\theta)\,dm_K(\varphi)$.
+Then $R\ge0$, and $R$ is continuous since
+$|R(k)-R(k')|\le\|g(\cdot+k)-g(\cdot+k')\|_{L^1(m_K)}$.
+Moreover $R(\theta)=\int_Cg^2\,dm_K>0$. So $R>R(\theta)/2$ on some open $N\ni\theta$, and
+\[
+\int f\,R\,dm_K\ \ge\ \tfrac12R(\theta)\int_Nf\,dm_K>0 .
+\]
+On the other hand, by Fubini,
+\[
+\begin{aligned}
+\int f(k)R(k)\,dm_K(k)&=\int_Cg(\varphi)\int f(k)\,g(k+\varphi-\theta)\,dm_K(k)\,dm_K(\varphi)\\
+&=\int_Cg(\varphi)F(\varphi-\theta)\,dm_K(\varphi)=0,
+\end{aligned}
+\]
+a contradiction.
+
+By~\eqref{K:eq:rho}, $\int_Cg\,dm_K=\rho\big(O_2\times C\big)$. So
+\[
+\mathcal N_{O_1,O_2}:=\{(q,\varphi):\ q\in O_2,\ J_{\varphi-\theta}(O_1\times O_2)=0\}=O_2\times C
+\]
+is a $\rho$-null Borel set.
+Let $\mathcal B$ be a countable base of $Z$.
+If $(p,q)\notin\supp J_{\varphi-\theta}$, then some $O_1\times O_2$ with $O_1,O_2\in\mathcal B$,
+$p\in O_1$ and $q\in O_2$ satisfies $J_{\varphi-\theta}(O_1\times O_2)=0$, so
+$(q,\varphi)\in\mathcal N_{O_1,O_2}$. The union of these countably many $\rho$-null sets is
+$\rho$-null.
+\end{proof}
+
+\begin{remark}\label{K:rem:PS}
+For a fixed point $p$, the proof uses only that $\theta\in\supp(f_{O_1}m_K)$ for every open
+$O_1\ni p$, where $f_{O_1}(\xi)=\nu_\xi(O_1)$. By~\eqref{K:eq:rho} this is equivalent to
+$(p,\theta)\in\Sigma$.
+\end{remark}
+
+\subsection{Cube data and the cube criterion}\label{K:ssec:criterion}
+
+From now on, $(X,\mu,T)$ is an ergodic system on a compact metric space, $a\in X$, and
+$E\subset X$ is open with $\mu(E)>0$.
+
+\begin{definition}\label{K:def:datum}
+Let $m\ge0$. An \emph{$m$-dimensional cube datum} is a triple $(w,\lambda,\Psi)$ with the
+following properties:
+\begin{enumerate}[label=(D\arabic*)]
+\item\label{K:D1} $\lambda$ is an ergodic measure on $X^{[m]}$ (for the diagonal action),
+$\Psi$ is a \Fol{} sequence, $w\in\mathrm{gen}(\lambda,\Psi)$, and $w_{\vec0}=a$;
+\item\label{K:D2} every vertex marginal of $\lambda$ equals $\mu$;
+\item\label{K:D3} (face symmetry) $(L_i)_*\lambda=(U_i)_*\lambda=:\nu_i$ for $1\le i\le m$;
+\item\label{K:D4} (upper faces in the support) $U_i(w)\in\supp\nu_i$ for $1\le i\le m$.
+\end{enumerate}
+\end{definition}
+
+If $a\in\mathrm{gen}(\mu,\Psi)$, then $(a,\mu,\Psi)$ is a $0$-dimensional cube datum, since
+\ref{K:D3} and \ref{K:D4} are empty.
+Each face measure $\nu_i$ is ergodic, being a factor of $\lambda$. In what follows,
+$\iota_i\colon X^{[m-1]}\to K_i$ denotes a Kronecker map for $\nu_i$, with rotation $\alpha_i$.
+
+The next proposition is our version of Claim~1 in the proof of
+\cite[Theorem~3.1]{kra2026short}, together with the iteration that follows it.
+The structure of the argument comes from there:
+\begin{itemize}
+\item the splitting into a Kronecker part and a weak mixing part;
+\item the positivity remark \cite[Remark~2.2]{kra2026short};
+\item the averaging of the weak mixing part along \emph{every} \Fol{} sequence.
+\end{itemize}
+What is new is the treatment of the Kronecker part. We use continuity of translation on
+the Kronecker group of the face measure and the phase returns of \cref{K:lem:phase}. No
+continuity of eigenfunctions is needed.
+
+\begin{proposition}[Cube criterion]\label{K:prop:criterion}
+If an $m$-dimensional cube datum $(w,\lambda,\Psi)$ exists, then there is $x\in X^{[m]}$ such
+that $y=(w,x)\in X^{[m+1]}$ is an $(m+1)$-dimensional Erdős cube with $y_{\vec0}=a$ and
+$y_{\vec1}=x_{\vec1}\in E$.
+\end{proposition}
+
+\begin{proof}
+Fix a metric on $X$ and use the maximum metric on products.
+An \emph{open box} is a set $V=\prod_{\eps\in[m]}V_\eps\subset X^{[m]}$ with each $V_\eps$
+open.
+For $1\le i\le m$ and $\beta\in\Gamma$ put $U_i(V)=\prod_{\eta\in[m-1]}V_{\eta^{(i,1)}}$ and
+\[
+W_i(V,\beta)=\{x\in V:\ T^\beta L_i(x)\in U_i(V)\}
+=\{x\in V:\ T^\beta x_{\eta^{(i,0)}}\in V_{\eta^{(i,1)}}\ \forall\eta\in[m-1]\}.
+\]
+This set is open, and $V\subset U_i^{-1}(U_i(V))$.
+
+\smallskip\noindent\emph{Claim A (direction $m+1$).} If $V$ is open with $\lambda(V)>0$, there are
+infinitely many $\beta$ with $T^\beta w\in V$.
+
+This is~\ref{K:G1} together with~\ref{K:D1}.
+
+\smallskip\noindent\emph{Claim B (directions $i\le m$).} If $V$ is an open box with $\lambda(V)>0$,
+$1\le i\le m$ and $\delta>0$, then there are infinitely many $\beta$ such that
+\[
+d\big(T^\beta L_i(w),U_i(w)\big)<\delta\qquad\text{and}\qquad\lambda\big(W_i(V,\beta)\big)>0 .
+\]
+
+\emph{Proof of Claim B.}
+Let $F=1_{U_i(V)}$ on $X^{[m-1]}$. Since $L_i$ is equivariant,
+\begin{equation}\label{K:eq:Wi}
+\lambda(W_i(V,\beta))=\int 1_V(x)\,F(L_iT^\beta x)\,d\lambda(x)=\langle F\circ L_i\circ T^\beta,1_V\rangle_\lambda .
+\end{equation}
+In $L^2(\nu_i)$, write $F=F_c+F_w$, where $F_c=\mathbb E_{\nu_i}(F\mid\iota_i)=G\circ\iota_i$
+with $G\colon K_i\to[0,1]$ Borel, and $F_w\perp H_c(\nu_i)$.
+Let $r_i$ be the constant of \cref{K:lem:phase}\ref{K:Pa} for $L=L_i$ and $U=U_i$, so that
+$\iota_i\circ U_i=\iota_i\circ L_i+r_i$ $\lambda$-a.e.
+
+\emph{Positivity.}
+Let $\Delta=\{F_c>0\}$, a $\sigma(\iota_i)$-measurable set. Then
+$\int_{\Delta^c}F\,d\nu_i=\int_{\Delta^c}F_c\,d\nu_i=0$, so $\nu_i(U_i(V)\setminus\Delta)=0$
+\cite[Remark~2.2]{kra2026short}.
+Since $(U_i)_*\lambda=\nu_i$ and $V\subset U_i^{-1}(U_i(V))$, we get $F_c(U_ix)>0$ for
+$\lambda$-a.e.\ $x\in V$. Hence
+\[
+\eta_V:=\int_VF_c(U_ix)\,d\lambda(x)>0 .
+\]
+
+\emph{The Kronecker part.}
+For every $\beta$ and $\lambda$-a.e.\ $x$ we have
+$F_c(T^\beta L_ix)=G(\iota_i(L_ix)+\alpha_i(\beta))$ and
+$F_c(U_ix)=G(\iota_i(L_ix)+r_i)$. Here we use that $L_i$ and $U_i$ push $\lambda$ to $\nu_i$,
+that $\iota_i$ is a.e.\ equivariant, and the choice of $r_i$.
+Since $(\iota_i\circ L_i)_*\lambda=m_{K_i}$,
+\[
+\big|\langle F_c\circ L_i\circ T^\beta,1_V\rangle_\lambda-\eta_V\big|
+\le\int_{K_i}\big|G(z+\alpha_i(\beta))-G(z+r_i)\big|\,dm_{K_i}(z)
+=\big\|G(\cdot+\alpha_i(\beta)-r_i)-G\big\|_{L^1(m_{K_i})}.
+\]
+By continuity of translation in $L^1(m_{K_i})$, there is an open $O\ni0$ in $K_i$ such that
+the right-hand side is $<\eta_V/4$ whenever $\alpha_i(\beta)\in r_i+O$.
+
+\emph{The weak mixing part.}
+Let $h=F_w\circ L_i\in L^2(\lambda)$, so that $F_w\circ L_i\circ T^\beta=\mathcal U_\beta h$.
+Since $L_i$ is a factor map,
+$\langle\mathcal U_\beta h,h\rangle_\lambda=\langle\mathcal U_\beta F_w,F_w\rangle_{\nu_i}$, so
+$\sigma_h=\sigma_{F_w}$, which has no atoms by \cref{K:lem:kron}\ref{K:kc}.
+By \cref{K:lem:wiener}\ref{K:wd}, for every \Fol{} sequence $\Theta$,
+\[
+\mathop{\mathbb E}_{\beta\in\Theta_M}|\langle\mathcal U_\beta h,1_V\rangle_\lambda|\to0 .
+\]
+
+\emph{Assembly.}
+Let $\mathcal N_\delta$ be the open $\delta$-ball around $U_i(w)$, and let
+\[
+R_\delta=\{\beta:\ T^\beta L_i(w)\in\mathcal N_\delta,\ \alpha_i(\beta)\in r_i+O\}.
+\]
+By~\ref{K:D4} and \cref{K:lem:phase}\ref{K:Pb}, applied with $L=L_i$, $U=U_i$ and
+$\nu=\nu_i$, there are a \Fol{} sequence $\Omega$ and $c_0>0$ with
+$|R_\delta\cap\Omega_M|\ge c_0|\Omega_M|$ for all large $M$.
+Let $R'_\delta=\{\beta\in R_\delta:|\langle\mathcal U_\beta h,1_V\rangle|\ge\eta_V/4\}$. By the weak
+mixing part,
+$|R'_\delta\cap\Omega_M|\le(4/\eta_V)\sum_{\beta\in\Omega_M}|\langle\mathcal U_\beta h,1_V\rangle|=o(|\Omega_M|)$.
+Hence $|(R_\delta\setminus R'_\delta)\cap\Omega_M|\ge(c_0/2)|\Omega_M|$ for all large $M$, and
+$R_\delta\setminus R'_\delta$ is infinite by \cref{K:lem:folner-grow}.
+For $\beta\in R_\delta\setminus R'_\delta$, by~\eqref{K:eq:Wi},
+\[
+\lambda(W_i(V,\beta))=\langle F_c\circ L_i\circ T^\beta,1_V\rangle+\langle\mathcal U_\beta h,1_V\rangle
+\ge\eta_V-\tfrac{\eta_V}4-\tfrac{\eta_V}4>0 .
+\]
+This proves Claim~B.
+
+\smallskip\noindent\emph{Nested boxes.}
+Every open subset of $X^{[m]}$ is a countable union of open boxes whose closures lie in it
+and whose coordinates have arbitrarily small diameter. So every open set of positive
+$\lambda$-measure contains such a box of positive measure.
+Let $V_0=\{x\in X^{[m]}:x_{\vec1}\in E\}$. This is an open box, and
+$\lambda(V_0)=\mu(E)>0$ by~\ref{K:D2}.
+Let $i_n\in\{1,\dots,m+1\}$ with $i_n\equiv n\pmod{m+1}$.
+
+Suppose an open box $V_n$ with $\lambda(V_n)>0$ has been chosen. Choose
+$\beta_n\notin\{\beta_0,\dots,\beta_{n-1}\}$ as follows.
+\begin{itemize}
+\item If $i_n=m+1$, let $\beta_n$ satisfy $T^{\beta_n}w\in V_n$ (Claim~A), and put $W^*=V_n$.
+\item If $i_n=i\le m$, let $\beta_n$ satisfy $d(T^{\beta_n}L_i(w),U_i(w))<1/(n+1)$ and
+$\lambda(W_i(V_n,\beta_n))>0$ (Claim~B), and put $W^*=W_i(V_n,\beta_n)$.
+\end{itemize}
+Then choose an open box $V_{n+1}$ with $\overline{V_{n+1}}\subset W^*$, $\lambda(V_{n+1})>0$, and all
+coordinate diameters $<1/(n+1)$.
+
+The compact sets $\overline{V_n}$ are nested and their diameters tend to $0$. So
+$\bigcap_n\overline{V_n}=\{x\}$, and $x\in V_n$ for all $n$; in particular $x_{\vec1}\in E$.
+Let $y=(w,x)$.
+\begin{itemize}
+\item If $i_n=m+1$, then $T^{\beta_n}w$ and $x$ both lie in $V_n$, so
+$d(T^{\beta_n}L_{m+1}(y),U_{m+1}(y))=d(T^{\beta_n}w,x)\le\operatorname{diam}V_n$.
+\item If $i_n=i\le m$, then $x\in W_i(V_n,\beta_n)$. So for every $\eta\in[m-1]$,
+both $T^{\beta_n}x_{\eta^{(i,0)}}$ and $x_{\eta^{(i,1)}}$ lie in $V_{n,\eta^{(i,1)}}$, and
+\[
+d\big(T^{\beta_n}L_i(x),U_i(x)\big)\le\operatorname{diam}V_n .
+\]
+Together with $d(T^{\beta_n}L_i(w),U_i(w))<1/(n+1)$, and $L_i(y)=(L_iw,L_ix)$,
+$U_i(y)=(U_iw,U_ix)$, this gives $T^{\beta_n}L_i(y)\to U_i(y)$ along these $n$.
+\end{itemize}
+The $\beta_n$ are pairwise distinct, so $y$ is an Erdős cube. Moreover $y_{\vec0}=w_{\vec0}=a$
+and $y_{\vec1}=x_{\vec1}\in E$.
+\end{proof}
+
+\subsection{Building the cube level by level}\label{K:ssec:induction}
+
+\begin{proposition}[Induction step]\label{K:prop:step}
+If an $m$-dimensional cube datum exists, then an $(m+1)$-dimensional cube datum exists.
+\end{proposition}
+
+\begin{proof}
+Let $(w,\lambda,\Psi)$ be an $m$-dimensional cube datum, with face measures $\nu_i$ and
+Kronecker maps $\iota_i\colon X^{[m-1]}\to K_i$ (rotations $\alpha_i$), $1\le i\le m$.
+Let $\kappa\colon X^{[m]}\to K$ be a Kronecker map for $\lambda$, with rotation $\alpha$.
+For $i\le m$, apply \cref{K:lem:factor} to $P=U_i$ and to $P=L_i$. Both push $\lambda$ to
+$\nu_i$, so they give the same homomorphism $\bar\chi_i\colon K\to K_i$, the unique one with
+$\bar\chi_i\circ\alpha=\alpha_i$, together with constants $c_i^U,c_i^L\in K_i$ such that
+\begin{equation}\label{K:eq:affine}
+\iota_i\circ U_i=\bar\chi_i\circ\kappa+c_i^U,\qquad\iota_i\circ L_i=\bar\chi_i\circ\kappa+c_i^L\qquad\lambda\text{-a.e.}
+\end{equation}
+Moreover, for every $s\in K$,
+\begin{equation}\label{K:eq:facesym}
+(U_i\times U_i)_*J^\lambda_s=(L_i\times L_i)_*J^\lambda_s=J^{\nu_i}_{\bar\chi_i(s)} .
+\end{equation}
+
+\emph{Step 1: re-basing.}
+This is the graph construction of \cite[Proposition~3.20]{kra2022infinite} and
+\cite[Proposition~3.7]{charamaras2024finding}, applied to the current measure $\lambda$.
+Let $W$ be the orbit closure of $w$ in $X^{[m]}$, so that $\lambda(W)=1$ by~\ref{K:G2}.
+By \cref{K:lem:rebase} there are $d\in K$ and a \Fol{} sequence $\Psi'$ with
+$(w,d)\in\mathrm{gen}(\hat\lambda,\Psi')$, where $\hat\lambda=(\mathrm{id},\kappa)_*\lambda$.
+Let $\widehat W\subset W\times K$ be the orbit closure of $(w,d)$; then $\hat\lambda(\widehat W)=1$.
+The projection $\mathrm{pr}\colon\widehat W\to X^{[m]}$ is a measure-theoretic isomorphism
+from $\hat\lambda$ to $\lambda$, with inverse $x\mapsto(x,\kappa(x))$.
+So $\pi(x,t)=t$ is a \emph{continuous} Kronecker map for $\hat\lambda$, it is equivariant
+everywhere, and $\kappa\circ\mathrm{pr}=\pi$ $\hat\lambda$-a.e.
+By \cref{K:lem:factor}\ref{K:Fc} (with $\bar\chi=\mathrm{id}$ and $c=0$),
+\begin{equation}\label{K:eq:prJ}
+(\mathrm{pr}\times\mathrm{pr})_*J^{\hat\lambda}_s=J^\lambda_s\qquad\text{for every }s\in K .
+\end{equation}
+
+\emph{Step 2: the new top face.}
+Apply \cref{K:lem:pairs} to $(\widehat W,\hat\lambda,\pi)$ and $y_0=(w,d)$.
+This gives a subsequence $\Psi''$ of $\Psi'$ and a $\hat\lambda$-conull set $\widehat W_0$
+such that, for $\hat x\in\widehat W_0$,
+\[
+((w,d),\hat x)\in\mathrm{gen}\big(J^{\hat\lambda}_{\pi(\hat x)-d},\Psi''\big).
+\]
+For $x\in X^{[m]}$ put $\hat x=(x,\kappa(x))$ and $s(x)=\kappa(x)-d$.
+Since $\hat\lambda=(\mathrm{id},\kappa)_*\lambda$, we have $\hat x\in\widehat W_0$ for
+$\lambda$-a.e.\ $x$.
+For such $x$, projecting with~\ref{K:G3} and~\eqref{K:eq:prJ} gives
+\begin{equation}\label{K:eq:newgen}
+w':=(w,x)\in\mathrm{gen}\big(\lambda':=J^\lambda_{s(x)},\ \Psi''\big)\qquad\text{in }X^{[m]}\times X^{[m]}=X^{[m+1]} .
+\end{equation}
+Note that $s(x)$ is $m_K$-distributed when $x\sim\lambda$.
+By \cref{K:lem:J}\ref{K:Jc}, $\lambda'=J^\lambda_{s(x)}$ is ergodic for $\lambda$-a.e.\ $x$.
+
+\emph{Step 3: \ref{K:D1}--\ref{K:D3} for $(w',\lambda',\Psi'')$.}
+\begin{itemize}
+\item \ref{K:D1}: $\lambda'$ is invariant and (for a.e.\ $x$) ergodic, $w'$ is generic by
+\eqref{K:eq:newgen}, and $w'_{\vec0}=w_{\vec0}=a$.
+\item \ref{K:D2}: by \cref{K:lem:J}\ref{K:Jb} both marginals of $\lambda'$ on $X^{[m]}$ equal
+$\lambda$. So the vertex marginals of $\lambda'$ are those of $\lambda$, all equal to $\mu$.
+\item \ref{K:D3}, direction $m+1$: $(L_{m+1})_*\lambda'$ and $(U_{m+1})_*\lambda'$ are the two
+marginals of $\lambda'$, both equal to $\lambda$.
+\item \ref{K:D3}, direction $i\le m$: $L_i(y',y'')=(L_iy',L_iy'')$, and similarly for $U_i$.
+By~\eqref{K:eq:facesym}, $(L_i)_*\lambda'=(U_i)_*\lambda'=J^{\nu_i}_{t_i}$ with
+$t_i:=\bar\chi_i(s(x))$.
+\end{itemize}
+
+\emph{Step 4: \ref{K:D4} for $(w',\lambda',\Psi'')$.}
+
+\emph{Direction $m+1$.} We need $U_{m+1}(w')=x\in\supp\lambda$, which holds for
+$\lambda$-a.e.\ $x$.
+
+\emph{Direction $i\le m$.}
+Let $p=U_i(w)$ and $\theta=\bar\chi_i(d)+c_i^U$.
+The map $(z,u)\mapsto(U_iz,\bar\chi_i(u)+c_i^U)$ from $X^{[m]}\times K$ to $X^{[m-1]}\times K_i$
+is continuous. It is equivariant because $\bar\chi_i\circ\alpha=\alpha_i$.
+By~\eqref{K:eq:affine} it pushes $\hat\lambda$ to
+$(U_i,\iota_i\circ U_i)_*\lambda=(\mathrm{id},\iota_i)_*\nu_i=\rho_{\nu_i}$.
+By~\ref{K:G3}, $(p,\theta)$ is generic for $\rho_{\nu_i}$ along $\Psi'$.
+Since $p\in\supp\nu_i$ by~\ref{K:D4}, \cref{K:lem:stab} gives $(p,\theta)\in\supp\rho_{\nu_i}$.
+Now let
+\[
+(q,\varphi):=\big(U_ix,\ \iota_i(U_ix)\big).
+\]
+When $x\sim\lambda$, the pair $(q,\varphi)$ is distributed according to $\rho_{\nu_i}$.
+By~\eqref{K:eq:affine}, for $\lambda$-a.e.\ $x$,
+\[
+\varphi-\theta=\bar\chi_i(\kappa(x))-\bar\chi_i(d)=\bar\chi_i(s(x))=t_i .
+\]
+By \cref{K:lem:PS}, applied to $(p,\theta)\in\supp\rho_{\nu_i}$, for $\lambda$-a.e.\ $x$ we have
+\[
+U_i(w')=(U_iw,U_ix)=(p,q)\in\supp J^{\nu_i}_{\varphi-\theta}=\supp J^{\nu_i}_{t_i}=\supp(U_i)_*\lambda' .
+\]
+
+\emph{Conclusion.}
+The requirements on $x$ in Steps 2--4 are finitely many: $\hat x\in\widehat W_0$, ergodicity of
+$J^\lambda_{s(x)}$, $x\in\supp\lambda$, and the $m$ conditions from \cref{K:lem:PS}.
+Each holds for $\lambda$-almost every $x$.
+The data they depend on, namely $d$, $\Psi'$, $\Psi''$, $\widehat W_0$ and the points
+$(p,\theta)$, were all fixed before $x$ was chosen.
+So some $x$ satisfies all of them, and $(w',\lambda',\Psi'')$ is an $(m+1)$-dimensional
+cube datum.
+\end{proof}
+
+
+\subsection{Proof of \texorpdfstring{\cref{K:thm:main}}{the main theorem}}\label{K:ssec:proof}
+
+Let $A\subset\Gamma$ with $\ubd(A)>0$, and let $k\ge1$.
+Choose a \Fol{} sequence along which $|A\cap\Phi_N|/|\Phi_N|$ has a positive limsup, and pass
+to a subsequence along which the limit $\dens_\Phi(A)>0$ exists.
+\cref{K:thm:corr} gives an ergodic $(X,\mu,T)$, a clopen $E$ with $\mu(E)>0$, a \Fol{}
+sequence $\Psi$, and $a\in\mathrm{gen}(\mu,\Psi)$ with $A=\{\gamma:T^\gamma a\in E\}$.
+\begin{enumerate}
+\item $(a,\mu,\Psi)$ is a $0$-dimensional cube datum.
+\item By \cref{K:prop:step}, applied $k-1$ times, there is a $(k-1)$-dimensional cube datum.
+\item By \cref{K:prop:criterion}, there is a $k$-dimensional Erdős cube $y$ with $y_{\vec0}=a$
+and $y_{\vec1}\in E$.
+\item By \cref{K:lem:cube-sumset}, there are infinite $B_1,\dots,B_k$ with
+$T^{b_1+\dots+b_k}a\in E$, that is, $b_1+\dots+b_k\in A$, for all $b_i\in B_i$.
+\end{enumerate}
+\qed
+
+\subsection{Comments on the proof}\label{K:ssec:comments}
+
+\subsubsection*{Structure of the induction}
+The only information passed from one level to the next is the cube datum
+\ref{K:D1}--\ref{K:D4}. The decoration $d$ and the Kronecker maps are used within a single
+step and are rebuilt for the new measure. The face measures $J^{\nu_i}_{t_i}$ of the new
+measure may have much larger Kronecker factors than the $\nu_i$, but nothing about them is
+needed: at the next level they enter only through \ref{K:D3} and \ref{K:D4}.
+The measures $\lambda_m$ need not be invariant under face transformations or permutations
+of digits, since the cube criterion treats each direction separately. Each direction
+produces its own sequence of return times, so the method gives $k$ unrelated sets $B_i$.
+It says nothing about sumsets $B\oplus B+t$ built from a single set, which can fail when
+$\{g+g:g\in G\}$ has infinite index (see the remark after Conjecture~5.15
+in~\cite{kra2023problems}).
+
+\subsubsection*{Ingredients}
+Besides elementary facts about \Fol{} sequences, the proof uses:
+\begin{itemize}
+\item Furstenberg's correspondence principle;
+\item the existence of generic points for ergodic measures (via Lindenstrauss' pointwise
+theorem);
+\item the mean ergodic theorem, Wiener's lemma and the van der Corput inequality;
+\item the discrete spectrum theorem for the Kronecker factor and Pontryagin duality;
+\item disintegration of measures;
+\item re-basing for rotations.
+\end{itemize}
+It uses no characteristic factors beyond the Kronecker factor, no Host--Kra or
+Conze--Lesigne structure theory, no nilsystems, and no equidistribution theorem. Nor does
+it use finite generation, or any assumption on the subgroups $n\Gamma$.
+Commutativity of $\Gamma$ is used throughout: in the spectral theory on $\widehat\Gamma$, in
+describing the Kronecker factor as a rotation of a compact abelian group, and in the fact
+that translates $\Phi_N+h_N$ of a \Fol{} sequence are again \Fol{}. It enters the
+combinatorics in \cref{K:lem:cube-sumset} and in the diagonal action on faces.
+Infiniteness of $\Gamma$ is used to obtain infinitely many distinct return times
+(\cref{K:lem:folner-grow}).
+
+\subsubsection*{Relation to earlier work}
+The relative products, their ergodicity, the generic-pairs lemma and the graph construction
+used for re-basing are known in this context
+\cite{kra2022infinite,charamaras2024finding}; see the references given with
+\cref{K:def:J}, \cref{K:lem:pairs,K:lem:rebase} and Step~1 of \cref{K:prop:step}.
+For $k=2$ our argument differs from that of~\cite{kra2026short} in three respects:
+re-basing replaces topological eigenfunctions, phase returns
+(\cref{K:lem:phase,K:lem:stab}) replace the equicontinuity estimate~(4.2)
+of~\cite{kra2026short}, and an ergodic relative product $J^\mu_s$ replaces an unspecified
+joining.
+The new ingredients are the treatment of the Kronecker part of the face measures through
+phase returns (\cref{K:prop:criterion}), the support lemmas
+(\cref{K:lem:stab,K:lem:phase,K:lem:PS}), and the level-by-level induction
+(\cref{K:prop:step}).

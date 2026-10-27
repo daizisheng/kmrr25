@@ -1,0 +1,156 @@
+% Section: Kousek--Radic Question 5.2 (lower Banach density). Label tag: KR:
+
+\section{Unrestricted sums \texorpdfstring{$B+B$}{B+B} and lower Banach density}\label{KR:sec:main}
+
+In this section we answer, negatively, both parts of a question of Kousek and
+Radi\'c~\cite[Question~5.2]{kousek2024infinite} about lower Banach density thresholds for unrestricted
+sumsets $B+B=\{b+b':b,b'\in B\}$; this question is not from~\cite{kra2023problems}. We show that the
+lower Banach density thresholds are exactly $\frac12$ (with a shift) and $\frac34$ (without a shift),
+the same as the lower density thresholds found in~\cite{kousek2024infinite}.
+
+For $A\subset\N$ let
+\[
+\mathsf d_*(A)=\liminf_{N-M\to\infty}\frac{|A\cap[M,N]|}{N-M}
+\]
+denote the lower Banach density, with the normalisation of~\cite{kousek2024infinite}; $\N_0=\N\cup\{0\}$.
+Kousek and Radi\'c proved that $\ldens(A)>\frac34$ implies $B+B\subset A$ for some infinite
+$B\subset\N$~\cite[Theorem~1.2]{kousek2024infinite}, and that $\ldens(A)>\frac12$ implies
+$B+B+t\subset A$ for some infinite $B$ and some $t\in\{0,1\}$~\cite[Theorem~1.3]{kousek2024infinite}.
+They also constructed a syndetic set of lower Banach density $\frac13$ containing no $B+B+t$, and, by
+adding the odd numbers, a set of lower Banach density $\frac23$ containing no $B+B$
+\cite[Proposition~5.1 and the discussion after it]{kousek2024infinite}, and asked:
+
+\medskip
+\noindent\textbf{Question} (Kousek--Radi\'c~\cite[Question~5.2]{kousek2024infinite}). \emph{Let
+$A\subset\N$.
+\begin{enumerate}[label=\textup{(\arabic*)},leftmargin=*]
+\item If $\mathsf d_*(A)>1/3$, does there exist an infinite set $B\subset\N$ and a number $t\in\N$ so
+that $B+B+t\subset A$?
+\item If $\mathsf d_*(A)>2/3$, does there exist an infinite set $B\subset\N$ so that $B+B\subset A$?
+\end{enumerate}}
+\medskip
+
+\begin{theorem}\label{KR:thm:main}
+Let $\alpha\in\R\setminus\Q$, let $\kappa>0$ satisfy $\kappa\log2\equiv\frac12\pmod1$ (for instance
+$\kappa=1/(2\log 2)$), let $0<\delta<\frac14$ and $c=\frac12-2\delta$. Put $\varphi(n)=n\alpha-\kappa\log n$
+and
+\[
+E=\{n\in\N:\ \{\varphi(n)\}\in[0,c)\},\qquad A'=(2\N-1)\cup2E .
+\]
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item\label{KR:it:dens} $E$ has uniform density $c$: for every $\eps>0$ there is $H_0$ such that
+$\big||E\cap[M,M+H)|-cH\big|\le\eps H$ for all $M\ge1$ and $H\ge H_0$. In particular
+$\mathsf d_*(E)=\ubd(E)=\frac12-2\delta$, and similarly $\mathsf d_*(A')=\ubd(A')=\frac34-\delta$.
+\item\label{KR:it:E} For every $t\in\Z$ and every infinite $B\subset\N_0$, $B+B+t\not\subset E$.
+\item\label{KR:it:A} For every infinite $B\subset\N$, $B+B\not\subset A'$.
+\end{enumerate}
+\end{theorem}
+
+\begin{corollary}\label{KR:cor:main}
+Both parts of Question~5.2 of~\cite{kousek2024infinite} have negative answers (take
+$0<\delta<\frac1{12}$). Moreover
+\begin{align*}
+\sup\{\mathsf d_*(A):\ B+B+t\not\subset A\ \text{for all } t\ge0 \text{ and all infinite } B\}&=\tfrac12,\\
+\sup\{\mathsf d_*(A):\ B+B\not\subset A\ \text{for all infinite } B\}&=\tfrac34 .
+\end{align*}
+\end{corollary}
+
+\begin{proof}
+The lower bounds come from \cref{KR:thm:main}. For the upper bounds note that
+$\ldens(A)\ge\mathsf d_*(A)$ (take $M=1$ in the definition). Hence $\mathsf d_*(A)>\frac12$ gives
+$B+B+t\subset A$ for some infinite $B$ and $t\in\{0,1\}$ by~\cite[Theorem~1.3]{kousek2024infinite},
+and $\mathsf d_*(A)>\frac34$ gives $B+B\subset A$ by~\cite[Theorem~1.2]{kousek2024infinite}.
+\end{proof}
+
+\begin{remark}\label{KR:rem:credit}
+The obstruction is the logarithmic-scale mechanism used in~\cite[Example~3.6]{kra2023problems} and
+in~\cite[Proposition~5.1]{kousek2024infinite}: for $b'$ fixed and $b\to\infty$, the numbers $2b+t$ and
+$b+b'+t$ differ by a factor close to $2$, so the phase $\kappa\log n$ of the two differs by about
+$\frac12$. We combine it with an irrational rotation $n\alpha$, which makes the set uniformly dense
+(the logarithmic obstruction alone has lower Banach density $0$), while the rotation phases of $2b+t$ and
+$b+b'+t$ still nearly agree along a subsequence of $B$ on which $b\alpha$ converges, because both have
+total coefficient $2$ on $B$. The proof uses the diagonal element $2b+t$. The sharpness examples
+of~\cite[Proposition~4.2]{kousek2024infinite} for lower density contain arbitrarily long gaps, so they
+have lower Banach density $0$; \cref{KR:cor:main} shows that lower Banach density gives no improvement
+over lower density. We do not know whether the boundary values are attained, that is, whether some
+$A$ with $\mathsf d_*(A)=\frac12$ contains no $B+B+t$, or some $A$ with $\mathsf d_*(A)=\frac34$ contains
+no $B+B$.
+\end{remark}
+
+\begin{lemma}\label{KR:lem:rot}
+For $L\in\N$ let
+\[
+D_L=\sup_{\gamma\in\R}\ \sup_{0\le a\le b\le1}\ \frac1L\Big|\#\{0\le j<L:\ \{j\alpha+\gamma\}\in[a,b)\}-(b-a)L\Big| .
+\]
+Then $D_L\to0$ as $L\to\infty$.
+\end{lemma}
+
+\begin{proof}
+Let $K\in\N$. By Weyl's equidistribution theorem, for each of the $K$ arcs $I_i=[\frac iK,\frac{i+1}K)$
+of $\T$ we have $\#\{0\le j<L:j\alpha\bmod1\in I_i\}=L/K+o(L)$, so there is $L_0$ such that for $L\ge
+L_0$ each of these counts lies in $[(1-\frac1K)\frac LK,(1+\frac1K)\frac LK]$. Now $\{j\alpha+\gamma\}\in
+[a,b)$ if and only if $j\alpha\bmod1$ lies in the arc $J=[a-\gamma,b-\gamma)$ of length $b-a$. The arc
+$J$ contains at least $K(b-a)-2$ and is covered by at most $K(b-a)+2$ of the arcs $I_i$. Hence for
+$L\ge L_0$ the count lies between $(K(b-a)-2)(1-\frac1K)\frac LK$ and $(K(b-a)+2)(1+\frac1K)\frac LK$,
+so $D_L\le 4/K$.
+\end{proof}
+
+\begin{proof}[Proof of \cref{KR:thm:main}\ref{KR:it:dens}]
+Let $0<\eps<\min(c,1-c)$, choose $L$ with $D_L\le\eps/4$, put $K=4\kappa/\eps$, and let
+$H\ge H_0=8(K+1)L/\eps$. Let $W=[M,M+H)$ with $M\ge1$. At most $KL\le\eps H/8$ integers of $W$ are
+smaller than $KL$. Split the rest of $W$ into consecutive blocks $\{m,\dots,m+L-1\}$, $m\ge KL$, and a
+remainder of fewer than $L\le\eps H/8$ integers. For $n=m+j$, $0\le j<L$, we have
+\[
+\varphi(n)=j\alpha+\gamma_m-\eta_n,\qquad \gamma_m=m\alpha-\kappa\log m,\qquad
+\eta_n=\kappa\log\frac{m+j}m\in\Big[0,\frac{\kappa L}m\Big)\subset\Big[0,\frac\eps4\Big).
+\]
+For $x\in\R$ and $0\le\eta<\eps/4$ we have, since $c+\eps/4<1$,
+\[
+\{x\}\in[\tfrac\eps4,c)\ \Longrightarrow\ \{x-\eta\}\in[0,c)\ \Longrightarrow\ \{x\}\in[0,c+\tfrac\eps4).
+\]
+Applying this with $x=j\alpha+\gamma_m$ and using \cref{KR:lem:rot}, each block contains between
+$L(c-\frac\eps2)$ and $L(c+\frac\eps2)$ elements of $E$. If $P$ denotes the number of integers of $W$ lying in
+blocks, then $(1-\frac\eps4)H\le P\le H$, and therefore
+\[
+(c-\tfrac\eps2)(1-\tfrac\eps4)H\ \le\ |E\cap W|\ \le\ (c+\tfrac\eps2)H+\tfrac\eps4H,
+\]
+so $\big||E\cap W|-cH\big|\le\eps H$. For $A'$: a window $[M,M+H)$ contains $\frac H2+O(1)$ odd numbers,
+and its even elements of $A'$ are the numbers $2n$ with $n$ in $E\cap[\frac M2,\frac{M+H}2)$, a window of
+length $\frac H2+O(1)$; so by the above they number $\frac{cH}2+o(H)$, uniformly in $M$. Hence $A'$ has
+uniform density $\frac{1+c}2=\frac34-\delta$.
+\end{proof}
+
+\begin{proof}[Proof of \cref{KR:thm:main}\ref{KR:it:E}]
+Let $\eta=\frac12-c=2\delta$, and suppose that $t\in\Z$ and $B\subset\N_0$ is infinite with
+$B+B+t\subset E$. By compactness of $\T$ there are an infinite $B_1\subset B$ and $\beta\in\T$ with
+$b\alpha\to\beta$ in $\T$ as $b\to\infty$ in $B_1$. Choose $b'\in B_1$ with $\|b'\alpha-\beta\|<\eta/4$, where
+$\|\cdot\|$ is the distance to the nearest integer. Since $(2b+t)/(b+b'+t)\to2$ as $b\to\infty$, we can
+choose $b\in B_1$, $b>b'$, with
+\[
+\|b\alpha-\beta\|<\frac\eta4\qquad\text{and}\qquad
+|r|<\frac\eta2,\quad\text{where } r=\kappa\Big(\log\frac{2b+t}{b+b'+t}-\log2\Big).
+\]
+The numbers $m_1=2b+t=b+b+t$ and $m_2=b+b'+t$ belong to $B+B+t\subset E$ (here the diagonal element
+$b+b$ is used). Let $x=\{\varphi(m_1)\}$ and $y=\{\varphi(m_2)\}$. Then $x,y\in[0,c)$, so
+$x-y\in(-c,c)$ and
+\[
+\operatorname{dist}\big(x-y,\tfrac12+\Z\big)\ \ge\ \tfrac12-c\ =\ \eta .
+\]
+On the other hand,
+\[
+\varphi(m_1)-\varphi(m_2)=(b-b')\alpha-\kappa\log\frac{2b+t}{b+b'+t}=(b-b')\alpha-\kappa\log2-r,
+\]
+and $\kappa\log2\in\frac12+\Z$. Since $x-y\equiv\varphi(m_1)-\varphi(m_2)\pmod1$, we get
+\[
+\operatorname{dist}\big(x-y,\tfrac12+\Z\big)\le\|(b-b')\alpha\|+|r|
+\le\|b\alpha-\beta\|+\|\beta-b'\alpha\|+|r|<\eta,
+\]
+a contradiction.
+\end{proof}
+
+\begin{proof}[Proof of \cref{KR:thm:main}\ref{KR:it:A}]
+Suppose $B\subset\N$ is infinite and $B+B\subset A'$. Choose $\sigma\in\{0,1\}$ such that
+$B_\sigma=B\cap(2\Z+\sigma)$ is infinite, and let $C=\{(b-\sigma)/2:b\in B_\sigma\}\subset\N_0$. For
+$c_1,c_2\in C$ the number $(2c_1+\sigma)+(2c_2+\sigma)=2(c_1+c_2+\sigma)$ is an even element of $A'$,
+so $c_1+c_2+\sigma\in E$. Thus $C+C+\sigma\subset E$, contradicting part~\ref{KR:it:E}.
+\end{proof}

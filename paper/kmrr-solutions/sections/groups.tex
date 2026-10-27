@@ -1,0 +1,705 @@
+\section{Admissible translates for \texorpdfstring{$B\oplus B+t$}{B⊕B+t} in abelian groups}
+\label{G:sec:translates}
+
+In this section we answer Question~5.16 of~\cite{kra2023problems} and the related
+Question~\S5.3(a). For a countably infinite abelian group $G$ in which $2G=\{g+g:g\in G\}$
+has finite index (by work of Charamaras--Mountakis and Ackelsberg these are exactly the
+groups in which Conjecture~5.15 of~\cite{kra2023problems} holds), we show that a set
+$T\subset G$ of translates suffices if and only if $T$ meets every coset of $2G$. In
+particular, the transversals of $2G$ are exactly the minimal sets of translates that
+suffice. We also determine exactly which sets arise as the set of admissible translates
+of some $A$ of positive upper Banach density, and we give two-sided bounds for the set of
+admissible translates of each individual $A$.
+The new input is small: the existence of some translate is a theorem of
+Charamaras--Mountakis~\cite{charamaras2024finding}, and the two elementary observations
+we use have already appeared in the literature in closely related settings; see
+\cref{G:rem:credit}.
+
+\subsection{Setting and the survey's questions}
+Let $(G,+)$ be a countable abelian group. A \emph{\Fol{} sequence} in $G$ is a sequence
+$\Phi=(\Phi_N)_{N\in\N}$ of finite nonempty subsets of $G$ such that
+$|\Phi_N\cap(g+\Phi_N)|/|\Phi_N|\to1$ for every $g\in G$. (Since $G$ is abelian, left,
+right and two-sided \Fol{} sequences coincide.) Every countable abelian group is amenable,
+so \Fol{} sequences exist. For $A\subset G$ we write
+$\udens_\Phi(A)=\limsup_{N\to\infty}|A\cap\Phi_N|/|\Phi_N|$, and we define the
+\emph{upper Banach density} as
+\[
+\ubd(A)=\sup_\Phi\udens_\Phi(A),
+\]
+the supremum being taken over all \Fol{} sequences in $G$. Thus $\ubd(A)>0$ if and only if
+$\udens_\Phi(A)>0$ for some \Fol{} sequence $\Phi$; this is the notion of positive upper
+Banach density used in~\cite{charamaras2024finding}. For $B\subset G$ let
+$B\oplus B=\{b+b':b,b'\in B,\ b\neq b'\}$.
+
+Conjecture~5.15 of~\cite{kra2023problems} asserts that in every countable abelian group
+$G$, every set $A\subset G$ with $\ubd(A)>0$ contains $B\oplus B+t$ for some infinite
+$B\subset G$ and some $t\in G$. The survey then asks:
+
+\begin{question}{5.16}\label{G:q:516}
+Assuming that Conjecture~5.15 holds, what values of the shift $t$ suffice?
+\end{question}
+
+\begin{question}{\S5.3(a)}\label{G:q:53a}
+The authors write: ``We suspect that there is a direct relation between coset
+representatives of the subgroup $\{g+g:g\in G\}$ and the restrictions that can be placed
+on the shift $t$.'' Make this relation precise.
+\end{question}
+
+The sentence ``We would like to know if similar restrictions can be placed in other
+groups'', which precedes Question~5.16 in~\cite{kra2023problems}, is the motivation for
+Question~5.16 itself. By Question~\S5.3(a) we mean the suspicion quoted above, which the
+survey states right after Question~5.16.
+
+As recorded in~\cite{kra2023problems}, Conjecture~5.15 is known to hold precisely when
+$[G:2G]<\infty$. We recall the two results behind this statement.
+
+\begin{theorem}[{Charamaras--Mountakis~\cite[Corollary~1.13]{charamaras2024finding}}]
+\label{G:thm:CM}
+Let $(G,+)$ be a countable abelian group such that $2G$ is a subgroup of finite index, and
+let $A\subset G$ have positive upper Banach density. Then there exist an infinite set
+$B\subset A$ and some $t\in G$ such that $B\oplus B\subset A-t$.
+\end{theorem}
+
+(In~\cite{charamaras2024finding} the group is countable throughout, and, as the
+conclusion shows, infinite. The result is cited as Corollary~1.12 in~\cite{kra2023problems}
+and in~\cite[Theorem~1.1]{ackelsberg2024counterexamples}, following an earlier arXiv
+version of~\cite{charamaras2024finding}.)
+
+\begin{theorem}[{Ackelsberg~\cite[Theorem~1.2]{ackelsberg2024counterexamples}}]
+\label{G:thm:Ack}
+Suppose $\Gamma$ is a countable abelian group and $2\Gamma$ is a subgroup of infinite
+index. Then for any $\eps>0$ there exists $A\subset\Gamma$ such that $\ubd(A)>1-\eps$
+and such that if $B\subset\Gamma$ and $t\in\Gamma$ satisfy $B\oplus B+t\subset A$, then
+$B$ is finite.
+\end{theorem}
+
+Ackelsberg also records~\cite[footnote~2]{ackelsberg2024counterexamples} that T.~Tao
+observed independently that the condition $[\Gamma:2\Gamma]<\infty$ in \cref{G:thm:CM}
+is necessary.
+
+Conjecture~5.15 fails trivially for finite groups. Hence ``assuming that Conjecture~5.15
+holds'' in \cref{G:q:516} means that $G$ is a countably infinite abelian group with
+$[G:2G]<\infty$. We fix such a group for the rest of this section. For $A\subset G$ we let
+\[
+T(A)=\{t\in G:\ B\oplus B+t\subset A\ \text{for some infinite } B\subset G\}
+\]
+be the set of \emph{admissible translates} for $A$. We say that a set $T\subset G$
+\emph{suffices} if $T(A)\cap T\neq\emptyset$ for every $A\subset G$ with $\ubd(A)>0$.
+
+\subsection{Three elementary lemmas}
+
+\begin{lemma}\label{G:lem:density}
+Let $G$ be a countably infinite abelian group, and let $H\le G$ be a subgroup of finite
+index $\ell$.
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item For every \Fol{} sequence $\Phi$ and every $r\in G$ we have
+$|(r+H)\cap\Phi_N|/|\Phi_N|\to1/\ell$. In particular $\ubd(r+H)=1/\ell>0$.
+\item For all $X,Y\subset G$ we have $\ubd(X\cup Y)\le\ubd(X)+\ubd(Y)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(i) Let $C\subset G$ and $x\in G$. Since $|(x+C)\cap\Phi_N|=|C\cap(\Phi_N-x)|$, we get
+\[
+\big||(x+C)\cap\Phi_N|-|C\cap\Phi_N|\big|\le|(\Phi_N-x)\,\triangle\,\Phi_N|
+=2\big(|\Phi_N|-|\Phi_N\cap(\Phi_N-x)|\big)=o(|\Phi_N|).
+\]
+Let $r_1+H,\dots,r_\ell+H$ be the cosets of $H$. Applying this with $C=r_1+H$ and
+$x=r_i-r_1$ shows that the $\ell$ quantities $|(r_i+H)\cap\Phi_N|$ differ pairwise by
+$o(|\Phi_N|)$. They add up to $|\Phi_N|$, so each of them equals
+$|\Phi_N|/\ell+o(|\Phi_N|)$.
+
+(ii) For each \Fol{} sequence $\Phi$ we have
+$\udens_\Phi(X\cup Y)\le\udens_\Phi(X)+\udens_\Phi(Y)\le\ubd(X)+\ubd(Y)$. Now take
+the supremum over $\Phi$.
+\end{proof}
+
+\begin{lemma}[Pigeonhole]\label{G:lem:pigeon}
+If $[G:2G]<\infty$ and $B\subset G$ is infinite, then $(B\oplus B)\cap2G\neq\emptyset$.
+Consequently, if $B\oplus B+t\subset A$, then $t\in A+2G$. Moreover, if
+$B\oplus B+t$ is contained in a single coset $r+2G$, then $t\in r+2G$.
+\end{lemma}
+
+\begin{proof}
+Since $B$ is infinite and $2G$ has finitely many cosets, there are distinct $b,b'\in B$ in
+the same coset $x+2G$, say $b=x+2u$ and $b'=x+2v$. Then $b+b'=2(x+u+v)\in2G$ and
+$b+b'\in B\oplus B$. If $B\oplus B+t\subset A$, then $t+b+b'\in A$, so
+$t\in A-(b+b')\subset A+2G$. If $B\oplus B+t\subset r+2G$, then $t+b+b'\in r+2G$, so
+$t\in r+2G$.
+\end{proof}
+
+\begin{lemma}[Moving the translate]\label{G:lem:move}
+For $B\subset G$ and $s\in G$ we have $(B-s)\oplus(B-s)=B\oplus B-2s$. Consequently
+$T(A)+2G=T(A)$ for every $A\subset G$, i.e.\ $T(A)$ is a union of cosets of $2G$.
+\end{lemma}
+
+\begin{proof}
+The map $b\mapsto b-s$ is a bijection $B\to B-s$, and $b-s\neq b'-s$ if and only if
+$b\neq b'$; this gives the identity. If $B\oplus B+t\subset A$ with $B$ infinite, then
+$B-s$ is infinite and $(B-s)\oplus(B-s)+(t+2s)=B\oplus B+t\subset A$. Thus
+$t+2s\in T(A)$ for every $s\in G$.
+\end{proof}
+
+\subsection{The admissible translates}
+
+\begin{theorem}\label{G:thm:translates}
+Let $G$ be a countably infinite abelian group with $[G:2G]<\infty$. For $A\subset G$ put
+$R(A)=\{r\in G:\ \ubd(A\cap(r+2G))>0\}$.
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item\label{G:it:union} $T(A)$ is a union of cosets of $2G$.
+\item\label{G:it:sandwich} $R(A)\subset T(A)\subset A+2G$. If $\ubd(A)>0$, then
+$R(A)\neq\emptyset$, and hence $T(A)$ contains a full coset of $2G$.
+\item\label{G:it:realise} For every nonempty union $U$ of cosets of $2G$ we have
+$\ubd(U)>0$ and $T(U)=U$. Consequently, the family
+$\{T(A):A\subset G,\ \ubd(A)>0\}$ is exactly the family of nonempty unions of cosets of
+$2G$.
+\item\label{G:it:suffice} A set $T\subset G$ suffices if and only if $T$ meets every coset of
+$2G$. The minimal sets that suffice are exactly the transversals of $2G$ in $G$; they all
+have exactly $[G:2G]$ elements.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\ref{G:it:union} This is \cref{G:lem:move}.
+
+\ref{G:it:sandwich} The inclusion $T(A)\subset A+2G$ is \cref{G:lem:pigeon}. Let
+$r\in R(A)$ and put $A'=A\cap(r+2G)$. By \cref{G:thm:CM} applied to $A'$, there are an
+infinite $B\subset G$ and $t\in G$ with $B\oplus B+t\subset A'\subset A$. Thus
+$t\in T(A)$. Since $B\oplus B+t\subset r+2G$, \cref{G:lem:pigeon} gives $t\in r+2G$. By
+part~\ref{G:it:union}, $r\in t+2G\subset T(A)$. Hence $R(A)\subset T(A)$.
+If $\ubd(A)>0$, then since $A$ is the union of the finitely many sets $A\cap(r+2G)$,
+\cref{G:lem:density}(ii) shows that $\ubd(A\cap(r+2G))>0$ for some $r$, i.e.\
+$R(A)\neq\emptyset$. Since $R(A)$ is a union of cosets of $2G$, the last assertion follows.
+
+\ref{G:it:realise} By \cref{G:lem:density}(i), $\ubd(U)\ge1/[G:2G]>0$. For every
+$r\in U$ we have $U\cap(r+2G)=r+2G$, which has positive upper Banach density; hence
+$U\subset R(U)$. By part~\ref{G:it:sandwich},
+$U\subset R(U)\subset T(U)\subset U+2G=U$. The final assertion follows from this and
+parts~\ref{G:it:union} and~\ref{G:it:sandwich}.
+
+\ref{G:it:suffice} Suppose $T$ meets every coset of $2G$, and let $\ubd(A)>0$. By
+part~\ref{G:it:sandwich}, $T(A)$ contains a coset of $2G$, and this coset meets $T$.
+Conversely, suppose $T\cap(r+2G)=\emptyset$ for some $r$. Let $A=r+2G$. Then
+$\ubd(A)>0$, and by part~\ref{G:it:realise}, $T(A)=r+2G$, which is disjoint from $T$.
+So $T$ does not suffice.
+A transversal meets every coset, so it suffices, and removing any of its points leaves
+a coset unmet; hence transversals are minimal. If a sufficient set $T$ is not a
+transversal, then it contains two points of one coset, and removing one of them leaves a
+sufficient set. Hence $T$ is not minimal.
+\end{proof}
+
+\Cref{G:thm:translates}\ref{G:it:suffice} answers \cref{G:q:516}, and it confirms the
+suspicion in \cref{G:q:53a} in the strongest possible form: the translates can be
+restricted to any prescribed set of coset representatives of $2G$, and no smaller set
+of translates works. Parts~\ref{G:it:union}--\ref{G:it:realise} concern an individual
+set $A$. The admissible translates form a union of cosets of $2G$. This union contains
+every coset in which $A$ has positive upper Banach density, and it is contained in the
+union of the cosets that $A$ meets. Every nonempty union of cosets arises in this way.
+In general neither bound is attained, as the next proposition shows. The only exact
+statement for an individual $A$ is the tautological reduction to a single coset:
+$r\in T(A)$ if and only if $A\cap(r+2G)\supset B\oplus B+t$ for some infinite $B$ and
+some $t$. (If $B\oplus B+r\subset A$, pass to an infinite $B'\subset B$ inside one coset
+of $2G$. Then $B'\oplus B'\subset 2G$, so $B'\oplus B'+r\subset A\cap(r+2G)$. The converse
+follows from \cref{G:lem:pigeon,G:lem:move}.)
+
+\begin{proposition}\label{G:prop:strict}
+Let $G=\Z$.
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item If $A=2\Z\cup\{3^n:n\in\N\}$, then $T(A)=2\Z$, while $A+2\Z=\Z$.
+\item If $A=2\Z\cup X$ with $X=\{2^i+2^j+1:\ 1\le i<j\}$, then $R(A)=2\Z$, while
+$T(A)=\Z$.
+\end{enumerate}
+So both inclusions in \cref{G:thm:translates}\ref{G:it:sandwich} can be strict.
+\end{proposition}
+
+\begin{proof}
+(i) By \cref{G:thm:translates}\ref{G:it:sandwich}, $2\Z\subset R(A)\subset T(A)$. Since
+$3\in A$, we have $A+2\Z=\Z$. Suppose that $t$ is odd and $B\oplus B+t\subset A$ with $B$
+infinite. Choose an infinite $B'\subset B$ whose elements all have the same parity, and fix
+$b_1<b_2$ in $B'$. For every $b\in B'\setminus\{b_1,b_2\}$ the numbers $b_1+b+t$ and
+$b_2+b+t$ are odd elements of $A$, hence powers of $3$, and they differ by $b_2-b_1$. The
+equation $3^m-3^n=b_2-b_1$ with $m>n\ge1$ has only finitely many solutions, because
+$3^n\le b_2-b_1$ and $n$ determines $m$. But $b_1+b+t$ takes infinitely many values as $b$
+ranges over $B'$. This is a contradiction, so $T(A)=2\Z$.
+
+(ii) For $B=\{2^i:i\in\N\}$ we have $B\oplus B+1=X\subset A$, so $1\in T(A)$, and
+$T(A)=\Z$ by \cref{G:lem:move}. Clearly $2\Z\subset R(A)$. It remains to show that
+$\ubd(X)=0$. We claim that if every interval of $L$ consecutive integers contains at most
+$c$ elements of a set $Y\subset\Z$, then $\ubd(Y)\le c/L$. Indeed, for a \Fol{} sequence
+$\Phi$ we have
+\[
+\sum_{x=0}^{L-1}|Y\cap(\Phi_N+x)|=\sum_{y\in\Phi_N}|Y\cap\{y,\dots,y+L-1\}|\le c|\Phi_N|,
+\]
+and $|Y\cap(\Phi_N+x)|\ge|Y\cap\Phi_N|-|\Phi_N\setminus(\Phi_N+x)|=|Y\cap\Phi_N|-o(|\Phi_N|)$.
+Hence $L\,\udens_\Phi(Y)\le c$.
+
+Now let $I$ be an interval of $L\ge2$ consecutive integers. An element $2^i+2^j+1$ of
+$X$ with $i<j$ lies in $(2^j,2^{j+1})$. The ranges $[2^j,2^{j+1})$ with $2^j\ge L$ have
+length at least $L$, so at most two of them meet $I$. There are at most $\log_2L+1$ ranges
+with $2^j<L$. For fixed $j$, the elements of $X\cap I$ correspond to distinct powers $2^i$
+in the interval $I-2^j-1$ of length $L$. Such an interval contains at most one power of $2$
+that is $\ge L$, and at most $\log_2L+1$ powers of $2$ that are $<L$. Hence
+$|X\cap I|\le(\log_2L+3)^2$, and so $\ubd(X)\le(\log_2L+3)^2/L$ for every $L\ge2$. Thus
+$\ubd(X)=0$ and $R(A)=2\Z$.
+\end{proof}
+
+\begin{remark}\label{G:rem:examples}
+We compare \cref{G:thm:translates} with the examples in~\cite[\S5.3]{kra2023problems}.
+\begin{enumerate}[label=\textup{(\arabic*)}]
+\item For $G=\Z$ we have $2G=2\Z$, and the transversal $\{0,1\}$ suffices. This matches
+the case $k=2$ of~\cite[Proposition~2.6]{kra2023problems}, which is stated in $\N$.
+Taking $r=0$ in part~\ref{G:it:sandwich}, we get that $t=0$ is admissible whenever
+$\ubd(A\cap2G)>0$. This is the group analogue of item~3
+of~\cite[Proposition~2.6]{kra2023problems} for $k=2$. That proposition is an equivalence
+between statements for all $k$, but its proof works for each $k$ separately. So for $k=2$
+its items hold unconditionally, by~\cite[Theorem~2.2]{kra2023problems}.
+\item If $G=\bigoplus_{i\in\N}\Z/3\Z$, then $2G=G$, so $T=\{0\}$ suffices, as observed
+in~\cite{kra2023problems}.
+\item If $G=\bigoplus_{i\in\N}\Z/2\Z$, then $2G=\{0\}$ has infinite index. This group lies
+outside the scope of \cref{G:q:516}, because by \cref{G:thm:Ack} Conjecture~5.15 fails
+there. In groups with $1<[G:2G]<\infty$, the phenomenon pointed out
+in~\cite{kra2023problems} for this group (one cannot always take $t=0$) is explained by
+cosets: for $A=r+2G$ with $r\notin2G$, every admissible translate lies in $r+2G$.
+\end{enumerate}
+\end{remark}
+
+\begin{remark}[Credit]\label{G:rem:credit}
+The only deep ingredient is \cref{G:thm:CM}. The two elementary devices in
+\cref{G:lem:pigeon,G:lem:move} are not new. For unrestricted sumsets $t+B+B$,
+Charamaras, Kousek, Mountakis and Radi\'c~\cite[Lemmas~2.1 and~2.2]{charamaras2025infinite}
+use pigeonholing into cosets of $2G$ and write $t=2s+g_i$ with $g_i$ a coset
+representative, replacing $B$ by $B+s$. Ackelsberg and Jamneshan~\cite[discussion after
+Theorem~1.9, and Corollary~1.10]{ackelsberg2025equidistribution} use the same two
+arguments for $B\oplus B\oplus B$ and the cosets of $3\Gamma$, under the assumption
+$[\Gamma:6\Gamma]<\infty$. For $G=\Z$ the reduction
+appears in~\cite[Proposition~2.6]{kra2023problems}. Our contribution consists of the exact
+characterisation of the sets of translates that suffice, the minimality of transversals,
+the description of the possible sets $T(A)$, and the two-sided bounds for $T(A)$ for
+$B\oplus B$.
+\end{remark}
+
+% ---------------------------------------------------------------------------
+
+\section{Cartesian products in \texorpdfstring{$\N^2$}{N2}: a negative answer to
+Question 5.10}
+\label{G:sec:q510}
+
+In this section we answer Question~5.10 of~\cite{kra2023problems} negatively. We
+construct sets $A\subset\N^2$ all of whose fibres have positive density along a fixed
+\Fol{} sequence (in one version, every fibre has natural density exactly $1/4$), such that
+no translate of $A$ contains the Ramsey configuration
+$\{(b_1,b_2):b_1,b_2\in B,\ b_1<b_2\}$ for an infinite $B\subset\N$.
+
+\subsection{The question}
+Throughout, $\N=\{1,2,\dots\}$. Following~\cite{kra2023problems}, a \emph{\Fol{} sequence
+in $\N$} is a sequence $\Phi=(\Phi_N)$ of finite subsets of $\N$ with
+$|(\Phi_N+t)\cap\Phi_N|/|\Phi_N|\to1$ for every $t\in\N$. The upper and lower densities
+along $\Phi$ are $\udens_\Phi$ and $\ldens_\Phi$. When they are equal, their common value
+is denoted $\dens_\Phi$. For $A\subset\N^2$ and $n\in\N$ the \emph{fibre} of $A$ over $n$ is
+$A_n=\{m\in\N:(n,m)\in A\}$. The configuration in question is
+\begin{equation}\label{G:eq:BBcart}
+\{(b_1,b_2):\ b_1,b_2\in B,\ b_1<b_2\}\subset A-t,
+\end{equation}
+which is equation~(21) of~\cite{kra2023problems}. It says that
+$(b_1+t_1,b_2+t_2)\in A$ for all $b_1<b_2$ in $B$, where $t=(t_1,t_2)$.
+
+\begin{question}{5.10}\label{G:q:510}
+Suppose $A\subset\N^2$ satisfies
+\begin{equation}\label{G:eq:22}
+\liminf_{n\in\N}\dens_\Phi(A_n)>0
+\end{equation}
+for some \Fol{} sequence $\Phi$ on $\N$. Does there exist an infinite set $B\subset\N$ and
+an element $t\in\N^2$ satisfying~\eqref{G:eq:BBcart}?
+\end{question}
+
+The survey points out that \eqref{G:eq:BBcart} can only hold if infinitely many fibres
+$A_n$ have the property that every finite subfamily has infinite intersection. Example~5.11
+of~\cite{kra2023problems}, due to F.~Hern\'andez Castro, takes $A=X\times Y$ with
+$X=\bigcup_n[4^n,c4^n)$ and $Y=\bigcup_n[c'4^n,c''4^n)$ (intersected with $\N$), where
+$1<c<c'<c''<2$. Then $X\cap(Y-t)$ is finite for every $t\ge0$, and hence no translate of
+$A$ contains a configuration~\eqref{G:eq:BBcart}. In that example the fibre $A_n$ is $Y$
+for $n\in X$ and empty for $n\notin X$. So it shows that the $\liminf$ in~\eqref{G:eq:22}
+cannot be replaced by a $\limsup$. It does not satisfy~\eqref{G:eq:22}. We modify the
+example so that \emph{every} fibre has positive density. Two products of this type are
+glued along a partition of the rows, and the second coordinate of each product is
+offset from its own row set.
+
+\subsection{A criterion}
+
+\begin{lemma}\label{G:lem:criterion}
+Let $\N=P_0\sqcup P_1$ be a partition, and let $S_0,S_1\subset\N$ be sets such that
+\begin{equation}\label{G:eq:finite}
+S_c\cap(P_c+s)\ \text{is finite for every } s\in\Z\text{ and } c\in\{0,1\}.
+\end{equation}
+Let $A=(P_0\times S_0)\cup(P_1\times S_1)$. Then $A_n=S_c$ for every $n\in P_c$. Moreover,
+there are no infinite set $B\subset\N$ and $t=(t_1,t_2)\in\Z^2$ such that
+$(b_1+t_1,b_2+t_2)\in A$ for all $b_1<b_2$ in $B$. In particular, $A$ satisfies
+\eqref{G:eq:BBcart} for no infinite $B\subset\N$ and no $t\in\N^2$.
+\end{lemma}
+
+\begin{proof}
+The identity $A_n=S_c$ for $n\in P_c$ holds because $P_0\cap P_1=\emptyset$. Suppose that
+$B$ and $t$ exist. Every $b\in B$ is the smaller element of some pair in $B$, so
+$b+t_1\in\N$. By the pigeonhole principle there are $c\in\{0,1\}$ and an infinite
+$B'\subset B$ with $b+t_1\in P_c$ for all $b\in B'$. Let $b_0=\min B'$. For every
+$b\in B'\setminus\{b_0\}$ we have $(b_0+t_1,b+t_2)\in A$ and $b_0+t_1\in P_c$, so
+$b+t_2\in A_{b_0+t_1}=S_c$. Also $b+t_1\in P_c$, so
+$b+t_2\in P_c+(t_2-t_1)$. Hence the infinitely many distinct numbers $b+t_2$, for
+$b\in B'\setminus\{b_0\}$, lie in $S_c\cap(P_c+(t_2-t_1))$. This contradicts
+\eqref{G:eq:finite}.
+\end{proof}
+
+\subsection{Two examples}
+
+\begin{example}[Scale $4^k$]\label{G:ex:4k}
+Let
+\[
+P_0=\bigcup_{k\ge0}[4^k,2\cdot4^k),\qquad P_1=\bigcup_{k\ge0}[2\cdot4^k,4^{k+1}),
+\]
+\[
+S_0=\bigcup_{k\ge1}[9\cdot4^{k-1},15\cdot4^{k-1}),\qquad
+S_1=\bigcup_{k\ge1}[5\cdot4^{k-1},7\cdot4^{k-1}),
+\]
+all intervals being intervals of integers. So $\N=P_0\sqcup P_1$. Each block of $S_0$
+lies in the middle of the block $[2\cdot4^k,4^{k+1})$ of $P_1$, and each block of $S_1$
+lies in the middle of the block $[4^k,2\cdot4^k)$ of $P_0$. Put
+$A=(P_0\times S_0)\cup(P_1\times S_1)$.
+\end{example}
+
+\begin{example}[Square blocks]\label{G:ex:blocks}
+For $k\in\N$ let $J_k=[k^2,(k+1)^2)\cap\N$, so that $\N=\bigsqcup_{k\ge1}J_k$ and
+$|J_k|=2k+1$. Let $P'_c=\bigcup_{k\equiv c\ (\mathrm{mod}\ 2)}J_k$ for $c\in\{0,1\}$, and let
+$S'_c$ consist of the \emph{middle parts} of the blocks of the opposite parity:
+\[
+S'_c=\{k^2+r:\ k\in\N,\ k\equiv1-c\ (\mathrm{mod}\ 2),\ r\in\Z,\ k\le2r<3k\}.
+\]
+Since $k\le 2r<3k$ forces $0\le r\le 2k$, we have $S'_c\cap J_k=\{k^2+r:k\le2r<3k\}$ when
+$k\equiv1-c$, and this set has exactly $k$ elements. Put
+$A'=(P'_0\times S'_0)\cup(P'_1\times S'_1)$.
+\end{example}
+
+\begin{proposition}\label{G:prop:examples}
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item The sets of \cref{G:ex:4k} satisfy \eqref{G:eq:finite}. More precisely, every element
+of $S_c\cap(P_c+s)$ is smaller than $15|s|$. Along the \Fol{} sequence
+$\Phi_N=[1,4^N]$ we have $\dens_\Phi(S_0)=1/2$ and $\dens_\Phi(S_1)=1/6$. Hence every fibre
+of $A$ has density $1/2$ or $1/6$ along $\Phi$, and $A$ satisfies~\eqref{G:eq:22}.
+\item The sets of \cref{G:ex:blocks} satisfy \eqref{G:eq:finite}. More precisely, every
+element of $S'_c\cap(P'_c+s)$ is smaller than $(2|s|+1)^2$. Both $S'_0$ and $S'_1$ have
+natural density $1/4$. Hence every fibre of $A'$ has natural density $1/4$, and $A'$
+satisfies \eqref{G:eq:22} along $\Phi_N=[1,N]$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) Let $m\in S_0$, say $9\cdot4^{k-1}\le m<15\cdot4^{k-1}$, and suppose $|s|<4^{k-1}$.
+Then $2\cdot4^k=8\cdot4^{k-1}<m-s<16\cdot4^{k-1}=4^{k+1}$, so $m-s\in P_1$ and
+$m-s\notin P_0$. Similarly, if $m\in S_1$, say $5\cdot4^{k-1}\le m<7\cdot4^{k-1}$, and
+$|s|<4^{k-1}$, then $4^k<m-s<2\cdot4^k$, so $m-s\in P_0$ and $m-s\notin P_1$. Hence
+every $m\in S_c\cap(P_c+s)$ lies in a block with $4^{k-1}\le|s|$, and so
+$m<15\cdot4^{k-1}\le15|s|$. (For $s=0$ the intersection is empty.)
+
+The sets $[1,4^N]$ form a \Fol{} sequence in $\N$, since $|([1,M]+t)\cap[1,M]|=M-t$ for
+$0\le t\le M$. For $N\ge2$ the blocks of $S_0$ and $S_1$ with $k\le N-1$ lie in
+$[1,4^N]$, since $15\cdot4^{N-2}<4^N$. The blocks with $k\ge N$ start at
+$9\cdot4^{N-1}$ and $5\cdot4^{N-1}$, both larger than $4^N$, so they are disjoint from
+$[1,4^N]$. Therefore
+\[
+|S_0\cap[1,4^N]|=\sum_{k=1}^{N-1}6\cdot4^{k-1}=2(4^{N-1}-1),\qquad
+|S_1\cap[1,4^N]|=\sum_{k=1}^{N-1}2\cdot4^{k-1}=\tfrac23(4^{N-1}-1),
+\]
+and dividing by $4^N$ gives the limits $1/2$ and $1/6$. Every fibre $A_n$ equals $S_0$ or
+$S_1$ by \cref{G:lem:criterion}, so $\inf_n\dens_\Phi(A_n)=1/6>0$.
+
+(ii) Let $m=k^2+r\in S'_c$ with $k\le2r<3k$ and $k\equiv1-c\pmod2$. Suppose $|s|<k/2$.
+Then $r-s\ge r-|s|>r-k/2\ge0$ and $r-s\le r+|s|<3k/2+k/2=2k$. Hence
+$m-s=k^2+(r-s)\in J_k\subset P'_{1-c}$, so $m-s\notin P'_c$. Consequently every element
+of $S'_c\cap(P'_c+s)$ lies in a block $J_k$ with $k\le2|s|$, and hence is smaller than
+$(2|s|+1)^2$.
+
+For the density, let $N\ge1$ and let $K\ge1$ be such that $K^2\le N<(K+1)^2$. The blocks
+$J_k$ with $k<K$ lie in $[1,N]$, and $J_K$ is the only block that meets $[1,N]$ without
+lying inside it. Hence
+\[
+|S'_c\cap[1,N]|=\sum_{\substack{1\le k<K\\ k\equiv1-c\ (2)}}k+O(K)
+=\frac{K^2}{4}+O(K)=\frac N4+O(\sqrt N).
+\]
+So $\dens(S'_c)=1/4$. Every fibre of $A'$ is $S'_0$ or $S'_1$, and $[1,N]$ is a \Fol{}
+sequence.
+\end{proof}
+
+\begin{theorem}\label{G:thm:q510}
+The sets $A$ of \cref{G:ex:4k} and $A'$ of \cref{G:ex:blocks} satisfy~\eqref{G:eq:22}. In
+fact every fibre has a density along the indicated \Fol{} sequence: $1/2$ or $1/6$
+for $A$, and natural density exactly $1/4$ for $A'$. Nevertheless, there is no infinite
+$B\subset\N$ and no $t\in\Z^2$ such that $(b_1+t_1,b_2+t_2)$ lies in $A$ (respectively
+$A'$) for all $b_1<b_2$ in $B$. In particular, the answer to \cref{G:q:510} is negative.
+\end{theorem}
+
+\begin{proof}
+Combine \cref{G:prop:examples} with \cref{G:lem:criterion}.
+\end{proof}
+
+\begin{remark}\label{G:rem:q510}
+\begin{enumerate}[label=\textup{(\arabic*)}]
+\item The set $A'$ shows that the answer is negative already for the standard \Fol{}
+sequence $[1,N]$, that is, with natural densities: every fibre has natural density $1/4$.
+It does not satisfy~\eqref{G:eq:22} along every \Fol{} sequence. Each $S'_c$ misses the
+blocks $J_k$ with $k\equiv c$, and these have length $2k+1\to\infty$. So along
+$\Phi_N=J_{2N}$, for instance, the fibres $S'_0$ have density $0$. The hypothesis that
+\eqref{G:eq:22} holds along every \Fol{} sequence, i.e.\ that the fibres have uniformly
+positive lower Banach density, is not addressed here; compare~(4). The set $A$ of \cref{G:ex:4k} has fibres without natural density. Its fibres have
+lower natural densities $2/9$ and $2/15$, which are approached at the integers just
+below the left endpoints of the blocks of $S_0$ and $S_1$, respectively.
+\item The survey explains that a positive answer to \cref{G:q:510} would imply
+Theorem~2.2 and Conjecture~3.10 of~\cite{kra2023problems}. A negative answer has no
+bearing on either statement.
+\item The survey's Theorem~5.12 shows that a weaker hypothesis gives infinite $B,C$ with
+$\{(b,c):b\in B,\ c\in C,\ b<c\}\subset A$. This is consistent with
+\cref{G:thm:q510}: our sets contain even the full products $P_0\times S_0$ and
+$P'_0\times S'_0$. What fails is the diagonal coupling in~\eqref{G:eq:BBcart}: every
+element of $B$, except the smallest, must serve both as a row index and as a column index.
+\item The construction in \cref{G:lem:criterion} cannot work if every fibre is required
+to be syndetic with a gap bound that does not depend on the fibre. Indeed, suppose that for each $c$ every
+$n\in\N$ satisfies $n+s\in S_c$ for some $0\le s\le L$. Then
+$P_c\subset\bigcup_{0\le s\le L}(S_c-s)$, and \eqref{G:eq:finite} fails for the class $c$
+with $P_c$ infinite. We do not know the answer to \cref{G:q:510} under this stronger
+hypothesis.
+\end{enumerate}
+\end{remark}
+
+% ---------------------------------------------------------------------------
+
+\section{Corners in \texorpdfstring{$G^2$}{G2} and \texorpdfstring{$G^d$}{Gd}:
+Questions 5.23 and \S5.4(b)}
+\label{G:sec:q523}
+
+In this section we answer Question~5.23 of~\cite{kra2023problems} and its $G^d$ version,
+Question~\S5.4(b), negatively. The negative answer to the question as stated is elementary.
+The hypothesis controls only the fibres in the last coordinate, while the conclusion
+requires infinitely many points of $A$ on a single line in the first coordinate
+direction. So this part of the answer depends on the formulation. We therefore also
+treat the natural repaired version in which these points are dropped. Using
+\cref{G:sec:q510}, we show that it fails as well for $G=\Z$ (and for $G=\N$). The
+repair that adds a positive-density hypothesis on the columns remains open.
+
+\subsection{The question}
+Let $(G,\cdot)$ be a group. Following~\cite[\S5.4]{kra2023problems}, a \emph{left \Fol{}
+sequence} is a sequence $(\Phi_N)$ of finite nonempty subsets of $G$ with
+$|\Phi_N\cap g\Phi_N|/|\Phi_N|\to1$ for every $g\in G$. Austin's theorem on corners in
+amenable groups~\cite{austin2016nonconventional}, quoted
+in~\cite[Theorem~5.22]{kra2023problems}, motivates the following question.
+
+\begin{question}{5.23}\label{G:q:523}
+Let $(G,\cdot)$ be an amenable group and let $N\mapsto\Phi_N$ be a left \Fol{} sequence in
+$G$. If $A\subset G^2$ satisfies
+\begin{equation}\label{G:eq:23}
+\liminf_{g\to\infty}\ \liminf_{M\to\infty}\ \frac1{|\Phi_M|}\sum_{h\in\Phi_M}\one_A(g,h)>0,
+\end{equation}
+where $g\to\infty$ means leaving all finite sets, do there exist $(t,s)\in G^2$ and an
+injective sequence $b\colon\N\to G$ such that
+\begin{equation}\label{G:eq:corner}
+\{(t,s),\ (b(i)t,s),\ (b(i)t,b(j)s):\ i<j\}\subset A\,?
+\end{equation}
+\end{question}
+
+The survey adds that if $G=\N$, an affirmative answer to \cref{G:q:523} implies an
+affirmative answer to \cref{G:q:510}. Two remarks on the setting are in order. First, a
+group with a left \Fol{} sequence is countable. Indeed, let $H$ be the subgroup generated by
+$\bigcup_N\Phi_N$, which is countable. If $g\notin H$, then $g\Phi_N\subset gH$ is disjoint
+from $\Phi_N\subset H$, so the \Fol{} condition fails for $g$. Second, if $G$ is finite,
+there is no injective $b\colon\N\to G$. So we assume, as the survey intends, that $G$ is
+countably infinite.
+
+For $A\subset G^2$ and $g\in G$ write $A_g=\{h:(g,h)\in A\}$ for the \emph{row fibre}
+and $A^h=\{g:(g,h)\in A\}$ for the \emph{column}. Condition~\eqref{G:eq:23} concerns only
+the row fibres. The points $(b(i)t,s)$, $i\in\N$, in \eqref{G:eq:corner} are pairwise
+distinct (since $b$ is injective) and lie in the single column $A^s$.
+
+\begin{lemma}\label{G:lem:folnergrow}
+If $G$ is an infinite group and $(\Phi_M)$ is a left \Fol{} sequence, then
+$|\Phi_M|\to\infty$.
+\end{lemma}
+
+\begin{proof}
+Suppose that $|\Phi_M|\le K$ for infinitely many $M$. Choose a finite $S\subset G$ with
+$|S|>K$. For each $x\in S$ the number $|\Phi_M\setminus x\Phi_M|$ is a nonnegative
+integer, and $|\Phi_M\setminus x\Phi_M|/|\Phi_M|\to0$. Along the $M$ with $|\Phi_M|\le K$
+we therefore have $|\Phi_M\setminus x\Phi_M|=0$ for all $x\in S$ once $M$ is large. Then
+$\Phi_M\subset x\Phi_M$, and since $|x\Phi_M|=|\Phi_M|$, we get $x\Phi_M=\Phi_M$. Pick
+such an $M$ and some $y\in\Phi_M$. Then $Sy\subset\Phi_M$, so $|\Phi_M|\ge|S|>K$, a
+contradiction.
+\end{proof}
+
+\subsection{The question as stated, in \texorpdfstring{$G^2$}{G2} and
+\texorpdfstring{$G^d$}{Gd}}
+
+The survey states that \cref{G:q:523} ``can be generalized to $G^d$ for $d>2$ in a
+straightforward manner'', but does not write out the generalisation. Modelled on
+Austin's $d$-dimensional corners~\cite[Theorem~5.22]{kra2023problems}, the natural
+conclusion asks for $t\in G^d$ and an injective $b\colon\N\to G$ such that, for all
+$i_1<\dots<i_d$, the $d+1$ points
+\begin{equation}\label{G:eq:cornerd}
+(t_1,\dots,t_d),\ (b(i_1)t_1,t_2,\dots,t_d),\ (b(i_1)t_1,b(i_2)t_2,t_3,\dots,t_d),\ \dots,\
+(b(i_1)t_1,\dots,b(i_d)t_d)
+\end{equation}
+lie in $A$. The natural analogues of~\eqref{G:eq:23} constrain the fibres in the last
+coordinate,
+\begin{equation}\label{G:eq:I}
+\liminf_{(x_1,\dots,x_{d-1})\to\infty}\ \liminf_{M\to\infty}\
+\frac{|\{h\in\Phi_M:(x_1,\dots,x_{d-1},h)\in A\}|}{|\Phi_M|}>0,
+\end{equation}
+or the row fibres over the first coordinate,
+\begin{equation}\label{G:eq:II}
+\liminf_{x_1\to\infty}\ \liminf_{M\to\infty}\
+\frac{|\{y\in\Phi_M^{d-1}:(x_1,y)\in A\}|}{|\Phi_M|^{d-1}}>0.
+\end{equation}
+
+\begin{question}{\S5.4(b)}\label{G:q:54b}
+Let $d\ge3$, let $G$ be a countably infinite amenable group with a left \Fol{} sequence
+$\Phi$, and suppose $A\subset G^d$ satisfies \eqref{G:eq:I} or \eqref{G:eq:II}. Do there
+exist $t\in G^d$ and an injective $b\colon\N\to G$ such that the points
+\eqref{G:eq:cornerd} lie in $A$ for all $i_1<\dots<i_d$?
+\end{question}
+
+For $d=2$ both \eqref{G:eq:I} and \eqref{G:eq:II} reduce to \eqref{G:eq:23}, and
+\cref{G:q:54b} reduces to \cref{G:q:523}.
+
+\begin{theorem}\label{G:thm:q523literal}
+Let $G$ be a countably infinite group, enumerated as $G=\{g_1,g_2,\dots\}$ without
+repetitions, and let $d\ge2$. Put
+\[
+E_d=\{x\in G^d:\ x_1=g_n,\ x_d=g_m\ \text{for some } n<m\}.
+\]
+Let $\Phi$ be any left \Fol{} sequence in $G$. Then:
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item for every $(x_1,\dots,x_{d-1})\in G^{d-1}$, the last-coordinate fibre
+$\{h:(x_1,\dots,x_{d-1},h)\in E_d\}$ is cofinite, and its density along $\Phi$ equals $1$;
+\item for every $x_1\in G$, the set $\{y\in G^{d-1}:(x_1,y)\in E_d\}$ has density $1$
+along $\Phi^{d-1}=(\Phi_M^{d-1})_M$;
+\item $|E_d\cap\Phi_M^d|/|\Phi_M|^d\to1/2$;
+\item for every $t\in G^d$, the set $\{g\in G:(gt_1,t_2,\dots,t_d)\in E_d\}$ is finite.
+\end{enumerate}
+In particular $E_d$ satisfies~\eqref{G:eq:I} and~\eqref{G:eq:II}, and
+\eqref{G:eq:23} when $d=2$, with all limits equal to $1$. But there is no $t\in G^d$
+and no injective $b$ such that $(b(i)t_1,t_2,\dots,t_d)\in E_d$ for infinitely many $i$.
+Hence the answers to \cref{G:q:523} and \cref{G:q:54b} are negative, for every countably
+infinite amenable group $G$ and every left \Fol{} sequence.
+\end{theorem}
+
+\begin{proof}
+If $x_1=g_n$, then the last-coordinate fibre is $G\setminus\{g_1,\dots,g_n\}$, whatever
+$x_2,\dots,x_{d-1}$ are. Its density along $\Phi$ is at least $1-n/|\Phi_M|$, which tends
+to $1$ by \cref{G:lem:folnergrow}. This proves (i). Part (ii) follows similarly: the set in
+question is $G^{d-2}\times(G\setminus\{g_1,\dots,g_n\})$, and its relative density in
+$\Phi_M^{d-1}$ is at least $1-n/|\Phi_M|$. For (iii), note that among the
+$|\Phi_M|^2-|\Phi_M|$ pairs $(x,y)\in\Phi_M^2$ with $x\neq y$, exactly one of $(x,y)$ and
+$(y,x)$ has the first entry earlier in the enumeration. Hence
+$|E_d\cap\Phi_M^d|=\frac12(|\Phi_M|^2-|\Phi_M|)\,|\Phi_M|^{d-2}$, and (iii) follows from
+\cref{G:lem:folnergrow}. For (iv), let $t_d=g_m$. If $(gt_1,t_2,\dots,t_d)\in E_d$, then
+$gt_1\in\{g_1,\dots,g_{m-1}\}$, so $g$ lies in the finite set
+$\{g_1,\dots,g_{m-1}\}t_1^{-1}$. Since $b$ is injective, $(b(i)t_1,t_2,\dots,t_d)\in E_d$
+can hold for at most $m-1$ values of $i$.
+\end{proof}
+
+For $G=\Z$ with $\Phi_M=[1,M]$, the simpler set $\{(g,h)\in\Z^2:h>|g|\}$ also works. For
+$G=\N$ one can take $\{(n,m)\in\N^2:n<m\}$. In the semigroup $\N$, where the survey's
+implication to \cref{G:q:510} is stated, this means that the answer to the literal
+question is negative for a trivial reason.
+
+\begin{remark}[The answer depends on the formulation]\label{G:rem:formulation}
+\Cref{G:thm:q523literal} has nothing to do with sumsets: the conclusion
+\eqref{G:eq:corner} contains infinitely many distinct points of a single column, and
+\eqref{G:eq:23} does not even force columns to be infinite. The survey's comment that, for
+$G=\N$, \cref{G:q:523} implies \cref{G:q:510} shows that the authors are mainly
+interested in the points $(b(i)t,b(j)s)$. The points $(t,s)$ and $(b(i)t,s)$ come from
+the shape of Austin's corners. There are two natural repairs:
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item drop the points $(t,s)$ and $(b(i)t,s)$, and ask only for
+$\{(b(i)t,b(j)s):i<j\}\subset A$ (and, in $G^d$, only for the top points
+$(b(i_1)t_1,\dots,b(i_d)t_d)$ with $i_1<\dots<i_d$);
+\item keep \eqref{G:eq:corner} but add to \eqref{G:eq:23} the analogous condition on
+the columns, that is,
+$\liminf_{h\to\infty}\liminf_{M\to\infty}|A^h\cap\Phi_M|/|\Phi_M|>0$.
+\end{enumerate}
+In \cref{G:thm:repairA} below we show, using \cref{G:sec:q510}, that repair~(a) still has
+a negative answer for $G=\Z$. Repair~(b), with positive-density hypotheses on both the
+row fibres and the columns, is to our knowledge open. Neither the
+examples of \cref{G:thm:q523literal} nor those of \cref{G:thm:repairA} satisfy it: for
+instance, the columns of $\tilde A$ below are empty for $|h|\notin S'_0\cup S'_1$.
+\end{remark}
+
+\subsection{The repaired question (a)}
+
+For $G=\N$, repair~(a) of \cref{G:q:523} is answered by \cref{G:thm:q510} directly.
+Suppose that $t,s\in\N$ and an injective $b\colon\N\to\N$ satisfy
+$(b(i)+t,b(j)+s)\in A'$ for all $i<j$. Since $b$ is injective, it is unbounded, so it has
+a strictly increasing subsequence. Its range $B$ then satisfies \eqref{G:eq:BBcart} with
+the translate $(t,s)$. This is impossible. Also, $A'$ satisfies \eqref{G:eq:23} with
+$\Phi_M=[1,M]$, because every fibre of $A'$ has natural density $1/4$. To treat the group
+$\Z$ and the $d$-dimensional version, we transfer $A'$ to $\Z^2$. For $x\in\Z$ let
+$|x|_+=\max\{|x|,1\}$, and let
+\[
+\tilde A=\{(g,h)\in\Z^2:\ h\neq0,\ (|g|_+,|h|)\in A'\},
+\]
+where $A'=(P'_0\times S'_0)\cup(P'_1\times S'_1)$ is the set of \cref{G:ex:blocks}.
+
+\begin{lemma}\label{G:lem:Ztransfer}
+For every $g\in\Z$, the row fibre $\{h:(g,h)\in \tilde A\}$ meets $[1,M]$ in
+$|S'_c\cap[1,M]|$ points, where $c$ is the class with $|g|_+\in P'_c$. Hence it has
+density $1/4$ along $\Phi_M=[1,M]$. There are no $(t,s)\in\Z^2$ and injective
+$b\colon\N\to\Z$ with $(b(i)+t,b(j)+s)\in \tilde A$ for all $i<j$.
+\end{lemma}
+
+\begin{proof}
+The fibre over $g$ is $\{h\neq0:|h|\in S'_c\}$, and its intersection with $[1,M]$ is
+$S'_c\cap[1,M]$. The density statement now follows from
+\cref{G:prop:examples}(ii).
+
+Suppose that $t,s,b$ exist. Since $b$ is injective, for every $L$ only finitely many $i$
+satisfy $|b(i)|\le L$. Choose $\epsilon\in\{1,-1\}$ such that $\epsilon b(i)>0$ for
+infinitely many $i$. Then choose $i_1<i_2<\cdots$ inductively so that the numbers
+$\beta_k=\epsilon b(i_k)$ are positive and strictly increasing, with
+$\beta_1>|t|+|s|+1$. For $k<l$ we have $(b(i_k)+t,b(i_l)+s)\in \tilde A$. Now
+$|b(i_k)+t|_+=|\epsilon\beta_k+t|=\beta_k+\epsilon t$, because $\beta_k>|t|+1$, and similarly
+$|b(i_l)+s|=\beta_l+\epsilon s$. So $(\beta_k+\epsilon t,\beta_l+\epsilon s)\in A'$ for all
+$k<l$. Then the infinite set $B=\{\beta_k\}\subset\N$ and the translate
+$(\epsilon t,\epsilon s)\in\Z^2$ contradict \cref{G:thm:q510}.
+\end{proof}
+
+\begin{theorem}\label{G:thm:repairA}
+Let $d\ge2$ and $\tilde A^{(d)}=\{x\in\Z^d:(x_1,x_d)\in \tilde A\}$, and let $\Phi_M=[1,M]$.
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item For every $(x_1,\dots,x_{d-1})\in\Z^{d-1}$, the last-coordinate fibre of $\tilde A^{(d)}$ has
+density $1/4$ along $\Phi$. For every $x_1\in\Z$, the fibre
+$\{y\in\Z^{d-1}:(x_1,y)\in \tilde A^{(d)}\}$ has density $1/4$ along $\Phi^{d-1}$. In particular
+$\tilde A^{(d)}$ satisfies \eqref{G:eq:I} and \eqref{G:eq:II}, and $\tilde A^{(2)}=\tilde A$ satisfies
+\eqref{G:eq:23}.
+\item There are no $t\in\Z^d$ and injective $b\colon\N\to\Z$ such that
+$(b(i_1)+t_1,\dots,b(i_d)+t_d)\in \tilde A^{(d)}$ for all $i_1<\dots<i_d$.
+\end{enumerate}
+Consequently repair~(a) of \cref{G:q:523} has a negative answer for $G=\Z$, and so does
+its analogue for \cref{G:q:54b}, in which only the top points of \eqref{G:eq:cornerd}
+are required.
+\end{theorem}
+
+\begin{proof}
+(i) The last-coordinate fibre over $(x_1,\dots,x_{d-1})$ is the row fibre of $\tilde A$ over
+$x_1$. The fibre over $x_1$ is $\Z^{d-2}\times\{h:(x_1,h)\in \tilde A\}$, and its relative
+density in $[1,M]^{d-1}$ equals that of the row fibre in $[1,M]$. Now apply
+\cref{G:lem:Ztransfer}.
+
+(ii) Suppose that $t$ and $b$ exist. If $i<j$ and $j-i\ge d-1$, there are indices
+$i<i_2<\dots<i_{d-1}<j$, and so $(b(i)+t_1,b(j)+t_d)\in \tilde A$. Let
+$b'(k)=b((d-1)k)$. Then $b'$ is injective, and for $k<l$ we have
+$(d-1)l-(d-1)k\ge d-1$. Hence $(b'(k)+t_1,b'(l)+t_d)\in \tilde A$ for all $k<l$, which
+contradicts \cref{G:lem:Ztransfer}.
+\end{proof}
+
+To summarise: the configurations~\eqref{G:eq:corner} and~\eqref{G:eq:cornerd} cannot be
+forced by the fibre-density hypotheses \eqref{G:eq:23}, \eqref{G:eq:I} or \eqref{G:eq:II}.
+For $G=\Z$ (and for $G=\N$) this remains true after the lower corner points are dropped.
+Whether a uniform hypothesis on the row fibres, for example syndeticity with a bound on the
+gaps that does not depend on the fibre, suffices is open even for $G=\N$; see
+\cref{G:rem:q510}(4). So is repair~(b) of \cref{G:rem:formulation}, which also requires
+the columns to have positive density.

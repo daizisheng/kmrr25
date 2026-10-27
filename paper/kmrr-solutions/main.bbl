@@ -1,0 +1,140 @@
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{10}
+
+\bibitem{ackelsberg2024counterexamples}
+Ethan Ackelsberg, \emph{Counterexamples to generalizations of the {E}rd{\H{o}}s
+  {$B+B+t$} problem}, 2024, arXiv:2404.17383v1.
+
+\bibitem{ackelsberg2025infinite}
+\bysame, \emph{Infinite polynomial patterns in large subsets of the rational
+  numbers}, 2025, arXiv:2506.19667.
+
+\bibitem{ackelsberg2025equidistribution}
+Ethan Ackelsberg and Asgar Jamneshan, \emph{Equidistribution in 2-nilpotent
+  {P}olish groups and triple restricted sumsets}, 2025, arXiv:2504.07865v3.
+
+\bibitem{austin2016nonconventional}
+Tim Austin, \emph{Non-conventional ergodic averages for several commuting
+  actions of an amenable group}, J. Anal. Math. \textbf{130} (2016), 243--274.
+
+\bibitem{bergelson1985sets}
+Vitaly Bergelson, \emph{Sets of recurrence of {${\bf Z}^m$}-actions and
+  properties of sets of differences in {${\bf Z}^m$}}, J. London Math. Soc. (2)
+  \textbf{31} (1985), no.~2, 295--304.
+
+\bibitem{bergelson2017ergodic}
+Vitaly Bergelson and Joel Moreira, \emph{Ergodic theorem involving additive and
+  multiplicative groups of a field and {$\{x+y,xy\}$} patterns}, Ergodic Theory
+  Dynam. Systems \textbf{37} (2017), no.~3, 673--692.
+
+\bibitem{charamaras2025infinite}
+Dimitrios Charamaras, Ioannis Kousek, Andreas Mountakis, and Trist{\'a}n
+  Radi{\'c}, \emph{Infinite unrestricted sumsets in subsets of abelian groups
+  with large density}, 2025, arXiv:2504.08649v1.
+
+\bibitem{charamaras2024finding}
+Dimitrios Charamaras and Andreas Mountakis, \emph{Finding product sets in some
+  classes of amenable groups}, 2024, arXiv:2402.07779v3.
+
+\bibitem{dinasso2025ramsey}
+Mauro Di~Nasso, Lorenzo Luperi~Baglini, Marcello Mamino, Rosario Mennuni, and
+  Mariaclara Ragosta, \emph{Ramsey's witnesses}, 2025, arXiv:2503.09246.
+
+\bibitem{furstenberg1977ergodic}
+Harry Furstenberg, \emph{Ergodic behavior of diagonal measures and a theorem of
+  {S}zemer{\'e}di on arithmetic progressions}, J. Analyse Math. \textbf{31}
+  (1977), 204--256.
+
+\bibitem{griesmer2009ergodic}
+John~T. Griesmer, \emph{Ergodic averages, correlation sequences, and sumsets},
+  Ph.D. thesis, The Ohio State University, 2009.
+
+\bibitem{hindman1974finite}
+Neil Hindman, \emph{Finite sums from sequences within cells of a partition of
+  {$N$}}, J. Combinatorial Theory Ser. A \textbf{17} (1974), 1--11.
+
+\bibitem{hindman1979partitions}
+\bysame, \emph{Partitions and sums of integers with repetition}, J. Combin.
+  Theory Ser. A \textbf{27} (1979), no.~1, 19--32.
+
+\bibitem{host2009uniformity}
+Bernard Host and Bryna Kra, \emph{Uniformity seminorms on $\ell^\infty$ and
+  applications}, J. Anal. Math. \textbf{108} (2009), 219--276.
+
+\bibitem{huang2026affirmative}
+Wen Huang, Zhengxing Lian, Song Shao, Rongzhong Xiao, Leiye Xu, and Shuhao
+  Zhang, \emph{An affirmative answer to {O}wings's sumset question}, 2026,
+  arXiv:2607.17333.
+
+\bibitem{kechris1995classical}
+Alexander~S. Kechris, \emph{Classical descriptive set theory}, Graduate Texts
+  in Mathematics, vol. 156, Springer-Verlag, New York, 1995.
+
+\bibitem{kousek2025asymmetric}
+Ioannis Kousek, \emph{Asymmetric infinite sumsets in large sets of integers},
+  2025, arXiv:2502.03112.
+
+\bibitem{kousek2024revisiting}
+\bysame, \emph{Revisiting sums and products in countable and finite fields},
+  Ergodic Theory Dynam. Systems \textbf{46} (2026), no.~2, 543--574,
+  arXiv:2407.03304.
+
+\bibitem{kousek2024infinite}
+Ioannis Kousek and Trist{\'a}n Radi{\'c}, \emph{Infinite unrestricted sumsets
+  of the form {$B+B$} in sets with large density}, Bull. Lond. Math. Soc.
+  \textbf{57} (2025), no.~1, 48--68, arXiv:2404.12201.
+
+\bibitem{kra2022infinite}
+Bryna Kra, Joel Moreira, Florian~K. Richter, and Donald Robertson,
+  \emph{Infinite sumsets in sets with positive density}, J. Amer. Math. Soc.
+  \textbf{37} (2024), no.~3, 637--682, arXiv:2206.01786; theorem numbers refer
+  to arXiv:2206.01786v2.
+
+\bibitem{kra2022proof}
+\bysame, \emph{A proof of {E}rd{\H{o}}s's {$B+B+t$} conjecture}, Commun. Amer.
+  Math. Soc. \textbf{4} (2024), 480--494, arXiv:2206.12377.
+
+\bibitem{kra2025density}
+\bysame, \emph{The density finite sums theorem}, 2025, arXiv:2504.06424v3.
+
+\bibitem{kra2023problems}
+\bysame, \emph{Problems on infinite sumset configurations in the integers and
+  beyond}, Bull. Amer. Math. Soc. (N.S.) \textbf{62} (2025), no.~4, 537--574,
+  arXiv:2311.06197v2; question numbers refer to this version.
+
+\bibitem{kra2026short}
+\bysame, \emph{A short proof of {E}rd{\H{o}}s's {$B+C$} conjecture}, 2026,
+  arXiv:2603.27258v2.
+
+\bibitem{mazurkiewicz2023ideal}
+{\L}ukasz Mazurkiewicz and Szymon {\.Z}eberski, \emph{Ideal analytic sets},
+  Math. Logic Quart. \textbf{72} (2026), no.~1, arXiv:2310.07693.
+
+\bibitem{moreira2019proof}
+Joel Moreira, Florian~K. Richter, and Donald Robertson, \emph{A proof of a
+  sumset conjecture of {E}rd{\H{o}}s}, Ann. of Math. (2) \textbf{189} (2019),
+  no.~2, 605--652, arXiv:1803.00498.
+
+\bibitem{owings1974problem}
+J.~C. Owings, Jr., \emph{Problem {E}2494}, Amer. Math. Monthly \textbf{81}
+  (1974), no.~8, 902.
+
+\bibitem{ramsey1930problem}
+F.~P. Ramsey, \emph{On a problem of formal logic}, Proc. London Math. Soc. (2)
+  \textbf{30} (1930), no.~4, 264--286.
+
+\bibitem{richter2025sums}
+Florian~K. Richter, \emph{Sums and products in sets of positive density}, 2025,
+  arXiv:2507.00515v2.
+
+\bibitem{tao2023infinite}
+Terence Tao and Tamar Ziegler, \emph{Infinite partial sumsets in the primes},
+  2023, arXiv:2301.10303v4.
+
+\end{thebibliography}

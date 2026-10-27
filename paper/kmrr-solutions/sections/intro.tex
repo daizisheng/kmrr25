@@ -1,0 +1,106 @@
+\section{Introduction}\label{I:sec:intro}
+
+A well-known theorem of Moreira, Richter and Robertson~\cite{moreira2019proof}, answering a question of
+Erd\H{o}s, says that every set $A\subset\N$ of positive upper Banach density contains a sumset
+$B+C=\{b+c:b\in B,\ c\in C\}$ with $B$ and $C$ infinite. In the survey~\cite{kra2023problems},
+Kra, Moreira, Richter and Robertson collected a large number of open problems around this theorem:
+which other infinite configurations must occur in sets of positive density, which density
+hypotheses are needed, and what happens in the primes, in random sets, in multiplicative settings and
+in other groups.
+
+In this paper we answer twenty of the questions posed in~\cite{kra2023problems}. Our main result
+concerns sums of more than two infinite sets in abelian groups.
+
+\begin{theorem*}[\cref{K:thm:main}]
+Let $\Gamma$ be a countably infinite abelian group and let $k\ge1$. Every set $A\subset\Gamma$ of
+positive upper Banach density contains a sumset $B_1+\dots+B_k$, where $B_1,\dots,B_k\subset\Gamma$
+are infinite.
+\end{theorem*}
+
+This answers Question~5.14 of~\cite{kra2023problems}. The proof does not use the Host--Kra structure
+theory or the theory of nilspaces: it extends the short proof of the case $k=2$
+by Kra, Moreira, Richter and Robertson~\cite{kra2026short} to an arbitrary number of summands,
+building the required configuration one level at a time and keeping track only of the supports of
+suitable measures on the Kronecker factor.
+
+The remaining results are summarised in \cref{I:tab:results}. In addition, in \cref{KR:sec:main} we answer a question of Kousek and Radi\'c~\cite{kousek2024infinite}
+on lower Banach density: the thresholds for $B+B+t$ and for $B+B$ are exactly $1/2$ and $3/4$. Several of them are short, and some rely
+in an essential way on recent work of other authors; we indicate this in each case.
+
+\subsection*{Conventions}
+We use the numbering of the second arXiv version of~\cite{kra2023problems}. Some questions in the
+survey are posed in the running text without a number. We refer to them by the subsection in which
+they appear followed by a letter, in order of appearance: for instance, Question~\S3.2(a) is the
+first unnumbered question in Subsection~3.2 of~\cite{kra2023problems}. Before answering each
+question we restate it in our notation.
+
+Throughout, $\N=\{1,2,3,\dots\}$, $\P$ denotes the set of primes, and for $A\subset\N$
+\[
+\udens(A)=\limsup_{N\to\infty}\frac{|A\cap[N]|}{N},\qquad
+\ubd(A)=\lim_{N\to\infty}\sup_{M\ge0}\frac{|A\cap[M+1,M+N]|}{N},\qquad
+\udlog(A)=\limsup_{N\to\infty}\frac{1}{\log N}\sum_{n\in A\cap[N]}\frac1n,
+\]
+where $[N]=\{1,\dots,N\}$. Lower densities $\ldens$ and natural and logarithmic densities $\dens$,
+$\dlog$ are defined in the same way. In a countable abelian group, or more generally a countable
+amenable group, upper Banach density $\ubd$ is the supremum of upper densities along \Fol{} sequences.
+A set is \emph{thick} if it contains arbitrarily long intervals (in a group: translates of every
+finite set). For sets $B,C$ we write $B+C=\{b+c:b\in B,c\in C\}$, $B+t=\{b+t:b\in B\}$ and
+$mB=\{mb:b\in B\}$.
+
+\subsection*{Questions whose answer depends on the formulation}
+For several questions the answer we give concerns the question exactly as it is stated in the survey,
+and the literal statement differs from what the authors of the survey probably intended. We include
+these answers because the difference is not always obvious and the literal statements have been
+repeated in the literature, but in each case we point out the issue explicitly, give the natural
+corrected formulation, and say whether it remains open. This applies to
+Question~3.20 (where $m=1$ is coprime to every $q$), Question~3.23 (where $B+mB$ contains the
+diagonal terms $(m+1)b$), Question~\S3.2(a) (where the density condition can be read in two ways; we
+answer both readings), Question~5.6, Question~5.23 and Question~\S5.4(b) (where the fibre conditions
+constrain only one coordinate). The negative answer to Question~\S3.3(e) follows directly from known
+counterexamples (one from~\cite{kra2023problems} itself and one due to
+Ackelsberg~\cite{ackelsberg2024counterexamples}); we record it for completeness. Similarly, our
+answer to Question~3.24 is preceded by an example of Kousek and Radi\'c~\cite{kousek2024infinite},
+which, as we check, already answers that question.
+
+\begin{table}[ht]
+\centering
+\small
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{@{}p{0.17\textwidth}p{0.58\textwidth}p{0.14\textwidth}@{}}
+\hline
+Question & Answer & Section\\
+\hline
+5.14 & Yes: $B_1+\dots+B_k$ in every countably infinite abelian group & \ref{K:sec:main}\\
+5.16, \S5.3(a) & Exactly which sets of translates suffice when $[G:2G]<\infty$ & \ref{G:sec:translates}\\
+5.10 & No: fibrewise lower density does not suffice in $\N^2$ & \ref{G:sec:q510}\\
+5.23, \S5.4(b) & No, as stated; a corrected version is open & \ref{G:sec:q523}\\
+3.20 & No (for $B+mB$ as in the survey), for two and for three colours & \ref{IA:sec:q320}\\
+3.23 & No, as stated & \ref{IA:sec:q323}\\
+3.24 & No (already implied by Kousek--Radi\'c) & \ref{IA:sec:q324}\\
+\S3.2(a) & No, for both readings & \ref{IA:sec:u32a}\\
+\S3.3(a) & Ordered polynomial sums: exactly the linear case & \ref{IA:sec:u33a}\\
+\S3.3(e) & No (direct consequence of known examples) & \ref{IA:sec:u33e}\\
+3.31, \S3.6(a) & Yes, in the strongest $k$-fold form & \ref{IB:sec:q331}\\
+4.13 & Yes iff $\gamma\notin\Z$ (for almost every $x$) & \ref{IB:sec:q413}\\
+\S4.4(a) & Random sets: criterion for monotone $p_n$; no Borel criterion in general & \ref{IB:sec:u44a}\\
+4.5 & Yes, unconditionally & \ref{IB:sec:c45}\\
+5.4 & No & \ref{SP:sec:q54}\\
+5.6 & No, as stated & \ref{SP:sec:q56}\\
+\S5.1(a) & Yes for both examples & \ref{SP:sec:u51a}\\
+\hline
+\end{tabular}
+\caption{Questions from~\cite{kra2023problems} answered in this paper.}
+\label{I:tab:results}
+\end{table}
+
+\subsection*{Formalization}
+Many of the results have been formalized in Lean~4 with Mathlib, among them the answers to
+Questions~3.20, 3.23, \S3.2(a), 5.4, 5.6, 5.10, 5.23 and \S5.1(a), the integer case of Question~4.13,
+and the result of \cref{KR:sec:main}. A few further results are formalized conditionally on the
+published theorems they rely on, which are stated as explicit hypotheses. The formalization is
+available at \url{https://github.com/daizisheng/kmrr25}.
+
+\subsection*{Organisation}
+\Cref{K:sec:main} contains the proof of the main theorem. The rest of the paper is organised by the
+setting: further results on groups and on $\N^2$, results on sumsets in the integers, and results on
+configurations mixing sums and products. The sections can be read independently.
