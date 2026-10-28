@@ -51,8 +51,8 @@ pairs $(f,g)$.
 \end{theorem}
 
 The hypothesis in~\ref{IA:it:u33a-pos} is positive upper Banach density, and the set in
-\ref{IA:it:u33a-neg} has lower density close to $1$, so it has positive upper and lower natural
-density, positive logarithmic density and positive upper Banach density. Hence the classification
+\ref{IA:it:u33a-neg} has lower density close to $1$, so its upper and lower natural densities, its
+upper and lower logarithmic densities and its upper Banach density are all positive. Hence the classification
 is the same for each of these notions of density in \cref{IA:q:u33a}.
 
 \begin{remark}[Attribution]\label{IA:rem:u33a-credit}
@@ -84,7 +84,7 @@ contains the diagonal elements $f(b)+g(b)$, and the answer can change even for l
 $f(x)=x$, $g(x)=2x$ the second set contains $\{b_1+2b_2:b_1\le b_2\}$, and
 Kousek~\cite[Proposition~5.1]{kousek2025asymmetric} (with $m=1$, $\ell=2$) gives a set of positive
 upper density containing no shift $\{b_1+2b_2:b_1\le b_2\}+t$, $t\in\N$, with $B$ infinite (the
-case $t=0$ reduces to $t=3$ by replacing $B$ with $B-1$). If $g\equiv c$ and $\deg f\ge2$, the
+case $t=0$ reduces to $t=3$ by replacing $B$ with $\{b-1:b\in B,\ b\ge2\}$). If $g\equiv c$ and $\deg f\ge2$, the
 second set is finite, while $f(B)\oplus_<g(B)=f(B)+c$ is infinite (every element of $B$ has a
 larger one).
 \Cref{IA:thm:u33a} uses the formulation~\cite[(5)]{kra2023problems}.
@@ -218,7 +218,7 @@ Similar to the way Question~3.13 is generalised in Questions~3.15 and~3.16, one 
 analogous generalisations of Question~3.18.
 \end{question}
 
-The faithful analogues are:
+Two natural literal interpretations are:
 \begin{itemize}
 \item[(F1)] (base point, as in Question~3.15) must every $A$ with $\ubd(A)>0$ contain
 $\{b_k,\ b_ib_j+b_k:\ i<j<k\}+t$ for some infinite $B$ and $t\ge0$?
@@ -301,7 +301,7 @@ three or more colours. This hinges on the literal formulation: for two colours, 
 the recent solution of Owings' problem~\cite{owings1974problem} by Huang, Lian, Shao, Xiao, Xu and
 Zhang~\cite[Theorem~1.1]{huang2026affirmative}, and the heuristic behind the question concerns
 $m\ge2$. We show that the answer is negative also for $m\ge2$ and for two colours (for two colours,
-with the unrestricted $B+mB$ of the survey). What is new is that a \emph{single} colouring is bad for
+with the unrestricted $B+mB$ of the survey). To our knowledge, what is new is that a \emph{single} colouring is bad for
 infinitely many $m$ simultaneously: for three or more colours a set of bad $m$ of positive
 logarithmic density containing infinitely many primes, and for two colours infinitely many bad
 primes; for each individual $m$, Hindman's theorem already provides a $2$-colouring for which $m$ is
@@ -342,7 +342,7 @@ factors. For $r=2$ use \cref{IA:thm:320B}\ref{IA:it:primes} (or, for not necessa
 \end{proof}
 
 By \cref{IA:thm:320A}, the set of bad $m$ need not be small in any multiplicative sense: for $r$
-colours it can have logarithmic density $1-2/r$. Question~3.19 of~\cite{kra2023problems}, whether
+colours it can contain a set of logarithmic density $1-2/r$. Question~3.19 of~\cite{kra2023problems}, whether
 for every finite colouring some $m$ is not bad, remains open for $r\ge3$ colours; for $r=2$ it is
 answered positively with $m=1$ by~\cite[Theorem~1.1]{huang2026affirmative}.
 
@@ -491,7 +491,7 @@ $m/\ell$ does too~\cite[Theorems~1.6 and~1.7]{kousek2025asymmetric}; these are s
 $\ell,m$ there are sets of positive lower density containing no shift of
 $mB+\ell B=\{mb_1+\ell b_2:b_1,b_2\in B\}$ with $B$ infinite~\cite[Propositions~5.1, 6.5, 7.6
 and~7.7]{kousek2025asymmetric}; see also his Questions~7.8 and~7.9. Those examples depend on
-$(\ell,m)$, whereas \cref{IA:q:323} allows $m$ to depend on $A$. What is new below is a single set of
+$(\ell,m)$, whereas \cref{IA:q:323} allows $m$ to depend on $A$. To our knowledge, what is new below is a single set of
 positive logarithmic density that avoids $\ell B+mB+t$ for all $\ell,m\ge1$ and $t\in\Z$ at once. As in
 Kousek's results (and as in \cref{IA:rem:320diag} for colourings), the diagonal together with one
 ordered piece cannot be avoided by sets of lower density $>1/2$, and our proof uses the diagonal and
@@ -526,14 +526,15 @@ all $m$.
 The example motivating \cref{IA:q:323}, \cite[Example~3.21]{kra2023problems}, concerns the
 restricted sumset, and for it $A_\eta$ is no counterexample: for every odd $m\ge3$ there is an
 infinite $B$ with $B\oplus mB\subset A_\eta$. Indeed, let $\eps=\frac12(\frac16-\eta)$, so that
-$[\frac12,\frac12+\eps)\subset U_\eta$. Choose $b_1<b_2<\cdots$ inductively: given $b_1,\dots,b_{j-1}$,
+$[\frac12,\frac12+\eps)\subset U_\eta$. Choose $b_1<b_2<\cdots$ inductively: let $b_1\in\N$ be
+arbitrary, and given $b_1,\dots,b_{j-1}$,
 choose an even $k$ so large that $(m+1)b_{j-1}<\eps k$ and $Y_k/(m+1)-X_k>k$, and choose
 $b_j\in[X_k,Y_k/(m+1))$ with $b_j\equiv k/2\pmod k$. For $i<j$ the numbers $b_j+mb_i$ and
 $mb_j+b_i$ lie in $[X_k,Y_k)$ and are congruent modulo $k$ to $\frac k2+mb_i$ and to
 $\frac k2+b_i$ respectively (as $m$ is odd, $\frac{mk}2\equiv\frac k2$), both of which lie in
 $[\frac k2,\frac k2+\eps k)$. Hence both belong to $A_\eta$.
 \item The restricted version of \cref{IA:q:323} (does every $A$ with $\udlog(A)>0$ contain
-$B\oplus mB+t$ for some $m\ge2$, $t\ge0$ and infinite $B$?) remains open.
+$B\oplus mB+t$ for some $m\ge2$, $t\ge0$ and infinite $B$?) remains open, to our knowledge.
 \end{enumerate}
 \end{remark}
 
@@ -679,7 +680,7 @@ For~\eqref{IA:eq:324}, let $V_0=[0,\frac12)$, $V_1=[\frac12,1)$ and
 $A^*=\{n\in2\N:\{\frac12\log_2n\}\in V_0\}\cup\{n\in2\N+1:\{\frac12\log_2n\}\in V_1\}$. Since
 $\{\frac12\log_2n\}\in V_0$ if and only if $n\in[4^j,2\cdot4^j)$ for some $j\ge0$, the symmetric
 difference of $A_{\mathrm{KR}}$ and $A^*$ is contained in $[1,4)\cup W$, where
-$W=\bigcup_{n\ge1}[(2-\frac1n)4^n,(2+\frac1n)4^n]$. For $N<4^{K+1}$ we have
+$W=\bigcup_{n\ge1}[(2-\frac1n)4^n,(2+\frac1n)4^n]$. For $4^K\le N<4^{K+1}$ we have
 $\sum_{n\le N,\,n\in W}\frac1n\le\sum_{n\le K}\big(\log\frac{2+1/n}{2-1/n}+4^{-n}\big)=O(\log K)
 =o(\log N)$, so it suffices to verify~\eqref{IA:eq:324} for $A^*$. Fix $\theta>0$ and
 $(a,b)\subset[0,1)$, put $\theta'=\theta\log2$, so that $\{\theta\log n\}=\{\theta'\log_2n\}$, and
@@ -717,7 +718,8 @@ $\frac1L\int_0^L\e\big(hf(x)+k\theta'x\big)\,dx\to0$ as $L\to\infty$, where $\e(
 \end{lemma}
 
 \begin{proof}
-The phase is $\psi(x)=\gamma x+h\sqrt x$ with $\gamma=\frac h2+k\theta'$. If $\gamma\ne0$, let
+The phase is $\psi(x)=\gamma x+h\sqrt x$ with $\gamma=\frac h2+k\theta'$. If $h=0$, then $k\ne0$, so
+$\gamma\ne0$ and $\int_0^L\e(\gamma x)\,dx=O(1/|\gamma|)$. If $h\ne0$ and $\gamma\ne0$, let
 $x_0=(h/\gamma)^2$. On $[x_0,L]$ the derivative $\psi'(x)=\gamma+\frac h{2\sqrt x}$ is monotone and
 $|\psi'|\ge|\gamma|/2$. Integrating by parts,
 \[
