@@ -96,15 +96,14 @@ Question & Answer & Section\\
 \end{table}
 
 \subsection*{Formalization}
-Most of the results outside \cref{K:sec:main} have been formalized in Lean~4 with Mathlib; the
+The main theorem and most of the other results have been formalized in Lean~4 with Mathlib; the
 formalization is available at \url{https://github.com/daizisheng/kmrr25}, in the directory
 \nolinkurl{lean/Kmrr25}. No file contains \texttt{sorry} or adds an axiom, and every main
 theorem depends only on the standard axioms of Lean. Where one of our proofs relies on a
 published theorem that is not formalized, that theorem is stated as a proposition and passed
 to the formal statement as an explicit hypothesis. \Cref{I:tab:lean} gives an overview, and
 after each formalized result a paragraph headed \emph{Formalization} names the file and the
-main formal statements and says what is not covered. The main theorem (\cref{K:thm:main}) is
-not formalized.
+main formal statements and says what is not covered.
 
 \begin{table}[ht]
 \centering
@@ -114,7 +113,7 @@ not formalized.
 \hline
 Question & File & Status\\
 \hline
-5.14 & --- & not formalized\\
+5.14 & \nolinkurl{ThmK*} (14 files) & conditional on four classical theorems (see the end of \cref{K:ssec:proof})\\
 5.16, \S5.3(a) & \nolinkurl{Q516} & conditional on \cite[Corollary~1.13]{charamaras2024finding}\\
 5.10 & \nolinkurl{Q510} & complete\\
 5.23, \S5.4(b) & \nolinkurl{Q523} & answer to the questions as stated: complete; repaired version

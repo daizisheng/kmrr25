@@ -1198,6 +1198,19 @@ $T^{b_1+\dots+b_k}a\in E$, that is, $b_1+\dots+b_k\in A$, for all $b_i\in B_i$.
 \end{enumerate}
 \qed
 
+\formalization{\Cref{K:thm:main} is formalized in the fourteen files
+\nolinkurl{Kmrr25/ThmK*.lean}; the main statement is \leanname{thmK} in \leanfile{ThmK}. All
+lemmas and propositions of this section are proved there, with four classical results stated as
+explicit hypotheses (the structure \leanname{ClassicalInputs} in \leanfile{ThmKDefs}): the
+correspondence principle (\cref{K:thm:corr}); the existence of generic points~\ref{K:G4}; the
+discrete spectrum theorem (\cref{K:lem:kron}\ref{K:ka}); and, for vectors orthogonal to all
+eigenfunctions, the decay of averaged correlations given by the spectral theorem and Wiener's
+lemma (\cref{K:lem:wiener}\ref{K:wc},\ref{K:wd}). Disintegrations are taken from Mathlib. Some
+arguments are organised differently in the formal proof: for instance, the Kronecker group is
+realised as a closed subgroup of $(\R/\Z)^\N$, which avoids Pontryagin duality, and
+\cref{K:lem:pairs} splits $g$ into its Kronecker and weak mixing parts instead of using the
+spectral theorem for $g$.}
+
 \subsection{Comments on the proof}\label{K:ssec:comments}
 
 \subsubsection*{Structure of the induction}

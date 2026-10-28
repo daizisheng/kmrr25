@@ -7,8 +7,8 @@ import Kmrr25.Q323
 import Kmrr25.Q324
 import Kmrr25.Q331
 import Kmrr25.Q413
-import Kmrr25.Q413a
 import Kmrr25.Q413SecondMoment
+import Kmrr25.Q413a
 import Kmrr25.Q510
 import Kmrr25.Q516
 import Kmrr25.Q523
@@ -20,3 +20,17 @@ import Kmrr25.S33e
 import Kmrr25.S44a
 import Kmrr25.S44b
 import Kmrr25.S51a
+import Kmrr25.ThmK
+import Kmrr25.ThmKCriterion
+import Kmrr25.ThmKCube
+import Kmrr25.ThmKDefs
+import Kmrr25.ThmKDisint
+import Kmrr25.ThmKErgJ
+import Kmrr25.ThmKFactor
+import Kmrr25.ThmKGeneric
+import Kmrr25.ThmKHaar
+import Kmrr25.ThmKKron
+import Kmrr25.ThmKL2
+import Kmrr25.ThmKPairs
+import Kmrr25.ThmKStep
+import Kmrr25.ThmKSupport

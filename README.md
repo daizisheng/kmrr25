@@ -54,9 +54,21 @@ as an explicit hypothesis. The table marks these cases.
 | `S51a.lean` | Bohr sets, Beatty sequences, {λ = 1} | §5.1(a) | — |
 | `Q54.lean` | sums and shifted products at logarithmic scale | 5.4 | — |
 | `Q56.lean`, `DoubleFolnerQ.lean` | sums and products in ℚ, double Følner sequences | 5.6 | — |
+| `ThmK*.lean` (14 files) | sums of k infinite sets in countably infinite abelian groups (main theorem) | 5.14 | four classical theorems (see below) |
 | `KR52.lean` | lower Banach density thresholds 1/2 and 3/4 | Kousek–Radić, Question 5.2 | — |
 
-The main theorem of the paper (Question 5.14) is not formalized.
+The main theorem of the paper (Question 5.14, Theorem 2.1) is formalized in the files
+`ThmK*.lean`; the final statement is `Kmrr25.ThmK.thmK` in `ThmK.lean`. It takes as a hypothesis the
+structure `ClassicalInputs` (in `ThmKDefs.lean`), which states four classical theorems:
+
+- Furstenberg's correspondence principle, in the form of Charamaras–Mountakis, Theorem 2.15;
+- existence of generic points along a subsequence of any Følner sequence (Charamaras–Mountakis,
+  Lemma 2.7, via Lindenstrauss' pointwise ergodic theorem);
+- the discrete spectrum (Halmos–von Neumann) theorem for the Kronecker factor;
+- for vectors orthogonal to all eigenfunctions, the decay of averaged correlations along Følner
+  sequences (spectral theorem and Wiener's lemma).
+
+Everything else in the proof of the main theorem is proved.
 
 The module docstring of each file lists exactly which statements of the paper it covers and
 which it does not.
