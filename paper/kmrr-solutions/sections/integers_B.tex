@@ -504,9 +504,12 @@ over $X_0\in\N$ and $L\in\N$, we conclude that $A_x$ is thick for almost every $
 
 \formalization{Part~\ref{IB:413b} of \cref{IB:thm:413} and \cref{IB:lem:thick} are formalized
 in \leanfile{Q413} (\leanname{thm413b}, \leanname{thm413b_sumset}, \leanname{lem_thick}).
-For part~\ref{IB:413a}, \leanfile{Q413a} formalizes \cref{IB:lem:En} and the deduction of
-part~\ref{IB:413a} from the second-moment estimate (\leanname{thm413a_of_secondMoment}); the
-second-moment estimate itself enters there as an explicit hypothesis.}
+Part~\ref{IB:413a} and the final equivalence are formalized unconditionally:
+\leanfile{Q413a} contains \cref{IB:lem:En} and the deduction of part~\ref{IB:413a} from the
+second-moment estimate, and \leanfile{Q413SecondMoment} proves that estimate
+(\leanname{secondMomentBound}, \leanname{thm413a}, \leanname{thm413_iff}). The formal proof
+follows the second-moment method above, with Fej\'er kernels in place of the smooth windows and
+the indicator of $[-X_0,X_0]$ in place of $\psi$.}
 
 %======================================================================
 \section{Sumsets in random sets}
@@ -1057,8 +1060,14 @@ The $0$--$1$ statements follow from \cref{IB:thm:finite,IB:thm:strategy}. \qed
 \formalization{\Cref{IB:thm:monotone,IB:thm:finite} and \cref{IB:ex:gap} are formalized in
 \leanfile{S44a} (\leanname{thm_monotone}, \leanname{thm_finite_int}, \leanname{ex_gap}), with
 the random set modelled by an infinite product of Bernoulli measures.
-\Cref{IB:thm:strategy,IB:thm:strategy2,IB:thm:nonborel,IB:thm:hierarchy} and the examples
-attached to them are not formalized.}
+\Cref{IB:thm:strategy,IB:thm:strategy2,IB:thm:hierarchy}, \cref{IB:lem:BC,IB:lem:rigid,IB:lem:R}
+and \cref{IB:ex:oplus,IB:ex:tree,IB:ex:half,IB:ex:rigid} are formalized in \leanfile{S44b}
+(\leanname{thm_strategy}, \leanname{thm_strategy2_oplus}, \leanname{thm_strategy2_plus},
+\leanname{thm_hierarchy}, \leanname{thm_hierarchy_strict}). For \cref{IB:thm:nonborel} the
+same file proves analyticity, the continuity of the reductions and the reduction property on
+trees (\leanname{thm_nonborel_a_BC}, \leanname{thm_nonborel_b_BC}, \leanname{thm_nonborel_c}
+and their variants); the classical facts that $\mathrm{IF}$ is $\Sigma^1_1$-complete and not
+Borel~\cite[Theorems~14.2 and~27.1]{kechris1995classical} are stated as explicit hypotheses.}
 
 %======================================================================
 \section{Ordered sumsets in the primes with summands in \texorpdfstring{$\P-1$}{P-1}}

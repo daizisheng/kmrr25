@@ -43,8 +43,10 @@ as an explicit hypothesis. The table marks these cases.
 | `S33e.lean` | generalisations of Question 3.18 (and Question 3.18 itself) | §3.3(e), 3.18 | — |
 | `Q331.lean` | k-fold sums of blocks from a density Ramsey family | 3.31, §3.6(a) | KMRR, density finite sums (dynamical input) |
 | `Q413.lean` | the integer-exponent case | 4.13 | — |
-| `Q413a.lean` | the non-integer case, from the second-moment bound | 4.13 | the second-moment bound of the paper's proof |
+| `Q413a.lean` | the non-integer case, from the second-moment bound | 4.13 | — |
+| `Q413SecondMoment.lean` | the second-moment bound; the non-integer case and the final equivalence, unconditionally | 4.13 | — |
 | `S44a.lean` | random sets: monotone criterion, finite configurations, gap example | §4.4(a) | — |
+| `S44b.lean` | random sets: strategy criteria, hierarchy, rigid-set examples; non-Borel results | §4.4(a) | non-Borel part: Kechris, Thm 27.1 (and 14.2) on ill-founded trees |
 | `C45.lean` | {b+c : b<c} ⊂ P with C ⊂ P−1 | Conjecture 4.5 | Tao–Ziegler, Thm 1.5 |
 | `Q510.lean` | fibrewise density does not suffice in ℕ² | 5.10 | — |
 | `Q516.lean` | admissible translates when [G:2G] < ∞ | 5.16, §5.3(a) | Charamaras–Mountakis, Cor. 1.13 |

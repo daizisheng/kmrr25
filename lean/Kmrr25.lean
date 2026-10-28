@@ -8,6 +8,7 @@ import Kmrr25.Q324
 import Kmrr25.Q331
 import Kmrr25.Q413
 import Kmrr25.Q413a
+import Kmrr25.Q413SecondMoment
 import Kmrr25.Q510
 import Kmrr25.Q516
 import Kmrr25.Q523
@@ -17,4 +18,5 @@ import Kmrr25.S32a
 import Kmrr25.S33a
 import Kmrr25.S33e
 import Kmrr25.S44a
+import Kmrr25.S44b
 import Kmrr25.S51a

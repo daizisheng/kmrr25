@@ -30,12 +30,13 @@ fractional part. Question 4.13 of the survey asks for which `γ` the set `A_x` c
 * The hypothesis `γ > 0` of the paper, i.e. `d ≥ 1`, is not needed for part (b): the proof
   works for every `d ∈ ℕ`, so it is omitted.
 
-## Not covered
+## Part (a)
 
 Theorem \ref{IB:thm:413}\ref{IB:413a} (for non-integer `γ`, `A_x` is thick for almost every `x`,
-proved by the second-moment method) and hence the final "if and only if" of
-Theorem \ref{IB:thm:413} are not formalized; of that part only Lemma \ref{IB:lem:thick}
-(`lem_thick`: a thick set contains `B + C` with `B, C` infinite) is formalized.
+proved by the second-moment method) is formalized in `Kmrr25.Q413a` (the deduction from the
+second-moment estimate) and `Kmrr25.Q413SecondMoment` (the estimate itself, and the final
+"if and only if" of Theorem \ref{IB:thm:413} as `Kmrr25.Q413SM.thm413_iff`). This file contains
+Lemma \ref{IB:lem:thick} (`lem_thick`: a thick set contains `B + C` with `B, C` infinite).
 -/
 
 open Real Finset Polynomial

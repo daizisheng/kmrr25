@@ -53,13 +53,13 @@ proved here from the product formula `Measure.infinitePi_pi`. Lemma \ref{IB:lem:
 for translates `K_n = n + F`, where the colouring argument is replaced by splitting `n` into
 residue classes modulo `max F + 1`.
 
-## Not covered
+## The rest of the section
 
 The strategy criteria (Theorems \ref{IB:thm:strategy} and \ref{IB:thm:strategy2}), the non-Borel
 theorem \ref{IB:thm:nonborel}, the hierarchy theorem \ref{IB:thm:hierarchy} and the examples
-attached to them are not formalized. (In the paper, (1) ⇒ (5) of the monotone theorem is quoted
-from the hierarchy theorem; here it is the elementary observation `HasSumset.hasAllFinite`, so the
-monotone theorem does not depend on the unformalized results.)
+attached to them are formalized in `Kmrr25.S44b`. (In the paper, (1) ⇒ (5) of the monotone theorem
+is quoted from the hierarchy theorem; here it is the elementary observation
+`HasSumset.hasAllFinite`, so this file does not depend on `Kmrr25.S44b`.)
 -/
 
 open MeasureTheory ProbabilityTheory unitInterval Filter Set

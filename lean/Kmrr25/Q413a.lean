@@ -21,17 +21,18 @@ Paper, Section \ref{IB:sec:q413}, proof of Theorem \ref{IB:thm:413}\ref{IB:413a}
   (the `limsup` of the events, Lemma \ref{IB:lem:En}, intersection over `L` and `X₀`, and
   Lemma \ref{IB:lem:thick}).
 
-## What is not formalized
+## The second-moment estimate
 
-The second-moment estimate itself, stated here as the `Prop` `SecondMomentBound γ`: for every
+The second-moment estimate itself is stated here as the `Prop` `SecondMomentBound γ`: for every
 `L ≥ 1` and `X₀ > 0`, the measure of the set of `x ∈ [-X₀, X₀]` lying in no `E_n`,
 `2^r ≤ n < 2^{r+1}`, tends to `0`. In the paper this is the computation with the smooth windows
 `φ_{α,w}`, the functions `F_n`, `Z_N`, the Fourier bounds \eqref{IB:eq:window} and
 \eqref{IB:eq:tail}, Lemma \ref{IB:lem:freq}, Lemma \ref{IB:lem:bad}, the first and second
-moments and Chebyshev's inequality; none of this is formalized. `SecondMomentBound` is an
-intermediate claim of the paper's own proof (not a cited theorem); it is not an axiom, and the
-results of this file that depend on it take it as an explicit hypothesis. Consequently the final
-"if and only if" of Theorem \ref{IB:thm:413} is also not formalized.
+moments and Chebyshev's inequality. The results of this file take it as an explicit hypothesis;
+it is proved for every non-integer `γ > 0` in `Kmrr25.Q413SecondMoment` (`secondMomentBound`),
+by a variant of the paper's computation with Fejér kernels in place of smooth windows. That file
+also contains the unconditional Theorem \ref{IB:thm:413}\ref{IB:413a} and the final "if and
+only if" of Theorem \ref{IB:thm:413}.
 
 ## Conventions
 
@@ -292,8 +293,9 @@ In the paper this is the outcome of the first- and second-moment computation for
 `Z_N = ∑_{N ≤ n < 2N} F_n` (Fourier expansion of the smooth windows, \eqref{IB:eq:window},
 \eqref{IB:eq:tail}, Lemmas \ref{IB:lem:freq} and \ref{IB:lem:bad}, and Chebyshev's inequality,
 giving `P_ψ(Z_N = 0) → 0`; since `F_n > 0` forces `x ∈ E_n`, applying this with `X₀ + 1` and
-`ψ = 1` on `[-X₀, X₀]` gives the statement here). That computation is **not** formalized; this
-`Prop` is a hypothesis of `thm413a_of_secondMoment` below. -/
+`ψ = 1` on `[-X₀, X₀]` gives the statement here). This `Prop` is a hypothesis of
+`thm413a_of_secondMoment` below; it is proved in `Kmrr25.Q413SecondMoment`
+(`secondMomentBound`). -/
 def SecondMomentBound (γ : ℝ) : Prop :=
   ∀ L : ℕ, 1 ≤ L → ∀ X₀ : ℝ, 0 < X₀ → Tendsto (fun r => volume (badSet γ L X₀ r)) atTop (𝓝 0)
 
