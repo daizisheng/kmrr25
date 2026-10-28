@@ -13,7 +13,7 @@ named by their subsection and a letter in order of appearance, e.g. §3.2(a).
 
 - `paper/kmrr-solutions/`: the paper *Solutions to several problems on infinite sumset
   configurations* by Shisheng Li and Yong Su (LaTeX sources and `main.pdf`). It answers twenty
-  questions from the survey, including Question 5.14 (sums of k infinite sets in every countably
+  questions and conjectures from the survey (nineteen questions and Conjecture 4.5), including Question 5.14 (sums of k infinite sets in every countably
   infinite abelian group), and a question of Kousek and Radić on lower Banach density.
 - `lean/`: Lean 4 formalizations of a number of results of the paper.
 

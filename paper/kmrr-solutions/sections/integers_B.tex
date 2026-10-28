@@ -289,6 +289,11 @@ Finally, to get $t\in\N$ apply the above to $A'=A-1=\{n\in\N:n+1\in A\}$, which 
 $\ubd(A')=\ubd(A)>0$. If all the required sums lie in $A'-t'$ with $t'\ge0$, then
 they lie in $A-(t'+1)$. \qed
 
+\formalization{\Cref{IB:thm:dR,IB:cor:331}, \cref{IB:lem:folner,IB:lem:intersect} and the
+construction above are formalized in \leanfile{Q331} (\leanname{thm_dR}, \leanname{cor331}),
+with the conclusion of \cref{IB:prop:dyn} stated as an explicit hypothesis; the dynamical
+input from~\cite{kra2025density} is not formalized.}
+
 %======================================================================
 \section{Sumsets in the sets \texorpdfstring{$A_x=\{n:\{n^\gamma x\}\le 1/\log n\}$}{A\_x}}
 \label{IB:sec:q413}
@@ -496,6 +501,12 @@ $x\in G_r$ then $F_n(x)>0$, hence $x\in E_n$, for some $n\in[2^r,2^{r+1})$. By
 $\{n,\dots,n+L-1\}\subset A_x$. Taking $\psi=1$ on $[-X_0+1,X_0-1]$, and then intersecting
 over $X_0\in\N$ and $L\in\N$, we conclude that $A_x$ is thick for almost every $x\in\R$.
 \Cref{IB:lem:thick} completes the proof. \qed
+
+\formalization{Part~\ref{IB:413b} of \cref{IB:thm:413} and \cref{IB:lem:thick} are formalized
+in \leanfile{Q413} (\leanname{thm413b}, \leanname{thm413b_sumset}, \leanname{lem_thick}).
+For part~\ref{IB:413a}, \leanfile{Q413a} formalizes \cref{IB:lem:En} and the deduction of
+part~\ref{IB:413a} from the second-moment estimate (\leanname{thm413a_of_secondMoment}); the
+second-moment estimate itself enters there as an explicit hypothesis.}
 
 %======================================================================
 \section{Sumsets in random sets}
@@ -1043,6 +1054,12 @@ $q_n\le n^{-\eps}$ for large $n$ and $\sum_nq_n^k<\infty$ for $k>1/\eps$.
 
 The $0$--$1$ statements follow from \cref{IB:thm:finite,IB:thm:strategy}. \qed
 
+\formalization{\Cref{IB:thm:monotone,IB:thm:finite} and \cref{IB:ex:gap} are formalized in
+\leanfile{S44a} (\leanname{thm_monotone}, \leanname{thm_finite_int}, \leanname{ex_gap}), with
+the random set modelled by an infinite product of Bernoulli measures.
+\Cref{IB:thm:strategy,IB:thm:strategy2,IB:thm:nonborel,IB:thm:hierarchy} and the examples
+attached to them are not formalized.}
+
 %======================================================================
 \section{Ordered sumsets in the primes with summands in \texorpdfstring{$\P-1$}{P-1}}
 \label{IB:sec:c45}
@@ -1094,6 +1111,10 @@ $\beta_{i_1}<c_1<\beta_{i_2}<c_2<\cdots$. Let $B=\{\beta_{i_j}:j\in\N\}$ and $C=
 $C+t\subset\P$. If $b=\beta_{i_l}$ and $c=c_j$ with $b<c$, the interlacing gives $l\le j$, so
 $i_0\le i_l\le i_j$, and $c_j\in M_{i_j}$ yields $b+c+s=c_j+s+\beta_{i_l}\in\P$.
 \end{proof}
+
+\formalization{\Cref{IB:thm:c45} is formalized in \leanfile{C45} (\leanname{c45_of_TZ},
+\leanname{conjecture45_of_TZ}), with the Tao--Ziegler theorem stated as an explicit
+hypothesis.}
 
 \begin{remark}
 \label{IB:rem:c45}

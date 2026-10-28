@@ -224,6 +224,10 @@ with $B$ infinite, \cref{IA:lem:parity} produces an infinite $D\subset\N_0$ and 
 $D+D+t\subset E$, contradicting \cref{IA:prop:rot}.
 \end{proof}
 
+\formalization{Both parts of \cref{IA:thm:u32a}, together with
+\cref{IA:prop:rot,IA:prop:TD} and the lemmas of \cref{IA:ssec:TD}, are formalized in
+\leanfile{S32a} (\leanname{thm_u32a_a}, \leanname{thm_u32a_b}).}
+
 \subsection{A twisted discrepancy estimate}\label{IA:ssec:TD}
 For $\theta\in\R$ and $n\in\Z$ let $r_\theta(n)=\rho(n\theta-\frac16)$ and
 $S_\theta(M)=\sum_{1\le n<M}\varepsilon(n)r_\theta(n)$, so that $S_\theta=S_{\theta,1/6}$. Let
@@ -551,7 +555,7 @@ $\deg f=\deg g$, the leading coefficients are both positive and do not cancel.
 For an integer-valued $h\in\Q[x]$ and $k\in\N$ let $R_k(h)=\{h(n)\bmod k:n\in\Z\}\subset\Z/k\Z$.
 
 \begin{lemma}[Ackelsberg]\label{IA:lem:Rk}
-If $h\in\Q[x]$ satisfies $h(\Z)\subset\Z$ and $\deg h\ge2$, then
+Let $h$ be a polynomial in $\Q[x]$ of degree at least $2$ such that $h(\Z)\subset\Z$. Then
 $\inf_{k\in\N}|R_k(h)|/k=0$.
 \end{lemma}
 
@@ -621,6 +625,12 @@ $m=\ell=0$, the configuration is the single point $c+c'$; take $t=x-c-c'$ for so
 $x\ge c+c'$.
 \end{proof}
 
+\formalization{\Cref{IA:thm:u33a} is formalized in \leanfile{S33a}. Part~\ref{IA:it:u33a-neg}
+(\leanname{thm_u33a_neg}) is unconditional; there Ackelsberg's Lemma~4.3, used in the proof of
+\cref{IA:lem:Rk}, is proved by a different argument (Hermite's criterion and Dirichlet's
+theorem). Part~\ref{IA:it:u33a-pos} (\leanname{thm_u33a_pos}) takes Kousek's
+theorem~\cite[Theorem~1.2]{kousek2025asymmetric} as an explicit hypothesis.}
+
 \subsection{Generalisations of Question~3.18}\label{IA:sec:u33e}
 The survey asks whether shifts of
 $\{b_i^2+b_j:i<j\}$ appear in every set of positive upper Banach density
@@ -665,6 +675,10 @@ $\{b_1b_2+b_3+t:\ b_1,b_2,b_3\in B,\ b_1<b_2<b_3\}\subset A$, the set $B$ is fin
 \cref{IA:q:318} negatively. The configuration in (F1), and the configuration in (F2) for $p_1=xy$,
 both contain $\{b_ib_j+b_k:i<j<k\}$, so this set $A$ has the required property.
 \end{proof}
+
+\formalization{\Cref{IA:prop:u33e} and the remark following it are formalized in
+\leanfile{S33e} (\leanname{prop_u33e}, \leanname{F2_sq}), including proofs of the two quoted
+theorems of Ackelsberg in the form used here.}
 
 For (F2) one does not even need Question~3.18: for the one-element family $p_1(x,y)=x^2$, if
 $\{b_i^2+b_k:i<j<k\}+t\subset A$, then $C=\{b_1,b_3,b_5,\dots\}$ satisfies
@@ -883,6 +897,10 @@ period $P$; then $L_n\equiv L_1=1\pmod q$ for all $n\equiv1\pmod{2P}$, and these
 $p_k<\rho^{j_k}<p_k+1$ with $j_k$ odd, so \cref{IA:prop:320B} applies to $m=p_k$.
 \end{proof}
 
+\formalization{\Cref{IA:thm:320A,IA:thm:320B}, \cref{IA:cor:320} and the propositions and
+lemmas they rely on are formalized in \leanfile{Q320} (\leanname{thm320A}, \leanname{thm320B},
+\leanname{cor320}). Hindman's $3$-colouring, quoted for $m=1$, is not formalized.}
+
 
 \subsection{Logarithmic density and Question~3.23}\label{IA:sec:q323}
 The survey shows that a density version of Question~3.19 needs care: there is a thick set of positive
@@ -1023,6 +1041,9 @@ $H(X_K,Y_K)$ and $\log(N/T_K)$ lie within $2\log K+O(1)$ of $2^K\log 2$. Altoget
 \]
 while $\log N\ge2^K\log2$. Hence $S(N)/\log N\to\mu$.
 \end{proof}
+
+\formalization{Both parts of \cref{IA:thm:323} are formalized in \leanfile{Q323}
+(\leanname{thm323}); \cref{IA:rem:323} is not.}
 
 
 \subsection{Logarithmic equidistribution and Question~3.24}\label{IA:sec:q324}
@@ -1168,6 +1189,10 @@ $\{f(x_1)\}\in[0,c)$, so $f(x_2)\equiv\{f(x_1)\}+\frac12+\Delta_b$ with
 $\{f(x_1)\}+\frac12+\Delta_b\in[\frac12-\frac\eta2,1-\frac\eta2)$. Hence
 $\{f(x_2)\}\notin[0,c)$, that is, $n_2\notin A$, a contradiction.
 \end{proof}
+
+\formalization{\Cref{IA:prop:KR}, including the two assertions quoted
+from~\cite{kousek2024infinite}, and \cref{IA:thm:324} are formalized in \leanfile{Q324}
+(\leanname{prop_KR}, \leanname{thm324}).}
 
 \begin{remark}\label{IA:rem:324}
 \begin{enumerate}[label=(\roman*)]

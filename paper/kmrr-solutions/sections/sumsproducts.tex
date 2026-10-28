@@ -187,6 +187,10 @@ $f(db_0\cdot dc_0)=f(d)^2f(b_0)f(c_0)=h^{-2}h^2=1_G$.
 For instance, for every $k\ge2$ the set $\{n:\Omega(n)\equiv0\pmod k\}$ contains $B+C$ and $BC$
 for some infinite $B,C\subset\N$.
 
+\formalization{\Cref{SP:thm:bohr,SP:cor:beatty,SP:thm:liouville} are formalized in
+\leanfile{S51a} (\leanname{bohr}, \leanname{beatty_sum_prod}, \leanname{liouville}).
+\Cref{SP:prop:finitegroup} is not formalized.}
+
 \begin{remark}\label{SP:rem:liouville}
 \Cref{SP:cor:beatty,SP:thm:liouville} answer Question~\S5.1(a) for both examples named in the
 survey. Question~5.2 of~\cite{kra2023problems} itself remains open when ``positive density'' means
@@ -327,6 +331,11 @@ were infinite with $B+C\subset A$ and $BC+1\subset A$, we could fix $b_0\in B$ a
 then pick $b\in B$ with $b\ge58c_0$ and $c\in C$ with $c\ge58b_0$, contradicting (a) with
 $\tau=1$. (It also follows from (b) with $t_1=0$, $t_2=1$.)
 \end{proof}
+
+\formalization{\Cref{SP:lem:shiftphase}, both parts of \cref{SP:thm:q54} and
+\cref{SP:prop:Aprops}(i) are formalized in \leanfile{Q54} (\leanname{no_ratio58_config},
+\leanname{no_shifted_config}, \leanname{q54_negative}); parts (ii) and (iii) of
+\cref{SP:prop:Aprops} are not.}
 
 \begin{remark}\label{SP:rem:q54}
 (i) The obstruction is asymptotic, and it needs both $B$ and $C$ to be infinite. If $B=\{1\}$, then
@@ -469,6 +478,10 @@ $N\to\infty$, also $R\to\infty$, so $|F_N\cap Z|/|F_N|\to0$.
 \emph{Density of $A$.} By \cref{SP:lem:folner}(iii),
 $|A\cap F_N|/|F_N|=|F_N\cap\Q_{<0}|/|F_N|-O(|F_N\cap Z|/|F_N|)\to1/2$.
 \end{proof}
+
+\formalization{\Cref{SP:lem:folner,SP:lem:noconf} and \cref{SP:thm:q56} are formalized in
+\leanfile{Q56} (\leanname{theoremN}), with double \Fol{} sequences as in
+\leanfile{DoubleFolnerQ}.}
 
 \begin{remark}\label{SP:rem:q56easy}
 We record some easy facts that put \cref{SP:thm:q56} in context. Let $\Phi$ be a double \Fol{}

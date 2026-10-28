@@ -8,7 +8,7 @@ which other infinite configurations must occur in sets of positive density, whic
 hypotheses are needed, and what happens in the primes, in random sets, in multiplicative settings and
 in other groups.
 
-In this paper we answer twenty of the questions posed in~\cite{kra2023problems}. Our main result
+In this paper we answer twenty of the questions and conjectures posed in~\cite{kra2023problems} (nineteen questions and Conjecture~4.5). Our main result
 concerns sums of more than two infinite sets in abelian groups.
 
 \begin{theorem*}[\cref{K:thm:main}]
@@ -37,7 +37,9 @@ question we restate it in our notation.
 Throughout, $\N=\{1,2,3,\dots\}$, $\P$ denotes the set of primes, and for $A\subset\N$
 \[
 \udens(A)=\limsup_{N\to\infty}\frac{|A\cap[N]|}{N},\qquad
-\ubd(A)=\lim_{N\to\infty}\sup_{M\ge0}\frac{|A\cap[M+1,M+N]|}{N},\qquad
+\ubd(A)=\lim_{N\to\infty}\sup_{M\ge0}\frac{|A\cap[M+1,M+N]|}{N},
+\]
+\[
 \udlog(A)=\limsup_{N\to\infty}\frac{1}{\log N}\sum_{n\in A\cap[N]}\frac1n,
 \]
 where $[N]=\{1,\dots,N\}$. Lower densities $\ldens$ and natural and logarithmic densities $\dens$,
@@ -94,11 +96,54 @@ Question & Answer & Section\\
 \end{table}
 
 \subsection*{Formalization}
-Many of the results have been formalized in Lean~4 with Mathlib, among them the answers to
-Questions~3.20, 3.23, 3.24, \S3.2(a), \S3.3(e), \S4.4(a), 5.4, 5.6, 5.10, 5.23 and \S5.1(a), the
-integer case of Question~4.13, and the result of \cref{KR:sec:main}. A few further results are formalized conditionally on the
-published theorems they rely on, which are stated as explicit hypotheses. The formalization is
-available at \url{https://github.com/daizisheng/kmrr25}.
+Most of the results outside \cref{K:sec:main} have been formalized in Lean~4 with Mathlib; the
+formalization is available at \url{https://github.com/daizisheng/kmrr25}, in the directory
+\nolinkurl{lean/Kmrr25}. No file contains \texttt{sorry} or adds an axiom, and every main
+theorem depends only on the standard axioms of Lean. Where one of our proofs relies on a
+published theorem that is not formalized, that theorem is stated as a proposition and passed
+to the formal statement as an explicit hypothesis. \Cref{I:tab:lean} gives an overview, and
+after each formalized result a paragraph headed \emph{Formalization} names the file and the
+main formal statements and says what is not covered. The main theorem (\cref{K:thm:main}) is
+not formalized.
+
+\begin{table}[ht]
+\centering
+\small
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}p{0.17\textwidth}p{0.14\textwidth}p{0.6\textwidth}@{}}
+\hline
+Question & File & Status\\
+\hline
+5.14 & --- & not formalized\\
+5.16, \S5.3(a) & \nolinkurl{Q516} & conditional on \cite[Corollary~1.13]{charamaras2024finding}\\
+5.10 & \nolinkurl{Q510} & complete\\
+5.23, \S5.4(b) & \nolinkurl{Q523} & answer to the questions as stated: complete; repaired version
+(\cref{G:thm:repairA}): not formalized\\
+3.20 & \nolinkurl{Q320} & complete\\
+3.23 & \nolinkurl{Q323} & complete\\
+3.24 & \nolinkurl{Q324} & complete\\
+\S3.2(a) & \nolinkurl{S32a} & complete\\
+\S3.3(a) & \nolinkurl{S33a} & negative part: complete; positive part: conditional on
+\cite[Theorem~1.2]{kousek2025asymmetric}\\
+\S3.3(e) & \nolinkurl{S33e} & complete\\
+3.31, \S3.6(a) & \nolinkurl{Q331} & conditional on the dynamical input from~\cite{kra2025density}
+(\cref{IB:prop:dyn})\\
+4.13 & \nolinkurl{Q413}, \nolinkurl{Q413a} & integer case: complete; non-integer case:
+conditional on the second-moment estimate of \cref{IB:sec:q413}\\
+\S4.4(a) & \nolinkurl{S44a} & monotone criterion and finite configurations: complete; strategy
+criteria and non-Borel results: not formalized\\
+4.5 & \nolinkurl{C45} & conditional on \cite[Theorem~1.5]{tao2023infinite}\\
+5.4 & \nolinkurl{Q54} & complete\\
+5.6 & \nolinkurl{Q56} & complete\\
+\S5.1(a) & \nolinkurl{S51a} & complete\\
+KR, Q.~5.2 & \nolinkurl{KR52} & complete\\
+\hline
+\end{tabular}
+\caption{Lean formalization. ``Complete'' means that the answer to the question proved in this
+paper is formalized without hypotheses beyond the standard axioms; the file names refer to
+\nolinkurl{lean/Kmrr25/*.lean}.}
+\label{I:tab:lean}
+\end{table}
 
 \subsection*{Organisation}
 \Cref{K:sec:main} contains the proof of the main theorem. The rest of the paper is organised by the
