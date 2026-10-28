@@ -13,14 +13,15 @@ In this paper we treat twenty of the questions and conjectures posed in~\cite{kr
 results, as explained below. Our main result
 concerns sums of more than two infinite sets in abelian groups.
 
-\begin{theorem*}[\cref{K:thm:main}]
+\begin{mainthm}
 Let $\Gamma$ be a countably infinite abelian group and let $k\ge1$. Every set $A\subset\Gamma$ of
 positive upper Banach density contains a sumset $B_1+\dots+B_k$, where $B_1,\dots,B_k\subset\Gamma$
 are infinite.
-\end{theorem*}
+\end{mainthm}
 
-This answers Question~5.14 of~\cite{kra2023problems}. The proof uses the Kronecker factor, but no
-higher-order Host--Kra structure theory and no nilspaces: it extends the short proof of the case $k=2$
+This is \cref{K:thm:main}; it answers Question~5.14 of~\cite{kra2023problems}. The proof uses the
+Kronecker factor, but no higher-order Host--Kra structure theory, nilsystems of step greater than
+one, or nilspaces: it extends the short proof of the case $k=2$
 by Kra, Moreira, Richter and Robertson~\cite{kra2026short} to an arbitrary number of summands,
 building the required configuration one level at a time and keeping track only of the supports of
 suitable measures on the Kronecker factor.
@@ -39,8 +40,9 @@ each case we say precisely what is new.
 
 In addition, in \cref{KR:sec:main} we answer a question of Kousek and
 Radi\'c~\cite{kousek2024infinite} that is not in~\cite{kra2023problems}: the supremum of the lower
-Banach densities of sets $A\subset\N$ containing no $B+B+t$ with $B$ infinite and $t\ge0$ is $1/2$,
-and for sets containing no $B+B$ it is $3/4$.
+Banach densities of sets $A\subset\N$ such that $B+B+t\not\subset A$ for every infinite $B\subset\N$
+and every $t\ge0$ is $1/2$, and the supremum for sets such that $B+B\not\subset A$ for every
+infinite $B$ is $3/4$.
 
 \subsection*{Conventions}
 We use the numbering of the second arXiv version of~\cite{kra2023problems}. Some questions in the
@@ -60,12 +62,11 @@ Throughout, $\N=\{1,2,3,\dots\}$, $\P$ denotes the set of primes, and for $A\sub
 where $[N]=\{1,\dots,N\}$. The lower densities $\ldens$ and $\underline{\mathsf d}_{\log}$ are defined
 with $\liminf$ in place of $\limsup$, and the natural and logarithmic densities $\dens$ and $\dlog$
 are the common values when upper and lower densities agree. The lower Banach density is defined in
-\cref{KR:sec:main}. For a \Fol{} sequence $\Phi=(\Phi_N)$ in a countable abelian group (or, more
-generally, a countable amenable group) we write
+\cref{KR:sec:main}. For a \Fol{} sequence $\Phi=(\Phi_N)$ in a countable abelian group we write
 $\udens_\Phi(A)=\limsup_N|A\cap\Phi_N|/|\Phi_N|$, and the upper Banach density $\ubd(A)$ is the
 supremum of $\udens_\Phi(A)$ over all \Fol{} sequences $\Phi$.
-A set is \emph{thick} if it contains arbitrarily long intervals (in a group: translates of every
-finite set). For sets $B,C$ we write $B+C=\{b+c:b\in B,c\in C\}$, $B+t=\{b+t:b\in B\}$,
+A set is \emph{thick} if it contains arbitrarily long intervals (in an abelian group: translates of
+every finite set). Conventions for nonabelian groups are given where they are used. For sets $B,C$ we write $B+C=\{b+c:b\in B,c\in C\}$, $B+t=\{b+t:b\in B\}$,
 $mB=\{mb:b\in B\}$ and $B\oplus B=\{b+b':b,b'\in B,\ b\ne b'\}$; thus $B+B$ is the unrestricted
 sumset, which contains the elements $2b$.
 
@@ -96,12 +97,12 @@ Question & Answer & Section\\
 \S3.2(a) & No, for both readings & \ref{IA:sec:u32a}\\
 \S3.3(a) & Ordered polynomial sums: exactly the linear case & \ref{IA:sec:u33a}\\
 \S3.3(e) & No (direct consequence of known examples) & \ref{IA:sec:u33e}\\
-3.20 & No, for every number of colours, also when only $m\ge2$ is considered & \ref{IA:sec:q320}\\
+3.20 & No, for every number $r\ge2$ of colours, also when only $m\ge2$ is considered & \ref{IA:sec:q320}\\
 3.23 & No, as stated & \ref{IA:sec:q323}\\
 3.24 & No (already implied by Kousek--Radi\'c) & \ref{IA:sec:q324}\\
 3.31, \S3.6(a) & Yes, in the strongest $k$-fold form & \ref{IB:sec:q331}\\
 4.13 & For $\gamma>0$: yes iff $\gamma\notin\Z$ (for Lebesgue-almost every $x\in\R$) & \ref{IB:sec:q413}\\
-\S4.4(a) & Random sets: criterion for monotone $p_n$; no Borel criterion in general & \ref{IB:sec:u44a}\\
+\S4.4(a) & Random sets: criterion for monotone $p_n$; in general the set of good $p$ is not Borel & \ref{IB:sec:u44a}\\
 4.5 & Yes (a consequence of a theorem of Tao and Ziegler) & \ref{IB:sec:c45}\\
 \S5.1(a) & Yes for both examples & \ref{SP:sec:u51a}\\
 5.4 & No & \ref{SP:sec:q54}\\

@@ -222,7 +222,7 @@ $3^n\le b_2-b_1$ and $n$ determines $m$. But $b_1+b+t$ takes infinitely many val
 ranges over $B'$. This is a contradiction, so $T(A)=2\Z$.
 
 (ii) For $B=\{2^i:i\in\N\}$ we have $B\oplus B+1=X\subset A$, so $1\in T(A)$, and
-$T(A)=\Z$ by \cref{G:lem:move}. Clearly $2\Z\subset R(A)$. It remains to show that
+$1+2\Z\subset T(A)$ by \cref{G:lem:move}. Clearly $2\Z\subset R(A)\subset T(A)$, so $T(A)=\Z$. It remains to show that
 $\ubd(X)=0$. We claim that if every interval of $L$ consecutive integers contains at most
 $c$ elements of a set $Y\subset\Z$, then $\ubd(Y)\le c/L$. Indeed, for a \Fol{} sequence
 $\Phi$ we have
@@ -455,8 +455,9 @@ sequence $[1,N]$, that is, with natural densities: every fibre has natural densi
 It does not satisfy~\eqref{G:eq:22} along every \Fol{} sequence. Each $S'_c$ misses the
 blocks $J_k$ with $k\equiv c$, and these have length $2k+1\to\infty$. So along
 $\Phi_N=J_{2N}$, for instance, the fibres $S'_0$ have density $0$. The hypothesis that
-\eqref{G:eq:22} holds along every \Fol{} sequence, i.e.\ that the fibres have uniformly
-positive lower Banach density, is not addressed here; compare~(4). The set $A$ of \cref{G:ex:4k} has fibres without natural density. Its fibres have
+\eqref{G:eq:22} holds along every \Fol{} sequence, and the hypothesis that the fibres have
+uniformly positive lower Banach density, $\liminf_n\mathsf d_*(A_n)>0$ (with $\mathsf d_*$ as in
+\cref{KR:sec:main}), are not addressed here; compare~(4). The set $A$ of \cref{G:ex:4k} has fibres without natural density. Its fibres have
 lower natural densities $2/9$ and $2/15$, which are approached at the integers just
 below the left endpoints of the blocks of $S_0$ and $S_1$, respectively.
 \item The survey explains that a positive answer to \cref{G:q:510} would imply
@@ -471,8 +472,12 @@ element of $B$, except the smallest, must serve both as a row index and as a col
 to be syndetic with a gap bound that does not depend on the fibre. Indeed, suppose that for each $c$ every
 $n\in\N$ satisfies $n+s\in S_c$ for some $0\le s\le L$. Then
 $P_c\subset\bigcup_{0\le s\le L}(S_c-s)$, and \eqref{G:eq:finite} fails for the class $c$
-with $P_c$ infinite. We do not know the answer to \cref{G:q:510} under this stronger
-hypothesis.
+with $P_c$ infinite. In fact, under this stronger hypothesis the answer to \cref{G:q:510} is
+positive, by Ramsey's theorem. Suppose that every $n,q\in\N$ admit $0\le r\le L$ with
+$q+r\in A_n$. Colour each pair $x<y$ in $\N$ by the least such $r$ for $n=x+1$ and $q=y+1$. An
+infinite set $B$ on which the colouring is constant, say equal to $r$, satisfies
+$(b_1+1,b_2+1+r)\in A$ for all $b_1<b_2$ in $B$, that is, \eqref{G:eq:BBcart} with
+$t=(1,1+r)\in\N^2$.
 \end{enumerate}
 \end{remark}
 
@@ -589,10 +594,11 @@ along $\Phi^{d-1}=(\Phi_M^{d-1})_M$;
 \item for every $t\in G^d$, the set $\{g\in G:(gt_1,t_2,\dots,t_d)\in E_d\}$ is finite.
 \end{enumerate}
 In particular $E_d$ satisfies~\eqref{G:eq:I} and~\eqref{G:eq:II}, and
-\eqref{G:eq:23} when $d=2$, with all limits equal to $1$. But there is no $t\in G^d$
+\eqref{G:eq:23} when $d=2$, with all the fibre-density limits occurring there equal to $1$.
+But there is no $t\in G^d$
 and no injective $b$ such that $(b(i)t_1,t_2,\dots,t_d)\in E_d$ for infinitely many $i$.
-Hence the answers to \cref{G:q:523} and \cref{G:q:54b} are negative, for every countably
-infinite amenable group $G$ and every left \Fol{} sequence.
+Hence the answer to \cref{G:q:523} is negative, and so is the answer to \cref{G:q:54b} in both
+formulations, for every countably infinite amenable group $G$ and every left \Fol{} sequence.
 \end{theorem}
 
 \begin{proof}
@@ -714,7 +720,8 @@ contradicts \cref{G:lem:Ztransfer}.
 To summarise: the configurations~\eqref{G:eq:corner} and~\eqref{G:eq:cornerd} cannot be
 forced by the fibre-density hypotheses \eqref{G:eq:23}, \eqref{G:eq:I} or \eqref{G:eq:II}.
 For $G=\Z$ (and for $G=\N$) this remains true after the lower corner points are dropped.
-Whether a uniform hypothesis on the row fibres, for example syndeticity with a bound on the
-gaps that does not depend on the fibre, suffices, we do not know even for $G=\N$; see
-\cref{G:rem:q510}(4). Repair~(b) of \cref{G:rem:formulation}, which also requires the columns to
-have positive density, is to our knowledge open as well.
+A uniform hypothesis on the row fibres does help: for $G=\N$, if the row fibres are syndetic with
+a bound on the gaps that does not depend on the fibre, the Ramsey argument of
+\cref{G:rem:q510}(4) gives a positive answer to repair~(a). Repair~(b) of
+\cref{G:rem:formulation}, which also requires the columns to have positive density, is to our
+knowledge open.

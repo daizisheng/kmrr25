@@ -36,6 +36,8 @@ Is it true in every countable abelian group $(G,+)$ that every set $A$ of positi
 Banach density contains $B_1+\dots+B_k$ for infinite sets $B_1,\dots,B_k\subset G$?
 \end{question}
 
+Here $k\in\N$ is arbitrary; the case $k=1$ is trivial.
+
 \begin{theorem}\label{K:thm:main}
 Let $\Gamma$ be a countably infinite abelian group and let $k\ge1$.
 If $A\subset\Gamma$ satisfies $\ubd(A)>0$, then there are infinite sets
@@ -85,8 +87,9 @@ The proof below uses no such structure theory.
 Our proof specialises to a proof of \cite[Theorem~1.1]{kra2022infinite} that uses no
 pronilfactors.
 To see this, let $A\subset\N$ have positive upper Banach density.
-Intervals form a \Fol{} sequence in $\Z$, so $\ubd(A)>0$ also when $A$ is viewed as a subset
-of $\Z$.
+Choose intervals $I_n=[M_n+1,M_n+N_n]$ with $N_n\to\infty$ and
+$|A\cap I_n|/N_n\to\ubd(A)$; they form a \Fol{} sequence in $\Z$, so $\ubd(A)>0$ also when $A$
+is viewed as a subset of $\Z$.
 \cref{K:thm:main} then gives infinite $B_i\subset\Z$ with $B_1+\dots+B_k\subset A\subset\N$.
 Fix $b_j\in B_j$ for $j\neq i$. Then every element of $B_i$ is at least
 $1-\sum_{j\ne i}b_j$, so each $B_i$ is bounded below.
@@ -477,8 +480,9 @@ For $\eps$ with $\eps_i=0$, let
 \[
 H_\eps=\bigcap T^{-\sum_{j\in Z(\eps)\setminus\{i\}}b_j}E ,
 \]
-the intersection over all choices $b_j\in B_j$, $j\in Z(\eps)\setminus\{i\}$ (an empty
-intersection is $X$).
+the intersection over all choices $b_j\in B_j$, $j\in Z(\eps)\setminus\{i\}$. (If some of
+these $B_j$ is empty there is no choice and $H_\eps=X$; if $Z(\eps)\setminus\{i\}=\emptyset$
+there is exactly one, empty, choice and $H_\eps=E$.)
 This is a finite intersection of open sets, so $H_\eps$ is open.
 Since $Z(\eps+e_i)=Z(\eps)\setminus\{i\}$, acceptability at $\eps+e_i$ says that
 $y_{\eps+e_i}\in H_\eps$.

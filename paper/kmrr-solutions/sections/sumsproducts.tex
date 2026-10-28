@@ -9,10 +9,11 @@ number of prime factors, both contain $B+C$ and $BC$ for some infinite $B,C\subs
 In \cref{SP:sec:q54} we answer Question~5.4 of~\cite{kra2023problems} negatively. The counterexample
 is a set built at logarithmic scale; it has logarithmic density $3/10$ and it is aperiodic.
 The same set answers Question~5.2 of~\cite{kra2023problems} negatively if ``positive density''
-is read as positive upper density (\cref{SP:rem:q52}).
+is read as positive upper or lower density (\cref{SP:rem:q52}).
 In \cref{SP:sec:q56} we answer Question~5.6 of~\cite{kra2023problems} negatively, as it is literally
-stated. The counterexample comes from the sign obstruction at the real place, which survives the
-removal of a set of density zero.
+stated. For each double \Fol{} sequence $\Phi$ we construct a counterexample, which depends on
+$\Phi$: it combines the sign constraint at the real place with the removal of a $\Phi$-null set
+that makes every bounded part of the set finite.
 
 \smallskip
 \noindent\emph{Notation.}
@@ -218,10 +219,10 @@ The survey introduces the shift $BC+1$ because the unshifted question fails for 
 (local) reasons: the odd numbers contain no $B+C$ together with $BC$, since $b+c$ and $bc$ cannot
 both be odd. The survey also notes that Question~5.4 generalizes an earlier question of Moreira
 about singletons $B=\{x\}$, $C=\{y\}$. Taken literally, the singleton version is trivial ($x=1$,
-$y=a-1$ with $a\in A$); with $x,y\ge2$ it is Moreira's conjecture, which Richter proved for every
+$y=a-1$ with $a\in A$, $a\ge2$); with $x,y\ge2$ it is Moreira's conjecture, which Richter proved for every
 set of positive upper logarithmic density~\cite[Theorem~1.5 with $Q(y)=y-1$]{richter2025sums}.
-Indeed, that theorem gives $x,y\ge2$ with $x+y-1\in A-1$ and $xy\in A-1$, i.e.\ $x+y\in A$ and
-$xy+1\in A$, and $A-1$ has the same upper logarithmic density as $A$. Richter also relates his
+Indeed, that theorem, applied to $(A-1)\cap\N$, which has the same upper logarithmic density as $A$,
+gives $x,y\ge2$ with $x+y-1\in A-1$ and $xy\in A-1$, i.e.\ $x+y\in A$ and $xy+1\in A$. Richter also relates his
 results to Questions~5.2 and~5.4 of~\cite{kra2023problems}. We show that the infinite version
 fails, because of an obstruction of a different kind: an archimedean one. Our set is aperiodic in
 the sense of \eqref{SP:eq:aperiodic}, so it has no congruence obstruction.
@@ -372,9 +373,10 @@ $B,C\subset\N$ with $B+C\subset A$ and $BC\subset A$?
 \begin{remark}\label{SP:rem:q52}
 Taking $\tau=0$ in \cref{SP:thm:q54}(a), or $t_1=t_2=0$ in (b), shows that $A$ contains no $B+C$
 together with $BC$ for infinite $B,C\subset\N$. By \cref{SP:prop:Aprops}, $A$ is aperiodic and has
-positive upper density (and positive logarithmic and upper Banach density), but its natural density
-does not exist. So $A$ gives a negative answer to \cref{SP:q:52} if ``positive density'' there is
-read as positive upper density (or positive upper Banach or logarithmic density). This reading is
+positive lower density (hence positive upper, logarithmic and upper Banach density), but its natural
+density does not exist. So $A$ gives a negative answer to \cref{SP:q:52} if ``positive density''
+there is read as positive lower or upper density (or positive upper Banach or logarithmic
+density). This reading is
 consistent with the survey's text, which says that (19) is equivalent to equidistribution in
 residue classes ``if the density of $A$ exists''. It does not settle \cref{SP:q:52} when the
 natural density is required to exist; to our knowledge that case remains open.
@@ -405,7 +407,8 @@ Let $A\subset\Q$ have $\dens_\Phi(A)>0$ for some double \Fol{} sequence $\Phi$. 
 sets $B,C\subset\Q$ such that $B+C\subset A$ and $BC\subset A$?
 \end{question}
 
-We show that the answer is negative, for every double \Fol{} sequence.
+We show that the answer is negative: for every double \Fol{} sequence $\Phi$ there is a
+counterexample $A=A_\Phi$.
 
 \begin{lemma}\label{SP:lem:folner}
 Let $\Phi=(F_N)$ be a double \Fol{} sequence in $\Q$.
@@ -509,8 +512,8 @@ is not contained in $\Q_{<0}$. On the other hand, $\dens_\Phi(\Q_{<0})=1/2$ by
 
 \begin{remark}\label{SP:rem:q56literal}
 \Cref{SP:thm:q56} answers \cref{SP:q:56} as stated. The question assumes only that $A$ has positive
-density along some double \Fol{} sequence, and our set has density $1/2$ along any prescribed
-one. The obstruction is the sign of $x$, i.e.\ the real place of $\Q$. It plays the same role as
+density along some double \Fol{} sequence, and for any prescribed one we construct a set with
+density $1/2$ along it. The obstruction is the sign of $x$, i.e.\ the real place of $\Q$. It plays the same role as
 congruence obstructions in $\N$, which is why the survey adds the aperiodicity hypothesis to
 Question~5.2. The point of \cref{SP:thm:q56} is that, once a set of density zero has been removed,
 this obstruction cannot be detected by density along a double \Fol{} sequence. The $\Phi$-dependent deletion of finite pieces is similar to the device used

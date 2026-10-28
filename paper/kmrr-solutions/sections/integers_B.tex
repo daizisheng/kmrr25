@@ -7,8 +7,8 @@
 %======================================================================
 
 In this section we answer Question~3.31 of~\cite{kra2023problems} and its
-$k$-fold analogue, Question~\S3.6(a), positively, in the strongest form one can
-hope for. The proof is a short modification of the proof of the Density Finite
+$k$-fold analogue, Question~\S3.6(a), positively, with ordered (hence disjoint) blocks and
+simultaneously for all sum lengths $1\le m\le k$. The proof is a short modification of the proof of the Density Finite
 Sums Theorem of Kra, Moreira, Richter and Robertson~\cite{kra2025density}: what
 is needed is the quantitative (positive lower average) form of the recurrence
 property that is actually established in~\cite{kra2025density}, combined with a
@@ -190,9 +190,10 @@ By the correspondence principle~\cite[Theorem~2.3]{kra2025density} there are a
 measure preserving system $(X,\mu,S)$, a point $x_0\in X$ whose forward orbit
 closure has full measure, and an open $E\subset X$ with $\mu(E)>0$ and
 $A=\{n: S^nx_0\in E\}$. As in the proof that Theorem~2.4 implies Theorem~1.2
-in~\cite{kra2025density}, ergodic decomposition yields an ergodic $S$-invariant
-$\mu'$ with $\mu'(E)\ge\mu(E)$ and a \Fol{} sequence along which $x_0$ is generic
-for $\mu'$. As in the proof that Theorems~4.8 and~4.9 imply Theorem~3.3
+in~\cite{kra2025density}, there are an ergodic $S$-invariant $\mu'$ with $\mu'(E)\ge\mu(E)$
+and a \Fol{} sequence along which $x_0$ is generic for $\mu'$ (there $\mu'$ comes from the ergodic
+decomposition, with $\mu'$ giving full measure to the orbit closure of $x_0$, and the \Fol{}
+sequence from a result on generic points cited in~\cite{kra2025density}). As in the proof that Theorems~4.8 and~4.9 imply Theorem~3.3
 in~\cite{kra2025density}, which relies on~\cite[Proposition~5.7 and
 Lemma~5.8]{kra2022infinite}, there are an ergodic system $(Y,\tilde\mu,T)$ with
 topological pronilfactors, a continuous factor map $\pi\colon Y\to X$, a \Fol{}
@@ -214,8 +215,12 @@ $\sigma=\delta_a\otimes\sigma'$ for some $\sigma'$, which gives \ref{IB:dyn2}, a
 regularity and Urysohn's lemma give a continuous $G\colon Y^k\to[0,1]$ with
 $G\le\one_V$ and $\int 1\otimes G\,d\sigma>0$. Pointwise,
 $\one_{(Y\times V)\cap T_\Delta^{-n}(V\times Y)}\ge(1\otimes G)\cdot\bigl((G\otimes1)\circ T_\Delta^n\bigr)$.
-By~\cite[Theorem~6.2]{kra2025density}, the averages over $n\in\Phi_N$ of
-$(G\otimes 1)\circ T_\Delta^n-(1\otimes G)\circ T_\Delta^n$ tend to $0$ in $L^2(\sigma)$; as
+By~\cite[Theorem~6.2]{kra2025density}, which applies to this $\sigma$, $\Phi$ and $a$ and to every
+continuous $G\colon Y^k\to\mathbb C$,
+\[
+\lim_{N\to\infty}\Big\|\frac1{|\Phi_N|}\sum_{n\in\Phi_N}\bigl((G\otimes1)\circ T_\Delta^n-(1\otimes G)\circ
+T_\Delta^n\bigr)\Big\|_{L^2(\sigma)}=0;
+\] as
 $|1\otimes G|\le 1$, the Cauchy--Schwarz inequality gives
 \[
 \liminf_{N}\frac1{|\Phi_N|}\sum_{n\in\Phi_N}\sigma\bigl((Y\times V)\cap T_\Delta^{-n}(V\times Y)\bigr)
@@ -588,7 +593,9 @@ hence universally measurable (Lusin's theorem, see~\cite[Theorem~21.10]{kechris1
 denotes the completed product measure.
 The events $\mathcal E_{BC},\mathcal E_\oplus,\mathcal E_+,\mathcal E_F$ are invariant under
 finite modifications of $A$: adding points is harmless, and if $E$ is finite and
-$B+C\subset A$, then $(B\cap(\max E,\infty))+C\subset A\setminus E$ (similarly in the other cases).
+$B+C\subset A$, then $(B\cap(\max E,\infty))+C\subset A\setminus E$; similarly
+$(B\cap(\max E-\min F,\infty))+F\subset A\setminus E$ if $B+F\subset A$, and the cases $B\oplus B$ and
+$B+B$ are handled by $B\cap(\max E,\infty)$.
 
 \begin{theorem}[Monotone sequences]
 \label{IB:thm:monotone}
@@ -753,7 +760,7 @@ every $(U,V)\in\mathcal S$, there are infinitely many $x\in X_{\mathcal S}(U,V)$
 and infinitely many $y\in Y_{\mathcal S}(U,V)$ with $y+V\subset A$. (For $U=\emptyset$, (a) just
 says that $X_{\mathcal S}(\emptyset,V)$ is infinite.) Fix an outcome in $\Omega_0$. Starting
 from $(U_0,V_0)=(\emptyset,\emptyset)$, choose $x\in X_{\mathcal S}(U_r,V_r)$ with
-$x>\max(U_r\cup V_r)$ and $x+U_r\subset A$, put $V_{r+1}=V_r\cup\{x\}$; then choose
+$x>\max(U_r\cup V_r)$ (with $\max\emptyset=0$) and $x+U_r\subset A$, put $V_{r+1}=V_r\cup\{x\}$; then choose
 $y\in Y_{\mathcal S}(U_r,V_{r+1})$ with $y>\max(U_r\cup V_{r+1})$ and $y+V_{r+1}\subset A$, and put
 $U_{r+1}=U_r\cup\{y\}$. Inductively $(U_r,V_r)\in\mathcal S$ and $U_r+V_r\subset A$, since the new
 sums are exactly $x+U_r$ and $y+V_{r+1}$. Then $B=\bigcup_rU_r$ and $C=\bigcup_rV_r$ are
@@ -1127,16 +1134,16 @@ hypothesis.}
 all the substance lies in the Tao--Ziegler theorem. The only observation is that
 being prime-producing is invariant under translation, so the chain can be
 translated to contain $1$; then every witness $m$ satisfies $m+1\in\P$. The
-variant mentioned in the survey, with $B\subset\P-1$ in place of $C\subset\P-1$, is
-equally a consequence of the argument of~\cite{tao2023infinite}. There,
+variant mentioned in the survey, with $B\subset\P-1$ in place of $C\subset\P-1$, appears to
+follow in the same way from the argument of~\cite{tao2023infinite}. There,
 Proposition~3.1 (the Maynard sieve input) is stated for an arbitrary admissible
 tuple, and in the proof of Theorem~1.5 the odd squares serve only to make every
 finite subtuple admissible. Running the same proof with the odd squares replaced
 by an infinite admissible subset of $\P-1$ gives a chain inside $\P-1$, as
 indicated in the introduction of~\cite{tao2023infinite}; Corollary~1.6 there and
-the interlacing above then give the variant. So Conjecture~4.5 and this variant
-are both short corollaries of~\cite{tao2023infinite}. Conjecture~4.5 uses only the
-statement of Theorem~1.5, whereas the variant re-runs its proof.
+the interlacing above then give the variant. We have not checked every step of this adaptation;
+Conjecture~4.5 uses only the statement of Theorem~1.5, whereas the variant would re-run its
+proof.
 
 Neither argument gives the two conditions at once. To get $B,C\subset\P-1$ with
 $b+c\in\P$ for $b<c$ in the same way, one would need a prime-producing chain with

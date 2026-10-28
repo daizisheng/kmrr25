@@ -16,6 +16,7 @@
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem*{theorem*}{Theorem}
+\newtheorem*{mainthm}{Main Theorem}
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
 % Questions and conjectures quoted from the survey carry the survey's own numbers.
@@ -48,14 +49,17 @@ We resolve a number of the problems collected by Kra, Moreira, Richter and Rober
 \emph{Problems on infinite sumset configurations in the integers and beyond}.
 Our main result is that in every countably infinite abelian group, every set of positive upper Banach
 density contains a sumset $B_1+\dots+B_k$ of $k$ infinite sets, for every $k$; the proof uses the
-Kronecker factor, but no higher-order Host--Kra structure theory and no nilsystems.
+Kronecker factor, but no higher-order Host--Kra structure theory, nilsystems of step greater than one,
+or nilspaces.
 We also answer, positively or negatively, questions on monochromatic sets $B+mB$, on sumsets in
 sets of logarithmic density, on polynomial sumset configurations, on sums of the form
 $B_{i_1}+\dots+B_{i_m}$ with $B_i$ drawn from a density family, on random sets, on ordered sumsets in
-shifted primes, on sums and products in $\N$ and $\Q$, and on sumsets in abelian groups.
+shifted primes, on sums and products in $\N$ and $\Q$, and on sumsets in abelian groups. Several of
+these answers concern the questions as literally stated, and two follow directly from known
+examples; in each case we say so and discuss the natural corrected question.
 Finally, answering a question of Kousek and Radi\'c, we show that the supremum of the lower Banach
-densities of sets containing no $B+B+t$ (respectively no $B+B$) with $B$ infinite is $1/2$
-(respectively $3/4$).
+densities of sets $A\subset\N$ such that $B+B+t\not\subset A$ for every infinite $B\subset\N$ and
+every $t\ge0$ (respectively $B+B\not\subset A$ for every infinite $B$) is $1/2$ (respectively $3/4$).
 The main theorem and most of the other results are formalized in Lean~4, with some published
 theorems entering as explicit hypotheses.
 \end{abstract}
