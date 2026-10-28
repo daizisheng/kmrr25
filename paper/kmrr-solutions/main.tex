@@ -2,6 +2,7 @@
 \usepackage[margin=1.15in]{geometry}
 \usepackage{amsmath,amssymb,amsthm,mathtools}
 \usepackage{enumitem}
+\usepackage{array}
 \usepackage[T1]{fontenc}
 \usepackage{xcolor}
 \usepackage[colorlinks=true,linkcolor=blue!50!black,citecolor=green!35!black,urlcolor=blue!50!black]{hyperref}
@@ -54,9 +55,11 @@ $B_{i_1}+\dots+B_{i_m}$ with $B_i$ drawn from a density family, on random sets, 
 shifted primes, on sums and products in $\N$ and $\Q$, and on sumsets in abelian groups.
 Finally, we determine the lower Banach density thresholds for $B+B+t$ and $B+B$, answering a
 question of Kousek and Radi\'c.
+The main theorem and most of the other results are formalized in Lean~4.
 \end{abstract}
 
 \maketitle
+\setcounter{tocdepth}{1}
 \tableofcontents
 
 \input{sections/intro}
@@ -67,8 +70,9 @@ question of Kousek and Radi\'c.
 
 \part{Sumsets in the integers}
 \input{sections/integers_A}
-\input{sections/integers_B}
 \input{sections/kr}
+\input{sections/integers_A2}
+\input{sections/integers_B}
 
 \part{Sums and products}
 \input{sections/sumsproducts}

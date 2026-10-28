@@ -23,9 +23,21 @@ by Kra, Moreira, Richter and Robertson~\cite{kra2026short} to an arbitrary numbe
 building the required configuration one level at a time and keeping track only of the supports of
 suitable measures on the Kronecker factor.
 
-The remaining results are summarised in \cref{I:tab:results}. In addition, in \cref{KR:sec:main} we answer a question of Kousek and Radi\'c~\cite{kousek2024infinite}
-on lower Banach density: the thresholds for $B+B+t$ and for $B+B$ are exactly $1/2$ and $3/4$. Several of them are short, and some rely
-in an essential way on recent work of other authors; we indicate this in each case.
+The other answers are listed in \cref{I:tab:results}, in the order in which they appear in the
+paper. They are of very different depth. Several are short, and some rely in an essential way on
+recent work of other authors: Question~5.16 on a theorem of Charamaras and
+Mountakis~\cite{charamaras2024finding}, the positive part of Question~\S3.3(a) on a theorem of
+Kousek~\cite{kousek2025asymmetric}, Questions~3.31 and~\S3.6(a) on the dynamical part of the density
+finite sums theorem of Kra, Moreira, Richter and Robertson~\cite{kra2025density}, and Conjecture~4.5
+on a theorem of Tao and Ziegler~\cite{tao2023infinite}. The negative answer to Question~\S3.3(e)
+follows directly from known counterexamples (one from~\cite{kra2023problems} itself and one due to
+Ackelsberg~\cite{ackelsberg2024counterexamples}), and Question~3.24 is already answered by an example
+of Kousek and Radi\'c~\cite{kousek2024infinite}, as we check; we record these for completeness. In
+each case we say precisely what is new.
+
+In addition, in \cref{KR:sec:main} we answer a question of Kousek and
+Radi\'c~\cite{kousek2024infinite} that is not in~\cite{kra2023problems}: the lower Banach density
+thresholds for $B+B+t$ and for $B+B$ are exactly $1/2$ and $3/4$.
 
 \subsection*{Conventions}
 We use the numbering of the second arXiv version of~\cite{kra2023problems}. Some questions in the
@@ -55,40 +67,37 @@ and the literal statement differs from what the authors of the survey probably i
 these answers because the difference is not always obvious and the literal statements have been
 repeated in the literature, but in each case we point out the issue explicitly, give the natural
 corrected formulation, and say whether it remains open. This applies to
-Question~3.20 (where $m=1$ is coprime to every $q$), Question~3.23 (where $B+mB$ contains the
-diagonal terms $(m+1)b$), Question~\S3.2(a) (where the density condition can be read in two ways; we
-answer both readings), Question~5.6, Question~5.23 and Question~\S5.4(b) (where the fibre conditions
-constrain only one coordinate). The negative answer to Question~\S3.3(e) follows directly from known
-counterexamples (one from~\cite{kra2023problems} itself and one due to
-Ackelsberg~\cite{ackelsberg2024counterexamples}); we record it for completeness. Similarly, our
-answer to Question~3.24 is preceded by an example of Kousek and Radi\'c~\cite{kousek2024infinite},
-which, as we check, already answers that question.
+Questions~5.23 and~\S5.4(b) (where the fibre conditions constrain only one coordinate),
+Question~\S3.2(a) (where the density condition can be read in two ways; we answer both readings),
+Question~3.20 (where $m=1$ is coprime to every $q$; we also answer the question for $m\ge2$),
+Question~3.23 (where $B+mB$ contains the diagonal terms $(m+1)b$) and Question~5.6 (where the
+sign of $x$ gives an obstruction at the real place).
 
 \begin{table}[ht]
 \centering
 \small
 \renewcommand{\arraystretch}{1.25}
-\begin{tabular}{@{}p{0.17\textwidth}p{0.58\textwidth}p{0.14\textwidth}@{}}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.17\textwidth}>{\raggedright\arraybackslash}p{0.6\textwidth}>{\raggedright\arraybackslash}p{0.12\textwidth}@{}}
 \hline
 Question & Answer & Section\\
 \hline
 5.14 & Yes: $B_1+\dots+B_k$ in every countably infinite abelian group & \ref{K:sec:main}\\
 5.16, \S5.3(a) & Exactly which sets of translates suffice when $[G:2G]<\infty$ & \ref{G:sec:translates}\\
 5.10 & No: fibrewise lower density does not suffice in $\N^2$ & \ref{G:sec:q510}\\
-5.23, \S5.4(b) & No, as stated; a corrected version is open & \ref{G:sec:q523}\\
-3.20 & No (for $B+mB$ as in the survey), for two and for three colours & \ref{IA:sec:q320}\\
-3.23 & No, as stated & \ref{IA:sec:q323}\\
-3.24 & No (already implied by Kousek--Radi\'c) & \ref{IA:sec:q324}\\
+5.23, \S5.4(b) & No, as stated, and also for a repaired version in $\Z^d$; a second repair is open & \ref{G:sec:q523}\\
 \S3.2(a) & No, for both readings & \ref{IA:sec:u32a}\\
 \S3.3(a) & Ordered polynomial sums: exactly the linear case & \ref{IA:sec:u33a}\\
 \S3.3(e) & No (direct consequence of known examples) & \ref{IA:sec:u33e}\\
+3.20 & No, for every number of colours, also when only $m\ge2$ is considered & \ref{IA:sec:q320}\\
+3.23 & No, as stated & \ref{IA:sec:q323}\\
+3.24 & No (already implied by Kousek--Radi\'c) & \ref{IA:sec:q324}\\
 3.31, \S3.6(a) & Yes, in the strongest $k$-fold form & \ref{IB:sec:q331}\\
 4.13 & Yes iff $\gamma\notin\Z$ (for almost every $x$) & \ref{IB:sec:q413}\\
 \S4.4(a) & Random sets: criterion for monotone $p_n$; no Borel criterion in general & \ref{IB:sec:u44a}\\
-4.5 & Yes, unconditionally & \ref{IB:sec:c45}\\
+4.5 & Yes (a consequence of a theorem of Tao and Ziegler) & \ref{IB:sec:c45}\\
+\S5.1(a) & Yes for both examples & \ref{SP:sec:u51a}\\
 5.4 & No & \ref{SP:sec:q54}\\
 5.6 & No, as stated & \ref{SP:sec:q56}\\
-\S5.1(a) & Yes for both examples & \ref{SP:sec:u51a}\\
 \hline
 \end{tabular}
 \caption{Questions from~\cite{kra2023problems} answered in this paper.}
@@ -109,7 +118,7 @@ main formal statements and says what is not covered.
 \centering
 \small
 \renewcommand{\arraystretch}{1.2}
-\begin{tabular}{@{}p{0.16\textwidth}p{0.22\textwidth}p{0.54\textwidth}@{}}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.16\textwidth}>{\raggedright\arraybackslash}p{0.22\textwidth}>{\raggedright\arraybackslash}p{0.54\textwidth}@{}}
 \hline
 Question & File & Status\\
 \hline
@@ -118,23 +127,23 @@ Question & File & Status\\
 5.10 & \nolinkurl{Q510} & complete\\
 5.23, \S5.4(b) & \nolinkurl{Q523} & answer to the questions as stated: complete; repaired version
 (\cref{G:thm:repairA}): not formalized\\
-3.20 & \nolinkurl{Q320} & complete\\
-3.23 & \nolinkurl{Q323} & complete\\
-3.24 & \nolinkurl{Q324} & complete\\
 \S3.2(a) & \nolinkurl{S32a} & complete\\
+KR, Q.~5.2 & \nolinkurl{KR52} & complete\\
 \S3.3(a) & \nolinkurl{S33a} & negative part: complete; positive part: conditional on
 \cite[Theorem~1.2]{kousek2025asymmetric}\\
 \S3.3(e) & \nolinkurl{S33e} & complete\\
+3.20 & \nolinkurl{Q320} & complete\\
+3.23 & \nolinkurl{Q323} & complete\\
+3.24 & \nolinkurl{Q324} & complete\\
 3.31, \S3.6(a) & \nolinkurl{Q331} & conditional on the dynamical input from~\cite{kra2025density}
 (\cref{IB:prop:dyn})\\
 4.13 & \nolinkurl{Q413}, \nolinkurl{Q413a}, \nolinkurl{Q413SecondMoment} & complete\\
 \S4.4(a) & \nolinkurl{S44a}, \nolinkurl{S44b} & complete, except that the non-Borel results
 use \cite[Theorems~14.2 and~27.1]{kechris1995classical} on ill-founded trees as hypotheses\\
 4.5 & \nolinkurl{C45} & conditional on \cite[Theorem~1.5]{tao2023infinite}\\
+\S5.1(a) & \nolinkurl{S51a} & complete\\
 5.4 & \nolinkurl{Q54} & complete\\
 5.6 & \nolinkurl{Q56} & complete\\
-\S5.1(a) & \nolinkurl{S51a} & complete\\
-KR, Q.~5.2 & \nolinkurl{KR52} & complete\\
 \hline
 \end{tabular}
 \caption{Lean formalization. ``Complete'' means that the answer to the question proved in this
@@ -144,6 +153,11 @@ paper is formalized without hypotheses beyond the standard axioms; the file name
 \end{table}
 
 \subsection*{Organisation}
-\Cref{K:sec:main} contains the proof of the main theorem. The rest of the paper is organised by the
-setting: further results on groups and on $\N^2$, results on sumsets in the integers, and results on
-configurations mixing sums and products. The sections can be read independently.
+The paper has three parts, organised by the setting. \Cref{K:sec:main}, at the beginning of the first
+part, contains the proof of the main theorem; the other sections of that part concern sumsets in
+abelian groups and in $\N^2$. The second part concerns sumsets in the integers: density thresholds
+for $B+B$ (\cref{IA:sec:u32a,KR:sec:main}), polynomial and dilated sumsets
+(\cref{IA:sec:ordered,IA:sec:BmB}), density Ramsey families (\cref{IB:sec:q331}), sparse and random
+sets (\cref{IB:sec:q413,IB:sec:u44a}) and the primes (\cref{IB:sec:c45}). The third part concerns
+configurations that mix sums and products. Each section begins by restating the questions it
+answers, and the sections can be read independently.

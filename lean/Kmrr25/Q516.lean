@@ -47,9 +47,9 @@ their existence, Lemma \ref{G:lem:density}, the two elementary lemmas, the upper
 
 ## Conventions
 
-* The group is any `AddCommGroup` with `[Countable G]` and `(twoG G).FiniteIndex`. The paper's
-  standing assumption that `G` is countably *infinite* is included in `thm_translates` as
-  `[Infinite G]` but is not used in the proofs.
+* The group is any `AddCommGroup` with `[Countable G]` and `(twoG G).FiniteIndex`; the results
+  that use Charamaras–Mountakis also assume `[Infinite G]`, as in the paper (the quoted theorem is
+  about infinite groups, and it is false for finite ones).
 * "`T` meets every coset of `2G`" is `MeetsAllCosets T`; a transversal meets every coset in
   exactly one point; minimality is Mathlib's `Minimal Suffices T`.
 * In Proposition \ref{G:prop:strict}, `ℕ = {1, 2, …}`: `A = 2ℤ ∪ {3^n : n ≥ 1}` and
@@ -523,13 +523,13 @@ def MeetsAllCosets (T : Set G) : Prop := ∀ r : G, ∃ t ∈ T, t - r ∈ twoG 
 def IsTransversal (T : Set G) : Prop := ∀ r : G, ∃! t, t ∈ T ∧ t - r ∈ twoG G
 
 /-- Charamaras–Mountakis, Corollary 1.13 (*Finding product sets in some classes of amenable
-groups*), as quoted in the paper (Theorem \ref{G:thm:CM}): let `Γ` be a countable abelian group
-such that `2Γ` has finite index, and let `A ⊆ Γ` have positive upper Banach density. Then there
+groups*), as quoted in the paper (Theorem \ref{G:thm:CM}): let `Γ` be a countably infinite abelian
+group such that `2Γ` has finite index, and let `A ⊆ Γ` have positive upper Banach density. Then there
 are an infinite `B ⊆ A` and `t ∈ Γ` with `B ⊕ B ⊆ A - t`.
 
 This is a hypothesis of the results below that need it; it is not proved in this file. -/
 def CharamarasMountakisCor113 : Prop :=
-  ∀ (Γ : Type u) [AddCommGroup Γ] [Countable Γ], (twoG Γ).FiniteIndex →
+  ∀ (Γ : Type u) [AddCommGroup Γ] [Countable Γ] [Infinite Γ], (twoG Γ).FiniteIndex →
     ∀ A : Set Γ, 0 < ubd A → ∃ B ⊆ A, B.Infinite ∧ ∃ t : Γ, RestrSumsetIn B t A
 
 lemma mem_coset2_self (r : G) : r ∈ coset2 r := by simp [coset2]
@@ -611,7 +611,7 @@ theorem admissible_subset_addTwoG [(twoG G).FiniteIndex] (A : Set G) :
 
 /-- Paper, Theorem \ref{G:thm:translates}\ref{G:it:sandwich}, lower bound, **conditional on
 Charamaras–Mountakis** (`CharamarasMountakisCor113`): `R(A) ⊆ T(A)`. -/
-theorem posCosets_subset_admissible {G : Type u} [AddCommGroup G] [Countable G]
+theorem posCosets_subset_admissible {G : Type u} [AddCommGroup G] [Countable G] [Infinite G]
     [(twoG G).FiniteIndex] (hCM : CharamarasMountakisCor113.{u}) (A : Set G) :
     posCosets A ⊆ admissible A := by
   intro r hr
@@ -645,7 +645,7 @@ theorem posCosets_nonempty [(twoG G).FiniteIndex] {A : Set G} (hA : 0 < ubd A) :
 
 /-- Paper, Theorem \ref{G:thm:translates}\ref{G:it:sandwich}, **conditional on
 Charamaras–Mountakis**: if `d*(A) > 0`, then `T(A)` contains a full coset of `2G`. -/
-theorem exists_coset_subset_admissible {G : Type u} [AddCommGroup G] [Countable G]
+theorem exists_coset_subset_admissible {G : Type u} [AddCommGroup G] [Countable G] [Infinite G]
     [(twoG G).FiniteIndex] (hCM : CharamarasMountakisCor113.{u}) {A : Set G} (hA : 0 < ubd A) :
     ∃ r, coset2 r ⊆ admissible A := by
   obtain ⟨r, hr⟩ := posCosets_nonempty hA
@@ -654,7 +654,7 @@ theorem exists_coset_subset_admissible {G : Type u} [AddCommGroup G] [Countable 
 /-- Paper, Theorem \ref{G:thm:translates}\ref{G:it:realise}, first part, **conditional on
 Charamaras–Mountakis**: for every nonempty union `U` of cosets of `2G`, `d*(U) > 0` and
 `T(U) = U`. -/
-theorem thm_translates_realise {G : Type u} [AddCommGroup G] [Countable G]
+theorem thm_translates_realise {G : Type u} [AddCommGroup G] [Countable G] [Infinite G]
     [(twoG G).FiniteIndex] (hCM : CharamarasMountakisCor113.{u}) {U : Set G}
     (hne : U.Nonempty) (hU : IsUnionOfCosets U) : 0 < ubd U ∧ admissible U = U := by
   obtain ⟨u, hu⟩ := hne
@@ -670,7 +670,7 @@ theorem thm_translates_realise {G : Type u} [AddCommGroup G] [Countable G]
 /-- Paper, Theorem \ref{G:thm:translates}\ref{G:it:realise}, "consequently" part,
 **conditional on Charamaras–Mountakis**: the family `{T(A) : A ⊆ G, d*(A) > 0}` is exactly the
 family of nonempty unions of cosets of `2G`. -/
-theorem thm_translates_family {G : Type u} [AddCommGroup G] [Countable G]
+theorem thm_translates_family {G : Type u} [AddCommGroup G] [Countable G] [Infinite G]
     [(twoG G).FiniteIndex] (hCM : CharamarasMountakisCor113.{u}) (S : Set G) :
     (∃ A : Set G, 0 < ubd A ∧ admissible A = S) ↔ (S.Nonempty ∧ IsUnionOfCosets S) := by
   constructor
@@ -682,7 +682,7 @@ theorem thm_translates_family {G : Type u} [AddCommGroup G] [Countable G]
 
 /-- Paper, Theorem \ref{G:thm:translates}\ref{G:it:suffice}, first part, **conditional on
 Charamaras–Mountakis**: a set `T ⊆ G` suffices if and only if `T` meets every coset of `2G`. -/
-theorem suffices_iff {G : Type u} [AddCommGroup G] [Countable G]
+theorem suffices_iff {G : Type u} [AddCommGroup G] [Countable G] [Infinite G]
     [(twoG G).FiniteIndex] (hCM : CharamarasMountakisCor113.{u}) (T : Set G) :
     Suffices T ↔ MeetsAllCosets T := by
   constructor
@@ -708,7 +708,7 @@ lemma IsTransversal.eq_of_mem {T : Set G} (hT : IsTransversal T) {t t' : G} (ht 
 
 /-- Paper, Theorem \ref{G:thm:translates}\ref{G:it:suffice}, second part, **conditional on
 Charamaras–Mountakis**: the minimal sets that suffice are exactly the transversals of `2G`. -/
-theorem minimal_suffices_iff {G : Type u} [AddCommGroup G] [Countable G]
+theorem minimal_suffices_iff {G : Type u} [AddCommGroup G] [Countable G] [Infinite G]
     [(twoG G).FiniteIndex] (hCM : CharamarasMountakisCor113.{u}) (T : Set G) :
     Minimal Suffices T ↔ IsTransversal T := by
   simp only [Minimal, suffices_iff hCM]
@@ -768,9 +768,7 @@ lemma IsTransversal.finite [(twoG G).FiniteIndex] {T : Set G} (hT : IsTransversa
 * (c) every nonempty union `U` of cosets has `d*(U) > 0` and `T(U) = U`; the sets `T(A)` with
   `d*(A) > 0` are exactly the nonempty unions of cosets of `2G`;
 * (d) `T` suffices iff `T` meets every coset of `2G`; the minimal sufficient sets are exactly the
-  transversals of `2G`, and every transversal has `[G : 2G]` elements.
-
-(The hypothesis `[Infinite G]` of the paper is not needed for the proof.) -/
+  transversals of `2G`, and every transversal has `[G : 2G]` elements. -/
 theorem thm_translates {G : Type u} [AddCommGroup G] [Countable G] [Infinite G]
     [(twoG G).FiniteIndex] (hCM : CharamarasMountakisCor113.{u}) :
     (∀ A : Set G, IsUnionOfCosets (admissible A)) ∧
