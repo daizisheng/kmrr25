@@ -57,7 +57,9 @@ $B+B$. The proof uses the diagonal elements $2b\in B+B$ in an
 essential way (see Step~(iv) in the proof of \cref{IA:prop:rot}).
 \item We do not know which functions $g(N)=o(N)$ have the property that $|A\cap[N]|\ge \frac34N+g(N)$
 for all large $N$ forces $B+B\subset A$ for some infinite $B$; part~\ref{IA:it:u32a-all} shows that
-$g(N)=\psi(N)\log N$ does not, for a suitable $\psi\to\infty$.
+$g(N)=\psi(N)\log N$ does not, for a suitable $\psi\to\infty$. (Replacing $\psi$ by
+$\min(\psi(N),\log N)$, which is still non-decreasing and unbounded, we may assume that this $g$ is
+$o(N)$.)
 \end{enumerate}
 \end{remark}
 
@@ -173,7 +175,8 @@ If $\lambda(n)$ is even, then $\one_R(n)=\one_{[0,1/2)}(\{n\alpha-\beta\})$, so
 $\one_R(n)-\frac12=\rho(n\alpha-\beta)$; if $\lambda(n)$ is odd, then
 $\one_R(n)-\frac12=-\rho(n\alpha-\beta)$. Thus $\one_R(n)-\frac12=\varepsilon(n)\rho(n\alpha-\beta)$
 and $|R\cap[1,M)|=\frac{M-1}2+S_{\alpha,\beta}(M)$. Finally $|G\cap[1,M)|$ is at most the sum of the
-lengths $2w_i$ of the intervals $[2^i-w_i,2^i+w_i)$ that meet $[1,M)$.
+lengths $2w_i$ of the intervals $[2^i-w_i,2^i+w_i)$ that meet $[1,M)$. (If this sum is infinite,
+the bound is trivial; for the $w_i$ used below it is finite.)
 \end{proof}
 
 Thus everything hinges on making the twisted discrepancy $S_{\alpha,\beta}(M)$ grow faster than
@@ -192,7 +195,7 @@ theorem.
 
 \begin{proof}[Proof of \cref{IA:thm:u32a}\ref{IA:it:u32a-all}]
 Let $\alpha$ and $(N_i)$ be as in \cref{IA:prop:TD}; we may assume $N_1\ge2$. Since
-$|S_\alpha(M)|\le(M-1)/2$, for each $M\ge2$ the inequality $S_\alpha(M)\ge i\log M$ fails for large
+$|S_{\alpha,1/6}(M)|\le(M-1)/2$, for each $M\ge2$ the inequality $S_{\alpha,1/6}(M)\ge i\log M$ fails for large
 $i$, so $N_i\to\infty$. Let $\psi_0(M)=\max\{i:N_i\le M\}$ for $M\ge N_1$ and $\psi_0(M)=0$ for
 $M<N_1$. Then $\psi_0$ is non-decreasing and unbounded, and
 $S_{\alpha,1/6}(M)\ge\psi_0(M)\log M$ for $M\ge N_1$. Take $\beta=\frac16$ and

@@ -50,18 +50,17 @@ groups'', which precedes Question~5.16 in~\cite{kra2023problems}, is the motivat
 Question~5.16 itself. By Question~\S5.3(a) we mean the suspicion quoted above, which the
 survey states right after Question~5.16.
 
-As recorded in~\cite{kra2023problems}, Conjecture~5.15 is known to hold precisely when
-$[G:2G]<\infty$. We recall the two results behind this statement.
+As recorded in~\cite{kra2023problems}, among countably infinite abelian groups,
+Conjecture~5.15 is known to hold precisely for those with $[G:2G]<\infty$. We recall the two results behind this statement.
 
 \begin{theorem}[{Charamaras--Mountakis~\cite[Corollary~1.13]{charamaras2024finding}}]
 \label{G:thm:CM}
-Let $(G,+)$ be a countable abelian group such that $2G$ is a subgroup of finite index, and
+Let $(G,+)$ be a countably infinite abelian group such that $2G$ is a subgroup of finite index, and
 let $A\subset G$ have positive upper Banach density. Then there exist an infinite set
 $B\subset A$ and some $t\in G$ such that $B\oplus B\subset A-t$.
 \end{theorem}
 
-(In~\cite{charamaras2024finding} the group is countable throughout, and, as the
-conclusion shows, infinite. The result is cited as Corollary~1.12 in~\cite{kra2023problems}
+(For finite groups the statement is false, since then $G$ has no infinite subsets. The result is cited as Corollary~1.12 in~\cite{kra2023problems}
 and in~\cite[Theorem~1.1]{ackelsberg2024counterexamples}, following an earlier arXiv
 version of~\cite{charamaras2024finding}.)
 
@@ -195,8 +194,8 @@ of translates works. Parts~\ref{G:it:union}--\ref{G:it:realise} concern an indiv
 set $A$. The admissible translates form a union of cosets of $2G$. This union contains
 every coset in which $A$ has positive upper Banach density, and it is contained in the
 union of the cosets that $A$ meets. Every nonempty union of cosets arises in this way.
-In general neither bound is attained, as the next proposition shows. The only exact
-statement for an individual $A$ is the tautological reduction to a single coset:
+In general neither bound is attained, as the next proposition shows. One always has the
+following exact, though essentially tautological, reduction to a single coset:
 $r\in T(A)$ if and only if $A\cap(r+2G)\supset B\oplus B+t$ for some infinite $B$ and
 some $t$. (If $B\oplus B+r\subset A$, pass to an infinite $B'\subset B$ inside one coset
 of $2G$. Then $B'\oplus B'\subset 2G$, so $B'\oplus B'+r\subset A\cap(r+2G)$. The converse
@@ -320,8 +319,9 @@ The survey points out that \eqref{G:eq:BBcart} can only hold if infinitely many 
 $A_n$ have the property that every finite subfamily has infinite intersection. Example~5.11
 of~\cite{kra2023problems}, due to F.~Hern\'andez Castro, takes $A=X\times Y$ with
 $X=\bigcup_n[4^n,c4^n)$ and $Y=\bigcup_n[c'4^n,c''4^n)$ (intersected with $\N$), where
-$1<c<c'<c''<2$. Then $X\cap(Y-t)$ is finite for every $t\ge0$, and hence no translate of
-$A$ contains a configuration~\eqref{G:eq:BBcart}. In that example the fibre $A_n$ is $Y$
+$1<c<c'<c''<2$. Then $X\cap(Y-s)$ is finite for every $s\in\Z$, because the blocks of $X$ and
+$Y$ are separated by gaps that tend to infinity. Hence no translate of $A$ contains a
+configuration~\eqref{G:eq:BBcart}: an element $b$ of $B$ other than the smallest satisfies $b+t_1\in X$ and $b+t_2\in Y$ (compare \cref{G:lem:criterion} below). In that example the fibre $A_n$ is $Y$
 for $n\in X$ and empty for $n\notin X$. So it shows that the $\liminf$ in~\eqref{G:eq:22}
 cannot be replaced by a $\limsup$. It does not satisfy~\eqref{G:eq:22}. We modify the
 example so that \emph{every} fibre has positive density. Two products of this type are
@@ -336,7 +336,7 @@ Let $\N=P_0\sqcup P_1$ be a partition, and let $S_0,S_1\subset\N$ be sets such t
 S_c\cap(P_c+s)\ \text{is finite for every } s\in\Z\text{ and } c\in\{0,1\}.
 \end{equation}
 Let $A=(P_0\times S_0)\cup(P_1\times S_1)$. Then $A_n=S_c$ for every $n\in P_c$. Moreover,
-there are no infinite set $B\subset\N$ and $t=(t_1,t_2)\in\Z^2$ such that
+there is no infinite set $B\subset\N$ together with $t=(t_1,t_2)\in\Z^2$ such that
 $(b_1+t_1,b_2+t_2)\in A$ for all $b_1<b_2$ in $B$. In particular, $A$ satisfies
 \eqref{G:eq:BBcart} for no infinite $B\subset\N$ and no $t\in\N^2$.
 \end{lemma}
@@ -481,8 +481,9 @@ hypothesis.
 \section{Corners in \texorpdfstring{$G^2$}{G2} and \texorpdfstring{$G^d$}{Gd}}
 \label{G:sec:q523}
 
-In this section we answer Question~5.23 of~\cite{kra2023problems} and its $G^d$ version,
-Question~\S5.4(b), negatively. The negative answer to the question as stated is elementary.
+In this section we answer Question~5.23 of~\cite{kra2023problems} negatively, and also its
+$G^d$ version, Question~\S5.4(b), in the two natural formulations given below (the survey does
+not write this version out). The negative answer to the question as stated is elementary.
 The hypothesis controls only the fibres in the last coordinate, while the conclusion
 requires infinitely many points of $A$ on a single line in the first coordinate
 direction. So this part of the answer depends on the formulation. We therefore also
@@ -551,7 +552,7 @@ $i_1<\dots<i_d$, the $d+1$ points
 (b(i_1)t_1,\dots,b(i_d)t_d)
 \end{equation}
 lie in $A$. The natural analogues of~\eqref{G:eq:23} constrain the fibres in the last
-coordinate,
+coordinate (here $(x_1,\dots,x_{d-1})\to\infty$ means leaving every finite subset of $G^{d-1}$),
 \begin{equation}\label{G:eq:I}
 \liminf_{(x_1,\dots,x_{d-1})\to\infty}\ \liminf_{M\to\infty}\
 \frac{|\{h\in\Phi_M:(x_1,\dots,x_{d-1},h)\in A\}|}{|\Phi_M|}>0,
@@ -702,8 +703,9 @@ $x_1$. The fibre over $x_1$ is $\Z^{d-2}\times\{h:(x_1,h)\in \tilde A\}$, and it
 density in $[1,M]^{d-1}$ equals that of the row fibre in $[1,M]$. Now apply
 \cref{G:lem:Ztransfer}.
 
-(ii) Suppose that $t$ and $b$ exist. If $i<j$ and $j-i\ge d-1$, there are indices
-$i<i_2<\dots<i_{d-1}<j$, and so $(b(i)+t_1,b(j)+t_d)\in \tilde A$. Let
+(ii) Suppose that $t$ and $b$ exist. If $i<j$ and $j-i\ge d-1$, then (for $d\ge3$) there are
+indices $i<i_2<\dots<i_{d-1}<j$, and so $(b(i)+t_1,b(j)+t_d)\in \tilde A$; for $d=2$ this is
+the hypothesis itself. Let
 $b'(k)=b((d-1)k)$. Then $b'$ is injective, and for $k<l$ we have
 $(d-1)l-(d-1)k\ge d-1$. Hence $(b'(k)+t_1,b'(l)+t_d)\in \tilde A$ for all $k<l$, which
 contradicts \cref{G:lem:Ztransfer}.
@@ -713,6 +715,6 @@ To summarise: the configurations~\eqref{G:eq:corner} and~\eqref{G:eq:cornerd} ca
 forced by the fibre-density hypotheses \eqref{G:eq:23}, \eqref{G:eq:I} or \eqref{G:eq:II}.
 For $G=\Z$ (and for $G=\N$) this remains true after the lower corner points are dropped.
 Whether a uniform hypothesis on the row fibres, for example syndeticity with a bound on the
-gaps that does not depend on the fibre, suffices is open even for $G=\N$; see
-\cref{G:rem:q510}(4). So is repair~(b) of \cref{G:rem:formulation}, which also requires
-the columns to have positive density.
+gaps that does not depend on the fibre, suffices, we do not know even for $G=\N$; see
+\cref{G:rem:q510}(4). Repair~(b) of \cref{G:rem:formulation}, which also requires the columns to
+have positive density, is to our knowledge open as well.

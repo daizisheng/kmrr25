@@ -35,7 +35,8 @@ over $\N$'' in the widest sensible way and let
 \[
 \mathcal P=\{f\in\Q[x]:\ f(\N)\subset\N_0\};
 \]
-this contains all polynomials with coefficients in $\N_0$.
+this contains all polynomials with coefficients in $\N_0$. We use the convention
+$\deg0=-\infty$, so that ``$\deg f\le1$'' means that $f$ is constant or linear.
 
 \begin{theorem}\label{IA:thm:u33a}
 Let $f,g\in\mathcal P$.
@@ -49,9 +50,10 @@ pairs $(f,g)$.
 \end{enumerate}
 \end{theorem}
 
-Since the hypothesis in~\ref{IA:it:u33a-pos} is the weakest density condition and the conclusion
-in~\ref{IA:it:u33a-neg} concerns the strongest one, the classification does not depend on which
-notion of density is used in \cref{IA:q:u33a}.
+The hypothesis in~\ref{IA:it:u33a-pos} is positive upper Banach density, and the set in
+\ref{IA:it:u33a-neg} has lower density close to $1$, so it has positive upper and lower natural
+density, positive logarithmic density and positive upper Banach density. Hence the classification
+is the same for each of these notions of density in \cref{IA:q:u33a}.
 
 \begin{remark}[Attribution]\label{IA:rem:u33a-credit}
 Part~\ref{IA:it:u33a-pos} is a direct consequence of Kousek's theorem~\cite[Theorem~1.2]{kousek2025asymmetric}
@@ -59,8 +61,8 @@ Part~\ref{IA:it:u33a-pos} is a direct consequence of Kousek's theorem~\cite[Theo
 terms and zero coefficients. Part~\ref{IA:it:u33a-neg} was known for $\deg g\ge2$ in the reversed or
 sparse forms of~\cite[Example~3.14]{kra2023problems}, and for $g(x)=x$ by Ackelsberg's
 theorem~\cite[Theorem~1.5]{ackelsberg2024counterexamples}. Our proof of~\ref{IA:it:u33a-neg} is
-Ackelsberg's argument with $P(x)+x$ replaced by $f(x)+g(x)$; the only cases not covered explicitly
-in the literature that we know of are those with $\deg f\ge2$ and $g(x)=mx+c$, $m\ge2$.
+Ackelsberg's argument with $P(x)+x$ replaced by $f(x)+g(x)$; to our knowledge, the cases with
+$\deg f\ge2$ and $g(x)=mx+c$, $m\ne1$, were not covered explicitly in the literature.
 \end{remark}
 
 \begin{remark}[Scope]\label{IA:rem:u33a-scope}
@@ -74,7 +76,8 @@ of~\ref{IA:it:u33a-neg} below shows that it can be avoided by sets of lower dens
 both polynomials are linear.
 \item The survey remarks that it is immaterial whether one uses $f(B)\oplus_<g(B)$ or
 $\{r+s:r\in f(B),s\in g(B),r<s\}$. This is not accurate in general. If $g$ is non-constant and
-$f(b)\ge g(b)$ for all large $b$, the two formulations are equivalent: refining $B$ we may assume
+$f(b)\ge g(b)$ for all large $b$, the two existence problems are equivalent, after passing to an
+infinite subset of $B$: refining $B$ we may assume
 $f(b_1)<g(b_2)$ for all $b_1<b_2$ in $B$, and also that $f$ is non-decreasing and $f\ge g$ on $B$, so
 that $f(b_1)<g(b_2)$ forces $b_1<b_2$. If instead $f(b)<g(b)$ for all large $b$, the second set
 contains the diagonal elements $f(b)+g(b)$, and the answer can change even for linear $f,g$: for
@@ -82,7 +85,8 @@ $f(x)=x$, $g(x)=2x$ the second set contains $\{b_1+2b_2:b_1\le b_2\}$, and
 Kousek~\cite[Proposition~5.1]{kousek2025asymmetric} (with $m=1$, $\ell=2$) gives a set of positive
 upper density containing no shift $\{b_1+2b_2:b_1\le b_2\}+t$, $t\in\N$, with $B$ infinite (the
 case $t=0$ reduces to $t=3$ by replacing $B$ with $B-1$). If $g\equiv c$ and $\deg f\ge2$, the
-second set is finite, while $f(B)\oplus_<g(B)=f(B\setminus\{\max B\})+c$ is infinite.
+second set is finite, while $f(B)\oplus_<g(B)=f(B)+c$ is infinite (every element of $B$ has a
+larger one).
 \Cref{IA:thm:u33a} uses the formulation~\cite[(5)]{kra2023problems}.
 \item In $\Q$ the situation is different: Ackelsberg~\cite[Theorem~1.4]{ackelsberg2025infinite}
 proved that if $P\in\Q[x]$ and $P(x)+x$ are non-constant, then every $A\subset\Q$ of positive upper
@@ -199,8 +203,9 @@ $\{b_i^2+b_j:i<j\}$ appear in every set of positive upper Banach density
 \cite[Question~3.13]{kra2023problems}, and generalises this by adding the base point $b_j$
 \cite[Question~3.15]{kra2023problems} and by replacing $x^2$ with arbitrary polynomials
 $p_1,\dots,p_k\in\Z[x]$ with $p_\ell(0)=0$ \cite[Question~3.16]{kra2023problems}. Its
-Remark~3.17 records that the answers to Questions~3.15 and~3.16 are negative by Ackelsberg's work;
-indeed, both configurations contain that of Question~3.13, which Ackelsberg showed can be
+Remark~3.17 records that the answers to Questions~3.15 and~3.16 are negative by Ackelsberg's work:
+the configuration of Question~3.15 contains that of Question~3.13, and Question~3.16 specialises to
+it for the one-element family $\{x^2\}$; Ackelsberg showed that this configuration can be
 avoided~\cite[Theorem~1.5]{ackelsberg2024counterexamples}. Then it asks:
 
 \begin{question}{3.18}\label{IA:q:318}
@@ -297,7 +302,8 @@ the recent solution of Owings' problem~\cite{owings1974problem} by Huang, Lian, 
 Zhang~\cite[Theorem~1.1]{huang2026affirmative}, and the heuristic behind the question concerns
 $m\ge2$. We show that the answer is negative also for $m\ge2$ and for two colours (for two colours,
 with the unrestricted $B+mB$ of the survey). What is new is that a \emph{single} colouring is bad for
-infinitely many $m$ simultaneously, including $m$ in every reduced residue class and infinitely many
+infinitely many $m$ simultaneously: for three or more colours a set of bad $m$ of positive
+logarithmic density containing infinitely many primes, and for two colours infinitely many bad
 primes; for each individual $m$, Hindman's theorem already provides a $2$-colouring for which $m$ is
 strongly bad.
 

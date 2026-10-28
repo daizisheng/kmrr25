@@ -31,8 +31,9 @@ the density Ramsey property for every $\ell$; trivially so does the family of
 singletons. Theorem~3.30 of~\cite{kra2023problems} states that for such a family
 $\mathcal D$ and $\ubd(A)>0$ there are pairwise disjoint $B_1,B_2,\ldots\in\mathcal D$
 and pairwise disjoint $C_1,C_2,\ldots\in\mathcal D$ with $B_i+C_j\subset A$ for all
-$i,j$. The survey observes that this does not contain the $B+B+t$ theorem
-(\cite[Theorem~1.2]{kra2022proof}, Theorem~2.2 of~\cite{kra2023problems}) and asks:
+$i,j$. The survey observes that this does not contain the theorem that $A-t\supset B\oplus B$
+for some infinite $B$ and some $t$, where $B\oplus B=\{b+b':b,b'\in B,\ b\ne b'\}$
+(\cite[Theorem~1.2]{kra2022proof}, Theorem~2.2 of~\cite{kra2023problems}), and asks:
 
 \begin{question}{3.31}
 \label{IB:q:331}
@@ -84,7 +85,8 @@ indices may be written with increasing indices.
 \label{IB:rem:dR}
 Taking $\mathcal D$ to be the singletons, \cref{IB:thm:dR} is the Density Finite
 Sums Theorem~\cite[Theorem~1.1]{kra2025density} (with the shift $t\ge 1$); for
-$k=2$ it contains the $B+B+t$ theorem. Taking $\mathcal D$ to be the $\ell$-term
+$k=2$ it contains the theorem $B\oplus B\subset A-t$ of~\cite{kra2022proof} (only distinct
+summands occur, as they must). Taking $\mathcal D$ to be the $\ell$-term
 progressions gives a common extension of these results and Szemer\'edi's theorem,
 which is the unification sought in~\cite[\S3.6]{kra2023problems}. Concerning
 novelty: the proof below combines the construction of nested boxes from support
@@ -222,8 +224,11 @@ $|1\otimes G|\le 1$, the Cauchy--Schwarz inequality gives
 where $\nu$ is the projection of $\sigma$ to the last $k$ coordinates. By
 \cite[Lemma~4.7]{kra2025density}, $\sigma$ is invariant under
 $\mathrm{Id}\times T\times T^2\times\dots\times T^k$, so $\nu$ is invariant under
-$T\times T^2\times\dots\times T^k$; since $\int G\,d\nu>0$,
-\cite[Theorem~6.1]{kra2025density} shows that the right-hand side is positive.
+$T\times T^2\times\dots\times T^k$. Since $\int G\,d\nu>0$, the right-hand side is positive by
+\cite[Theorem~6.1]{kra2025density}, which states: if $(X,T)$ is a topological system, $\Phi$ a
+\Fol{} sequence, $\nu$ a $T\times T^2\times\dots\times T^k$-invariant measure on $X^k$ and
+$G\colon X^k\to[0,1]$ continuous with $\int G\,d\nu>0$, then
+$\liminf_N|\Phi_N|^{-1}\sum_{n\in\Phi_N}\int G\cdot T_\Delta^nG\,d\nu>0$.
 \end{proof}
 
 \subsection{Proof of \texorpdfstring{\cref{IB:thm:dR}}{the theorem}}
@@ -311,8 +316,8 @@ that for almost every $x\in\R$, the set $A_x$ contains a sumset $B+C$ for
 infinite sets $B,C\subset\N$?
 \end{question}
 
-(The condition is void for $n=1$; since every element of $B+C$ is at least $2$,
-whether $1\in A_x$ is irrelevant.) The survey notes that $A_x$ is thick for almost
+(For $n=1$ the expression $1/\log n$ is undefined; we put $1\in A_x$, say. Since every
+element of $B+C$ is at least $2$, this choice is irrelevant.) The survey notes that $A_x$ is thick for almost
 every $x$ when $\gamma<1$, and that for integer $\gamma$ and every irrational $x$ the
 set $A_x$ contains no infinite sumset.
 
@@ -342,11 +347,13 @@ If $A\subset\N$ is thick, then $B+C\subset A$ for some infinite $B,C\subset\N$.
 \end{lemma}
 
 \begin{proof}
-Choose $b_1<c_1<b_2<c_2<\cdots$ inductively (with $c_0=0$): $b_j>c_{j-1}$ is the left
+Since $A$ contains arbitrarily long intervals, for all $R,L$ it contains an interval of length
+$>L$ whose left endpoint exceeds $R$ (remove the first $R$ points of an interval of length
+$>R+L$). Choose $b_1<c_1<b_2<c_2<\cdots$ inductively (with $c_0=0$): $b_j>c_{j-1}$ is the left
 endpoint of an interval of $A$ of length $>c_{j-1}$, and $c_j>b_j$ is the left
 endpoint of an interval of $A$ of length $>b_j$. For $i<j$, $b_j+c_i\in[b_j,b_j+c_{j-1}]$
 lies in the interval starting at $b_j$; for $i\le j$, $c_j+b_i\in[c_j,c_j+b_j]$ lies in
-the interval starting at $c_j$. Thus $\{b_j\}+\{c_j\}\subset A$.
+the interval starting at $c_j$. Thus $\{b_j:j\ge1\}+\{c_j:j\ge1\}\subset A$.
 \end{proof}
 
 \subsection{Proof of \texorpdfstring{\cref{IB:thm:413}\ref{IB:413b}}{part (b)}}
@@ -359,7 +366,8 @@ $x$:
 \sum_{i=0}^d\lambda_i(b+f_i)^dx=x,\qquad \lambda_i=\prod_{j\ne i}(f_i-f_j)^{-1}\in\Q .
 \]
 Let $M\in\N$ be a common denominator of the $\lambda_i$ and $e_i=M\lambda_i\in\Z$; then
-$\sum_ie_i(b+f_i)^dx=Mx$, so $Mx\equiv\sum_ie_i\{(b+f_i)^dx\}\pmod 1$ and
+$\sum_ie_i(b+f_i)^dx=Mx$, so $Mx\equiv\sum_ie_i\{(b+f_i)^dx\}\pmod 1$ and, for all
+$b\in B$ so large that $b+\min F\ge2$,
 \[
 \|Mx\|\le\sum_i|e_i|\,\{(b+f_i)^dx\}\le\frac{\sum_i|e_i|}{\log(b+\min F)} .
 \]
@@ -525,6 +533,9 @@ random set in which the events $\{n\in A\}$ are independent and $\mathbf P(n\in 
 For which sequences $(p_n)_{n\in\N}$ does the set $A$ contain almost surely sumsets?
 \end{question}
 
+We take ``sumsets'' to mean $B+C$ with $B,C$ infinite, and we also treat $B\oplus B$, $B+B$ and
+the finite configurations $B+F$.
+
 The survey shows: if $p$ is decreasing and $p_nn^\eps\to\infty$ for every $\eps>0$, then
 $A$ is almost surely thick and hence contains $B+C$; if $p_nn^\eps\to0$ for some
 $\eps>0$, then for some $k$ almost surely $A$ contains no $B+F$ with $B$ infinite and
@@ -535,7 +546,7 @@ answer is completely explicit (\cref{IB:thm:monotone}): $A$ almost surely contai
 $B+C$ if and only if $A$ is almost surely thick, if and only if $\sum_np_n^k=\infty$
 for all $k$, if and only if $p_nn^\eps\not\to0$ for every $\eps>0$. In particular the
 gap left between the two conditions above is entirely on the positive side.
-\item For general $p$ there is no explicit answer: the set of $p$ for which $A$
+\item For general $p$ there is no Borel characterization: the set of $p$ for which $A$
 almost surely contains $B+C$ (or $B\oplus B$, or $B+B$) is $\Sigma^1_1$-complete, hence
 not Borel, even within $(0,1)^\N$; for $B+C$ this persists within
 $\{p\in(0,1)^\N:p_n\to0\}$ (\cref{IB:thm:nonborel}). On the positive side we give the
@@ -547,7 +558,7 @@ conditions, with examples showing that all implications between them are strict
 \end{itemize}
 
 The strategy criteria are close to a reformulation of the event in question;
-\cref{IB:thm:nonborel} shows that their existential form cannot be avoided.
+by \cref{IB:thm:nonborel}, no Borel condition on $p$ can replace them.
 \Cref{IB:thm:finite} is standard. The non-Borel part of
 \cref{IB:thm:nonborel} for $B\oplus B$ in the deterministic setting is due to
 Mazurkiewicz and \.Zeberski~\cite[Theorem~2.6]{mazurkiewicz2023ideal}, who proved

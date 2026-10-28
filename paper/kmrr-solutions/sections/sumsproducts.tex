@@ -102,7 +102,8 @@ $B+C\subset A$ and $BC\subset A$.
 Suppose first that $\alpha<1$. Then consecutive terms of the nondecreasing sequence
 $\lfloor n\alpha+\gamma\rfloor$ differ by $0$ or $1$, and the sequence tends to infinity. So $A$
 contains every integer $m\ge\lfloor\alpha+\gamma\rfloor$, and any infinite sets $B,C$ of
-sufficiently large integers work.
+sufficiently large integers work. (Here and below $A$ may contain non-positive integers; only
+its positive part matters.)
 
 Now suppose $\alpha>1$ and put $\beta=1/\alpha\in(0,1)$. An integer $m$ lies in $A$ if and only
 if some $n\in\N$ satisfies $m\le n\alpha+\gamma<m+1$, that is, $y_m\le n<y_m+\beta$, where
@@ -145,7 +146,7 @@ to $6p_1\cdots p_r$; so all its prime factors would be $\equiv1\pmod6$, which is
 two-element subset $\{s,s'\}$ of $S$ according to whether $s+s'\in E$. By the infinite Ramsey
 theorem for pairs~\cite{ramsey1930problem} there is an infinite set $S'\subset S$ such that either
 $s+s'\in E$ for all distinct $s,s'\in S'$, or $s+s'\notin E$ for all distinct $s,s'\in S'$. Split
-$S'$ into two disjoint infinite sets $B_0$ and $C_0$, and let $b_0\in B_0$, $c_0\in C_0$. Then
+$S'$ into two disjoint infinite sets $B_0$ and $C_0$, and let $b_0\in B_0$, $c_0\in C_0$ be arbitrary. Then
 $b_0\neq c_0$ are primes different from $2$ and $3$, and $b_0+c_0$ is even and $\equiv1\pmod3$.
 Also $\Omega(b_0c_0)=\omega(b_0c_0)=2$, so $b_0c_0\in L_+\cap L'_+$.
 
@@ -193,7 +194,7 @@ for some infinite $B,C\subset\N$.
 
 \begin{remark}\label{SP:rem:liouville}
 \Cref{SP:cor:beatty,SP:thm:liouville} answer Question~\S5.1(a) for both examples named in the
-survey. Question~5.2 of~\cite{kra2023problems} itself remains open when ``positive density'' means
+survey. Question~5.2 of~\cite{kra2023problems} itself remains open, to our knowledge, when ``positive density'' means
 that the natural density exists and is positive (see also \cref{SP:rem:q52}).
 \end{remark}
 
@@ -321,9 +322,9 @@ closure $\bar I=[\tfrac7{20},\tfrac{13}{20}]$. By symmetry the same holds for $\
 Choose $b_n\in B$ and $c_n\in C$ with $b_n,c_n\to\infty$. Since $\T$ is compact, after passing
 to a subsequence we may assume that $\psi(b_n)\to\beta$ and $\psi(c_n)\to\gamma$, where
 $\beta,\gamma\in\bar I$. Now
-$\psi(b_nc_n+t_2)=\psi(b_n)+\psi(c_n)+\log_2(1+t_2/(b_nc_n))\to\beta+\gamma$ in $\T$. But
+$\psi(b_nc_n+t_2)=\psi(b_n)+\psi(c_n)+\log_2(1+t_2/(b_nc_n))$ in $\T$, and this tends to $\beta+\gamma$. But
 $\beta+\gamma\in[\tfrac7{10},\tfrac{13}{10}]$, and modulo $1$ this set is
-$[\tfrac7{10},1)\cup[0,\tfrac3{10}]$, which is at distance $\tfrac1{20}$ from $\bar I$. On the other hand
+$[\tfrac7{10},1)\cup[0,\tfrac3{10}]$, whose distance from $\bar I$ is $\tfrac1{20}$. On the other hand
 $\psi(b_nc_n+t_2)\in I$ for all $n$, so $\beta+\gamma\in\bar I$. This is a contradiction.
 
 For the final statement, recall $\dlog(A)=3/10$ from \cref{SP:prop:Aprops}(i). If $B,C\subset\N$
@@ -358,7 +359,7 @@ to infinite sums and shifted products. To our knowledge this counterexample is n
 
 (iii) The set $A$ is not syndetic. The survey also asks Question~5.4 for syndetic $A$, and
 Question~5.5 of~\cite{kra2023problems} (whether every syndetic set contains $BC$ with $B,C$ infinite);
-both remain open.
+both remain open, to our knowledge.
 \end{remark}
 
 Recall Question~5.2 of~\cite{kra2023problems}.
@@ -376,7 +377,7 @@ does not exist. So $A$ gives a negative answer to \cref{SP:q:52} if ``positive d
 read as positive upper density (or positive upper Banach or logarithmic density). This reading is
 consistent with the survey's text, which says that (19) is equivalent to equidistribution in
 residue classes ``if the density of $A$ exists''. It does not settle \cref{SP:q:52} when the
-natural density is required to exist; that case remains open.
+natural density is required to exist; to our knowledge that case remains open.
 \end{remark}
 
 %-----------------------------------------------------------------------------------------------
@@ -492,7 +493,8 @@ following~\cite[Theorem~1.3]{moreira2019proof}: if $G$ is a countable group, $\P
 \Fol{} sequence on $G$, and $E\subset G$ has positive upper density along $\Psi$, then $E\supset BC$
 for some infinite $B,C\subset G$. Applied to $G=(\Q,+)$ and $\Psi=\Phi$, this gives infinite $B,C$
 with $B+C\subset A$. Next apply it to $G=(\Q^*,\cdot)$ and $\Psi=(F_N\setminus\{0\})_{N\ge N_0}$, where $N_0$ is such that these sets are nonempty; this is a
-\Fol{} sequence in $\Q^*$ by \cref{SP:lem:folner}(i), and the upper density of $A\setminus\{0\}$
+\Fol{} sequence in $\Q^*$, since removing one point changes $|F_N|$ and $|F_N\cap xF_N|$ by at most $1$
+and $|F_N|\to\infty$ by \cref{SP:lem:folner}(i); likewise the upper density of $A\setminus\{0\}$
 along it equals $\udens_\Phi(A)$. This gives infinite $B,C\subset\Q^*$ with $BC\subset A$. (Both
 groups are abelian, so one-sided and two-sided \Fol{} sequences coincide.)
 \item The set $\Q_{<0}$ itself contains the configuration: take $B=\{-n:n\ge2\}$ and
@@ -514,7 +516,7 @@ Question~5.2. The point of \cref{SP:thm:q56} is that, once a set of density zero
 this obstruction cannot be detected by density along a double \Fol{} sequence. The $\Phi$-dependent deletion of finite pieces is similar to the device used
 in~\cite[Example~5.9]{kra2023problems} (compare also the proof
 of~\cite[Proposition~3.2]{kra2023problems}). The question that is
-presumably intended remains open: does every $A\subset\Q$ that is large and has no such local
+presumably intended remains open, to our knowledge: does every $A\subset\Q$ that is large and has no such local
 obstruction contain $B+C$ and $BC$? Possible formalizations are to require $\ldens_\Phi(A)>0$
 for \emph{every} double \Fol{} sequence $\Phi$, which our construction (it depends on $\Phi$) does
 not address, or to impose a hypothesis on $A$ analogous to aperiodicity. We do not know the answer

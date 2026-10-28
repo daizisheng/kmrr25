@@ -8,7 +8,9 @@ which other infinite configurations must occur in sets of positive density, whic
 hypotheses are needed, and what happens in the primes, in random sets, in multiplicative settings and
 in other groups.
 
-In this paper we answer twenty of the questions and conjectures posed in~\cite{kra2023problems} (nineteen questions and Conjecture~4.5). Our main result
+In this paper we treat twenty of the questions and conjectures posed in~\cite{kra2023problems}
+(nineteen questions and Conjecture~4.5); for two of them the answer follows directly from known
+results, as explained below. Our main result
 concerns sums of more than two infinite sets in abelian groups.
 
 \begin{theorem*}[\cref{K:thm:main}]
@@ -17,8 +19,8 @@ positive upper Banach density contains a sumset $B_1+\dots+B_k$, where $B_1,\dot
 are infinite.
 \end{theorem*}
 
-This answers Question~5.14 of~\cite{kra2023problems}. The proof does not use the Host--Kra structure
-theory or the theory of nilspaces: it extends the short proof of the case $k=2$
+This answers Question~5.14 of~\cite{kra2023problems}. The proof uses the Kronecker factor, but no
+higher-order Host--Kra structure theory and no nilspaces: it extends the short proof of the case $k=2$
 by Kra, Moreira, Richter and Robertson~\cite{kra2026short} to an arbitrary number of summands,
 building the required configuration one level at a time and keeping track only of the supports of
 suitable measures on the Kronecker factor.
@@ -36,8 +38,9 @@ of Kousek and Radi\'c~\cite{kousek2024infinite}, as we check; we record these fo
 each case we say precisely what is new.
 
 In addition, in \cref{KR:sec:main} we answer a question of Kousek and
-Radi\'c~\cite{kousek2024infinite} that is not in~\cite{kra2023problems}: the lower Banach density
-thresholds for $B+B+t$ and for $B+B$ are exactly $1/2$ and $3/4$.
+Radi\'c~\cite{kousek2024infinite} that is not in~\cite{kra2023problems}: the supremum of the lower
+Banach densities of sets $A\subset\N$ containing no $B+B+t$ with $B$ infinite and $t\ge0$ is $1/2$,
+and for sets containing no $B+B$ it is $3/4$.
 
 \subsection*{Conventions}
 We use the numbering of the second arXiv version of~\cite{kra2023problems}. Some questions in the
@@ -54,12 +57,17 @@ Throughout, $\N=\{1,2,3,\dots\}$, $\P$ denotes the set of primes, and for $A\sub
 \[
 \udlog(A)=\limsup_{N\to\infty}\frac{1}{\log N}\sum_{n\in A\cap[N]}\frac1n,
 \]
-where $[N]=\{1,\dots,N\}$. Lower densities $\ldens$ and natural and logarithmic densities $\dens$,
-$\dlog$ are defined in the same way. In a countable abelian group, or more generally a countable
-amenable group, upper Banach density $\ubd$ is the supremum of upper densities along \Fol{} sequences.
+where $[N]=\{1,\dots,N\}$. The lower densities $\ldens$ and $\underline{\mathsf d}_{\log}$ are defined
+with $\liminf$ in place of $\limsup$, and the natural and logarithmic densities $\dens$ and $\dlog$
+are the common values when upper and lower densities agree. The lower Banach density is defined in
+\cref{KR:sec:main}. For a \Fol{} sequence $\Phi=(\Phi_N)$ in a countable abelian group (or, more
+generally, a countable amenable group) we write
+$\udens_\Phi(A)=\limsup_N|A\cap\Phi_N|/|\Phi_N|$, and the upper Banach density $\ubd(A)$ is the
+supremum of $\udens_\Phi(A)$ over all \Fol{} sequences $\Phi$.
 A set is \emph{thick} if it contains arbitrarily long intervals (in a group: translates of every
-finite set). For sets $B,C$ we write $B+C=\{b+c:b\in B,c\in C\}$, $B+t=\{b+t:b\in B\}$ and
-$mB=\{mb:b\in B\}$.
+finite set). For sets $B,C$ we write $B+C=\{b+c:b\in B,c\in C\}$, $B+t=\{b+t:b\in B\}$,
+$mB=\{mb:b\in B\}$ and $B\oplus B=\{b+b':b,b'\in B,\ b\ne b'\}$; thus $B+B$ is the unrestricted
+sumset, which contains the elements $2b$.
 
 \subsection*{Questions whose answer depends on the formulation}
 For several questions the answer we give concerns the question exactly as it is stated in the survey,
@@ -92,7 +100,7 @@ Question & Answer & Section\\
 3.23 & No, as stated & \ref{IA:sec:q323}\\
 3.24 & No (already implied by Kousek--Radi\'c) & \ref{IA:sec:q324}\\
 3.31, \S3.6(a) & Yes, in the strongest $k$-fold form & \ref{IB:sec:q331}\\
-4.13 & Yes iff $\gamma\notin\Z$ (for almost every $x$) & \ref{IB:sec:q413}\\
+4.13 & For $\gamma>0$: yes iff $\gamma\notin\Z$ (for Lebesgue-almost every $x\in\R$) & \ref{IB:sec:q413}\\
 \S4.4(a) & Random sets: criterion for monotone $p_n$; no Borel criterion in general & \ref{IB:sec:u44a}\\
 4.5 & Yes (a consequence of a theorem of Tao and Ziegler) & \ref{IB:sec:c45}\\
 \S5.1(a) & Yes for both examples & \ref{SP:sec:u51a}\\
@@ -107,10 +115,10 @@ Question & Answer & Section\\
 \subsection*{Formalization}
 The main theorem and most of the other results have been formalized in Lean~4 with Mathlib; the
 formalization is available at \url{https://github.com/daizisheng/kmrr25}, in the directory
-\nolinkurl{lean/Kmrr25}. No file contains \texttt{sorry} or adds an axiom, and every main
-theorem depends only on the standard axioms of Lean. Where one of our proofs relies on a
-published theorem that is not formalized, that theorem is stated as a proposition and passed
-to the formal statement as an explicit hypothesis. \Cref{I:tab:lean} gives an overview, and
+\nolinkurl{lean/Kmrr25}. No file contains \texttt{sorry} or declares an axiom; every main theorem
+depends only on the standard axioms of Lean. Where one of our proofs relies on a published theorem
+that is not formalized, that theorem is stated as a proposition and appears as an explicit
+hypothesis of the formal statement, so that what is formalized is the deduction from it. \Cref{I:tab:lean} gives an overview, and
 after each formalized result a paragraph headed \emph{Formalization} names the file and the
 main formal statements and says what is not covered.
 
@@ -138,8 +146,8 @@ KR, Q.~5.2 & \nolinkurl{KR52} & complete\\
 3.31, \S3.6(a) & \nolinkurl{Q331} & conditional on the dynamical input from~\cite{kra2025density}
 (\cref{IB:prop:dyn})\\
 4.13 & \nolinkurl{Q413}, \nolinkurl{Q413a}, \nolinkurl{Q413SecondMoment} & complete\\
-\S4.4(a) & \nolinkurl{S44a}, \nolinkurl{S44b} & complete, except that the non-Borel results
-use \cite[Theorems~14.2 and~27.1]{kechris1995classical} on ill-founded trees as hypotheses\\
+\S4.4(a) & \nolinkurl{S44a}, \nolinkurl{S44b} & criteria and examples: complete; non-Borel results:
+conditional on \cite[Theorems~14.2 and~27.1]{kechris1995classical}\\
 4.5 & \nolinkurl{C45} & conditional on \cite[Theorem~1.5]{tao2023infinite}\\
 \S5.1(a) & \nolinkurl{S51a} & complete\\
 5.4 & \nolinkurl{Q54} & complete\\
@@ -156,7 +164,7 @@ paper is formalized without hypotheses beyond the standard axioms; the file name
 The paper has three parts, organised by the setting. \Cref{K:sec:main}, at the beginning of the first
 part, contains the proof of the main theorem; the other sections of that part concern sumsets in
 abelian groups and in $\N^2$. The second part concerns sumsets in the integers: density thresholds
-for $B+B$ (\cref{IA:sec:u32a,KR:sec:main}), polynomial and dilated sumsets
+for $B+B$ and $B+B+t$ (\cref{IA:sec:u32a,KR:sec:main}), polynomial and dilated sumsets
 (\cref{IA:sec:ordered,IA:sec:BmB}), density Ramsey families (\cref{IB:sec:q331}), sparse and random
 sets (\cref{IB:sec:q413,IB:sec:u44a}) and the primes (\cref{IB:sec:c45}). The third part concerns
 configurations that mix sums and products. Each section begins by restating the questions it
