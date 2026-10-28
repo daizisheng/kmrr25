@@ -803,51 +803,39 @@ instance $\lambda_j=9^j$).
 \label{IB:lem:rigid}
 If $\sum_je_j\lambda_j=0$ with $e_j\in\Z$ and $\sum_j|e_j|\le8$, then all $e_j=0$. Consequently,
 every $n\in\Lambda+\Lambda$ has a unique representation $n=\lambda+\lambda'$ as an unordered pair
-(multiset) $P(n)=\{\lambda,\lambda'\}$, and $\Lambda$ is a Sidon set: if
-$\lambda_1'-\lambda_2'=\lambda_3'-\lambda_4'\neq0$ with $\lambda_i'\in\Lambda$, then $\lambda_1'=\lambda_3'$ and $\lambda_2'=\lambda_4'$.
+(multiset) $P(n)=\{\lambda,\lambda'\}$.
 \end{lemma}
 
 \begin{proof}
 If $J$ is the largest index with $e_J\ne0$, then
-$|e_J\lambda_J|\ge\lambda_J>8\sum_{j<J}\lambda_j\ge|\sum_{j<J}e_j\lambda_j|$. The other statements are
-relations with $\sum|e_j|\le4$.
+$|e_J\lambda_J|\ge\lambda_J>8\sum_{j<J}\lambda_j\ge|\sum_{j<J}e_j\lambda_j|$. Unique representation is
+the case of a relation with $\sum|e_j|\le4$.
 \end{proof}
 
 \begin{lemma}
 \label{IB:lem:R}
-Let $X\subset\Z$ with $|X|\ge2$ and $\Gamma\subset\Z$ infinite with $X+\Gamma\subset\Lambda+\Lambda$. Then there
-is a unique $t=t(X,\Gamma)\in\Z$ such that $x-t\in\Lambda$ for all $x\in X$, $c+t\in\Lambda$ for all $c\in\Gamma$,
-and $P(x+c)=\{x-t,c+t\}$ for all $x\in X$, $c\in\Gamma$. If $X'\subset X$ with $|X'|\ge2$ and
-$\Gamma'\subset\Gamma$ is infinite, then $t(X',\Gamma')=t(X,\Gamma)$.
+Let $X,\Gamma\subset\Z$ with $|X|\ge2$ and $|\Gamma|\ge2$, and suppose that $X+\Gamma\subset\Lambda+\Lambda$. Then
+there is a unique $t=t(X,\Gamma)\in\Z$ such that $x-t\in\Lambda$ for all $x\in X$, $c+t\in\Lambda$ for all
+$c\in\Gamma$, and $P(x+c)=\{x-t,c+t\}$ for all $x\in X$, $c\in\Gamma$. If $X'\subset X$ and
+$\Gamma'\subset\Gamma$ with $|X'|,|\Gamma'|\ge2$, then $t(X',\Gamma')=t(X,\Gamma)$.
 \end{lemma}
 
 \begin{proof}
 \emph{Uniqueness.} If $t\neq t'$ both work and $x\in X$, then for $c\in\Gamma$,
 $\{x-t,c+t\}=\{x-t',c+t'\}$ forces $x-t=c+t'$; this determines $c$, contradicting
-$|\Gamma|=\infty$. The last assertion follows, since $t(X,\Gamma)$ works for $(X',\Gamma')$.
+$|\Gamma|\ge2$. The last assertion follows, since $t(X,\Gamma)$ works for $(X',\Gamma')$.
 
-\emph{Two rows.} Let $X=\{x_1,x_2\}$ and write $P_{ic}=P(x_i+c)$. For $c\ne c'$ in $\Gamma$, the
-identity $(x_1+c)+(x_2+c')=(x_1+c')+(x_2+c)$ is a relation among at most eight elements
-of $\Lambda$, so by \cref{IB:lem:rigid} the multisets $P_{1c}\uplus P_{2c'}$ and
-$P_{1c'}\uplus P_{2c}$ coincide. Since $P_{1c}\neq P_{1c'}$ and $P_{1c}\neq P_{2c}$, $P_{1c}$ shares an
-element with $P_{1c'}$ and one with $P_{2c}$ (if, say, $P_{1c}$ were disjoint from
-$P_{1c'}$, then $P_{1c}\subset P_{2c}$ as multisets, hence $P_{1c}=P_{2c}$); similarly for
-$P_{2c}$. Thus, for each $i$, $\{P_{ic}:c\in\Gamma\}$ is an infinite family of distinct
-pairwise intersecting $2$-multisets. Regarding them as edges of a graph (loops
-allowed), such a family with at least four members has a common vertex: a loop
-$\{u,u\}$ forces every other member to contain $u$, and a loopless pairwise
-intersecting family of edges is a star or a triangle. The common vertex $u_i$ is
-unique, because two common vertices would force all members to be equal. So
-$P_{ic}=\{u_i,v_{ic}\}$ with $c\mapsto v_{ic}$ injective.
-
-If $u_1=u_2$, the multiset identity gives $\{v_{1c},v_{2c'}\}=\{v_{1c'},v_{2c}\}$, whence
-$v_{1c}=v_{2c}$, $P_{1c}=P_{2c}$ and $x_1=x_2$; so $u_1\ne u_2$. Since $P_{1c}\cap P_{2c}\ne\emptyset$, for
-each $c$ either $v_{1c}=u_2$, or $v_{2c}=u_1$, or $v_{1c}=v_{2c}$, and each of the first two
-alternatives occurs for at most one $c$. For the remaining $c$ we have
-$x_i+c=u_i+v_{1c}$, so $x_1-u_1=x_2-u_2=v_{1c}-c=:t$; thus $x_i-t=u_i\in\Lambda$, and
-$c+t=v_{1c}\in\Lambda$ with $P(x_i+c)=\{x_i-t,c+t\}$. If $v_{1c}=u_2$, then $x_1+c=u_1+u_2$ gives
-$c+t=u_2\in\Lambda$, so $P(x_1+c)=\{u_1,c+t\}$ and $P(x_2+c)=P(2u_2)=\{u_2,c+t\}$. The case
-$v_{2c}=u_1$ is symmetric. Hence the conclusion holds for all $c\in\Gamma$.
+\emph{Two rows.} Let $x_1\ne x_2$ in $X$ and write $P_{ic}=P(x_i+c)$. First, some $c_0\in\Gamma$ has
+$P_{1c_0}\cap P_{2c_0}\neq\emptyset$. Otherwise, take $c\ne c'$ in $\Gamma$. The identity
+$(x_1+c)+(x_2+c')=(x_1+c')+(x_2+c)$ is a relation among at most eight elements of $\Lambda$, so by
+\cref{IB:lem:rigid} the multisets $P_{1c}\uplus P_{2c'}$ and $P_{1c'}\uplus P_{2c}$ coincide. As
+$P_{1c}$ is disjoint from $P_{2c}$, it is contained in $P_{1c'}$ as a multiset, so $P_{1c}=P_{1c'}$
+and $c=c'$, a contradiction. Write $x_1+c_0=u+v$ and $x_2+c_0=u'+v$ with $u,u',v\in\Lambda$; then
+$u\ne u'$ because $x_1\ne x_2$. Put $t=x_1-u$, so that $x_1-t=u$ and $x_2-t=u'$ lie in $\Lambda$.
+Let $c\in\Gamma$. Since $x_1-x_2=u-u'$, the identity $(x_1+c)+u'=(x_2+c)+u$ is a relation among
+six elements of $\Lambda$, so $P_{1c}\uplus\{u'\}=P_{2c}\uplus\{u\}$. As $u\ne u'$, we get $u\in P_{1c}$,
+that is, $x_1+c=u+w$ with $w\in\Lambda$. Then $c+t=w\in\Lambda$, and $P(x_i+c)=\{x_i-t,c+t\}$ for
+$i=1,2$ by unique representation.
 
 \emph{General $X$.} Fix $x_1\ne x_2$ in $X$ and let $t=t(\{x_1,x_2\},\Gamma)$. For $x\in X$,
 $x\neq x_1$, the two-row case gives $t'=t(\{x_1,x\},\Gamma)$; both $t$ and $t'$ work for
@@ -893,16 +881,14 @@ So $\mathcal T\mapsto D_{\mathcal T}$ reduces $\mathrm{IF}$ to $\mathfrak D_{BC}
 \emph{\ref{IB:nb1} for $B\oplus B$ and $B+B$.} Let
 $D^\oplus_{\mathcal T}=\{\gamma_s+\gamma_{s'}:s\ne s'\in\mathcal T\text{ comparable}\}$ and
 $D^+_{\mathcal T}=\{\gamma_s+\gamma_{s'}:s,s'\in\mathcal T\text{ comparable}\}$; both maps are continuous, and a
-branch $z$ gives $B=\{\gamma_{z|n}\}$. Conversely, let $B=\{b_1<b_2<\cdots\}$ be infinite with
-$B\oplus B\subset D^\oplus_{\mathcal T}$ or $B+B\subset D^+_{\mathcal T}$; in both cases $B\oplus B\subset\Lambda+\Lambda$. Applying
-\cref{IB:cor:R} to the odd-indexed and the even-indexed elements gives $t$ with
-$b_i-t\in\Lambda$ for odd $i$ and $b_i+t\in\Lambda$ for even $i$. Applying it to
-$\{b_i:i\equiv1,2\bmod 4\}$ and $\{b_i:i\equiv0,3\bmod4\}$ gives $t'$ with $b_i-t'\in\Lambda$ for
-$i\equiv1,2\bmod4$. The two representations of $b_1-b_5$ as a difference of elements of
-$\Lambda$ and the Sidon property give $t=t'$; those of $b_2-b_6$ give $-t=t'$. Hence $t=0$
-and $B\subset\Lambda$. Now for $b\ne b'$ in $B$, $b+b'=\gamma_s+\gamma_{s'}$ forces $\{b,b'\}=\{\gamma_s,\gamma_{s'}\}$ with
-$s,s'\in\mathcal T$ comparable. So $B$ consists of $\gamma$-labels of pairwise comparable nodes
-of $\mathcal T$, which form an infinite branch.
+branch $z$ gives $B=\{\gamma_{z|n}\}$. Conversely, let $B$ be infinite with
+$B\oplus B\subset D^\oplus_{\mathcal T}$ or $B+B\subset D^+_{\mathcal T}$. Split $B$ into disjoint infinite sets
+$B_1,B_2$; then $B_1+B_2\subset B\oplus B\subset\Lambda+\Lambda$, and \cref{IB:cor:R} gives $t$ with
+$P(b+b')=\{b-t,b'+t\}$ for $b\in B_1$, $b'\in B_2$. Since $b+b'=\gamma_s+\gamma_{s'}$ with $s,s'\in\mathcal T$
+comparable, $b-t$ and $b'+t$ are $\gamma$-labels of comparable nodes of $\mathcal T$. So the nodes
+labelling $B_1-t$ and those labelling $B_2+t$ form infinite sets $Q_1,Q_2\subset\mathcal T$ such that every
+element of $Q_1$ is comparable with every element of $Q_2$, and the argument for $B+C$ gives an
+infinite branch.
 
 \emph{\ref{IB:nb2}.} The embedding $D\mapsto\one_D$ of $2^\N$ into $[0,1]^\N$ is continuous, and
 $\mathbf P_{\one_D}(\mathcal E_\ast)=1$ if and only if $D\in\mathfrak D_\ast$; so the first claim follows

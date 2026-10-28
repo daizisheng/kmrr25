@@ -1370,14 +1370,14 @@ lemma two_rows (h : IsRigidSeq lam) {x1 x2 : ℤ} (hx : x1 ≠ x2) {Γ : Set ℤ
   · exact ⟨a1, by linarith⟩
   · exact absurd rfl huu
 
-/-- Paper, Lemma \ref{IB:lem:R}: let `X ⊆ ℤ` with `|X| ≥ 2` and `Γ ⊆ ℤ` infinite with
+/-- Paper, Lemma \ref{IB:lem:R}: let `X, Γ ⊆ ℤ` with `|X| ≥ 2`, `|Γ| ≥ 2` and
 `X + Γ ⊆ Λ + Λ`. Then there is a unique `t ∈ ℤ` such that `x - t ∈ Λ` for `x ∈ X`, `c + t ∈ Λ`
 for `c ∈ Γ`, and `P(x + c) = {x - t, c + t}` for `x ∈ X`, `c ∈ Γ`. -/
 theorem lem_R (h : IsRigidSeq lam) {X Γ : Set ℤ} (hX : ∃ x1 ∈ X, ∃ x2 ∈ X, x1 ≠ x2)
-    (hΓ : Γ.Infinite) (hXΓ : ∀ x ∈ X, ∀ c ∈ Γ, InLL lam (x + c)) :
+    (hΓ : Γ.Nontrivial) (hXΓ : ∀ x ∈ X, ∀ c ∈ Γ, InLL lam (x + c)) :
     ∃! t, IsShift lam X Γ t := by
   obtain ⟨x1, hx1, x2, hx2, hx⟩ := hX
-  obtain ⟨c1, hc1, c2, hc2, hc⟩ := hΓ.nontrivial
+  obtain ⟨c1, hc1, c2, hc2, hc⟩ := hΓ
   obtain ⟨t, ht1, -, htc⟩ := two_rows h hx hc1 hc2 hc fun c hc => ⟨hXΓ x1 hx1 c hc, hXΓ x2 hx2 c hc⟩
   refine ⟨t, isShift_of h (fun x hx => ?_) htc, fun t' ht' => ?_⟩
   · by_cases hxx : x = x1
@@ -1389,13 +1389,13 @@ theorem lem_R (h : IsRigidSeq lam) {X Γ : Set ℤ} (hX : ∃ x1 ∈ X, ∃ x2 �
   · exact (shift_unique h hc ht1 (ht'.1 x1 hx1) (htc c1 hc1) (ht'.2.1 c1 hc1) (htc c2 hc2)
       (ht'.2.1 c2 hc2)).symm
 
-/-- Paper, Lemma \ref{IB:lem:R}, last assertion: if `X' ⊆ X` with `|X'| ≥ 2` and `Γ' ⊆ Γ` is
-infinite, then `t(X', Γ') = t(X, Γ)`. -/
+/-- Paper, Lemma \ref{IB:lem:R}, last assertion: if `X' ⊆ X` and `Γ' ⊆ Γ` with `|X'| ≥ 2` and
+`|Γ'| ≥ 2`, then `t(X', Γ') = t(X, Γ)`. -/
 theorem lem_R_mono (h : IsRigidSeq lam) {X Γ X' Γ' : Set ℤ} (hX' : ∃ x1 ∈ X', ∃ x2 ∈ X', x1 ≠ x2)
-    (hΓ' : Γ'.Infinite) (hXX : X' ⊆ X) (hΓΓ : Γ' ⊆ Γ) {t t' : ℤ} (ht : IsShift lam X Γ t)
+    (hΓ' : Γ'.Nontrivial) (hXX : X' ⊆ X) (hΓΓ : Γ' ⊆ Γ) {t t' : ℤ} (ht : IsShift lam X Γ t)
     (ht' : IsShift lam X' Γ' t') : t' = t := by
   obtain ⟨x1, hx1, -, -, -⟩ := hX'
-  obtain ⟨c1, hc1, c2, hc2, hc⟩ := hΓ'.nontrivial
+  obtain ⟨c1, hc1, c2, hc2, hc⟩ := hΓ'
   exact shift_unique h hc (ht'.1 x1 hx1) (ht.1 x1 (hXX hx1)) (ht'.2.1 c1 hc1)
     (ht.2.1 c1 (hΓΓ hc1)) (ht'.2.1 c2 hc2) (ht.2.1 c2 (hΓΓ hc2))
 
@@ -1403,7 +1403,7 @@ theorem lem_R_mono (h : IsRigidSeq lam) {X Γ X' Γ' : Set ℤ} (hX' : ∃ x1 �
 `t ∈ ℤ` with `B - t ⊆ Λ`, `C + t ⊆ Λ` and `P(b + c) = {b - t, c + t}` for `b ∈ B`, `c ∈ C`. -/
 theorem cor_R (h : IsRigidSeq lam) {B C : Set ℤ} (hB : B.Infinite) (hC : C.Infinite)
     (hBC : ∀ b ∈ B, ∀ c ∈ C, InLL lam (b + c)) : ∃ t, IsShift lam B C t :=
-  (lem_R h hB.nontrivial hC hBC).exists
+  (lem_R h hB.nontrivial hC.nontrivial hBC).exists
 
 end LemR
 
@@ -1579,7 +1579,7 @@ theorem ex_rigid (h : IsRigidSeq lam) :
   set X : Set ℤ := {(c1 : ℤ), (c2 : ℤ)}
   have hX : ∃ x1 ∈ X, ∃ x2 ∈ X, x1 ≠ x2 :=
     ⟨c1, by simp [X], c2, by simp [X], by exact_mod_cast hc12⟩
-  obtain ⟨t, ht, -⟩ := lem_R h hX (infinite_image_cast hΓ) (by
+  obtain ⟨t, ht, -⟩ := lem_R h hX (infinite_image_cast hΓ).nontrivial (by
     rintro x hx _ ⟨n, hn, rfl⟩
     rcases hx with rfl | rfl
     · rw [add_comm]; exact_mod_cast hLL _ (hn c1 (by simp))
@@ -1621,7 +1621,7 @@ theorem ex_rigid (h : IsRigidSeq lam) :
     (by simp [Set.insert_subset_iff, hc1, hc2, hc])
   have hΓcΓ : Γc ⊆ Γ := fun n hn g hg => hn g (by simp at hg ⊢; tauto)
   obtain ⟨tc, htc, -⟩ := lem_R h (X := {(c1 : ℤ), (c2 : ℤ), (c : ℤ)})
-    ⟨c1, by simp, c2, by simp, by exact_mod_cast hc12⟩ (infinite_image_cast hΓc) (by
+    ⟨c1, by simp, c2, by simp, by exact_mod_cast hc12⟩ (infinite_image_cast hΓc).nontrivial (by
       rintro x hx _ ⟨n, hn, rfl⟩
       simp only [Set.mem_insert_iff, Set.mem_singleton_iff] at hx
       rcases hx with hx | hx | hx <;> rw [hx, add_comm] <;>
@@ -2043,7 +2043,7 @@ theorem treeP_not_condF (h : IsRigidSeq lam) : ¬ CondF (treeP lam) := by
   have hΓ : Γ.Infinite :=
     infinite_of_wsum_eq_top (hU _ (by simp [Set.insert_subset_iff, hb1, hb2]))
   obtain ⟨t, ht, -⟩ := lem_R h (X := {(b1 : ℤ), (b2 : ℤ)})
-    ⟨b1, by simp, b2, by simp, by exact_mod_cast hb12⟩ (infinite_image_cast hΓ) (by
+    ⟨b1, by simp, b2, by simp, by exact_mod_cast hb12⟩ (infinite_image_cast hΓ).nontrivial (by
       rintro x hx _ ⟨c, hc, rfl⟩
       have hw := w_ne_zero_iff.1 hc.2
       simp only [Set.mem_insert_iff, Set.mem_singleton_iff] at hx
@@ -2059,7 +2059,7 @@ theorem treeP_not_condF (h : IsRigidSeq lam) : ¬ CondF (treeP lam) := by
     have hΓbΓ : Γb ⊆ Γ := fun c hc => ⟨hc.1, w_ne_zero_iff.2 fun u hu =>
       w_ne_zero_iff.1 hc.2 u (by simp at hu ⊢; tauto)⟩
     obtain ⟨tb, htb, -⟩ := lem_R h (X := {(b1 : ℤ), (b2 : ℤ), (b : ℤ)})
-      ⟨b1, by simp, b2, by simp, by exact_mod_cast hb12⟩ (infinite_image_cast hΓb) (by
+      ⟨b1, by simp, b2, by simp, by exact_mod_cast hb12⟩ (infinite_image_cast hΓb).nontrivial (by
         rintro x hx _ ⟨c, hc, rfl⟩
         have hw := w_ne_zero_iff.1 hc.2
         simp only [Set.mem_insert_iff, Set.mem_singleton_iff] at hx
