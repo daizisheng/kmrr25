@@ -20,10 +20,10 @@ Main results:
 Remarks on the statements.
 * Sets `B, C` are subsets of `ℕ` including `0`; this only strengthens the non-existence
   statements, since `0 ∉ A`.
-* Lemma \ref{SP:lem:shiftphase} needs `ε_M = log₂(1 + 1/M) < 7/20`, i.e. `M ≥ 4`; the paper
-  states it for every `M ∈ ℕ`, but for `M ≤ 3` it is false: `(x, y) = (8, 13)` for `M = 1`,
-  `(6, 15)` for `M = 2`, `(10, 31)` for `M = 3` satisfy `y ≥ M x`, `x + y ∈ A` and
-  `{log₂ y} ≥ 13/20`. The paper uses the lemma only with `M = 58`.
+* Lemma \ref{SP:lem:shiftphase} is stated in the paper for `M = 58`. It is formalized for every
+  `M` with `ε_M = log₂(1 + 1/M) < 7/20`, i.e. `M ≥ 4`; for `M ≤ 3` it is false:
+  `(x, y) = (8, 13)` for `M = 1`, `(6, 15)` for `M = 2`, `(10, 31)` for `M = 3` satisfy
+  `y ≥ M x`, `x + y ∈ A` and `{log₂ y} ≥ 13/20`.
 * In part (a) the numbers `b₀, c₀` are positive, as in the paper (`ℕ = {1, 2, …}`).
 
 Not covered: Proposition \ref{SP:prop:Aprops}(ii) (aperiodicity) and (iii) (upper and lower
@@ -301,7 +301,7 @@ theorem no_shifted_config (t₁ t₂ : ℤ) :
   · linarith [hb_near.2, hc_near.2]
 
 /-- Paper, Theorem \ref{SP:thm:q54}, final statement (negative answer to Question
-\ref{SP:q:54}, together with Proposition \ref{SP:prop:Aprops}(i), which is not formalized here):
+\ref{SP:q:54}, together with Proposition \ref{SP:prop:Aprops}(i), which is `logDensity_A`):
 there are no infinite sets `B, C ⊆ ℕ` with `B + C ⊆ A` and `BC + 1 ⊆ A`. -/
 theorem no_sum_and_shifted_product :
     ¬ ∃ B C : Set ℕ, B.Infinite ∧ C.Infinite ∧ sumset B C ⊆ A ∧

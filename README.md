@@ -16,6 +16,9 @@ named by their subsection and a letter in order of appearance, e.g. §3.2(a).
   questions and conjectures from the survey (nineteen questions and Conjecture 4.5), including Question 5.14 (sums of k infinite sets in every countably
   infinite abelian group), and a question of Kousek and Radić on lower Banach density.
 - `lean/`: Lean 4 formalizations of a number of results of the paper.
+- `make-arxiv.sh`: builds the arXiv submission `arxiv-submission.tar.gz` (LaTeX sources with
+  `main.bbl`, and the Lean project as ancillary files under `anc/`), after checking that it
+  compiles with pdflatex and no BibTeX, as on arXiv. `./make-arxiv.sh --help` for details.
 
 ## Lean formalizations
 
@@ -34,7 +37,7 @@ as an explicit hypothesis. The table marks these cases.
 
 | File | Paper result | Survey question | External input |
 |---|---|---|---|
-| `Q320.lean` | colourings with bad multipliers in every residue class | 3.20 | — |
+| `Q320.lean` | colourings with, for every q, a bad prime multiplier coprime to q | 3.20 | — |
 | `Q323.lean` | a set of positive logarithmic density with no ℓB+mB+t | 3.23 | — |
 | `Q324.lean` | log-equidistributed sets without B+B+t (both examples) | 3.24 | — |
 | `S32a.lean` | both readings of the density condition | §3.2(a) | — |
@@ -55,7 +58,7 @@ as an explicit hypothesis. The table marks these cases.
 | `Q54.lean` | sums and shifted products at logarithmic scale | 5.4 | — |
 | `Q56.lean`, `DoubleFolnerQ.lean` | sums and products in ℚ, double Følner sequences | 5.6 | — |
 | `ThmK*.lean` (14 files) | sums of k infinite sets in countably infinite abelian groups (main theorem) | 5.14 | four classical theorems (see below) |
-| `KR52.lean` | lower Banach density thresholds 1/2 and 3/4 | Kousek–Radić, Question 5.2 | — |
+| `KR52.lean` | lower Banach density thresholds 1/2 and 3/4 (the lower bounds) | Kousek–Radić, Question 5.2 | — (the upper bounds are Kousek–Radić, Thms 1.2 and 1.3, not formalized) |
 
 The main theorem of the paper (Question 5.14, Theorem 2.1) is formalized in the files
 `ThmK*.lean`; the final statement is `Kmrr25.ThmK.thmK` in `ThmK.lean`. It takes as a hypothesis the
@@ -63,7 +66,8 @@ structure `ClassicalInputs` (in `ThmKDefs.lean`), which states four classical th
 
 - Furstenberg's correspondence principle, in the form of Charamaras–Mountakis, Theorem 2.15;
 - existence of generic points along a subsequence of any Følner sequence (Charamaras–Mountakis,
-  Lemma 2.7, via Lindenstrauss' pointwise ergodic theorem);
+  Lemma 2.7; since only a subsequence is needed, the mean ergodic theorem suffices, see (G4) in
+  the paper);
 - the discrete spectrum (Halmos–von Neumann) theorem for the Kronecker factor;
 - for vectors orthogonal to all eigenfunctions, the decay of averaged correlations along Følner
   sequences (spectral theorem and Wiener's lemma).

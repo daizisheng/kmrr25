@@ -18,6 +18,9 @@ lean/**/.lake/
 lean/**/build/
 lean/**/lake-packages/
 
+# arXiv package built by make-arxiv.sh
+arxiv-submission.tar.gz
+
 # OS / editor
 .DS_Store
 *~

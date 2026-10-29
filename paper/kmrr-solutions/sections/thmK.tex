@@ -246,8 +246,11 @@ $\overline{\{T^\gamma y:\gamma\in\Gamma\}}$. This is immediate from \ref{K:G1}.
 $y\in\mathrm{gen}(\nu,\Phi)$, then $P(y)\in\mathrm{gen}(P_*\nu,\Phi)$.
 \item\label{K:G4} If $\nu$ is ergodic, then for every \Fol{} sequence $\Phi$ there is a
 subsequence $\Psi$ such that $\nu$-almost every point is generic for $\nu$ along $\Psi$
-\cite[Lemma~2.7]{charamaras2024finding}. This rests on Lindenstrauss' pointwise ergodic
-theorem.
+\cite[Lemma~2.7]{charamaras2024finding}. Since only a subsequence is required, the mean ergodic
+theorem suffices: for $f$ in a countable dense subset of $C(Y)$ the averages of $f$ along $\Phi$
+converge to $\int f\,d\nu$ in $L^2(\nu)$, hence $\nu$-almost everywhere along a subsequence,
+and a diagonal argument gives one subsequence $\Psi$ that works for all of them.
+(\cite{charamaras2024finding} uses Lindenstrauss' pointwise ergodic theorem instead.)
 \end{enumerate}
 
 \subsubsection*{Cubes}
@@ -1235,8 +1238,8 @@ in~\cite{kra2023problems}).
 Besides elementary facts about \Fol{} sequences, the proof uses:
 \begin{itemize}
 \item Furstenberg's correspondence principle;
-\item the existence of generic points for ergodic measures (via Lindenstrauss' pointwise
-theorem);
+\item the existence of generic points for ergodic measures along a subsequence (via the mean
+ergodic theorem);
 \item the mean ergodic theorem, Wiener's lemma and the van der Corput inequality;
 \item the discrete spectrum theorem for the Kronecker factor and Pontryagin duality;
 \item disintegration of measures;

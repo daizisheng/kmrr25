@@ -99,30 +99,6 @@
    "configFile": "lakefile.toml"
   },
   {
-   "url": "https://github.com/PatrickMassot/checkdecls.git",
-   "type": "git",
-   "subDir": null,
-   "scope": "",
-   "rev": "3d425859e73fcfbef85b9638c2a91708ef4a22d4",
-   "name": "checkdecls",
-   "manifestFile": "lake-manifest.json",
-   "inputRev": null,
-   "inherited": true,
-   "configFile": "lakefile.lean"
-  },
-  {
-   "url": "https://github.com/hanwenzhu/LeanArchitect.git",
-   "type": "git",
-   "subDir": null,
-   "scope": "",
-   "rev": "d9013cc08bd2b5483e837368dfa4cc7ead92a5c2",
-   "name": "LeanArchitect",
-   "manifestFile": "lake-manifest.json",
-   "inputRev": "d9013cc08bd2b5483e837368dfa4cc7ead92a5c2",
-   "inherited": true,
-   "configFile": "lakefile.lean"
-  },
-  {
    "url": "https://github.com/leanprover/lean4-cli",
    "type": "git",
    "subDir": null,
